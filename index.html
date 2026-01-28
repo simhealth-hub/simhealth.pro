@@ -1,28 +1,84 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth — Choose Language</title>
-  <style>
-    body { margin:0; font-family: system-ui, Arial; min-height:100vh; display:grid; place-items:center; background:#0b1220; color:#fff; }
-    .card { width:min(720px, 92vw); background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
-            border-radius:20px; padding:28px; box-shadow: 0 10px 40px rgba(0,0,0,.35); }
-    .btns { display:flex; gap:12px; flex-wrap:wrap; margin-top:18px; }
-    a.btn { text-decoration:none; color:#0b1220; background:#fff; padding:12px 16px; border-radius:14px; font-weight:700; }
-    a.btn.secondary { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.25); }
-    .small { opacity:.85; line-height:1.4; }
-  </style>
+  <title>SimHealth - Choose Language</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
 </head>
 <body>
-  <div class="card">
-    <h1 style="margin:0 0 8px;">SimHealth</h1>
-    <p class="small" style="margin:0;">Choose your language / Choisissez votre langue.</p>
 
-    <div class="btns">
-      <a class="btn" href="/en/home.html">English</a>
-      <a class="btn secondary" href="/fr/accueil.html">Français</a>
-    </div>
+  <div class="banner">
+    <strong>Under Construction</strong> - SimHealth is being built carefully and responsibly.
   </div>
+
+  <header class="nav">
+    <div class="brand">SimHealth</div>
+
+    <nav class="menu" aria-label="Top navigation">
+      <a class="link" href="/en/home.html">English site</a>
+      <a class="link" href="/fr/accueil.html">Site francais</a>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme(); updateThemeToggleLabels();"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); updateThemeToggleLabels(); }"
+           aria-label="Toggle theme">
+        <span class="label" id="label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label" id="label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="card" style="text-align:center;">
+      <h1 style="margin:0 0 10px; font-size:30px;">Choose your language</h1>
+      <p style="margin:0; color:var(--muted); line-height:1.45;">
+        Select English or Francais to enter the SimHealth website.
+      </p>
+
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:18px;">
+        <a class="btn-primary" href="/en/home.html">English</a>
+        <a class="link" style="border:1px solid var(--border); background:var(--surface2);" href="/fr/accueil.html">Francais</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="/en/under-construction.html">Legal</a>
+        <a href="/en/under-construction.html">Sitemap</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    function updateThemeToggleLabels() {
+      const theme = document.documentElement.getAttribute("data-theme") || "dark";
+      const darkLabel = document.getElementById("label-dark");
+      const lightLabel = document.getElementById("label-light");
+      if (!darkLabel || !lightLabel) return;
+
+      if (theme === "dark") {
+        darkLabel.classList.add("active");
+        lightLabel.classList.remove("active");
+      } else {
+        lightLabel.classList.add("active");
+        darkLabel.classList.remove("active");
+      }
+    }
+    updateThemeToggleLabels();
+  </script>
 </body>
 </html>
