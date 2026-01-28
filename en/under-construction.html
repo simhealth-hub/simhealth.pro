@@ -1,53 +1,83 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth — Under Construction</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, Arial, sans-serif;
-      background: #0b1220;
-      color: #ffffff;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-    }
-    .card {
-      width: min(720px, 92vw);
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 20px;
-      padding: 28px;
-      text-align: center;
-    }
-    h1 {
-      margin-top: 0;
-    }
-    p {
-      color: rgba(255,255,255,.8);
-      line-height: 1.5;
-    }
-    a {
-      color: #ffffff;
-    }
-  </style>
+  <title>SimHealth - Under Construction</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
 </head>
 <body>
-  <div class="card">
-    <h1>🚧 Under Construction</h1>
-    <p>
-      This section of SimHealth is currently being developed.
-      We are building it carefully to ensure it is safe, ethical,
-      and clinically responsible.
-    </p>
-    <p>
-      Thank you for your patience.
-    </p>
-    <p>
-      <a href="/en/home.html">← Back to Home</a>
-    </p>
+
+  <div class="banner">
+    <strong>Under Construction</strong> - This section is being prepared.
   </div>
+
+  <header class="nav">
+    <div class="brand">SimHealth</div>
+
+    <nav class="menu" aria-label="Top navigation">
+      <a class="link" href="/en/home.html">Back to Home</a>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme(); updateThemeToggleLabels();"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); updateThemeToggleLabels(); }"
+           aria-label="Toggle theme">
+        <span class="label" id="label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label" id="label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <h1 style="margin:0 0 10px; font-size:30px;">This page is under construction</h1>
+      <p style="margin:0; color:var(--muted); line-height:1.6;">
+        We are building SimHealth carefully to keep it safe, ethical, and clinically responsible.
+        Thank you for your patience.
+      </p>
+
+      <div style="display:flex; gap:12px; margin-top:18px; flex-wrap:wrap;">
+        <a class="btn-primary" href="/en/home.html">Return to Home</a>
+        <a class="link" style="border:1px solid var(--border); background:var(--surface2);" href="/index.html">Language page</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="/en/under-construction.html">Legal</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    function updateThemeToggleLabels() {
+      const theme = document.documentElement.getAttribute("data-theme") || "dark";
+      const darkLabel = document.getElementById("label-dark");
+      const lightLabel = document.getElementById("label-light");
+      if (!darkLabel || !lightLabel) return;
+
+      if (theme === "dark") {
+        darkLabel.classList.add("active");
+        lightLabel.classList.remove("active");
+      } else {
+        lightLabel.classList.add("active");
+        darkLabel.classList.remove("active");
+      }
+    }
+    updateThemeToggleLabels();
+  </script>
 </body>
 </html>
