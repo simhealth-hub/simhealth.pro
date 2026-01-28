@@ -195,6 +195,57 @@ footer .row {
 }
 footer a { color: var(--muted); text-decoration: none; }
 footer a:hover { color: var(--text); }
+/* Theme toggle slider */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  user-select: none;
+  cursor: pointer;
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+
+.theme-toggle:active { transform: translateY(1px); }
+
+.theme-toggle .label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--muted);
+}
+
+.theme-toggle .label.active {
+  color: var(--text);
+}
+
+.theme-toggle .track {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+}
+
+.theme-toggle .thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--primary);
+  transition: transform var(--t-med) var(--ease);
+}
+
+/* When light mode is active, move thumb right */
+:root[data-theme="light"] .theme-toggle .thumb {
+  transform: translateX(20px);
+}
 
 @media (max-width: 800px) {
   .tile { grid-column: span 12; }
