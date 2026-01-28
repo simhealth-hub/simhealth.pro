@@ -309,42 +309,52 @@ footer a:hover { color: var(--text); }
   color: var(--text);
   border: 1px solid color-mix(in srgb, var(--primary) 40%, transparent);
 }
-/* Landing hero */
+
+/* ===== Landing hero ===== */
 .hero {
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
+  min-height: 340px;
 }
 
 .hero-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center;
+  background-position: center right;
   transform: scale(1.02);
 }
 
+/* Dark mode overlay (keeps the left side readable) */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     90deg,
-    rgba(11,18,32,0.92) 0%,
-    rgba(11,18,32,0.70) 45%,
-    rgba(11,18,32,0.35) 100%
+    rgba(11,18,32,0.90) 0%,
+    rgba(11,18,32,0.60) 42%,
+    rgba(11,18,32,0.18) 72%,
+    rgba(11,18,32,0.00) 100%
   );
 }
 
-/* Make overlay lighter in light mode */
+/* Light mode: stronger overlay to avoid "white washed" look */
 :root[data-theme="light"] .hero-overlay {
   background: linear-gradient(
     90deg,
     rgba(255,255,255,0.92) 0%,
-    rgba(255,255,255,0.75) 45%,
-    rgba(255,255,255,0.25) 100%
+    rgba(255,255,255,0.72) 40%,
+    rgba(255,255,255,0.32) 70%,
+    rgba(255,255,255,0.00) 100%
   );
+}
+
+/* Light mode: subtle contrast recovery (keeps it clinical, not edited) */
+:root[data-theme="light"] .hero-bg {
+  filter: contrast(1.06) saturate(0.96);
 }
 
 .hero-content {
@@ -401,8 +411,5 @@ footer a:hover { color: var(--text); }
 @media (max-width: 800px) {
   .hero-content { padding: 34px 18px; }
   .hero h1 { font-size: 32px; }
-}
-
-@media (max-width: 800px) {
   .tile { grid-column: span 12; }
 }
