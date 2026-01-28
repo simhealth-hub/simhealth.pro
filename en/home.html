@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth - Home</title>
+  <title>SimHealth – Home</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +14,13 @@
 </head>
 
 <body>
+
+  <!-- Banner -->
   <div class="banner">
-    <strong>Under Construction</strong> - SimHealth is being built carefully and responsibly. We will be here for you soon.
+    <strong>Under Construction</strong> — SimHealth is being built carefully and responsibly.
   </div>
 
+  <!-- Navigation -->
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
@@ -26,7 +29,7 @@
 
       <div class="item">
         <a class="link" href="/en/under-construction.html">Patients</a>
-        <div class="dropdown" role="menu">
+        <div class="dropdown">
           <a href="/en/under-construction.html">Inscription (Sign up)</a>
           <a href="/en/under-construction.html">Sign in</a>
           <a href="/en/under-construction.html">Help and Support</a>
@@ -36,7 +39,7 @@
 
       <div class="item">
         <a class="link" href="/en/under-construction.html">Clinicians</a>
-        <div class="dropdown" role="menu">
+        <div class="dropdown">
           <a href="/en/under-construction.html">Overview</a>
           <a href="/en/under-construction.html">Sign in</a>
           <a href="/en/under-construction.html">Resources</a>
@@ -46,7 +49,7 @@
 
       <div class="item">
         <a class="link" href="/en/under-construction.html">Research</a>
-        <div class="dropdown" role="menu">
+        <div class="dropdown">
           <a href="/en/under-construction.html">Overview</a>
           <a href="/en/under-construction.html">Evidence and Method</a>
           <a href="/en/under-construction.html">Publications</a>
@@ -55,7 +58,7 @@
 
       <div class="item">
         <a class="link" href="/en/under-construction.html">About</a>
-        <div class="dropdown" role="menu">
+        <div class="dropdown">
           <a href="/en/under-construction.html">About SimHealth</a>
           <a href="/en/under-construction.html">Team</a>
           <a href="/en/under-construction.html">Partners</a>
@@ -67,11 +70,13 @@
 
       <a class="btn-primary" href="/en/under-construction.html">Get Help Now</a>
 
+      <!-- Language toggle -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/home.html">English</a>
         <a href="/fr/accueil.html">Français</a>
       </div>
 
+      <!-- Theme toggle -->
       <div class="theme-toggle" role="button" tabindex="0"
            onclick="SimHealthTheme.toggleTheme()"
            onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
@@ -83,75 +88,65 @@
     </nav>
   </header>
 
-<section class="hero">
-  <div class="hero-bg" style="background-image:url('/assets/hero-clinic.jpg');"></div>
-  <div class="hero-overlay"></div>
+  <!-- Main content -->
+  <main class="wrap">
 
-  <div class="hero-content">
-    <h1 class="rise-1">SimHealth</h1>
-    <p class="rise-2">
-      Support for managing gambling urges, built with clinicians.
-    </p>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/hero-clinic.jpg');"></div>
+      <div class="hero-overlay"></div>
 
-    <div class="hero-actions rise-3">
-      <a class="btn-primary" href="/en/under-construction.html">For Patients</a>
-      <a class="btn-secondary" href="/en/under-construction.html">For Clinicians</a>
+      <div class="hero-content">
+        <h1 class="rise-1">SimHealth</h1>
+        <p class="rise-2">
+          Support for managing gambling urges, built with clinicians.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="/en/under-construction.html">For Patients</a>
+          <a class="btn-secondary" href="/en/under-construction.html">For Clinicians</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard tiles -->
+    <div class="grid" aria-label="Dashboard">
+      <a class="tile" href="/en/under-construction.html">
+        <div class="img" style="background-image:url('/assets/patients.jpg');"></div>
+        <div class="meta">
+          <h3>Patients</h3>
+          <p>Tools, guidance, and support — coming soon.</p>
+        </div>
+      </a>
+
+      <a class="tile" href="/en/under-construction.html">
+        <div class="img" style="background-image:url('/assets/clinician.jpg');"></div>
+        <div class="meta">
+          <h3>Clinicians</h3>
+          <p>Clinical resources and treatment information.</p>
+        </div>
+      </a>
+
+      <a class="tile" href="/en/under-construction.html">
+        <div class="img" style="background-image:url('/assets/research.jpg');"></div>
+        <div class="meta">
+          <h3>Research</h3>
+          <p>Evidence, methodology, and outcomes.</p>
+        </div>
+      </a>
+
+      <a class="tile" href="/en/under-construction.html">
+        <div class="img" style="background-image:url('/assets/about.jpg');"></div>
+        <div class="meta">
+          <h3>About</h3>
+          <p>Mission, ethics, and development approach.</p>
+        </div>
+      </a>
     </div>
-  </div>
-</section>
-<main class="wrap">
-  <section class="hero">
-    <div class="hero-bg" style="background-image:url('/assets/hero-clinic.jpg');"></div>
-    <div class="hero-overlay"></div>
 
-    <div class="hero-content">
-      <h1 class="rise-1">SimHealth</h1>
-      <p class="rise-2">
-        Support for managing gambling urges, built with clinicians.
-      </p>
+  </main>
 
-      <div class="hero-actions rise-3">
-        <a class="btn-primary" href="/en/under-construction.html">For Patients</a>
-        <a class="btn-secondary" href="/en/under-construction.html">For Clinicians</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="grid" aria-label="Dashboard">
-    <a class="tile" href="/en/under-construction.html">
-      <div class="img" style="background-image:url('/assets/patients.jpg');"></div>
-      <div class="meta">
-        <h3>Patients</h3>
-        <p>Tools, guidance, and support - coming soon.</p>
-      </div>
-    </a>
-
-    <a class="tile" href="/en/under-construction.html">
-      <div class="img" style="background-image:url('/assets/clinician.jpg');"></div>
-      <div class="meta">
-        <h3>Clinicians</h3>
-        <p>Clinical resources and treatment information.</p>
-      </div>
-    </a>
-
-    <a class="tile" href="/en/under-construction.html">
-      <div class="img" style="background-image:url('/assets/research.jpg');"></div>
-      <div class="meta">
-        <h3>Research</h3>
-        <p>Evidence, methodology, and outcomes.</p>
-      </div>
-    </a>
-
-    <a class="tile" href="/en/under-construction.html">
-      <div class="img" style="background-image:url('/assets/about.jpg');"></div>
-      <div class="meta">
-        <h3>About</h3>
-        <p>Mission, ethics, and development approach.</p>
-      </div>
-    </a>
-  </div>
-</main>
-
+  <!-- Footer -->
   <footer>
     <div class="row">
       <div>
@@ -168,5 +163,6 @@
       </nav>
     </div>
   </footer>
+
 </body>
 </html>
