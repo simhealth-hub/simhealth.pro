@@ -1,228 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SimHealth — Home</title>
 
-  <style>
-    :root {
-      --bg:#0b1220;
-      --card:rgba(255,255,255,.06);
-      --border:rgba(255,255,255,.12);
-      --text:#fff;
-      --muted:rgba(255,255,255,.75);
-    }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-    body {
-      margin:0;
-      font-family: system-ui, Arial, sans-serif;
-      background:var(--bg);
-      color:var(--text);
-    }
-
-    a { color:inherit; text-decoration:none; }
-
-    /* Banner */
-    .banner {
-      background:rgba(255,180,0,.18);
-      border-bottom:1px solid rgba(255,180,0,.35);
-      padding:10px 16px;
-      font-size:14px;
-      color:var(--muted);
-    }
-    .banner strong { color:#fff; }
-
-    /* Nav */
-    .nav {
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 16px;
-      border-bottom:1px solid var(--border);
-      background:rgba(11,18,32,.85);
-      position:sticky;
-      top:0;
-      z-index:10;
-    }
-    .brand { font-weight:900; }
-
-    .menu {
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-    }
-
-    .item { position:relative; }
-
-    .link {
-      padding:10px 12px;
-      border-radius:12px;
-    }
-    .link:hover {
-      background:rgba(255,255,255,.08);
-    }
-
-    .dropdown {
-      display:none;
-      position:absolute;
-      top:44px;
-      left:0;
-      min-width:220px;
-      background:rgba(20,28,48,.98);
-      border:1px solid var(--border);
-      border-radius:14px;
-      overflow:hidden;
-      box-shadow:0 16px 40px rgba(0,0,0,.35);
-    }
-    .dropdown a {
-      display:block;
-      padding:10px 12px;
-      color:var(--muted);
-    }
-    .dropdown a:hover {
-      background:rgba(255,255,255,.08);
-      color:#fff;
-    }
-
-    .item:hover .dropdown { display:block; }
-
-    .cta {
-      padding:10px 12px;
-      border-radius:12px;
-      background:#fff;
-      color:#0b1220;
-      font-weight:800;
-    }
-
-    /* Layout */
-    .wrap {
-      width:min(1100px, 92vw);
-      margin:0 auto;
-      padding:22px 0 48px;
-    }
-
-    .hero {
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:22px;
-      padding:22px;
-    }
-
-    .hero h1 {
-      margin:0 0 8px;
-      font-size:30px;
-    }
-
-    .hero p {
-      margin:0;
-      color:var(--muted);
-      line-height:1.45;
-    }
-
-    /* Tiles */
-    .grid {
-      display:grid;
-      gap:14px;
-      margin-top:16px;
-      grid-template-columns: repeat(12, 1fr);
-    }
-
-    .tile {
-      grid-column: span 6;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:20px;
-      overflow:hidden;
-      transition:transform .2s ease, box-shadow .2s ease;
-    }
-
-    .tile:hover {
-      transform:translateY(-4px);
-      box-shadow:0 18px 60px rgba(0,0,0,.35);
-    }
-
-    .img {
-      height:160px;
-      background-size:cover;
-      background-position:center;
-      transition:transform .35s ease;
-    }
-
-    .tile:hover .img {
-      transform:scale(1.06);
-    }
-
-    .meta {
-      padding:14px;
-    }
-
-    .meta h3 {
-      margin:0 0 6px;
-    }
-
-    .meta p {
-      margin:0;
-      color:var(--muted);
-      line-height:1.4;
-    }
-
-    @media (max-width:800px) {
-      .tile { grid-column: span 12; }
-    }
-
-    /* Footer */
-    footer {
-      border-top:1px solid var(--border);
-      padding:18px 16px;
-      color:var(--muted);
-    }
-
-    footer .row {
-      width:min(1100px, 92vw);
-      margin:0 auto;
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    footer nav a {
-      margin-right:10px;
-      color:var(--muted);
-    }
-
-    footer nav a:hover { color:#fff; }
-  </style>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
 </head>
 
 <body>
-
   <div class="banner">
-    <strong>🚧 Under Construction</strong> — SimHealth is being built carefully and responsibly. We’ll be here for you soon.
+    <strong>Under Construction</strong> - SimHealth is being built carefully and responsibly. We will be here for you soon.
   </div>
 
   <header class="nav">
     <div class="brand">SimHealth</div>
 
-    <nav class="menu">
+    <nav class="menu" aria-label="Main navigation">
       <a class="link" href="/en/home.html">Home</a>
 
       <div class="item">
-        <a class="link" href="/en/under-construction.html">Patients ▾</a>
-        <div class="dropdown">
+        <a class="link" href="/en/under-construction.html">Patients</a>
+        <div class="dropdown" role="menu">
           <a href="/en/under-construction.html">Inscription (Sign up)</a>
           <a href="/en/under-construction.html">Sign in</a>
-          <a href="/en/under-construction.html">Help & Support</a>
+          <a href="/en/under-construction.html">Help and Support</a>
           <a href="/en/under-construction.html">Get Help Now</a>
         </div>
       </div>
 
       <div class="item">
-        <a class="link" href="/en/under-construction.html">Clinicians ▾</a>
-        <div class="dropdown">
+        <a class="link" href="/en/under-construction.html">Clinicians</a>
+        <div class="dropdown" role="menu">
           <a href="/en/under-construction.html">Overview</a>
           <a href="/en/under-construction.html">Sign in</a>
           <a href="/en/under-construction.html">Resources</a>
@@ -231,17 +45,17 @@
       </div>
 
       <div class="item">
-        <a class="link" href="/en/under-construction.html">Research ▾</a>
-        <div class="dropdown">
+        <a class="link" href="/en/under-construction.html">Research</a>
+        <div class="dropdown" role="menu">
           <a href="/en/under-construction.html">Overview</a>
-          <a href="/en/under-construction.html">Evidence & Method</a>
+          <a href="/en/under-construction.html">Evidence and Method</a>
           <a href="/en/under-construction.html">Publications</a>
         </div>
       </div>
 
       <div class="item">
-        <a class="link" href="/en/under-construction.html">About ▾</a>
-        <div class="dropdown">
+        <a class="link" href="/en/under-construction.html">About</a>
+        <div class="dropdown" role="menu">
           <a href="/en/under-construction.html">About SimHealth</a>
           <a href="/en/under-construction.html">Team</a>
           <a href="/en/under-construction.html">Partners</a>
@@ -250,25 +64,27 @@
       </div>
 
       <a class="link" href="/en/under-construction.html">Contact</a>
-      <a class="cta" href="/en/under-construction.html">Get Help Now</a>
+
+      <a class="btn-primary" href="/en/under-construction.html">Get Help Now</a>
+
+      <button class="icon-btn" type="button" onclick="SimHealthTheme.toggleTheme()" aria-label="Toggle dark or light mode">☼</button>
     </nav>
   </header>
 
   <main class="wrap">
-    <section class="hero">
-      <h1>SimHealth</h1>
-      <p>
+    <section class="card">
+      <h1 style="margin:0 0 8px; font-size:30px;">SimHealth</h1>
+      <p style="margin:0; color:var(--muted); line-height:1.45;">
         SimHealth is a clinical digital companion designed to help people manage gambling urges safely and responsibly.
         This website is currently under construction.
       </p>
 
-      <div class="grid">
-
+      <div class="grid" aria-label="Dashboard" style="margin-top:16px;">
         <a class="tile" href="/en/under-construction.html">
           <div class="img" style="background-image:url('/assets/patients.jpg');"></div>
           <div class="meta">
             <h3>Patients</h3>
-            <p>Tools, guidance, and support — coming soon.</p>
+            <p>Tools, guidance, and support - coming soon.</p>
           </div>
         </a>
 
@@ -295,7 +111,6 @@
             <p>Mission, ethics, and development approach.</p>
           </div>
         </a>
-
       </div>
     </section>
   </main>
@@ -306,7 +121,7 @@
         © 2026 SimHealth. All rights reserved. •
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
-      <nav>
+      <nav aria-label="Footer links">
         <a href="/en/under-construction.html">Privacy</a>
         <a href="/en/under-construction.html">Terms</a>
         <a href="/en/under-construction.html">Cookies</a>
@@ -316,6 +131,5 @@
       </nav>
     </div>
   </footer>
-
 </body>
 </html>
