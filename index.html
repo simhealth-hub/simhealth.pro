@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth - Choose Language</title>
+  <title>SimHealth — Choose language</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,43 +12,53 @@
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 </head>
+
 <body>
 
   <div class="banner">
-    <strong>Under Construction</strong> - SimHealth is being built carefully and responsibly.
+    <strong>Under Construction</strong> — SimHealth is being built carefully and responsibly.
   </div>
 
   <header class="nav">
-    <a class="brand" href="/index.html" style="text-decoration:none; color:var(--text);">SimHealth</a>
+    <a class="brand" href="/index.html" aria-label="SimHealth home">SimHealth</a>
 
-
-    <nav class="menu" aria-label="Top navigation">
-      <a class="link" href="/en/home.html">English site</a>
-      <a class="link" href="/fr/accueil.html">Site français</a>
-
+    <nav class="menu" aria-label="Top controls">
       <div class="theme-toggle" role="button" tabindex="0"
-           onclick="SimHealthTheme.toggleTheme(); updateThemeToggleLabels();"
-           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); updateThemeToggleLabels(); }"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
            aria-label="Toggle theme">
-        <span class="label" id="label-dark">Dark</span>
+        <span class="label label-dark">Dark</span>
         <span class="track" aria-hidden="true"><span class="thumb"></span></span>
-        <span class="label" id="label-light">Light</span>
+        <span class="label label-light">Light</span>
       </div>
     </nav>
   </header>
 
   <main class="wrap">
-    <section class="card" style="text-align:center;">
-      <h1 style="margin:0 0 10px; font-size:30px;">Choose your language</h1>
-      <p style="margin:0; color:var(--muted); line-height:1.45;">
-        Select English or Français to enter the SimHealth website.
-      </p>
 
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:18px;">
-        <a class="btn-primary" href="/en/home.html">English</a>
-        <a class="link" style="border:1px solid var(--border); background:var(--surface2);" href="/fr/accueil.html">Français</a>
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/hero-clinic.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">SimHealth</h1>
+        <p class="rise-2">
+          Please choose your language to continue.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="/en/home.html">English</a>
+          <a class="btn-secondary" href="/fr/accueil.html">Français</a>
+        </div>
       </div>
     </section>
+
+    <div class="card" style="margin-top:14px;">
+      <p style="margin:0; color:var(--muted); line-height:1.55;">
+        SimHealth is a clinical digital companion in development. This site is a preview of what is being built.
+      </p>
+    </div>
+
   </main>
 
   <footer>
@@ -58,28 +68,15 @@
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
       <nav aria-label="Footer links">
-        <a href="/en/under-construction.html">Legal</a>
+        <a href="/en/under-construction.html">Privacy</a>
+        <a href="/en/under-construction.html">Terms</a>
+        <a href="/en/under-construction.html">Cookies</a>
+        <a href="/en/under-construction.html">Accessibility</a>
+        <a href="/en/under-construction.html">Medical Disclaimer</a>
         <a href="/en/under-construction.html">Sitemap</a>
       </nav>
     </div>
   </footer>
 
-  <script>
-    function updateThemeToggleLabels() {
-      const theme = document.documentElement.getAttribute("data-theme") || "dark";
-      const darkLabel = document.getElementById("label-dark");
-      const lightLabel = document.getElementById("label-light");
-      if (!darkLabel || !lightLabel) return;
-
-      if (theme === "dark") {
-        darkLabel.classList.add("active");
-        lightLabel.classList.remove("active");
-      } else {
-        lightLabel.classList.add("active");
-        darkLabel.classList.remove("active");
-      }
-    }
-    updateThemeToggleLabels();
-  </script>
 </body>
 </html>
