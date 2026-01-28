@@ -309,6 +309,99 @@ footer a:hover { color: var(--text); }
   color: var(--text);
   border: 1px solid color-mix(in srgb, var(--primary) 40%, transparent);
 }
+/* Landing hero */
+.hero {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(11,18,32,0.92) 0%,
+    rgba(11,18,32,0.70) 45%,
+    rgba(11,18,32,0.35) 100%
+  );
+}
+
+/* Make overlay lighter in light mode */
+:root[data-theme="light"] .hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.92) 0%,
+    rgba(255,255,255,0.75) 45%,
+    rgba(255,255,255,0.25) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  padding: 46px 26px;
+  width: min(640px, 92%);
+}
+
+.hero h1 {
+  margin: 0 0 10px;
+  font-size: 40px;
+  letter-spacing: 0.2px;
+}
+
+.hero p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 16px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.btn-secondary:hover { background: color-mix(in srgb, var(--text) 6%, transparent); transform: translateY(-1px); }
+.btn-secondary:active { transform: translateY(0px); }
+
+/* Slide-up animation */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise-1 { animation: riseIn 650ms var(--ease) both; }
+.rise-2 { animation: riseIn 650ms var(--ease) both; animation-delay: 120ms; }
+.rise-3 { animation: riseIn 650ms var(--ease) both; animation-delay: 220ms; }
+
+@media (max-width: 800px) {
+  .hero-content { padding: 34px 18px; }
+  .hero h1 { font-size: 32px; }
+}
 
 @media (max-width: 800px) {
   .tile { grid-column: span 12; }
