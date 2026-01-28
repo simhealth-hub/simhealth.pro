@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth — Home</title>
+  <title>SimHealth - Home</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
   </div>
 
   <header class="nav">
-    <div class="brand">SimHealth</div>
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
     <nav class="menu" aria-label="Main navigation">
       <a class="link" href="/en/home.html">Home</a>
@@ -64,21 +64,22 @@
       </div>
 
       <a class="link" href="/en/under-construction.html">Contact</a>
-<div class="lang-toggle" aria-label="Language switch">
-  <a class="active" href="/en/home.html" title="English">EN</a>
-  <a href="/fr/accueil.html" title="Français">FR</a>
-</div>
 
       <a class="btn-primary" href="/en/under-construction.html">Get Help Now</a>
-<div class="theme-toggle" role="button" tabindex="0"
-     onclick="SimHealthTheme.toggleTheme(); updateThemeToggleLabels();"
-     onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); updateThemeToggleLabels(); }"
-     aria-label="Toggle theme">
-  <span class="label" id="label-dark">Dark</span>
-  <span class="track" aria-hidden="true"><span class="thumb"></span></span>
-  <span class="label" id="label-light">Light</span>
-</div>
 
+      <div class="lang-toggle" aria-label="Language">
+        <a class="active" href="/en/home.html">English</a>
+        <a href="/fr/accueil.html">Français</a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Toggle theme">
+        <span class="label label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Light</span>
+      </div>
     </nav>
   </header>
 
@@ -142,24 +143,5 @@
       </nav>
     </div>
   </footer>
-  <script>
-  function updateThemeToggleLabels() {
-    const theme = document.documentElement.getAttribute("data-theme") || "dark";
-    const darkLabel = document.getElementById("label-dark");
-    const lightLabel = document.getElementById("label-light");
-    if (!darkLabel || !lightLabel) return;
-
-    if (theme === "dark") {
-      darkLabel.classList.add("active");
-      lightLabel.classList.remove("active");
-    } else {
-      lightLabel.classList.add("active");
-      darkLabel.classList.remove("active");
-    }
-  }
-
-  updateThemeToggleLabels();
-</script>
-
 </body>
 </html>
