@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Home</title>
+  <style>
+    :root { --bg:#0b1220; --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.12); --text:#fff; --muted:rgba(255,255,255,.75); }
+    body { margin:0; font-family: system-ui, Arial; background:var(--bg); color:var(--text); }
+    a { color:inherit; }
+
+    .banner { background:rgba(255,180,0,.18); border-bottom:1px solid rgba(255,180,0,.35); padding:10px 16px; font-size:14px; color:var(--muted); }
+    .banner strong { color:#fff; }
+
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--border); backdrop-filter: blur(8px); position:sticky; top:0; background:rgba(11,18,32,.8); }
+    .brand { font-weight:900; letter-spacing:.2px; }
+    .menu { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .item { position:relative; }
+    .link { padding:10px 12px; border-radius:12px; text-decoration:none; display:inline-block; }
+    .link:hover { background:rgba(255,255,255,.08); }
+
+    .dropdown { display:none; position:absolute; top:44px; left:0; min-width:220px; background:rgba(20,28,48,.98);
+                border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:0 16px 40px rgba(0,0,0,.35); }
+    .dropdown a { display:block; padding:10px 12px; text-decoration:none; color:var(--muted); }
+    .dropdown a:hover { background:rgba(255,255,255,.08); color:#fff; }
+    .item:hover .dropdown { display:block; }
+
+    .cta { padding:10px 12px; border-radius:12px; background:#fff; color:#0b1220; font-weight:800; text-decoration:none; }
+    .cta:hover { opacity:.92; }
+
+    .wrap { width:min(1100px, 92vw); margin:0 auto; padding:22px 0 48px; }
+    .hero { background:var(--card); border:1px solid var(--border); border-radius:22px; padding:22px; }
+    .hero h1 { margin:0 0 8px; font-size:30px; }
+    .hero p { margin:0; color:var(--muted); line-height:1.45; }
+
+    .grid { display:grid; gap:14px; margin-top:16px; grid-template-columns: repeat(12, 1fr); }
+    .tile { grid-column: span 6; background:var(--card); border:1px solid var(--border); border-radius:20px; overflow:hidden; text-decoration:none; }
+    .tile .img { height:160px; background-size:cover; background-position:center; transform:scale(1); transition: transform .35s ease; }
+    .tile .meta { padding:14px; }
+    .tile h3 { margin:0 0 6px; }
+    .tile p { margin:0; color:var(--muted); line-height:1.4; }
+
+    .tile { transform: translateY(0); transition: transform .2s ease, box-shadow .2s ease; }
+    .tile:hover { transform: translateY(-4px); box-shadow: 0 18px 60px rgba(0,0,0,.35); }
+    .tile:hover .img { transform: scale(1.06); }
+
+    @media (max-width: 800px){
+      .tile { grid-column: span 12; }
+    }
+
+    footer { border-top:1px solid var(--border); padding:18px 16px; color:var(--muted); }
+    footer .row { width:min(1100px, 92vw); margin:0 auto; display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; }
+    footer nav a { color:var(--muted); text-decoration:none; margin-right:10px; }
+    footer nav a:hover { color:#fff; }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <strong>🚧 Under Construction</strong> — SimHealth is currently being built. We’re working carefully to be here for you soon.
+  </div>
+
+  <header class="nav">
+    <div class="brand">SimHealth</div>
+
+    <nav class="menu" aria-label="Main navigation">
+      <a class="link" href="/en/home.html">Home</a>
+
+      <div class="item">
+        <a class="link" href="/en/patient/dashboard.html">Patients ▾</a>
+        <div class="dropdown">
+          <a href="/en/patient/inscription.html">Inscription (Sign up)</a>
+          <a href="/en/patient/sign-in.html">Sign in</a>
+          <a href="/en/patient/help.html">Help & Support</a>
+          <a href="/en/patient/get-help-now.html">Get Help Now</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <a class="link" href="/en/clinician/overview.html">Clinicians ▾</a>
+        <div class="dropdown">
+          <a href="/en/clinician/overview.html">Overview</a>
+          <a href="/en/clinician/sign-in.html">Sign in</a>
+          <a href="/en/clinician/resources.html">Resources</a>
+          <a href="/en/clinician/protocol.html">CET / CET+ Protocol</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <a class="link" href="/en/research/overview.html">Research ▾</a>
+        <div class="dropdown">
+          <a href="/en/research/overview.html">Overview</a>
+          <a href="/en/research/evidence.html">Evidence & Method</a>
+          <a href="/en/research/publications.html">Publications</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <a class="link" href="/en/about/about.html">About ▾</a>
+        <div class="dropdown">
+          <a href="/en/about/about.html">About SimHealth</a>
+          <a href="/en/about/team.html">Team</a>
+          <a href="/en/about/partners.html">Partners</a>
+          <a href="/en/about/press.html">Press / Media kit</a>
+        </div>
+      </div>
+
+      <a class="link" href="/en/contact.html">Contact</a>
+      <a class="cta" href="/en/patient/get-help-now.html">Get Help Now</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>SimHealth</h1>
+      <p>
+        SimHealth is a clinical digital companion designed to help people manage gambling urges safely and responsibly.
+        This site is currently under construction — core patient and clinician areas will be available soon.
+      </p>
+
+      <div class="grid">
+        <a class="tile" href="/en/patient/dashboard.html">
+          <div class="img" style="background-image:url('/assets/patients.jpg');"></div>
+          <div class="meta">
+            <h3>Patients</h3>
+            <p>Sign up, sign in, support, and practical tools to manage urges.</p>
+          </div>
+        </a>
+
+        <a class="tile" href="/en/clinician/overview.html">
+          <div class="img" style="background-image:url('/assets/clinician.jpg');"></div>
+          <div class="meta">
+            <h3>Clinicians</h3>
+            <p>Portal overview, resources, and treatment protocol information.</p>
+          </div>
+        </a>
+
+        <a class="tile" href="/en/research/overview.html">
+          <div class="img" style="background-image:url('/assets/research.jpg');"></div>
+          <div class="meta">
+            <h3>Research</h3>
+            <p>Evidence, methodology, outcomes and publications (coming soon).</p>
+          </div>
+        </a>
+
+        <a class="tile" href="/en/about/about.html">
+          <div class="img" style="background-image:url('/assets/about.jpg');"></div>
+          <div class="meta">
+            <h3>About</h3>
+            <p>Mission, team, partners, and the story behind SimHealth.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>© 2026 SimHealth. All rights reserved. • Contact: <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a></div>
+      <nav>
+        <a href="/en/legal/privacy.html">Privacy</a>
+        <a href="/en/legal/terms.html">Terms</a>
+        <a href="/en/legal/cookies.html">Cookies</a>
+        <a href="/en/legal/accessibility.html">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer.html">Medical Disclaimer</a>
+        <a href="/en/sitemap.html">Sitemap</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
