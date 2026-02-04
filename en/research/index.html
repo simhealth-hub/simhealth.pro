@@ -1,1 +1,180 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth – Research</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- RELATIVE PATHS -->
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script src="../../assets/theme.js"></script>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Under Construction</strong> — Research content is being prepared with a focus on ethics, safety, and clinical integrity.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="../../index.html">SimHealth</a>
+
+    <nav class="menu" aria-label="Main navigation">
+      <a class="link" href="../home.html">Home</a>
+
+      <div class="item">
+        <a class="link" href="../patients/">Patients</a>
+      </div>
+
+      <div class="item">
+        <a class="link" href="../clinicians/">Clinicians</a>
+      </div>
+
+      <div class="item">
+        <a class="link" href="./">Research</a>
+        <div class="dropdown">
+          <a href="#evidence">Evidence</a>
+          <a href="#methodology">Methodology</a>
+          <a href="#outcomes">Outcomes</a>
+        </div>
+      </div>
+
+      <div class="item">
+        <a class="link" href="../under-construction.html">About</a>
+      </div>
+
+      <a class="link" href="../under-construction.html">Contact</a>
+      <a class="btn-primary" href="../under-construction.html">Get Help Now</a>
+
+      <div class="lang-toggle" aria-label="Language">
+        <a class="active" href="./">English</a>
+        <a href="../../fr/accueil.html">Français</a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Toggle theme">
+        <span class="label label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO TILE WITH IMAGE -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('../../assets/research.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Research</h1>
+        <p class="rise-2">
+          Building clinically informed digital support — with careful evaluation, ethical governance, and patient safety at the centre.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="card" style="margin-top:22px;">
+
+      <h2 id="evidence">Evidence</h2>
+      <p style="color:var(--muted); line-height:1.6;">
+        SimHealth is being developed as a clinical digital companion for people experiencing gambling-related urges.
+        The research direction is guided by established therapeutic principles used in behavioural health, including
+        skills-based strategies and exposure-informed approaches.
+      </p>
+      <p style="color:var(--muted); line-height:1.6;">
+        The goal of this programme is not to “prove an app works overnight”, but to explore whether structured digital support can:
+        improve continuity of care, support safer decision-making during high-risk moments, and reduce disengagement between sessions.
+      </p>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
+
+      <h2 id="methodology">Methodology</h2>
+      <p style="color:var(--muted); line-height:1.6;">
+        SimHealth is being designed for staged evaluation — beginning with small pilot settings and progressing only when safety,
+        governance, and clinical oversight are in place. The programme is intended to support careful iteration, not uncontrolled release.
+      </p>
+
+      <h3 style="margin:16px 0 8px;">Data handling (privacy-first)</h3>
+      <p style="color:var(--muted); line-height:1.6;">
+        Where data collection is included in a pilot, it is intended to be strictly optional and used only with explicit patient consent.
+        Any collection would be limited to what is necessary for evaluation and improvement, and designed to follow applicable rules in France
+        and the EU (including GDPR principles).
+      </p>
+
+      <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7;">
+        <li><strong style="color:var(--text);">Consent-led:</strong> participation and data sharing would be opt-in, with clear explanations and the ability to withdraw where applicable.</li>
+        <li><strong style="color:var(--text);">Minimised:</strong> collect the minimum necessary information for evaluation, avoiding unnecessary identifiers.</li>
+        <li><strong style="color:var(--text);">Protected:</strong> prioritise anonymisation where feasible; otherwise use pseudonymisation with strict access controls.</li>
+        <li><strong style="color:var(--text);">Governed:</strong> any research use would be subject to appropriate oversight, documentation, and ethics processes when required.</li>
+      </ul>
+
+      <p style="color:var(--muted); line-height:1.6; margin-top:12px;">
+        SimHealth is intended to be compatible with stringent privacy expectations in healthcare. Details of any specific pilot protocol,
+        including legal basis, retention periods, and governance, would be defined with clinical partners and appropriate compliance guidance.
+      </p>
+
+      <h3 style="margin:16px 0 8px;">Why this matters</h3>
+      <p style="color:var(--muted); line-height:1.6;">
+        Gambling harm is often episodic: individuals can feel “stable” for long periods and then enter a short window of high risk.
+        Research in this space benefits from tools that can support patients in those windows — while also enabling clinicians and researchers
+        to better understand patterns (without compromising privacy).
+      </p>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
+
+      <h2 id="outcomes">Outcomes</h2>
+      <p style="color:var(--muted); line-height:1.6;">
+        Outcomes will only be discussed publicly when they are supported by appropriate evaluation. Early-stage pilots focus on feasibility,
+        safety, and engagement — not medical claims.
+      </p>
+
+      <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7;">
+        <li>Feasibility: can the tool be used safely and consistently within real clinical pathways?</li>
+        <li>Engagement: does it help patients stay connected between sessions or recovery milestones?</li>
+        <li>Safety signals: does the experience reduce harm risks rather than increase them?</li>
+        <li>Clinical usability: can clinicians integrate it without adding excessive burden?</li>
+        <li>Future research readiness: is the programme structured enough for larger studies if justified?</li>
+      </ul>
+
+      <div style="margin-top:18px; padding:12px 12px; border:1px solid var(--border); border-radius:var(--radius-lg); background:color-mix(in srgb, var(--accent) 10%, var(--surface));">
+        <p style="margin:0; color:var(--muted); line-height:1.55;">
+          <strong style="color:var(--text);">Note:</strong> SimHealth is in development and is not presented as a medical device or treatment.
+          Any future research programme would be conducted with appropriate governance and professional guidance.
+        </p>
+      </div>
+
+      <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn-primary" href="../under-construction.html">Research enquiries</a>
+        <a class="btn-secondary" href="../home.html">Back to Home</a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="../under-construction.html">Privacy</a>
+        <a href="../under-construction.html">Terms</a>
+        <a href="../under-construction.html">Accessibility</a>
+        <a href="../under-construction.html">Medical Disclaimer</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
 
