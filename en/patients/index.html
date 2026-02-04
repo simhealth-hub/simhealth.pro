@@ -3,204 +3,95 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth — Patients</title>
+  <title>SimHealth – Patients</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/assets/styles.css">
-  <script src="/assets/theme.js"></script>
-
-  <style>
-    .page-header { margin: 18px 0 10px; }
-    .kicker { color: var(--muted); font-weight: 700; font-size: 13px; letter-spacing: .2px; }
-    .title { margin: 8px 0 10px; font-size: 34px; letter-spacing: .2px; }
-    .lead { margin: 0; color: var(--muted); line-height: 1.6; max-width: 70ch; }
-
-    .section { margin-top: 18px; }
-    .section h2 { margin: 0 0 8px; font-size: 18px; }
-    .section p { margin: 0; color: var(--muted); line-height: 1.6; }
-
-    .list {
-      margin: 12px 0 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-    .list li {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 12px 12px;
-      color: var(--text);
-    }
-    .list li strong { display:block; margin-bottom:4px; }
-    .list li span { color: var(--muted); line-height: 1.5; display:block; }
-
-    .cta-row {
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 14px;
-    }
-
-    .note {
-      margin-top: 14px;
-      padding: 12px 12px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--primary) 10%, var(--surface));
-      color: var(--text);
-    }
-    .note p { margin: 0; color: var(--muted); line-height: 1.55; }
-    .note strong { color: var(--text); }
-
-    @media (max-width: 700px) {
-      .title { font-size: 28px; }
-    }
-  </style>
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <script src="../../assets/theme.js"></script>
 </head>
 
 <body>
+
   <div class="banner">
-    <strong>Under Construction</strong> — SimHealth is being built carefully and responsibly. We’ll be here for you soon.
+    <strong>Under Construction</strong> — Patient tools are being developed with clinicians.
   </div>
 
   <header class="nav">
-    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
+    <a class="brand" href="../../index.html">SimHealth</a>
 
-    <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="/en/home.html">Home</a>
+    <nav class="menu">
+      <a class="link" href="../home.html">Home</a>
+      <a class="link active" href="./">Patients</a>
+      <a class="link" href="../under-construction.html">Clinicians</a>
+      <a class="link" href="../under-construction.html">Research</a>
+      <a class="link" href="../under-construction.html">About</a>
+      <a class="btn-primary" href="../under-construction.html">Get Help Now</a>
 
-      <div class="item">
-        <a class="link" href="/en/patients/index.html">Patients</a>
-        <div class="dropdown" role="menu">
-          <a href="/en/patients/index.html">Overview</a>
-          <a href="/en/under-construction.html">Sign up</a>
-          <a href="/en/under-construction.html">Sign in</a>
-          <a href="/en/under-construction.html">Help & Support</a>
-        </div>
-      </div>
-
-      <div class="item">
-        <a class="link" href="/en/under-construction.html">Clinicians</a>
-        <div class="dropdown" role="menu">
-          <a href="/en/under-construction.html">Overview</a>
-          <a href="/en/under-construction.html">Resources</a>
-        </div>
-      </div>
-
-      <div class="item">
-        <a class="link" href="/en/under-construction.html">Research</a>
-        <div class="dropdown" role="menu">
-          <a href="/en/under-construction.html">Overview</a>
-          <a href="/en/under-construction.html">Evidence & Method</a>
-        </div>
-      </div>
-
-      <div class="item">
-        <a class="link" href="/en/under-construction.html">About</a>
-        <div class="dropdown" role="menu">
-          <a href="/en/under-construction.html">Mission</a>
-          <a href="/en/under-construction.html">Team</a>
-        </div>
-      </div>
-
-      <a class="link" href="/en/under-construction.html">Contact</a>
-
-      <a class="btn-primary" href="/en/under-construction.html">Get Help Now</a>
-
-      <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/en/patients/index.html">English</a>
-        <a href="/fr/accueil.html">Français</a>
-      </div>
-
-      <div class="theme-toggle" role="button" tabindex="0"
+      <div class="theme-toggle"
            onclick="SimHealthTheme.toggleTheme()"
-           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           tabindex="0"
            aria-label="Toggle theme">
         <span class="label label-dark">Dark</span>
-        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="track"><span class="thumb"></span></span>
         <span class="label label-light">Light</span>
       </div>
     </nav>
   </header>
 
   <main class="wrap">
-    <section class="card">
-      <div class="page-header">
-        <div class="kicker">For Patients</div>
-        <h1 class="title">A safer way to ride out gambling urges</h1>
-        <p class="lead">
-          SimHealth is being designed as a clinical companion to help you pause, reset, and make safer choices when cravings hit.
-          This is a preview site — features are coming step by step.
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('../../assets/patients.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">For Patients</h1>
+        <p class="rise-2">
+          A clinical digital companion designed to help manage gambling urges safely,
+          without real-world financial harm.
         </p>
       </div>
+    </section>
 
-      <div class="section">
-        <h2>What SimHealth will help with</h2>
-        <ul class="list">
-          <li>
-            <strong>Interrupting the urge loop</strong>
-            <span>Short tools designed for the moment cravings spike — before decisions turn into damage.</span>
-          </li>
-          <li>
-            <strong>Practicing control safely</strong>
-            <span>Simulated experiences can help you face triggers without real-world financial harm.</span>
-          </li>
-          <li>
-            <strong>Support that respects privacy</strong>
-            <span>Clear, calm guidance — with an emphasis on safety and responsibility.</span>
-          </li>
-        </ul>
-      </div>
+    <section class="card" style="margin-top:24px;">
+      <h2>What SimHealth Will Offer</h2>
+      <p>
+        SimHealth is being developed as a supportive tool alongside existing treatment.
+        It is not a gambling product, and it does not use real money.
+      </p>
 
-      <div class="section">
-        <h2>What SimHealth is not</h2>
-        <ul class="list">
-          <li>
-            <strong>No real-money gambling</strong>
-            <span>SimHealth is not a betting product, casino, or sportsbook.</span>
-          </li>
-          <li>
-            <strong>Not a replacement for professional care</strong>
-            <span>It’s a support tool that can complement therapy and recovery plans.</span>
-          </li>
-        </ul>
-      </div>
+      <ul>
+        <li>Simulated betting and games using fictive currency</li>
+        <li>Clinical cues and reflection during emotional highs and lows</li>
+        <li>Designed to reduce relapse and drop-out rates</li>
+        <li>Built in collaboration with healthcare professionals</li>
+      </ul>
+    </section>
 
-      <div class="note">
-        <p>
-          <strong>In development:</strong> patient accounts and structured modules will be introduced during pilot phases.
-          For now, this site shares the direction and safety approach.
-        </p>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn-primary" href="/en/under-construction.html">Help & Support</a>
-        <a class="btn-secondary" href="/en/home.html">Back to Home</a>
-      </div>
+    <section class="card" style="margin-top:18px;">
+      <h2>Availability</h2>
+      <p>
+        SimHealth is currently in development and not publicly available.
+        Access will initially be provided through clinical partners.
+      </p>
     </section>
   </main>
 
   <footer>
     <div class="row">
       <div>
-        © 2026 SimHealth. All rights reserved. •
+        © 2026 SimHealth •
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
-      <nav aria-label="Footer links">
-        <a href="/en/under-construction.html">Privacy</a>
-        <a href="/en/under-construction.html">Terms</a>
-        <a href="/en/under-construction.html">Cookies</a>
-        <a href="/en/under-construction.html">Accessibility</a>
-        <a href="/en/under-construction.html">Medical Disclaimer</a>
-        <a href="/en/under-construction.html">Sitemap</a>
+      <nav>
+        <a href="../under-construction.html">Privacy</a>
+        <a href="../under-construction.html">Terms</a>
+        <a href="../under-construction.html">Accessibility</a>
       </nav>
     </div>
   </footer>
+
 </body>
 </html>
-
