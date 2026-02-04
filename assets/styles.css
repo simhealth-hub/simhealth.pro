@@ -191,14 +191,15 @@ body {
 
 /* ===== TILE IMAGE (IMPROVED VISIBILITY) ===== */
 .tile .img {
-  height: 190px;                 /* was 170px */
+  height: 190px;
   background-size: cover;
-  background-position: center;
-  position: relative;            /* needed for overlay */
+  background-position: center 30%; /* ⬅️ KEY CHANGE */
+  position: relative;
   overflow: hidden;
   transform: scale(1);
   transition: transform var(--t-med) var(--ease);
 }
+
 
 /* subtle overlay so images read clearly (dark + light) */
 .tile .img::after {
