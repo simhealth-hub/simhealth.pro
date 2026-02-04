@@ -189,12 +189,45 @@ body {
 
 .tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 
+/* ===== TILE IMAGE (IMPROVED VISIBILITY) ===== */
 .tile .img {
-  height: 170px;
+  height: 190px;                 /* was 170px */
   background-size: cover;
   background-position: center;
+  position: relative;            /* needed for overlay */
+  overflow: hidden;
   transform: scale(1);
   transition: transform var(--t-med) var(--ease);
+}
+
+/* subtle overlay so images read clearly (dark + light) */
+.tile .img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* default overlay tuned for dark mode */
+  background: linear-gradient(
+    180deg,
+    rgba(11,18,32,0.00) 0%,
+    rgba(11,18,32,0.18) 48%,
+    rgba(11,18,32,0.32) 100%
+  );
+}
+
+/* In light mode: reduce washout + keep image visible */
+:root[data-theme="light"] .tile .img {
+  filter: brightness(0.96) contrast(1.08) saturate(0.98);
+}
+
+/* Light-mode overlay uses the light background tint so it stays “clinical” */
+:root[data-theme="light"] .tile .img::after {
+  background: linear-gradient(
+    180deg,
+    rgba(246,248,252,0.00) 0%,
+    rgba(246,248,252,0.10) 48%,
+    rgba(246,248,252,0.22) 100%
+  );
 }
 
 .tile:hover .img { transform: scale(1.05); }
