@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- RELATIVE PATHS (IMPORTANT) -->
+  <!-- RELATIVE PATHS -->
   <link rel="stylesheet" href="../assets/styles.css">
   <script src="../assets/theme.js"></script>
 </head>
@@ -47,20 +47,19 @@
       </div>
 
       <div class="item">
-        <!-- CHANGED: Research main link now goes to /en/research/ -->
         <a class="link" href="./research/">Research</a>
         <div class="dropdown">
-          <!-- left as-is for now (you said no dropdown work yet) -->
           <a href="./under-construction.html">Overview</a>
           <a href="./under-construction.html">Evidence and Method</a>
           <a href="./under-construction.html">Publications</a>
         </div>
       </div>
 
+      <!-- ✅ FIXED: About now points to real page -->
       <div class="item">
-        <a class="link" href="./under-construction.html">About</a>
+        <a class="link" href="./about/">About</a>
         <div class="dropdown">
-          <a href="./under-construction.html">About SimHealth</a>
+          <a href="./about/">About SimHealth</a>
           <a href="./under-construction.html">Team</a>
           <a href="./under-construction.html">Partners</a>
           <a href="./under-construction.html">Press / Media kit</a>
@@ -119,7 +118,6 @@
         </div>
       </a>
 
-      <!-- CHANGED: Research tile now goes to /en/research/ -->
       <a class="tile" href="./research/">
         <div class="img" style="background-image:url('../assets/research.jpg');"></div>
         <div class="meta">
@@ -128,7 +126,8 @@
         </div>
       </a>
 
-      <a class="tile" href="./under-construction.html">
+      <!-- ✅ FIXED: About tile now points to /en/about/ -->
+      <a class="tile" href="./about/">
         <div class="img" style="background-image:url('../assets/about.jpg');"></div>
         <div class="meta">
           <h3>About</h3>
