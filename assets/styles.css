@@ -447,3 +447,42 @@ footer a:hover { color: var(--text); }
   .hero h1 { font-size: 32px; }
   .tile { grid-column: span 12; }
 }
+/* ===== Help & Support accordion ===== */
+.accordion { display: grid; gap: 10px; }
+
+.acc {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.acc summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  user-select: none;
+}
+
+.acc summary::-webkit-details-marker { display: none; }
+
+.acc-meta {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.acc-body {
+  padding: 0 14px 14px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.acc[open] summary {
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+}
