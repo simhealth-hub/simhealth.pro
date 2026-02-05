@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- From /en/help-support/ to /assets/ is ../../assets/ -->
+  <!-- RELATIVE PATHS (this page is /en/patients/help-and-support/) -->
   <link rel="stylesheet" href="../../assets/styles.css">
   <script src="../../assets/theme.js"></script>
 </head>
@@ -17,62 +17,26 @@
 <body>
 
   <div class="banner">
-    <strong>Under Construction</strong> — SimHealth is being built carefully and responsibly.
+    <strong>Support</strong> — If you’re in danger or feel unable to keep yourself safe, call your local emergency number.
   </div>
 
   <header class="nav">
-    <a class="brand" href="../../index.html" aria-label="Back to language selection">SimHealth</a>
+    <a class="brand" href="../../home.html" aria-label="Back to home">SimHealth</a>
 
     <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="../home.html">Home</a>
+      <a class="link" href="../../home.html">Home</a>
+      <a class="link" href="../../patients/">Patients</a>
+      <a class="link" href="../../clinicians/">Clinicians</a>
+      <a class="link" href="../../research/">Research</a>
+      <a class="link" href="../../about/">About</a>
+      <a class="link" href="../../under-construction.html">Contact</a>
 
-      <div class="item">
-        <a class="link" href="../patients/">Patients</a>
-        <div class="dropdown">
-          <a href="../under-construction.html">Inscription (Sign up)</a>
-          <a href="../under-construction.html">Sign in</a>
-          <a href="./">Help & Support</a>
-          <a href="./">Crisis Resources</a>
-        </div>
-      </div>
-
-      <div class="item">
-        <a class="link" href="../clinicians/">Clinicians</a>
-        <div class="dropdown">
-          <a href="../clinicians/">Overview</a>
-          <a href="../under-construction.html">Sign in</a>
-          <a href="../under-construction.html">Resources</a>
-          <a href="../under-construction.html">CET / CET+ Protocol</a>
-        </div>
-      </div>
-
-      <div class="item">
-        <a class="link" href="../research/">Research</a>
-        <div class="dropdown">
-          <a href="../research/">Overview</a>
-          <a href="../under-construction.html">Evidence and Method</a>
-          <a href="../under-construction.html">Publications</a>
-        </div>
-      </div>
-
-      <div class="item">
-        <a class="link" href="../about/">About</a>
-        <div class="dropdown">
-          <a href="../about/">About SimHealth</a>
-          <a href="../under-construction.html">Team</a>
-          <a href="../under-construction.html">Partners</a>
-          <a href="../under-construction.html">Press / Media kit</a>
-        </div>
-      </div>
-
-      <a class="link" href="../contact/">Contact</a>
-
-      <!-- Optional: you can rename this later across the site -->
-      <a class="btn-primary" href="./">Crisis Resources</a>
+      <!-- Optional: keep this as “Crisis Resources” later if you want -->
+      <a class="btn-primary" href="./index.html">Help & Support</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="./">English</a>
-        <a href="../../fr/aide-soutien/">Français</a>
+        <a class="active" href="./index.html">English</a>
+        <a href="../../../fr/accueil.html">Français</a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -88,115 +52,29 @@
 
   <main class="wrap">
 
-    <!-- HERO (placeholder image area) -->
-    <section class="hero" style="margin-bottom:14px;">
-      <!-- Later: upload an image to /assets/help-hero.jpg and change the URL below -->
-      <div class="hero-bg" style="background-image:url('../../assets/help-hero.jpg');"></div>
-      <div class="hero-overlay"></div>
+    <!-- HERO -->
+    <section class="page-hero">
+      <div class="page-hero-bg" style="background-image:url('../../assets/help-hero.jpg');"></div>
+      <div class="page-hero-overlay"></div>
 
-      <div class="hero-content">
-        <h1 class="rise-1">Help &amp; Support</h1>
-        <p class="rise-2">
-          If you feel at risk, overwhelmed, or unsure what to do next, you deserve immediate support.
-          This page shares trusted crisis resources you can use right now.
-        </p>
+      <div class="page-hero-content">
+        <h1 class="rise-1">Help & Support</h1>
+        <p class="rise-2">If you’re struggling with gambling urges, you’re not alone. This page links to trusted, confidential support services.</p>
 
-        <div class="hero-actions rise-3">
-          <a class="btn-primary" href="#resources">View resources</a>
-          <a class="btn-secondary" href="mailto:contact@simhealth.pro">Contact SimHealth</a>
+        <div class="page-hero-note rise-3">
+          <strong style="color: var(--text);">Disclaimer:</strong>
+          SimHealth is a project in development and does not provide emergency care. If you feel in immediate danger, call your local emergency number.
         </div>
       </div>
     </section>
 
-    <!-- DISCLAIMER -->
-    <section class="card" style="margin-bottom:14px;">
-      <h2 style="margin:0 0 8px;">Important</h2>
-      <p style="margin:0; color:var(--muted); line-height:1.55;">
-        SimHealth is currently in development and does not provide emergency care, crisis counselling, or medical advice.
-        If you are in immediate danger, call your local emergency number right now.
+    <!-- CONTENT PLACEHOLDER (we’ll add the country selector next) -->
+    <div class="card" style="margin-top:16px;">
+      <h2 style="margin-top:0;">Choose your country</h2>
+      <p style="margin-bottom:0; color:var(--muted); line-height:1.6;">
+        Next step: we’ll add a clean country selector and a short list of official helplines (US/UK/France/Canada/Australia + EU note).
       </p>
-    </section>
-
-    <!-- RESOURCES -->
-    <section class="card" id="resources">
-      <h2 style="margin:0 0 6px;">Crisis resources</h2>
-      <p style="margin:0 0 14px; color:var(--muted); line-height:1.55;">
-        The organisations below provide confidential support. If your country is not listed, use the international directory at the bottom.
-      </p>
-
-      <!-- Simple accessible expandable sections -->
-      <div class="accordion">
-
-        <details class="acc">
-          <summary>
-            <span>France</span>
-            <span class="acc-meta">24/7 • 3114</span>
-          </summary>
-          <div class="acc-body">
-            <p><strong>3114</strong> — National suicide prevention number (24/7, free in France).</p>
-            <p><a class="link" href="https://3114.fr/" target="_blank" rel="noopener">3114.fr</a></p>
-          </div>
-        </details>
-
-        <details class="acc">
-          <summary>
-            <span>United Kingdom &amp; Ireland</span>
-            <span class="acc-meta">24/7 • 116 123</span>
-          </summary>
-          <div class="acc-body">
-            <p><strong>Samaritans</strong> — Call free, any time, day or night.</p>
-            <p><strong>116 123</strong></p>
-            <p><a class="link" href="https://www.samaritans.org/" target="_blank" rel="noopener">samaritans.org</a></p>
-          </div>
-        </details>
-
-        <details class="acc">
-          <summary>
-            <span>United States</span>
-            <span class="acc-meta">24/7 • 988</span>
-          </summary>
-          <div class="acc-body">
-            <p><strong>988 Suicide &amp; Crisis Lifeline</strong> — Call, text, or chat (24/7).</p>
-            <p><strong>988</strong></p>
-            <p><a class="link" href="https://988lifeline.org/" target="_blank" rel="noopener">988lifeline.org</a></p>
-          </div>
-        </details>
-
-        <details class="acc">
-          <summary>
-            <span>Australia</span>
-            <span class="acc-meta">24/7 • 13 11 14</span>
-          </summary>
-          <div class="acc-body">
-            <p><strong>Lifeline</strong> — 24-hour crisis support and suicide prevention services.</p>
-            <p><strong>13 11 14</strong></p>
-            <p><a class="link" href="https://www.lifeline.org.au/" target="_blank" rel="noopener">lifeline.org.au</a></p>
-          </div>
-        </details>
-
-        <details class="acc">
-          <summary>
-            <span>International (all countries)</span>
-            <span class="acc-meta">Directory</span>
-          </summary>
-          <div class="acc-body">
-            <p>
-              If your country is not listed above, use this directory to find trusted helplines by country and topic.
-            </p>
-            <p><a class="btn-secondary" href="https://findahelpline.com/" target="_blank" rel="noopener">Find a Helpline</a></p>
-          </div>
-        </details>
-
-      </div>
-
-      <hr style="border:none; border-top:1px solid var(--border); margin:16px 0;">
-
-      <p style="margin:0; color:var(--muted); line-height:1.55;">
-        <strong>Note:</strong> These are third-party services. SimHealth does not operate helplines, and listing a service here does not imply endorsement.
-        Information may change — if something looks incorrect, please email
-        <a class="link" href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
-      </p>
-    </section>
+    </div>
 
   </main>
 
@@ -207,15 +85,15 @@
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
       <nav aria-label="Footer links">
-        <a href="../legal/privacy/">Privacy</a>
-        <a href="../legal/terms/">Terms</a>
-        <a href="../legal/cookies/">Cookies</a>
-        <a href="../legal/accessibility/">Accessibility</a>
-        <a href="../legal/medical-disclaimer/">Medical Disclaimer</a>
-        <a href="../legal/sitemap/">Sitemap</a>
+        <a href="../../under-construction.html">Privacy</a>
+        <a href="../../under-construction.html">Terms</a>
+        <a href="../../under-construction.html">Cookies</a>
+        <a href="../../under-construction.html">Accessibility</a>
+        <a href="../../under-construction.html">Medical Disclaimer</a>
+        <a href="../../under-construction.html">Sitemap</a>
       </nav>
     </div>
   </footer>
 
 </body>
-  </html>
+</html>
