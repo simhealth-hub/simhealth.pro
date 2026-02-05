@@ -486,3 +486,81 @@ footer a:hover { color: var(--text); }
 .acc[open] summary {
   background: color-mix(in srgb, var(--text) 5%, transparent);
 }
+/* ===== Help & Support hero ===== */
+.page-hero {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  min-height: 320px;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 35%;
+  transform: scale(1.02);
+}
+
+/* Dark overlay: readable text, still shows image */
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(11,18,32,0.88) 0%,
+    rgba(11,18,32,0.58) 45%,
+    rgba(11,18,32,0.12) 75%,
+    rgba(11,18,32,0.00) 100%
+  );
+}
+
+/* Light overlay: avoid “washed” look + keep text readable */
+:root[data-theme="light"] .page-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.92) 0%,
+    rgba(255,255,255,0.72) 45%,
+    rgba(255,255,255,0.20) 75%,
+    rgba(255,255,255,0.00) 100%
+  );
+}
+
+.page-hero-content {
+  position: relative;
+  padding: 42px 26px;
+  width: min(720px, 92%);
+}
+
+.page-hero h1 {
+  margin: 0 0 10px;
+  font-size: 36px;
+  letter-spacing: 0.2px;
+}
+
+.page-hero p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: 16px;
+}
+
+.page-hero-note {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+  .page-hero { min-height: 360px; }
+  .page-hero-content { padding: 28px 18px; }
+  .page-hero h1 { font-size: 28px; }
+  .page-hero-bg { background-position: center 25%; }
+}
