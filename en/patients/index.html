@@ -3,51 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth – For Patients</title>
+  <title>SimHealth — Patients</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- RELATIVE PATHS -->
-  <link rel="stylesheet" href="../../assets/styles.css">
-  <script src="../../assets/theme.js"></script>
+  <!-- Root-relative so it works from any folder -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
 </head>
 
 <body>
 
   <div class="banner">
-    <strong>Under Construction</strong> — Patient-facing tools are being developed carefully and responsibly.
+    <strong>Under Construction</strong> — SimHealth is being built carefully and responsibly.
   </div>
 
   <header class="nav">
-    <a class="brand" href="../../index.html">SimHealth</a>
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
     <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="../home.html">Home</a>
+      <a class="link" href="/en/home.html">Home</a>
 
       <div class="item">
-        <a class="link" href="./">Patients</a>
+        <a class="link" href="/en/patients/">Patients</a>
       </div>
 
       <div class="item">
-        <a class="link" href="../under-construction.html">Clinicians</a>
+        <a class="link" href="/en/clinicians/">Clinicians</a>
       </div>
 
       <div class="item">
-        <a class="link" href="../under-construction.html">Research</a>
+        <a class="link" href="/en/research/">Research</a>
       </div>
 
       <div class="item">
-        <a class="link" href="../under-construction.html">About</a>
+        <a class="link" href="/en/about/">About</a>
       </div>
 
-      <a class="link" href="../under-construction.html">Contact</a>
-      <a class="btn-primary" href="../under-construction.html">Get Help Now</a>
+      <a class="link" href="/en/contact/">Contact</a>
+
+      <!-- IMPORTANT: ethical wording -->
+      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="./">English</a>
-        <a href="../../fr/accueil.html">Français</a>
+        <a class="active" href="/en/patients/">English</a>
+        <a href="/fr/patients/">Français</a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -63,72 +65,58 @@
 
   <main class="wrap">
 
-    <!-- HERO TILE WITH IMAGE -->
+    <!-- HERO (you can swap the image later) -->
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('../../assets/patients.jpg');"></div>
+      <div class="hero-bg" style="background-image:url('/assets/patients.jpg');"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <h1 class="rise-1">For Patients</h1>
+        <h1 class="rise-1">Patients</h1>
         <p class="rise-2">
-          A calmer, more supported way to face gambling urges — without judgement and without real-world risk.
+          SimHealth is a clinician-led project being developed to support people managing gambling urges in real-world moments.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="/en/patients/help-support/">Help &amp; Support</a>
+          <a class="btn-secondary" href="/en/patients/updates/">Sign up for updates</a>
+        </div>
+
+        <!-- The one-liner + disclaimer (clinician-first, honest) -->
+        <p style="margin:12px 0 0; color:var(--muted); line-height:1.5;">
+          <strong style="color:var(--text);">If you’re struggling right now,</strong> these resources can help you access immediate, real-world support.
+          <br>
+          <span style="font-size:13px;">SimHealth does not provide emergency or crisis care.</span>
         </p>
       </div>
     </section>
 
     <!-- CONTENT CARD -->
-    <section class="card" style="margin-top:22px;">
-
-      <h2>What SimHealth is</h2>
-      <p style="color:var(--muted); line-height:1.6;">
-        SimHealth is a clinically informed digital companion being developed to support people who are trying
-        to manage gambling-related urges. It is designed to complement existing recovery strategies and,
-        where appropriate, professional care.
+    <section class="card" style="margin-top:16px;">
+      <h2 style="margin:0 0 10px;">What this section is for</h2>
+      <p style="margin:0; color:var(--muted); line-height:1.6;">
+        This page explains the patient-facing approach at a high level, without presenting SimHealth as an active treatment service.
+        If you need help today, please use the support resources above.
       </p>
 
-      <p style="color:var(--muted); line-height:1.6;">
-        The focus of SimHealth is on providing structured, supportive guidance during moments when urges feel
-        strongest — helping create space between the urge and the action.
-      </p>
+      <div class="grid" aria-label="Patient actions" style="margin-top:14px;">
+        <a class="tile" href="/en/patients/help-support/">
+          <div class="img" style="background-image:url('/assets/help.jpg');"></div>
+          <div class="meta">
+            <h3>Help &amp; Support</h3>
+            <p>Official crisis, suicide, and gambling support services — click-to-call on mobile.</p>
+          </div>
+        </a>
 
-      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
-
-      <h2>How SimHealth may help</h2>
-      <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7;">
-        <li>Offer support during moments of heightened urge or emotional pressure</li>
-        <li>Help create a pause before decisions are made</li>
-        <li>Increase awareness of personal triggers and patterns</li>
-        <li>Encourage safer responses in a controlled, supportive environment</li>
-        <li>Support continuity between clinical sessions or recovery milestones</li>
-      </ul>
-
-      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
-
-      <h2>What SimHealth is not</h2>
-      <p style="color:var(--muted); line-height:1.6;">
-        SimHealth is not a gambling platform and does not involve real money.
-        It is not a replacement for therapy, medical treatment, or professional support.
-      </p>
-
-      <p style="color:var(--muted); line-height:1.6;">
-        It is intended to be used responsibly and, where appropriate, alongside guidance from qualified
-        healthcare professionals.
-      </p>
-
-      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
-
-      <h2>Current status</h2>
-      <p style="color:var(--muted); line-height:1.6;">
-        SimHealth is currently under development. Initial access will be limited to pilot settings and
-        clinical collaborations, with patient safety and ethical use guiding each stage of release.
-      </p>
-
-      <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn-primary" href="../under-construction.html">Help & Support</a>
-        <a class="btn-secondary" href="../home.html">Back to Home</a>
+        <a class="tile" href="/en/patients/updates/">
+          <div class="img" style="background-image:url('/assets/updates.jpg');"></div>
+          <div class="meta">
+            <h3>Updates</h3>
+            <p>Get notified when supervised pilots or public updates become available.</p>
+          </div>
+        </a>
       </div>
-
     </section>
+
   </main>
 
   <footer>
@@ -138,13 +126,15 @@
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
       <nav aria-label="Footer links">
-        <a href="../under-construction.html">Privacy</a>
-        <a href="../under-construction.html">Terms</a>
-        <a href="../under-construction.html">Accessibility</a>
-        <a href="../under-construction.html">Medical Disclaimer</a>
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/terms/">Terms</a>
+        <a href="/en/legal/cookies/">Cookies</a>
+        <a href="/en/legal/accessibility/">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+        <a href="/sitemap.html">Sitemap</a>
       </nav>
     </div>
   </footer>
 
 </body>
-</html>
+          </html>
