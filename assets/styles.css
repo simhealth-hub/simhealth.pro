@@ -191,7 +191,7 @@ body {
 
 /* ===== TILE IMAGE (IMPROVED VISIBILITY) ===== */
 .tile .img {
-  height: 190px;
+  height: 230px; /* ⬅️ increased height */
   background-size: cover;
   background-position: center 30%;
   position: relative;
