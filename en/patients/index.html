@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Root-relative so it works from any folder -->
+  <!-- Use root-relative paths so this works from any folder -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 </head>
@@ -44,7 +44,7 @@
 
       <a class="link" href="/en/contact/">Contact</a>
 
-      <!-- IMPORTANT: ethical wording -->
+      <!-- Ethical wording + direct route to real help -->
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
@@ -65,7 +65,7 @@
 
   <main class="wrap">
 
-    <!-- HERO (you can swap the image later) -->
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-bg" style="background-image:url('/assets/patients.jpg');"></div>
       <div class="hero-overlay"></div>
@@ -73,32 +73,51 @@
       <div class="hero-content">
         <h1 class="rise-1">Patients</h1>
         <p class="rise-2">
-          SimHealth is a clinician-led project being developed to support people managing gambling urges in real-world moments.
+          SimHealth is a clinician-led project being developed to support people who experience gambling urges in real-world moments.
         </p>
 
+        <!-- Buttons (SAFETY FIRST): Help & Support comes first -->
         <div class="hero-actions rise-3">
           <a class="btn-primary" href="/en/patients/help-support/">Help &amp; Support</a>
           <a class="btn-secondary" href="/en/patients/updates/">Sign up for updates</a>
         </div>
 
-        <!-- The one-liner + disclaimer (clinician-first, honest) -->
-        <p style="margin:12px 0 0; color:var(--muted); line-height:1.5;">
+        <!-- One-liner + disclaimer directly under Help & Support intent -->
+        <p style="margin:12px 0 0; color:var(--muted); line-height:1.55;">
           <strong style="color:var(--text);">If you’re struggling right now,</strong> these resources can help you access immediate, real-world support.
           <br>
           <span style="font-size:13px;">SimHealth does not provide emergency or crisis care.</span>
         </p>
+
+        <!-- Optional calm line for the updates intent -->
+        <p style="margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.45;">
+          Want to follow progress? You can register interest to be notified when supervised clinical pilots and public updates are available.
+        </p>
       </div>
     </section>
 
-    <!-- CONTENT CARD -->
+    <!-- EXPLANATION BLOCK (adds substance without giving away proprietary mechanics) -->
     <section class="card" style="margin-top:16px;">
-      <h2 style="margin:0 0 10px;">What this section is for</h2>
-      <p style="margin:0; color:var(--muted); line-height:1.6;">
-        This page explains the patient-facing approach at a high level, without presenting SimHealth as an active treatment service.
-        If you need help today, please use the support resources above.
+      <h2 style="margin:0 0 10px;">What SimHealth is</h2>
+      <p style="margin:0 0 12px; color:var(--muted); line-height:1.65;">
+        SimHealth is a clinician-led project being developed to support people who experience gambling urges in real-world situations.
+        The aim is not to promote gambling, but to help regulate the emotional and cognitive response that can lead to loss of control.
       </p>
 
-      <div class="grid" aria-label="Patient actions" style="margin-top:14px;">
+      <h2 style="margin:18px 0 10px;">Why this approach exists</h2>
+      <p style="margin:0 0 12px; color:var(--muted); line-height:1.65;">
+        Many relapses happen outside clinical settings — late at night, after stress, during social triggers, or when emotions feel too heavy.
+        SimHealth is designed around the moments when urges actually occur, with clinical governance and safeguards guiding development from day one.
+      </p>
+
+      <h2 style="margin:18px 0 10px;">Current status</h2>
+      <p style="margin:0; color:var(--muted); line-height:1.65;">
+        SimHealth is not yet publicly available. The system is being prepared for supervised clinical pilots with hospital partners.
+        Until then, this site provides a high-level overview and directs visitors to appropriate support resources.
+      </p>
+
+      <!-- Practical next steps, still non-promotional -->
+      <div class="grid" aria-label="Patient quick actions" style="margin-top:14px;">
         <a class="tile" href="/en/patients/help-support/">
           <div class="img" style="background-image:url('/assets/help.jpg');"></div>
           <div class="meta">
@@ -111,7 +130,7 @@
           <div class="img" style="background-image:url('/assets/updates.jpg');"></div>
           <div class="meta">
             <h3>Updates</h3>
-            <p>Get notified when supervised pilots or public updates become available.</p>
+            <p>Register interest to receive updates on pilots and published project milestones.</p>
           </div>
         </a>
       </div>
@@ -125,16 +144,21 @@
         © 2026 SimHealth. All rights reserved. •
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
-      <nav aria-label="Footer links">
+
+      <!-- Quick links (footer) -->
+      <nav aria-label="Footer quick links">
+        <a href="/sitemap.html">Sitemap</a>
         <a href="/en/legal/privacy/">Privacy</a>
         <a href="/en/legal/terms/">Terms</a>
         <a href="/en/legal/cookies/">Cookies</a>
         <a href="/en/legal/accessibility/">Accessibility</a>
         <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
-        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/patients/help-support/">Crisis Resources</a>
+        <a href="/en/contact/">Contact</a>
       </nav>
     </div>
   </footer>
 
 </body>
-          </html>
+</html>
+```0
