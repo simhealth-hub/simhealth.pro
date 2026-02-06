@@ -354,18 +354,19 @@ footer a:hover { color: var(--text); }
   min-height: 340px;
 }
 
-.hero-bg {
+.page-hero-bg {
   position: absolute;
   inset: 0;
-  background-size: 80%;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center right;
-  transform: none;
+  background-position: 65% center; /* shifts image right */
+  transform: scale(0.95);          /* subtle zoom-out feel */
 }
-@media (max-width: 800px) {
-  .hero-bg {
-    background-size: cover;
-    background-position: center;
+}
+@media (min-width: 900px) {
+  .page-hero-bg {
+    background-position: 70% center;
+    transform: scale(0.94);
   }
 }
 /* Dark mode overlay (keeps the left side readable) */
