@@ -357,11 +357,17 @@ footer a:hover { color: var(--text); }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
+  background-size: 80%;
+  background-repeat: no-repeat;
   background-position: center right;
-  transform: scale(1.02);
+  transform: none;
 }
-
+@media (max-width: 800px) {
+  .hero-bg {
+    background-size: cover;
+    background-position: center;
+  }
+}
 /* Dark mode overlay (keeps the left side readable) */
 .hero-overlay {
   position: absolute;
