@@ -94,7 +94,6 @@ body {
   color: var(--text);
   transition: background var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
 }
-
 .link:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
 .link:active { transform: translateY(1px); }
 
@@ -110,19 +109,16 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow);
 }
-
 .dropdown a {
   display: block;
   padding: 10px 12px;
   text-decoration: none;
   color: var(--muted);
 }
-
 .dropdown a:hover {
   background: color-mix(in srgb, var(--text) 8%, transparent);
   color: var(--text);
 }
-
 .item:hover .dropdown { display: block; }
 
 .btn-primary {
@@ -137,7 +133,6 @@ body {
   text-decoration: none;
   transition: transform var(--t-fast) var(--ease), filter var(--t-fast) var(--ease);
 }
-
 .btn-primary:hover { filter: brightness(0.98); transform: translateY(-1px); }
 .btn-primary:active { transform: translateY(0px); }
 
@@ -154,7 +149,6 @@ body {
   cursor: pointer;
   transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
 }
-
 .icon-btn:hover { background: color-mix(in srgb, var(--text) 6%, transparent); transform: translateY(-1px); }
 .icon-btn:active { transform: translateY(0px); }
 
@@ -168,7 +162,7 @@ body {
   padding: 22px;
 }
 
-/* Tiles */
+/* Tiles grid */
 .grid {
   display: grid;
   gap: 14px;
@@ -186,21 +180,19 @@ body {
   color: var(--text);
   transition: transform var(--t-fast) var(--ease), box-shadow var(--t-med) var(--ease);
 }
-
 .tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 
-/* ===== TILE IMAGE (IMPROVED VISIBILITY) ===== */
+/* Tile image (kept visible + consistent) */
 .tile .img {
-  height: 230px; /* ⬅️ increased height */
+  height: 230px; /* ✅ ~20% taller than 190px */
   background-size: cover;
-  background-position: center 30%;
+  background-position: center 35%;
   position: relative;
   overflow: hidden;
   transform: scale(1);
   transition: transform var(--t-med) var(--ease);
 }
 
-/* subtle overlay so images read clearly (dark + light) */
 .tile .img::after {
   content: "";
   position: absolute;
@@ -214,12 +206,9 @@ body {
   );
 }
 
-/* In light mode: reduce washout + keep image visible */
 :root[data-theme="light"] .tile .img {
   filter: brightness(0.96) contrast(1.08) saturate(0.98);
 }
-
-/* Light-mode overlay uses the light background tint so it stays “clinical” */
 :root[data-theme="light"] .tile .img::after {
   background: linear-gradient(
     180deg,
@@ -240,7 +229,6 @@ footer {
   padding: 18px 16px;
   color: var(--muted);
 }
-
 footer .row {
   width: min(1100px, 92vw);
   margin: 0 auto;
@@ -250,7 +238,6 @@ footer .row {
   justify-content: space-between;
   align-items: center;
 }
-
 footer a { color: var(--muted); text-decoration: none; }
 footer a:hover { color: var(--text); }
 
@@ -267,14 +254,8 @@ footer a:hover { color: var(--text); }
   cursor: pointer;
   transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
 }
-
 .theme-toggle:active { transform: translateY(1px); }
-
-.theme-toggle .label {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-}
+.theme-toggle .label { font-size: 13px; font-weight: 700; letter-spacing: 0.2px; }
 
 .theme-toggle .track {
   position: relative;
@@ -284,7 +265,6 @@ footer a:hover { color: var(--text); }
   border: 1px solid var(--border);
   background: color-mix(in srgb, var(--text) 6%, transparent);
 }
-
 .theme-toggle .thumb {
   position: absolute;
   top: 2px;
@@ -295,16 +275,14 @@ footer a:hover { color: var(--text); }
   background: var(--primary);
   transition: transform var(--t-med) var(--ease);
 }
-
 :root[data-theme="light"] .theme-toggle .thumb { transform: translateX(20px); }
 
-/* Label highlighting based on current theme */
 :root[data-theme="dark"] .theme-toggle .label-dark { color: var(--text); }
 :root[data-theme="dark"] .theme-toggle .label-light { color: var(--muted); }
 :root[data-theme="light"] .theme-toggle .label-dark { color: var(--muted); }
 :root[data-theme="light"] .theme-toggle .label-light { color: var(--text); }
 
-/* Language toggle (English / Français) */
+/* Language toggle */
 .lang-toggle {
   display: inline-flex;
   align-items: center;
@@ -314,7 +292,6 @@ footer a:hover { color: var(--text); }
   border: 1px solid var(--border);
   background: var(--surface);
 }
-
 .lang-toggle a {
   font-size: 13px;
   font-weight: 800;
@@ -325,40 +302,50 @@ footer a:hover { color: var(--text); }
   color: var(--muted);
   transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
 }
-
-.lang-toggle a:hover {
-  background: color-mix(in srgb, var(--text) 6%, transparent);
-  color: var(--text);
-}
-
+.lang-toggle a:hover { background: color-mix(in srgb, var(--text) 6%, transparent); color: var(--text); }
 .lang-toggle a:active { transform: translateY(1px); }
-
 .lang-toggle a.active {
   background: color-mix(in srgb, var(--primary) 22%, transparent);
   color: var(--text);
   border: 1px solid color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
-/* ===== Landing hero (HOME) ===== */
+/* =========================
+   HERO SYSTEM (ALL PAGES)
+   ========================= */
+
+/* HOME hero (all pages that use .hero) */
 .hero {
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
-  min-height: 340px;
+  min-height: 410px; /* ✅ ~20% taller than 340px */
 }
 
-/* ✅ THIS IS THE ONE THAT MAKES hero-clinic.jpg SHOW */
-.hero-bg {
+/* Inner-page hero (Patients/Clinicians/Research/About/Help) */
+.page-hero {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  min-height: 385px; /* ✅ ~20% taller than 320px */
+}
+
+/* ✅ Apply the same “zoom out + more vertical” feel to all hero backgrounds */
+.hero-bg,
+.page-hero-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center right;
-  transform: scale(1.02);
+  background-repeat: no-repeat;
+  background-position: center 45%; /* ✅ shows more top + bottom */
+  transform: scale(0.92);          /* ✅ zoom OUT slightly */
 }
 
-/* Dark mode overlay (keeps the left side readable) */
+/* HOME overlay */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -370,8 +357,6 @@ footer a:hover { color: var(--text); }
     rgba(11,18,32,0.00) 100%
   );
 }
-
-/* Light mode overlay */
 :root[data-theme="light"] .hero-overlay {
   background: linear-gradient(
     90deg,
@@ -381,8 +366,6 @@ footer a:hover { color: var(--text); }
     rgba(255,255,255,0.00) 100%
   );
 }
-
-/* Light mode: subtle contrast recovery */
 :root[data-theme="light"] .hero-bg {
   filter: contrast(1.06) saturate(0.96);
 }
@@ -392,26 +375,59 @@ footer a:hover { color: var(--text); }
   padding: 46px 26px;
   width: min(640px, 92%);
 }
+.hero h1 { margin: 0 0 10px; font-size: 40px; letter-spacing: 0.2px; }
+.hero p { margin: 0 0 18px; color: var(--muted); line-height: 1.55; font-size: 16px; }
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
 
-.hero h1 {
-  margin: 0 0 10px;
-  font-size: 40px;
-  letter-spacing: 0.2px;
+/* Page hero overlay */
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(11,18,32,0.88) 0%,
+    rgba(11,18,32,0.58) 45%,
+    rgba(11,18,32,0.12) 75%,
+    rgba(11,18,32,0.00) 100%
+  );
+}
+:root[data-theme="light"] .page-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.92) 0%,
+    rgba(255,255,255,0.72) 45%,
+    rgba(255,255,255,0.20) 75%,
+    rgba(255,255,255,0.00) 100%
+  );
 }
 
-.hero p {
-  margin: 0 0 18px;
+.page-hero-content {
+  position: relative;
+  padding: 42px 26px;
+  width: min(720px, 92%);
+}
+.page-hero h1 { margin: 0 0 10px; font-size: 36px; letter-spacing: 0.2px; }
+.page-hero p { margin: 0 0 16px; color: var(--muted); line-height: 1.55; font-size: 16px; }
+
+.page-hero-note {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
   color: var(--muted);
-  line-height: 1.55;
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.hero-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 8px;
+/* Slide-up animation */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+.rise-1 { animation: riseIn 650ms var(--ease) both; }
+.rise-2 { animation: riseIn 650ms var(--ease) both; animation-delay: 120ms; }
+.rise-3 { animation: riseIn 650ms var(--ease) both; animation-delay: 220ms; }
 
 .btn-secondary {
   display: inline-flex;
@@ -429,31 +445,14 @@ footer a:hover { color: var(--text); }
 .btn-secondary:hover { background: color-mix(in srgb, var(--text) 6%, transparent); transform: translateY(-1px); }
 .btn-secondary:active { transform: translateY(0px); }
 
-/* Slide-up animation */
-@keyframes riseIn {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.rise-1 { animation: riseIn 650ms var(--ease) both; }
-.rise-2 { animation: riseIn 650ms var(--ease) both; animation-delay: 120ms; }
-.rise-3 { animation: riseIn 650ms var(--ease) both; animation-delay: 220ms; }
-
-@media (max-width: 800px) {
-  .hero-content { padding: 34px 18px; }
-  .hero h1 { font-size: 32px; }
-  .tile { grid-column: span 12; }
-}
-
 /* ===== Help & Support accordion ===== */
 .accordion { display: grid; gap: 10px; }
-
 .acc {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--surface);
   overflow: hidden;
 }
-
 .acc summary {
   list-style: none;
   cursor: pointer;
@@ -464,103 +463,31 @@ footer a:hover { color: var(--text); }
   padding: 12px 14px;
   user-select: none;
 }
-
 .acc summary::-webkit-details-marker { display: none; }
-
 .acc-meta {
   color: var(--muted);
   font-size: 13px;
   font-weight: 700;
   white-space: nowrap;
 }
-
 .acc-body {
   padding: 0 14px 14px;
   color: var(--muted);
   line-height: 1.55;
 }
+.acc[open] summary { background: color-mix(in srgb, var(--text) 5%, transparent); }
 
-.acc[open] summary {
-  background: color-mix(in srgb, var(--text) 5%, transparent);
-}
-
-/* ===== Help & Support hero (PAGE) ===== */
-.page-hero {
-  position: relative;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  min-height: 320px;
-}
-
-/* ✅ separate from .hero-bg so we don’t break the homepage */
-.page-hero-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 65% center; /* better on desktop */
-  transform: scale(1.02);
-}
-
-/* Dark overlay */
-.page-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(11,18,32,0.88) 0%,
-    rgba(11,18,32,0.58) 45%,
-    rgba(11,18,32,0.12) 75%,
-    rgba(11,18,32,0.00) 100%
-  );
-}
-
-/* Light overlay */
-:root[data-theme="light"] .page-hero-overlay {
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0.92) 0%,
-    rgba(255,255,255,0.72) 45%,
-    rgba(255,255,255,0.20) 75%,
-    rgba(255,255,255,0.00) 100%
-  );
-}
-
-.page-hero-content {
-  position: relative;
-  padding: 42px 26px;
-  width: min(720px, 92%);
-}
-
-.page-hero h1 {
-  margin: 0 0 10px;
-  font-size: 36px;
-  letter-spacing: 0.2px;
-}
-
-.page-hero p {
-  margin: 0 0 16px;
-  color: var(--muted);
-  line-height: 1.55;
-  font-size: 16px;
-}
-
-.page-hero-note {
-  margin-top: 12px;
-  padding: 12px 14px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface) 80%, transparent);
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
+/* Responsive */
 @media (max-width: 800px) {
-  .page-hero { min-height: 360px; }
+  .tile { grid-column: span 12; }
+
+  .hero-content { padding: 34px 18px; }
+  .hero h1 { font-size: 32px; }
+
   .page-hero-content { padding: 28px 18px; }
   .page-hero h1 { font-size: 28px; }
-  .page-hero-bg { background-position: center 25%; }
+
+  /* slightly taller on mobile so text never feels cramped */
+  .hero { min-height: 460px; }
+  .page-hero { min-height: 440px; }
   }
