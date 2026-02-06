@@ -334,17 +334,16 @@ footer a:hover { color: var(--text); }
   min-height: 385px; /* ✅ ~20% taller than 320px */
 }
 
-/* ✅ Apply the same “zoom out + more vertical” feel to all hero backgrounds */
 .hero-bg,
 .page-hero-bg {
   position: absolute;
   inset: 0;
-  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center 45%; /* ✅ shows more top + bottom */
-  transform: scale(0.92);          /* ✅ zoom OUT slightly */
-}
 
+  /* KEY CHANGES */
+  background-size: 110%;        /* zooms OUT without shrinking */
+  background-position: center 45%;
+}
 /* HOME overlay */
 .hero-overlay {
   position: absolute;
