@@ -331,7 +331,7 @@ footer a:hover { color: var(--text); }
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
-  min-height: 385px; /* ✅ ~20% taller than 320px */
+  min-height: 410px; /* ✅ ~20% taller than 320px */
 }
 
 .hero-bg,
