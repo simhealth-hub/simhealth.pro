@@ -1,1 +1,209 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth Updates</title>
+  <meta name="description" content="Subscribe to SimHealth project updates. No spam. Unsubscribe anytime." />
+  <style>
+    :root { --radius: 16px; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#0b1220; color:#e9eefc; }
+    .wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px; }
+    .card {
+      width: min(720px, 100%);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      overflow:hidden;
+    }
+    .top {
+      padding:28px 28px 16px;
+      background: linear-gradient(120deg, rgba(120,145,255,0.25), rgba(0,0,0,0));
+    }
+    .brand { display:flex; align-items:center; gap:14px; }
+    .logo {
+      width:44px; height:44px; border-radius:12px;
+      background: rgba(255,255,255,0.12);
+      display:grid; place-items:center; font-weight:700;
+    }
+    h1 { margin:10px 0 6px; font-size:26px; }
+    .sub { margin:0; opacity:0.9; line-height:1.5; }
+    .content { padding: 18px 28px 28px; }
+    form { display:grid; gap:14px; margin-top:18px; }
+    label { font-size:14px; opacity:0.95; }
+    input[type="email"]{
+      width:100%; padding:14px 14px; border-radius:12px;
+      border:1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.25);
+      color:#fff; outline:none;
+    }
+    input[type="email"]:focus { border-color: rgba(120,145,255,0.8); box-shadow: 0 0 0 4px rgba(120,145,255,0.15); }
+    .row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .btn {
+      appearance:none; border:none; cursor:pointer;
+      padding:12px 16px; border-radius:12px;
+      font-weight:600;
+      background: rgba(120,145,255,0.95);
+      color:#081026;
+    }
+    .btn:disabled { opacity:0.6; cursor:not-allowed; }
+    .btn.secondary {
+      background: rgba(255,255,255,0.10);
+      color:#e9eefc;
+      border:1px solid rgba(255,255,255,0.18);
+    }
+    .fineprint { font-size:12px; line-height:1.55; opacity:0.85; }
+    .fineprint a { color:#cbd7ff; }
+    .notice { padding:12px 14px; border-radius:12px; display:none; }
+    .notice.ok { display:block; background: rgba(46, 204, 113, 0.15); border: 1px solid rgba(46, 204, 113, 0.35); }
+    .notice.err { display:block; background: rgba(231, 76, 60, 0.15); border: 1px solid rgba(231, 76, 60, 0.35); }
+    .muted { opacity:0.8; }
+    .hp { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .divider { height:1px; background: rgba(255,255,255,0.10); margin:18px 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="card" aria-label="SimHealth Updates Signup">
+      <header class="top">
+        <div class="brand">
+          <div class="logo">SH</div>
+          <div>
+            <div class="muted" style="font-size:13px;">SimHealth</div>
+            <h1>Get project updates</h1>
+          </div>
+        </div>
+        <p class="sub">
+          Occasional emails about releases, research progress, and early access. No spam.
+        </p>
+      </header>
+
+      <section class="content">
+        <!-- Success / error messages -->
+        <div id="msgOk" class="notice ok" role="status" aria-live="polite">
+          <strong>Thank you!</strong> You’re subscribed. Please check your inbox (and spam folder) for confirmation if required.
+        </div>
+        <div id="msgErr" class="notice err" role="alert" aria-live="assertive">
+          <strong>Something went wrong.</strong> Please try again in a moment, or email <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+        </div>
+
+        <form id="signupForm" novalidate>
+          <div>
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" required
+                   placeholder="you@example.com" />
+          </div>
+
+          <!-- Honeypot (anti-bot). Humans should not fill this. -->
+          <div class="hp" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div>
+            <label>
+              <input id="consent" name="consent" type="checkbox" required />
+              I agree to receive emails from SimHealth and understand I can unsubscribe at any time.
+            </label>
+          </div>
+
+          <div class="row">
+            <button id="submitBtn" class="btn" type="submit">Subscribe</button>
+            <button class="btn secondary" type="button" onclick="window.location.href='/'">Back to site</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="fineprint">
+            <p style="margin:0 0 10px;">
+              <strong>GDPR notice:</strong> We’ll only use your email to send SimHealth updates. Your data will be processed
+              in accordance with our <a href="/privacy" rel="nofollow">Privacy Policy</a>.
+            </p>
+            <p style="margin:0 0 10px;">
+              <strong>Unsubscribe:</strong> Each email will include an unsubscribe link. You can also request removal at any time by emailing
+              <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+            </p>
+            <p style="margin:0;">
+              <strong>Your rights:</strong> You may request access, correction, deletion, restriction, or portability of your personal data, and you may object to processing.
+              If you have concerns, you can also lodge a complaint with your local data protection authority.
+            </p>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // TODO: Replace with your own endpoint that saves the email (e.g., API route, Apps Script, Mailchimp endpoint via server)
+    const ENDPOINT = "YOUR_ENDPOINT_URL";
+
+    const form = document.getElementById("signupForm");
+    const email = document.getElementById("email");
+    const consent = document.getElementById("consent");
+    const hp = document.getElementById("company");
+    const btn = document.getElementById("submitBtn");
+    const msgOk = document.getElementById("msgOk");
+    const msgErr = document.getElementById("msgErr");
+
+    function show(el) { el.style.display = "block"; }
+    function hide(el) { el.style.display = "none"; }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      hide(msgOk); hide(msgErr);
+
+      // Basic validation
+      if (!email.value || !email.checkValidity()) {
+        msgErr.innerHTML = "<strong>Please enter a valid email address.</strong>";
+        show(msgErr);
+        email.focus();
+        return;
+      }
+      if (!consent.checked) {
+        msgErr.innerHTML = "<strong>Please tick the consent box to subscribe.</strong>";
+        show(msgErr);
+        consent.focus();
+        return;
+      }
+
+      // Honeypot triggered => silently pretend success (blocks bots)
+      if (hp.value && hp.value.trim().length > 0) {
+        show(msgOk);
+        form.reset();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Submitting…";
+
+      try {
+        const payload = {
+          email: email.value.trim(),
+          consent: true,
+          source: "website",
+          ts: new Date().toISOString(),
+          page: window.location.href
+        };
+
+        const res = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error("Bad response");
+
+        show(msgOk);
+        form.reset();
+      } catch (err) {
+        show(msgErr);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Subscribe";
+      }
+    });
+  </script>
+</body>
+  </html>
