@@ -321,7 +321,7 @@ footer a:hover { color: var(--text); }
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
-  min-height: 410px; /* ✅ ~20% taller than 340px */
+  min-height: 500px; /* ✅ ~20% taller than 340px */
 }
 
 /* Inner-page hero (Patients/Clinicians/Research/About/Help) */
@@ -331,7 +331,7 @@ footer a:hover { color: var(--text); }
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
-  min-height: 410px; /* ✅ ~20% taller than 320px */
+  min-height: 500px; /* ✅ ~20% taller than 320px */
 }
 
 .hero-bg,
