@@ -9,89 +9,110 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- RELATIVE PATHS (IMPORTANT) -->
+  <!-- IMPORTANT: correct relative paths from /en/patients/help-support/ -->
   <link rel="stylesheet" href="../../../assets/styles.css">
   <script src="../../../assets/theme.js"></script>
 
   <style>
-    /* Page-specific helpers (keeps your global CSS clean) */
-    .page-card { margin-top: 16px; }
-    .kicker { color: var(--muted); margin-top: 6px; line-height: 1.55; }
+    /* Page-specific helpers (kept minimal) */
+    .page-head { margin: 16px 0 12px; }
+    .page-head h2 { margin: 0 0 8px; font-size: 26px; }
+    .page-head p { margin: 0; color: var(--muted); line-height: 1.6; }
+
     .notice {
       margin-top: 14px;
-      padding: 14px;
+      background: color-mix(in srgb, var(--warn) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent);
       border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--warn) 14%, transparent);
+      padding: 14px;
+      color: var(--muted);
+      line-height: 1.55;
     }
     .notice strong { color: var(--text); }
-    .country-grid {
+
+    .section-title { margin: 22px 0 10px; }
+    .section-title h3 { margin: 0 0 6px; font-size: 18px; }
+    .section-title p { margin: 0; color: var(--muted); line-height: 1.55; }
+
+    .support-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
-      margin-top: 16px;
+      margin-top: 12px;
     }
-    .country {
+    .support-card {
       grid-column: span 6;
-      background: var(--surface2);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
-      padding: 16px;
+      padding: 18px;
     }
-    .country h3 { margin: 0 0 6px; }
-    .country p { margin: 0 0 10px; color: var(--muted); line-height: 1.5; }
-    .pillrow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    .pill {
+    .support-card h4 { margin: 0 0 8px; }
+    .support-card p { margin: 0 0 12px; color: var(--muted); line-height: 1.55; }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .phone-pill, .web-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 9px 10px;
+      padding: 10px 12px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--text) 5%, transparent);
       text-decoration: none;
-      color: var(--text);
       font-weight: 800;
-      letter-spacing: 0.1px;
+      letter-spacing: 0.2px;
+      transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+      user-select: none;
+      white-space: nowrap;
     }
-    .pill small { font-weight: 700; color: var(--muted); }
-    .pill:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
-    .mini {
-      margin-top: 12px;
+
+    .phone-pill {
+      background: color-mix(in srgb, var(--primary) 14%, transparent);
+      color: var(--text);
+      border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+    }
+    .phone-pill .icon {
+      width: 22px; height: 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: #071018;
+      font-size: 13px;
+    }
+
+    .web-pill {
+      background: color-mix(in srgb, var(--text) 6%, transparent);
+      color: var(--text);
+    }
+
+    .phone-pill:hover, .web-pill:hover { transform: translateY(-1px); }
+    .phone-pill:active, .web-pill:active { transform: translateY(0px); }
+
+    .small-links {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.55;
     }
-    details { margin-top: 16px; }
-    summary {
-      cursor: pointer;
-      font-weight: 800;
-      padding: 12px 14px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: var(--surface);
-      list-style: none;
-    }
-    summary::-webkit-details-marker { display: none; }
-    .help-steps {
-      margin-top: 14px;
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-    }
-    .step {
-      grid-column: span 4;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 16px;
-    }
-    .step h4 { margin: 0 0 6px; }
-    .step p { margin: 0; color: var(--muted); line-height: 1.5; }
+    .small-links a { color: var(--muted); text-decoration: none; }
+    .small-links a:hover { color: var(--text); }
+
+    .hero .hero-content { width: min(720px, 92%); }
 
     @media (max-width: 800px) {
-      .country { grid-column: span 12; }
-      .step { grid-column: span 12; }
+      .support-card { grid-column: span 12; }
+      .page-head h2 { font-size: 22px; }
     }
   </style>
 </head>
@@ -99,7 +120,7 @@
 <body>
 
   <div class="banner">
-    <strong>Safety first.</strong> SimHealth is in development — if you need support now, use the resources below.
+    <strong>Healthcare first.</strong> This page shares real support contacts. If you’re in immediate danger, call your local emergency number now.
   </div>
 
   <header class="nav">
@@ -125,7 +146,9 @@
       </div>
 
       <a class="link" href="../../under-construction.html">Contact</a>
-      <a class="btn-primary" href="./">Help & Support</a>
+
+      <!-- For now, route this to this Help page (so it always “works”) -->
+      <a class="btn-primary" href="./">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="./">English</a>
@@ -144,224 +167,227 @@
   </header>
 
   <main class="wrap">
-
-    <!-- HERO (matches rest of site) -->
+    <!-- HERO (same style as the rest) -->
     <section class="hero">
       <div class="hero-bg" style="background-image:url('../../../assets/help-hero.jpg');"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <h1 class="rise-1">Help & Support</h1>
-        <p class="rise-2">
-          If you are struggling with gambling urges, anxiety, or feel at risk, confidential support is available.
-          This page lists trusted services by country.
-        </p>
+        <p class="rise-2">If you’re struggling right now — you don’t have to carry it alone. Below are real, official services you can contact today.</p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#crisis">Crisis & Suicide Support</a>
+          <a class="btn-secondary" href="#gambling">Gambling Support</a>
+        </div>
       </div>
     </section>
 
-    <div class="card page-card">
-      <h2 style="margin:0;">Immediate support (if you feel unsafe)</h2>
-      <p class="kicker">
-        If you or someone else is in immediate danger, call your local emergency number right now.
-        If you can, also contact someone you trust and avoid being alone.
+    <div class="page-head">
+      <h2>Quick guidance</h2>
+      <p>
+        This website is a professional project showcase. These contacts are provided because safety matters more than anything.
+        If you feel at risk of harming yourself, call your local emergency number or a crisis line now.
       </p>
 
-      <div class="notice" role="note" aria-label="Clinical disclaimer">
-        <strong>Clinical note:</strong> SimHealth is a research project in development.
-        The resources below are independent services that can help you today.
+      <div class="notice">
+        <strong>Important:</strong> SimHealth is in development and does not provide emergency services.
+        This page links you to real support organisations in each country.
+      </div>
+    </div>
+
+    <!-- CRISIS -->
+    <div class="section-title" id="crisis">
+      <h3>Crisis & suicide support</h3>
+      <p>Tap a number to call. On phones, it should open your dialer automatically.</p>
+    </div>
+
+    <div class="support-grid" aria-label="Crisis support by country">
+      <!-- FRANCE -->
+      <div class="support-card">
+        <h4>France</h4>
+        <p>National suicide prevention line (free). If there’s immediate danger, call emergency services.</p>
+
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:3114" aria-label="Call 3114">
+            <span class="icon">☎</span> 3114
+          </a>
+          <a class="phone-pill" href="tel:112" aria-label="Call 112">
+            <span class="icon">☎</span> 112 (Emergency)
+          </a>
+        </div>
+
+        <div class="small-links">
+          <a href="https://3114.fr" target="_blank" rel="noreferrer">Official: 3114</a>
+        </div>
       </div>
 
-      <div class="help-steps" aria-label="Quick steps">
-        <div class="step">
-          <h4>1) Pause the moment</h4>
-          <p>Put distance between you and betting apps/sites. Close tabs. Step into a different room.</p>
+      <!-- USA -->
+      <div class="support-card">
+        <h4>United States</h4>
+        <p>988 Suicide &amp; Crisis Lifeline (call or text). For immediate danger, call 911.</p>
+
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:988" aria-label="Call 988">
+            <span class="icon">☎</span> 988
+          </a>
+          <a class="web-pill" href="sms:988" aria-label="Text 988">Text 988</a>
+          <a class="phone-pill" href="tel:911" aria-label="Call 911">
+            <span class="icon">☎</span> 911 (Emergency)
+          </a>
         </div>
-        <div class="step">
-          <h4>2) Call or text support</h4>
-          <p>Use your country’s helpline below. You don’t need to “be sure” — just reach out.</p>
+
+        <div class="small-links">
+          <a href="https://988lifeline.org" target="_blank" rel="noreferrer">Official: 988 Lifeline</a>
         </div>
-        <div class="step">
-          <h4>3) Reduce access</h4>
-          <p>If possible, ask someone trusted to help with finances and install gambling blockers.</p>
+      </div>
+
+      <!-- CANADA -->
+      <div class="support-card">
+        <h4>Canada</h4>
+        <p>988 Suicide Crisis Helpline (call or text). For immediate danger, call 911.</p>
+
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:988" aria-label="Call 988">
+            <span class="icon">☎</span> 988
+          </a>
+          <a class="web-pill" href="sms:988" aria-label="Text 988">Text 988</a>
+          <a class="phone-pill" href="tel:911" aria-label="Call 911">
+            <span class="icon">☎</span> 911 (Emergency)
+          </a>
+        </div>
+
+        <div class="small-links">
+          <a href="https://www.canada.ca/en/public-health/services/mental-health-services/988.html" target="_blank" rel="noreferrer">Official: Canada 988</a>
+        </div>
+      </div>
+
+      <!-- UK -->
+      <div class="support-card">
+        <h4>United Kingdom &amp; ROI</h4>
+        <p>Samaritans (freephone). For emergency services: 999 (UK) / 112.</p>
+
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:116123" aria-label="Call 116 123">
+            <span class="icon">☎</span> 116 123
+          </a>
+          <a class="phone-pill" href="tel:999" aria-label="Call 999">
+            <span class="icon">☎</span> 999 (Emergency)
+          </a>
+          <a class="phone-pill" href="tel:112" aria-label="Call 112">
+            <span class="icon">☎</span> 112 (Emergency)
+          </a>
+        </div>
+
+        <div class="small-links">
+          <a href="https://www.samaritans.org/how-we-can-help/contact-samaritan/" target="_blank" rel="noreferrer">Official: Samaritans</a>
+        </div>
+      </div>
+
+      <!-- AUSTRALIA -->
+      <div class="support-card">
+        <h4>Australia</h4>
+        <p>Lifeline crisis support. If there’s immediate danger: 000.</p>
+
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:131114" aria-label="Call 13 11 14">
+            <span class="icon">☎</span> 13 11 14
+          </a>
+          <a class="phone-pill" href="tel:000" aria-label="Call 000">
+            <span class="icon">☎</span> 000 (Emergency)
+          </a>
+        </div>
+
+        <div class="small-links">
+          <a href="https://www.lifeline.org.au" target="_blank" rel="noreferrer">Official: Lifeline</a>
+        </div>
+      </div>
+
+      <!-- NEW ZEALAND -->
+      <div class="support-card">
+        <h4>New Zealand</h4>
+        <p>Call or text 1737 for free support from a trained counsellor.</p>
+
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:1737" aria-label="Call 1737">
+            <span class="icon">☎</span> 1737
+          </a>
+          <a class="web-pill" href="sms:1737" aria-label="Text 1737">Text 1737</a>
+          <a class="phone-pill" href="tel:111" aria-label="Call 111">
+            <span class="icon">☎</span> 111 (Emergency)
+          </a>
+        </div>
+
+        <div class="small-links">
+          <a href="https://1737.org.nz" target="_blank" rel="noreferrer">Official: 1737</a>
         </div>
       </div>
     </div>
 
-    <div class="card page-card">
-      <h2 style="margin:0;">Find support by country</h2>
-      <p class="kicker">
-        We start with the most common English-speaking regions plus France (SimHealth’s home base),
-        then list additional options below.
-      </p>
-
-      <div class="country-grid">
-
-        <!-- UK -->
-        <div class="country">
-          <h3>United Kingdom</h3>
-          <p>Confidential gambling support and advice (24/7 availability varies by service).</p>
-          <div class="pillrow">
-            <a class="pill" href="https://www.gamcare.org.uk/" target="_blank" rel="noopener">
-              GamCare <small>Support & chat</small>
-            </a>
-            <a class="pill" href="https://www.gamstop.co.uk/" target="_blank" rel="noopener">
-              GAMSTOP <small>Self-exclusion</small>
-            </a>
-            <a class="pill" href="https://www.nhs.uk/live-well/addiction-support/gambling-addiction/" target="_blank" rel="noopener">
-              NHS <small>Guidance</small>
-            </a>
-          </div>
-          <p class="mini">
-            If you’re in crisis or feel unsafe, use emergency services (999) or NHS urgent support pathways.
-          </p>
-        </div>
-
-        <!-- USA -->
-        <div class="country">
-          <h3>United States</h3>
-          <p>National crisis support plus problem gambling resources.</p>
-          <div class="pillrow">
-            <a class="pill" href="https://988lifeline.org/" target="_blank" rel="noopener">
-              988 Lifeline <small>Call/Text/Chat</small>
-            </a>
-            <a class="pill" href="https://www.ncpgambling.org/help-treatment/" target="_blank" rel="noopener">
-              NCPG <small>Help & treatment</small>
-            </a>
-            <a class="pill" href="https://www.samhsa.gov/find-help/national-helpline" target="_blank" rel="noopener">
-              SAMHSA <small>Treatment locator</small>
-            </a>
-          </div>
-          <p class="mini">
-            In emergency: call 911. For mental health crisis support: 988.
-          </p>
-        </div>
-
-        <!-- Australia -->
-        <div class="country">
-          <h3>Australia</h3>
-          <p>National crisis line and gambling support.</p>
-          <div class="pillrow">
-            <a class="pill" href="https://www.lifeline.org.au/" target="_blank" rel="noopener">
-              Lifeline <small>24/7 crisis</small>
-            </a>
-            <a class="pill" href="https://gamblinghelponline.org.au/" target="_blank" rel="noopener">
-              Gambling Help Online <small>Chat & support</small>
-            </a>
-          </div>
-          <p class="mini">
-            In emergency: call 000. Lifeline (13 11 14) is widely used for crisis support.
-          </p>
-        </div>
-
-        <!-- Canada -->
-        <div class="country">
-          <h3>Canada</h3>
-          <p>Support varies by province — start with national crisis support and provincial services.</p>
-          <div class="pillrow">
-            <a class="pill" href="https://www.crisisservicescanada.ca/en/" target="_blank" rel="noopener">
-              Crisis Services Canada <small>National</small>
-            </a>
-            <a class="pill" href="https://www.connexontario.ca/" target="_blank" rel="noopener">
-              ConnexOntario <small>Ontario</small>
-            </a>
-          </div>
-          <p class="mini">
-            For immediate danger call 911. For province-specific gambling resources, use local health portals.
-          </p>
-        </div>
-
-        <!-- France -->
-        <div class="country">
-          <h3>France</h3>
-          <p>National support resources and guidance for addictive behaviours.</p>
-          <div class="pillrow">
-            <a class="pill" href="https://www.joueurs-info-service.fr/" target="_blank" rel="noopener">
-              Joueurs Info Service <small>Support</small>
-            </a>
-            <a class="pill" href="https://www.drogues-info-service.fr/" target="_blank" rel="noopener">
-              Drogues Info Service <small>Guidance</small>
-            </a>
-          </div>
-          <p class="mini">
-            In emergency: call 112 (EU emergency) or 15 (SAMU).
-          </p>
-        </div>
-
-        <!-- Ireland -->
-        <div class="country">
-          <h3>Ireland</h3>
-          <p>National crisis support and local addiction services.</p>
-          <div class="pillrow">
-            <a class="pill" href="https://www.samaritans.org/ireland/samaritans-ireland/" target="_blank" rel="noopener">
-              Samaritans Ireland <small>Support</small>
-            </a>
-            <a class="pill" href="https://www.hse.ie/eng/services/list/4/mental-health-services/" target="_blank" rel="noopener">
-              HSE <small>Mental health</small>
-            </a>
-          </div>
-          <p class="mini">
-            In emergency: call 112 or 999.
-          </p>
-        </div>
-
-      </div>
-
-      <details>
-        <summary>Other countries & Europe</summary>
-
-        <div class="country-grid" style="margin-top:14px;">
-
-          <div class="country">
-            <h3>Europe (general)</h3>
-            <p>Emergency number works across the EU/EEA. For country-specific lines, use national health services.</p>
-            <div class="pillrow">
-              <a class="pill" href="https://europa.eu/youreurope/citizens/health/emergency/index_en.htm" target="_blank" rel="noopener">
-                EU emergency info <small>112</small>
-              </a>
-            </div>
-            <p class="mini">EU emergency: 112. If you are in immediate danger, call it now.</p>
-          </div>
-
-          <div class="country">
-            <h3>New Zealand</h3>
-            <p>National crisis support and gambling harm services.</p>
-            <div class="pillrow">
-              <a class="pill" href="https://www.1737.org.nz/" target="_blank" rel="noopener">
-                1737 <small>Call/Text</small>
-              </a>
-              <a class="pill" href="https://gamblinghelpline.co.nz/" target="_blank" rel="noopener">
-                Gambling Helpline NZ <small>Support</small>
-              </a>
-            </div>
-          </div>
-
-          <div class="country">
-            <h3>International directory</h3>
-            <p>If your country isn’t listed, these directories can help you find local support quickly.</p>
-            <div class="pillrow">
-              <a class="pill" href="https://findahelpline.com/" target="_blank" rel="noopener">
-                Find A Helpline <small>Directory</small>
-              </a>
-              <a class="pill" href="https://www.gamblersanonymous.org/ga/locations" target="_blank" rel="noopener">
-                Gamblers Anonymous <small>Meetings</small>
-              </a>
-            </div>
-            <p class="mini">
-              If you share your country with your clinician, they can help identify regulated local services.
-            </p>
-          </div>
-
-        </div>
-      </details>
-
+    <!-- GAMBLING -->
+    <div class="section-title" id="gambling">
+      <h3>Gambling support</h3>
+      <p>Confidential services for problem gambling, harm reduction, and treatment pathways.</p>
     </div>
 
-    <div class="card page-card">
-      <h2 style="margin:0;">For clinicians</h2>
-      <p class="kicker">
-        If you are a clinician and would like a short resource pack for patients (PDF version of this page),
-        contact: <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
-      </p>
+    <div class="support-grid" aria-label="Gambling support by country">
+      <!-- FRANCE -->
+      <div class="support-card">
+        <h4>France</h4>
+        <p>Joueurs Info Service — information, listening, and support for gambling-related harm.</p>
+
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:+33974751313" aria-label="Call +33 9 74 75 13 13">
+            <span class="icon">☎</span> +33 9 74 75 13 13
+          </a>
+          <a class="web-pill" href="https://www.joueurs-info-service.fr" target="_blank" rel="noreferrer">Website</a>
+        </div>
+      </div>
+
+      <!-- UK -->
+      <div class="support-card">
+        <h4>United Kingdom</h4>
+        <p>National Gambling Helpline (via GamCare) — free, confidential support.</p>
+
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:08088020133" aria-label="Call 0808 8020 133">
+            <span class="icon">☎</span> 0808 8020 133
+          </a>
+          <a class="web-pill" href="https://www.gamcare.org.uk" target="_blank" rel="noreferrer">Website</a>
+        </div>
+      </div>
+
+      <!-- USA -->
+      <div class="support-card">
+        <h4>United States</h4>
+        <p>National Problem Gambling Helpline (NCPG) — call, text, or chat 24/7.</p>
+
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:18006997338" aria-label="Call 1-800-MY-RESET">
+            <span class="icon">☎</span> 1-800-MY-RESET
+          </a>
+          <a class="web-pill" href="sms:800426" aria-label="Text 800GAM">Text 800GAM</a>
+          <a class="web-pill" href="https://www.ncpgambling.org/help-treatment/about-the-national-problem-gambling-helpline/" target="_blank" rel="noreferrer">Website</a>
+        </div>
+      </div>
+
+      <!-- AUSTRALIA -->
+      <div class="support-card">
+        <h4>Australia</h4>
+        <p>Gambling Help Online — free, confidential support.</p>
+
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:1800858858" aria-label="Call 1800 858 858">
+            <span class="icon">☎</span> 1800 858 858
+          </a>
+          <a class="web-pill" href="https://www.gamblinghelponline.org.au" target="_blank" rel="noreferrer">Website</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice" style="margin-top:16px;">
+      <strong>Clinician note:</strong> SimHealth is built with a safety-first approach: clear signposting to real services, no emergency claims, and careful governance.
+      Where any research involves data, it must be consent-based and compliant with applicable laws and clinical ethics.
     </div>
 
   </main>
@@ -384,4 +410,4 @@
   </footer>
 
 </body>
-                    </html>
+      </html>
