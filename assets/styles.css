@@ -193,13 +193,12 @@ body {
 .tile .img {
   height: 190px;
   background-size: cover;
-  background-position: center 30%; /* ⬅️ KEY CHANGE */
+  background-position: center 30%;
   position: relative;
   overflow: hidden;
   transform: scale(1);
   transition: transform var(--t-med) var(--ease);
 }
-
 
 /* subtle overlay so images read clearly (dark + light) */
 .tile .img::after {
@@ -207,7 +206,6 @@ body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  /* default overlay tuned for dark mode */
   background: linear-gradient(
     180deg,
     rgba(11,18,32,0.00) 0%,
@@ -256,7 +254,7 @@ footer .row {
 footer a { color: var(--muted); text-decoration: none; }
 footer a:hover { color: var(--text); }
 
-/* Theme toggle slider (CSS-only labels, no JS needed) */
+/* Theme toggle slider */
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -298,14 +296,11 @@ footer a:hover { color: var(--text); }
   transition: transform var(--t-med) var(--ease);
 }
 
-:root[data-theme="light"] .theme-toggle .thumb {
-  transform: translateX(20px);
-}
+:root[data-theme="light"] .theme-toggle .thumb { transform: translateX(20px); }
 
 /* Label highlighting based on current theme */
 :root[data-theme="dark"] .theme-toggle .label-dark { color: var(--text); }
 :root[data-theme="dark"] .theme-toggle .label-light { color: var(--muted); }
-
 :root[data-theme="light"] .theme-toggle .label-dark { color: var(--muted); }
 :root[data-theme="light"] .theme-toggle .label-light { color: var(--text); }
 
@@ -344,7 +339,7 @@ footer a:hover { color: var(--text); }
   border: 1px solid color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
-/* ===== Landing hero ===== */
+/* ===== Landing hero (HOME) ===== */
 .hero {
   position: relative;
   border-radius: var(--radius-xl);
@@ -354,21 +349,15 @@ footer a:hover { color: var(--text); }
   min-height: 340px;
 }
 
-.page-hero-bg {
+/* ✅ THIS IS THE ONE THAT MAKES hero-clinic.jpg SHOW */
+.hero-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 65% center; /* shifts image right */
-  transform: scale(0.95);          /* subtle zoom-out feel */
+  background-position: center right;
+  transform: scale(1.02);
 }
-}
-@media (min-width: 900px) {
-  .page-hero-bg {
-    background-position: 70% center;
-    transform: scale(0.94);
-  }
-}
+
 /* Dark mode overlay (keeps the left side readable) */
 .hero-overlay {
   position: absolute;
@@ -382,7 +371,7 @@ footer a:hover { color: var(--text); }
   );
 }
 
-/* Light mode: stronger overlay to avoid "white washed" look */
+/* Light mode overlay */
 :root[data-theme="light"] .hero-overlay {
   background: linear-gradient(
     90deg,
@@ -393,7 +382,7 @@ footer a:hover { color: var(--text); }
   );
 }
 
-/* Light mode: subtle contrast recovery (keeps it clinical, not edited) */
+/* Light mode: subtle contrast recovery */
 :root[data-theme="light"] .hero-bg {
   filter: contrast(1.06) saturate(0.96);
 }
@@ -454,6 +443,7 @@ footer a:hover { color: var(--text); }
   .hero h1 { font-size: 32px; }
   .tile { grid-column: span 12; }
 }
+
 /* ===== Help & Support accordion ===== */
 .accordion { display: grid; gap: 10px; }
 
@@ -493,7 +483,8 @@ footer a:hover { color: var(--text); }
 .acc[open] summary {
   background: color-mix(in srgb, var(--text) 5%, transparent);
 }
-/* ===== Help & Support hero ===== */
+
+/* ===== Help & Support hero (PAGE) ===== */
 .page-hero {
   position: relative;
   border-radius: var(--radius-xl);
@@ -503,15 +494,17 @@ footer a:hover { color: var(--text); }
   min-height: 320px;
 }
 
+/* ✅ separate from .hero-bg so we don’t break the homepage */
 .page-hero-bg {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center 35%;
+  background-repeat: no-repeat;
+  background-position: 65% center; /* better on desktop */
   transform: scale(1.02);
 }
 
-/* Dark overlay: readable text, still shows image */
+/* Dark overlay */
 .page-hero-overlay {
   position: absolute;
   inset: 0;
@@ -524,7 +517,7 @@ footer a:hover { color: var(--text); }
   );
 }
 
-/* Light overlay: avoid “washed” look + keep text readable */
+/* Light overlay */
 :root[data-theme="light"] .page-hero-overlay {
   background: linear-gradient(
     90deg,
@@ -570,4 +563,4 @@ footer a:hover { color: var(--text); }
   .page-hero-content { padding: 28px 18px; }
   .page-hero h1 { font-size: 28px; }
   .page-hero-bg { background-position: center 25%; }
-}
+  }
