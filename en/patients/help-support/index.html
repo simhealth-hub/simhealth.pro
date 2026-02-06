@@ -9,146 +9,89 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- IMPORTANT: from /en/help-support/ back to /assets/ -->
-  <link rel="stylesheet" href="../../assets/styles.css">
-  <script src="../../assets/theme.js"></script>
+  <!-- RELATIVE PATHS (IMPORTANT) -->
+  <link rel="stylesheet" href="../../../assets/styles.css">
+  <script src="../../../assets/theme.js"></script>
 
   <style>
-    /* Page-only extras (safe to keep here) */
-    .kicker { color: var(--muted); margin: 10px 0 0; line-height: 1.55; }
-    .page-title { margin: 0; font-size: 34px; letter-spacing: 0.2px; }
-    .section-title { margin: 0 0 10px; font-size: 22px; letter-spacing: 0.2px; }
-    .lead { margin: 10px 0 0; color: var(--muted); line-height: 1.6; }
+    /* Page-specific helpers (keeps your global CSS clean) */
+    .page-card { margin-top: 16px; }
+    .kicker { color: var(--muted); margin-top: 6px; line-height: 1.55; }
     .notice {
-      background: color-mix(in srgb, var(--warn) 18%, transparent);
-      border: 1px solid color-mix(in srgb, var(--warn) 42%, transparent);
-      border-radius: var(--radius-xl);
-      padding: 16px;
-      margin: 16px 0 18px;
-      color: var(--text);
-    }
-    .notice p { margin: 0; color: var(--muted); line-height: 1.55; }
-    .notice strong { color: var(--text); }
-
-    .controls {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 14px 0 0;
-      align-items: center;
-    }
-    .select {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: var(--radius-md);
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      font-weight: 700;
+      background: color-mix(in srgb, var(--warn) 14%, transparent);
     }
-    select {
-      background: transparent;
-      border: none;
-      color: var(--text);
-      font: inherit;
-      outline: none;
-      cursor: pointer;
-      min-width: 240px;
-    }
-    option { color: #111; }
-
-    .cards {
+    .notice strong { color: var(--text); }
+    .country-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 14px;
       margin-top: 16px;
     }
-    .help-card {
+    .country {
       grid-column: span 6;
-      background: var(--surface);
+      background: var(--surface2);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
       padding: 16px;
     }
-    .help-card h3 { margin: 0 0 8px; font-size: 18px; }
-    .help-card p { margin: 0 0 12px; color: var(--muted); line-height: 1.55; }
-    .help-list { margin: 0; padding-left: 18px; color: var(--muted); line-height: 1.6; }
-    .help-list strong { color: var(--text); }
-    .help-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .mini-link {
+    .country h3 { margin: 0 0 6px; }
+    .country p { margin: 0 0 10px; color: var(--muted); line-height: 1.5; }
+    .pillrow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 9px 10px;
-      border-radius: var(--radius-md);
+      border-radius: 999px;
       border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--text) 4%, transparent);
-      color: var(--text);
+      background: color-mix(in srgb, var(--text) 5%, transparent);
       text-decoration: none;
+      color: var(--text);
       font-weight: 800;
+      letter-spacing: 0.1px;
     }
-    .mini-link:hover { background: color-mix(in srgb, var(--text) 7%, transparent); }
-
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 18px 0;
+    .pill small { font-weight: 700; color: var(--muted); }
+    .pill:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
+    .mini {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
     }
-
-    /* Hero image for this page */
-    .hero-help {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
+    details { margin-top: 16px; }
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      padding: 12px 14px;
+      border-radius: var(--radius-lg);
       border: 1px solid var(--border);
       background: var(--surface);
-      min-height: 280px;
+      list-style: none;
     }
-    .hero-help-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url("../../assets/help-support.jpg");
-      background-size: cover;
-      background-position: center;
-      transform: scale(1.02);
+    summary::-webkit-details-marker { display: none; }
+    .help-steps {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
     }
-    .hero-help-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(11,18,32,0.92) 0%,
-        rgba(11,18,32,0.66) 42%,
-        rgba(11,18,32,0.20) 74%,
-        rgba(11,18,32,0.00) 100%
-      );
+    .step {
+      grid-column: span 4;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 16px;
     }
-    :root[data-theme="light"] .hero-help-overlay {
-      background: linear-gradient(
-        90deg,
-        rgba(255,255,255,0.92) 0%,
-        rgba(255,255,255,0.74) 42%,
-        rgba(255,255,255,0.34) 74%,
-        rgba(255,255,255,0.00) 100%
-      );
-    }
-    .hero-help-content {
-      position: relative;
-      padding: 34px 22px;
-      width: min(720px, 92%);
-    }
+    .step h4 { margin: 0 0 6px; }
+    .step p { margin: 0; color: var(--muted); line-height: 1.5; }
 
     @media (max-width: 800px) {
-      .help-card { grid-column: span 12; }
-      .page-title { font-size: 28px; }
-      select { min-width: 200px; }
+      .country { grid-column: span 12; }
+      .step { grid-column: span 12; }
     }
   </style>
 </head>
@@ -156,37 +99,37 @@
 <body>
 
   <div class="banner">
-    <strong>Healthcare-first.</strong> This page provides external support resources.
+    <strong>Safety first.</strong> SimHealth is in development — if you need support now, use the resources below.
   </div>
 
   <header class="nav">
-    <a class="brand" href="../home.html" aria-label="Back to Home">SimHealth</a>
+    <a class="brand" href="../../../index.html" aria-label="Back to language selection">SimHealth</a>
 
     <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="../home.html">Home</a>
+      <a class="link" href="../../home.html">Home</a>
 
       <div class="item">
-        <a class="link" href="../patients/">Patients</a>
+        <a class="link" href="../">Patients</a>
       </div>
 
       <div class="item">
-        <a class="link" href="../clinicians/">Clinicians</a>
+        <a class="link" href="../../clinicians/">Clinicians</a>
       </div>
 
       <div class="item">
-        <a class="link" href="../research/">Research</a>
+        <a class="link" href="../../research/">Research</a>
       </div>
 
       <div class="item">
-        <a class="link" href="../about/">About</a>
+        <a class="link" href="../../about/">About</a>
       </div>
 
-      <a class="link" href="../under-construction.html">Contact</a>
-      <a class="btn-primary" href="#urgent">Crisis Resources</a>
+      <a class="link" href="../../under-construction.html">Contact</a>
+      <a class="btn-primary" href="./">Help & Support</a>
 
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="./">English</a>
-        <a href="../../fr/accueil.html">Français</a>
+        <a href="../../../fr/accueil.html">Français</a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -202,174 +145,25 @@
 
   <main class="wrap">
 
-    <!-- HERO (image is ../../assets/help-support.jpg) -->
-    <section class="hero-help" aria-label="Help and Support hero">
-      <div class="hero-help-bg"></div>
-      <div class="hero-help-overlay"></div>
-      <div class="hero-help-content">
-        <h1 class="page-title">Help & Support</h1>
-        <p class="kicker">
-          If you’re struggling with gambling urges — or you feel at risk right now — you deserve support immediately.
-          Below are trusted, real-world helplines and services by country.
+    <!-- HERO (matches rest of site) -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('../../../assets/help-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Help & Support</h1>
+        <p class="rise-2">
+          If you are struggling with gambling urges, anxiety, or feel at risk, confidential support is available.
+          This page lists trusted services by country.
         </p>
-
-        <div class="controls" aria-label="Quick navigation controls">
-          <div class="select" aria-label="Select your country">
-            <span style="color:var(--muted);font-weight:800;">Country</span>
-            <select id="countrySelect">
-              <option value="">Choose…</option>
-              <option value="uk">United Kingdom</option>
-              <option value="fr">France</option>
-              <option value="us">United States</option>
-              <option value="au">Australia</option>
-              <option value="nz">New Zealand</option>
-              <option value="intl">International directories</option>
-            </select>
-          </div>
-
-          <a class="btn-secondary" href="#gambling">Gambling support</a>
-          <a class="btn-secondary" href="#urgent">If you feel unsafe</a>
-        </div>
       </div>
     </section>
 
-    <div class="notice" id="urgent" role="note" aria-label="Urgent safety notice">
-      <strong>If you feel in immediate danger:</strong>
-      <p>
-        Call your local emergency number now (for example, <strong>112</strong> in much of Europe, <strong>999</strong> in the UK, <strong>911</strong> in the US).
-        This SimHealth website does not provide emergency care — the services below can.
-      </p>
-    </div>
-
-    <section class="card" id="gambling" aria-label="Gambling support resources">
-      <h2 class="section-title">Gambling support (by country)</h2>
-      <p class="lead">
-        These services are independent from SimHealth. They are included because patient safety and clinician responsibility come first.
-        If you’re a clinician reviewing this page, this is intentionally conservative: direct pathways to regulated support (not app-based promises).
+    <div class="card page-card">
+      <h2 style="margin:0;">Immediate support (if you feel unsafe)</h2>
+      <p class="kicker">
+        If you or someone else is in immediate danger, call your local emergency number right now.
+        If you can, also contact someone you trust and avoid being alone.
       </p>
 
-      <div class="divider"></div>
-
-      <div class="cards">
-
-        <!-- UK -->
-        <article class="help-card" id="uk" aria-label="United Kingdom support">
-          <h3>United Kingdom</h3>
-          <p>Confidential gambling support, information, and referral.</p>
-          <ul class="help-list">
-            <li><strong>National Gambling Helpline (GamCare):</strong> 0808 8020 133 (UK) 0</li>
-            <li><strong>Website & live support:</strong> GamCare (National Gambling Helpline) 1</li>
-          </ul>
-          <div class="help-actions">
-            <a class="mini-link" href="tel:08088020133">Call 0808 8020 133</a>
-          </div>
-        </article>
-
-        <!-- France -->
-        <article class="help-card" id="fr" aria-label="France support">
-          <h3>France</h3>
-          <p>Support for problem gambling and addiction guidance.</p>
-          <ul class="help-list">
-            <li><strong>Joueurs Info Service:</strong> 09 74 75 13 13 </li>
-            <li><strong>Website:</strong> joueurs-info-service.fr </li>
-          </ul>
-          <div class="help-actions">
-            <a class="mini-link" href="tel:+33974751313">Call 09 74 75 13 13</a>
-          </div>
-        </article>
-
-        <!-- US -->
-        <article class="help-card" id="us" aria-label="United States support">
-          <h3>United States</h3>
-          <p>National problem gambling support and crisis options.</p>
-          <ul class="help-list">
-            <li><strong>National Problem Gambling Helpline (NCPG):</strong> 1-800-MY-RESET 4</li>
-            <li><strong>Text:</strong> text “RESET” to 800 5</li>
-            <li><strong>If you are in emotional crisis:</strong> call or text <strong>988</strong> (Suicide & Crisis Lifeline) 6</li>
-          </ul>
-          <div class="help-actions">
-            <a class="mini-link" href="tel:+18006973738">Call 1-800-MY-RESET</a>
-            <a class="mini-link" href="sms:800?body=RESET">Text RESET to 800</a>
-            <a class="mini-link" href="tel:988">Call 988</a>
-          </div>
-        </article>
-
-        <!-- Australia -->
-        <article class="help-card" id="au" aria-label="Australia support">
-          <h3>Australia</h3>
-          <p>24/7 counselling and support for gambling harm.</p>
-          <ul class="help-list">
-            <li><strong>Gambling Help Online:</strong> 1800 858 858 7</li>
-          </ul>
-          <div class="help-actions">
-            <a class="mini-link" href="tel:+611800858858">Call 1800 858 858</a>
-          </div>
-        </article>
-
-        <!-- New Zealand -->
-        <article class="help-card" id="nz" aria-label="New Zealand support">
-          <h3>New Zealand</h3>
-          <p>Freephone help and guidance for gambling harm.</p>
-          <ul class="help-list">
-            <li><strong>Gambling Helpline (NZ):</strong> 0800 654 655 8</li>
-          </ul>
-          <div class="help-actions">
-            <a class="mini-link" href="tel:0800654655">Call 0800 654 655</a>
-          </div>
-        </article>
-
-        <!-- International -->
-        <article class="help-card" id="intl" aria-label="International directories">
-          <h3>International directories</h3>
-          <p>If your country isn’t listed above, these directories can help you find local support.</p>
-          <ul class="help-list">
-            <li><strong>Find local crisis help:</strong> 988 Lifeline international info & links 9</li>
-            <li><strong>Peer support option:</strong> Gamblers Anonymous (many countries)</li>
-          </ul>
-          <div class="help-actions">
-            <a class="mini-link" href="../under-construction.html">Add more countries</a>
-          </div>
-        </article>
-
-      </div>
-
-      <div class="divider"></div>
-
-      <p class="lead">
-        <strong>Clinician note:</strong> SimHealth is being developed to support treatment — not replace it. This page exists so that anyone
-        who lands here during a difficult moment has an immediate path to regulated support services.
-      </p>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="row">
-      <div>
-        © 2026 SimHealth. All rights reserved. •
-        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
-      </div>
-      <nav aria-label="Footer links">
-        <a href="../under-construction.html">Privacy</a>
-        <a href="../under-construction.html">Terms</a>
-        <a href="../under-construction.html">Cookies</a>
-        <a href="../under-construction.html">Accessibility</a>
-        <a href="../under-construction.html">Medical Disclaimer</a>
-        <a href="../under-construction.html">Sitemap</a>
-      </nav>
-    </div>
-  </footer>
-
-  <script>
-    // Country selector scroll
-    const sel = document.getElementById("countrySelect");
-    sel.addEventListener("change", () => {
-      const v = sel.value;
-      if (!v) return;
-      const el = document.getElementById(v);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  </script>
-
-</body>
-          </html>
+      <div class="notice" role="note" aria
