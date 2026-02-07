@@ -9,146 +9,82 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Root-relative so it works from any folder -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* Page-specific only (keeps site-wide styles.css clean) */
-    .hero .hero-content { width: min(760px, 92%); }
-
-    .status {
-      margin-top: 14px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      padding: 12px 14px;
-      color: var(--muted);
-      line-height: 1.5;
-      display: none;
+    .status{
+      display:none;
+      margin-top:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      padding:12px 14px;
+      line-height:1.5;
+      color:var(--muted);
     }
-    .status.success {
-      background: color-mix(in srgb, var(--primary) 18%, transparent);
-      border-color: color-mix(in srgb, var(--primary) 38%, var(--border));
-      color: var(--text);
+    .status.success{
+      display:block;
+      background:color-mix(in srgb, var(--primary) 18%, transparent);
+      border-color:color-mix(in srgb, var(--primary) 38%, var(--border));
+      color:var(--text);
     }
-    .status.error {
-      background: color-mix(in srgb, #ef4444 16%, transparent);
-      border-color: color-mix(in srgb, #ef4444 34%, var(--border));
-      color: var(--text);
+    .status.error{
+      display:block;
+      background:color-mix(in srgb, #ef4444 16%, transparent);
+      border-color:color-mix(in srgb, #ef4444 34%, var(--border));
+      color:var(--text);
     }
-
-    .form-wrap { margin-top: 16px; }
-
-    .form {
-      display: grid;
-      gap: 12px;
-      margin-top: 10px;
+    .field label{ display:block; font-weight:800; margin:14px 0 8px; }
+    .input{
+      width:100%;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--surface) 92%, transparent);
+      color:var(--text);
+      font-size:15px;
+      outline:none;
     }
-
-    .field label {
-      display: block;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-      margin-bottom: 8px;
+    .input:focus{
+      border-color:color-mix(in srgb, var(--primary) 55%, var(--border));
+      background:var(--surface);
     }
-
-    .input {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--surface) 92%, transparent);
-      color: var(--text);
-      outline: none;
-      font-size: 15px;
-      transition: transform var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+    .consent{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      color:var(--muted);
+      line-height:1.45;
+      font-size:14px;
     }
-    .input:focus {
-      border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
-      background: var(--surface);
-    }
-
-    .hint {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .consent {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      padding: 12px 14px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--text) 4%, transparent);
-      color: var(--muted);
-      line-height: 1.45;
-      font-size: 14px;
-    }
-    .consent input { margin-top: 3px; }
-
-    .actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
-
-    .btn-disabled {
-      opacity: 0.6;
-      pointer-events: none;
-      filter: grayscale(0.2);
-    }
-
-    .micro {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .micro a { color: var(--muted); text-decoration: none; }
-    .micro a:hover { color: var(--text); }
-
-    @media (max-width: 800px) {
-      .hero { min-height: 360px; }
-    }
+    .consent input{ margin-top:3px; }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    button.btn-primary{ border:none; cursor:pointer; }
   </style>
 </head>
 
 <body>
 
   <div class="banner">
-    <strong>Healthcare first.</strong> This website is a professional project showcase. If you are in immediate danger, call your local emergency number now.
+    <strong>Healthcare first.</strong> This website is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
   </div>
 
   <header class="nav">
-    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
+    <a class="brand" href="/index.html">SimHealth</a>
 
     <nav class="menu" aria-label="Main navigation">
       <a class="link" href="/en/home.html">Home</a>
-
-      <div class="item">
-        <a class="link" href="/en/patients/">Patients</a>
-      </div>
-
-      <div class="item">
-        <a class="link" href="/en/clinicians/">Clinicians</a>
-      </div>
-
-      <div class="item">
-        <a class="link" href="/en/research/">Research</a>
-      </div>
-
-      <div class="item">
-        <a class="link" href="/en/about/">About</a>
-      </div>
-
+      <a class="link" href="/en/patients/">Patients</a>
+      <a class="link" href="/en/clinicians/">Clinicians</a>
+      <a class="link" href="/en/research/">Research</a>
+      <a class="link" href="/en/about/">About</a>
       <a class="link" href="/en/contact/">Contact</a>
 
-      <!-- Ethical wording + direct route to real help -->
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
@@ -158,8 +94,7 @@
 
       <div class="theme-toggle" role="button" tabindex="0"
            onclick="SimHealthTheme.toggleTheme()"
-           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
-           aria-label="Toggle theme">
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }">
         <span class="label label-dark">Dark</span>
         <span class="track" aria-hidden="true"><span class="thumb"></span></span>
         <span class="label label-light">Light</span>
@@ -169,46 +104,40 @@
 
   <main class="wrap">
 
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-bg" style="background-image:url('/assets/updates-hero.jpg');"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <h1 class="rise-1">Get project updates</h1>
-        <p class="rise-2">
-          Occasional emails about releases, research progress, and early access. No spam.
-        </p>
+        <p class="rise-2">Occasional emails about releases, research progress, and early access. No spam.</p>
 
         <div class="hero-actions rise-3">
-          <a class="btn-primary" href="#signup">Subscribe</a>
+          <a class="btn-primary" href="#form">Subscribe</a>
           <a class="btn-secondary" href="/en/patients/">Back to Patients</a>
         </div>
       </div>
     </section>
 
-    <!-- CARD -->
-    <section class="card form-wrap" id="signup">
+    <section class="card" id="form" style="margin-top:16px;">
       <h2 style="margin:0 0 8px;">Subscribe</h2>
       <p style="margin:0; color:var(--muted); line-height:1.65;">
         This list is for project updates only. We do not sell data, and you can unsubscribe any time.
       </p>
 
-      <div class="status" id="statusBox"></div>
+      <div id="statusBox" class="status"></div>
 
-      <form class="form" id="updatesForm" novalidate>
+      <form id="updatesForm">
         <div class="field">
           <label for="email">Email address</label>
-          <input class="input" id="email" name="email" type="email" inputmode="email" autocomplete="email"
-                 placeholder="you@example.com" required />
-          <div class="hint">We’ll send occasional updates only. No marketing.</div>
+          <input class="input" id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
         </div>
 
         <div class="consent">
-          <input id="consent" type="checkbox" required />
-          <label for="consent" style="margin:0; font-weight:700; color:var(--text);">
+          <input id="consent" type="checkbox" required>
+          <label for="consent" style="margin:0;">
             I agree to receive emails from SimHealth and understand I can unsubscribe at any time.
-            <div style="margin-top:6px; font-weight:400; color:var(--muted);">
+            <div style="margin-top:6px;">
               GDPR note: We’ll only use your email for project updates. You can request deletion any time by emailing
               <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
             </div>
@@ -216,13 +145,13 @@
         </div>
 
         <div class="actions">
-          <button type="submit" class="btn-primary" id="submitBtn">Subscribe</button>
+          <button class="btn-primary" type="submit">Subscribe</button>
           <a class="btn-secondary" href="/en/patients/">Back to site</a>
         </div>
 
-        <div class="micro">
+        <p style="margin:14px 0 0; color:var(--muted); font-size:13px; line-height:1.5;">
           If you need immediate help, please use <a href="/en/patients/help-support/">Crisis Resources</a>.
-        </div>
+        </p>
       </form>
     </section>
 
@@ -234,115 +163,62 @@
         © 2026 SimHealth. All rights reserved. •
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
-
-      <nav aria-label="Footer quick links">
+      <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
         <a href="/en/legal/privacy/">Privacy</a>
         <a href="/en/legal/terms/">Terms</a>
         <a href="/en/legal/cookies/">Cookies</a>
         <a href="/en/legal/accessibility/">Accessibility</a>
         <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
-        <a href="/en/patients/help-support/">Crisis Resources</a>
-        <a href="/en/contact/">Contact</a>
       </nav>
     </div>
   </footer>
 
   <script>
-    // ✅ Paste your Apps Script /exec endpoint here
-    const ENDPOINT = "https://script.google.com/macros/s/AKfycbwWWoVF84efcstr4At0rcO2_yvcBDmYywkuOQ-yEp4O2O5mfRYHhMsHxiQq68Fzyju40Q/exec";
+    // ✅ Paste your Apps Script /exec URL here
+    const ENDPOINT = "PASTE_YOUR_EXEC_URL_HERE";
 
     const form = document.getElementById("updatesForm");
-    const emailEl = document.getElementById("email");
-    const consentEl = document.getElementById("consent");
     const statusBox = document.getElementById("statusBox");
-    const submitBtn = document.getElementById("submitBtn");
 
-    function setStatus(type, msg) {
-      statusBox.className = "status" + (type ? " " + type : "");
+    function setStatus(type, msg){
+      statusBox.className = "status " + type;
       statusBox.textContent = msg;
-      statusBox.style.display = "block";
-    }
-
-    function clearStatus() {
-      statusBox.style.display = "none";
-      statusBox.textContent = "";
-      statusBox.className = "status";
-    }
-
-    function setLoading(isLoading) {
-      if (isLoading) {
-        submitBtn.textContent = "Submitting…";
-        submitBtn.classList.add("btn-disabled");
-      } else {
-        submitBtn.textContent = "Subscribe";
-        submitBtn.classList.remove("btn-disabled");
-      }
     }
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      clearStatus();
 
-      const email = (emailEl.value || "").trim();
+      const email = document.getElementById("email").value.trim();
+      const consent = document.getElementById("consent").checked;
 
-      // Basic validation
-      if (!email) {
-        setStatus("error", "Please enter your email address.");
-        emailEl.focus();
-        return;
-      }
-      if (!email.includes("@") || email.length < 6) {
-        setStatus("error", "Please enter a valid email address.");
-        emailEl.focus();
-        return;
-      }
-      if (!consentEl.checked) {
-        setStatus("error", "Please confirm consent to receive updates.");
-        consentEl.focus();
-        return;
-      }
-      if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR")) {
-        setStatus("error", "Setup incomplete: endpoint URL not set.");
-        return;
-      }
-
-      setLoading(true);
+      if(!email || !email.includes("@")) return setStatus("error", "Please enter a valid email address.");
+      if(!consent) return setStatus("error", "Please confirm consent to receive updates.");
+      if(!ENDPOINT || ENDPOINT.includes("PASTE_YOUR")) return setStatus("error", "Setup incomplete: endpoint not set.");
 
       try {
-        const payload = {
-          email,
-          lang: "en",
-          source: "updates-page",
-          consent: true,
-          ts: new Date().toISOString()
-        };
-
-        // ✅ IMPORTANT: text/plain avoids CORS preflight problems with Apps Script
-        const res = await fetch(ENDPOINT, {
+        await fetch(ENDPOINT, {
           method: "POST",
+          mode: "no-cors",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload),
+          body: JSON.stringify({
+            email,
+            lang: "en",
+            source: "updates-page",
+            consent: true,
+            userAgent: navigator.userAgent
+          })
         });
 
-        const text = await res.text();
+        setStatus("success", "Thank you! You’re subscribed. If you don’t see emails later, check spam.");
+        form.reset();
 
-        // Expect "ok" from your doPost() when successful
-        if (res.ok && text.toLowerCase().includes("ok")) {
-          setStatus("success", "Thank you! You’re subscribed. Please check your inbox (and spam folder) for confirmation if required.");
-          form.reset();
-        } else {
-          setStatus("error", "Something went wrong. Please try again in a moment, or email contact@simhealth.pro.");
-          console.warn("Non-ok response:", res.status, text);
-        }
       } catch (err) {
         console.error(err);
-        setStatus("error", "Something went wrong. Please try again in a moment, or email contact@simhealth.pro.");
-      } finally {
-        setLoading(false);
+        setStatus("error", "Something went wrong. Please try again or email contact@simhealth.pro.");
       }
     });
   </script>
 
 </body>
-          </html>
+</html>
