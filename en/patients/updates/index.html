@@ -130,11 +130,19 @@
       <form id="updatesForm">
         <div class="field">
           <label for="email">Email address</label>
-          <input class="input" id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+          <input
+            class="input"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            required
+          >
         </div>
 
         <div class="consent">
-          <input id="consent" type="checkbox" required>
+          <input id="consent" name="consent" type="checkbox" required>
           <label for="consent" style="margin:0;">
             I agree to receive emails from SimHealth and understand I can unsubscribe at any time.
             <div style="margin-top:6px;">
@@ -175,7 +183,6 @@
   </footer>
 
   <script>
-    // ✅ Paste your Apps Script /exec URL here
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbwCQaAA9Whrfykoz70yljHN6p25w09GIsBWPjTEEdtj3NuD4p4pz_VwI_iPzAXgOWdzlQ/exec";
 
     const form = document.getElementById("updatesForm");
@@ -194,7 +201,7 @@
 
       if(!email || !email.includes("@")) return setStatus("error", "Please enter a valid email address.");
       if(!consent) return setStatus("error", "Please confirm consent to receive updates.");
-      if(!ENDPOINT || ENDPOINT.includes("PASTE_YOUR")) return setStatus("error", "Setup incomplete: endpoint not set.");
+      if(!ENDPOINT) return setStatus("error", "Setup incomplete: endpoint not set.");
 
       try {
         await fetch(ENDPOINT, {
@@ -205,7 +212,7 @@
             email,
             lang: "en",
             source: "updates-page",
-            consent: true,
+            consent: consent,   // ✅ IMPORTANT: real value now
             userAgent: navigator.userAgent
           })
         });
