@@ -132,7 +132,6 @@
 
     <!-- HERO -->
     <section class="hero">
-      <!-- Create later if you want; safe fallback image can be clinician.jpg -->
       <div class="hero-bg" style="background-image:url('/assets/clinician.jpg');"></div>
       <div class="hero-overlay"></div>
 
@@ -151,14 +150,14 @@
     </section>
 
     <!-- CONTENT -->
-    <section class="card" style="margin-top:16px;">
+    <section class="card" id="form" style="margin-top:16px;">
       <h2 style="margin:0 0 10px;">Before you submit</h2>
       <p style="margin:0; color:var(--muted); line-height:1.65;">
         SimHealth is being developed with a safety-first approach and clinical governance.
         Early access is expected to be limited to supervised pilots and structured evaluation.
       </p>
       <p style="margin:10px 0 0; color:var(--muted); line-height:1.65;">
-        If you are a clinician or represent a service/institution and would like pilot information, please complete the form below.
+        If you represent a service/institution and would like pilot information, please complete the form below.
         We’ll respond from <a href="mailto:clinical@simhealth.pro">clinical@simhealth.pro</a>.
       </p>
 
@@ -188,7 +187,7 @@
 
           <div class="field">
             <label for="country">Country</label>
-            <select class="select" id="country" name="country">
+            <select class="select" id="country" name="country" required>
               <option value="">Select…</option>
               <option>France</option>
               <option>United Kingdom</option>
@@ -208,8 +207,8 @@
           </div>
 
           <div class="field">
-            <label for="interest">Primary interest</label>
-            <select class="select" id="interest" name="interest" required>
+            <label for="primaryInterest">Primary interest</label>
+            <select class="select" id="primaryInterest" name="primaryInterest" required>
               <option value="" selected>Select…</option>
               <option value="pilot-info">Pilot information</option>
               <option value="clinical-collaboration">Clinical collaboration</option>
@@ -269,7 +268,6 @@
   </footer>
 
   <script>
-    // ✅ Use the SAME Apps Script endpoint you already use for Updates
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbwCQaAA9Whrfykoz70yljHN6p25w09GIsBWPjTEEdtj3NuD4p4pz_VwI_iPzAXgOWdzlQ/exec";
 
     const form = document.getElementById("pilotForm");
@@ -288,7 +286,7 @@
       const org = document.getElementById("org").value.trim();
       const email = document.getElementById("email").value.trim().toLowerCase();
       const country = document.getElementById("country").value.trim();
-      const interest = document.getElementById("interest").value.trim();
+      const primaryInterest = document.getElementById("primaryInterest").value.trim();
       const message = document.getElementById("message").value.trim();
       const consent = document.getElementById("consent").checked;
 
@@ -296,30 +294,28 @@
       if (!role) return setStatus("error", "Please enter your role.");
       if (!org) return setStatus("error", "Please enter your organisation / service.");
       if (!email || !email.includes("@")) return setStatus("error", "Please enter a valid work email address.");
-      if (!interest) return setStatus("error", "Please select your primary interest.");
+      if (!country) return setStatus("error", "Please select a country.");
+      if (!primaryInterest) return setStatus("error", "Please select your primary interest.");
       if (!consent) return setStatus("error", "Please confirm consent so we can respond.");
 
       try {
-        // Note: mode:no-cors means we can’t read response text, but the request will send.
         await fetch(ENDPOINT, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
-            // Required by your script
             email,
             lang: "en",
             source: "clinicians-pilot-page",
             consent: true,
             userAgent: navigator.userAgent,
 
-            // Extra fields (your script will store them only if you add columns / logic)
             type: "pilot",
             name,
             role,
             org,
             country,
-            interest,
+            primaryInterest,
             message
           })
         });
@@ -335,4 +331,4 @@
   </script>
 
 </body>
-  </html>
+        </html>
