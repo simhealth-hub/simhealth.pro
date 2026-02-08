@@ -165,6 +165,7 @@
 
       <form id="pilotForm" style="margin-top:14px;">
         <div class="form-grid">
+
           <div class="field">
             <label for="name">Full name</label>
             <input class="input" id="name" name="name" type="text" placeholder="Dr Alex Smith" autocomplete="name" required>
@@ -222,6 +223,7 @@
             <label for="message">Message (optional)</label>
             <textarea class="textarea" id="message" name="message" placeholder="Briefly describe your context and what you’d like to explore."></textarea>
           </div>
+
         </div>
 
         <div class="consent">
@@ -266,65 +268,70 @@
       </nav>
     </div>
   </footer>
-<script>
-  const ENDPOINT = "https://script.google.com/macros/s/AKfycbwCQaAA9Whrfykoz70yljHN6p25w09GIsBWPjTEEdtj3NuD4p4pz_VwI_iPzAXgOWdzlQ/exec";
 
-  const form = document.getElementById("pilotForm");
-  const statusBox = document.getElementById("statusBox");
+  <!-- ✅ WORKING SUBMIT SCRIPT (do not change content-type to application/json) -->
+  <script>
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbwCQaAA9Whrfykoz70yljHN6p25w09GIsBWPjTEEdtj3NuD4p4pz_VwI_iPzAXgOWdzlQ/exec";
 
-  function setStatus(type, msg){
-    statusBox.className = "status " + type;
-    statusBox.textContent = msg;
-  }
+    const form = document.getElementById("pilotForm");
+    const statusBox = document.getElementById("statusBox");
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const role = document.getElementById("role").value.trim();
-    const org = document.getElementById("org").value.trim();
-    const email = document.getElementById("email").value.trim().toLowerCase();
-    const country = document.getElementById("country").value.trim();
-    const primaryInterest = document.getElementById("primaryInterest").value.trim();
-    const message = document.getElementById("message").value.trim();
-    const consent = document.getElementById("consent").checked;
-
-    if (!name) return setStatus("error", "Please enter your full name.");
-    if (!role) return setStatus("error", "Please enter your role.");
-    if (!org) return setStatus("error", "Please enter your organisation / service.");
-    if (!email || !email.includes("@")) return setStatus("error", "Please enter a valid work email address.");
-    if (!country) return setStatus("error", "Please select a country.");
-    if (!primaryInterest) return setStatus("error", "Please select your primary interest.");
-    if (!consent) return setStatus("error", "Please confirm consent so we can respond.");
-
-    try {
-      const res = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          lang: "en",
-          source: "clinicians-pilot-page",
-          consent: consent,
-          userAgent: navigator.userAgent,
-
-          type: "pilot",
-          name,
-          role,
-          org,
-          country,
-          primaryInterest,
-          message
-        })
-      });
-
-      // We don't rely on reading res.text() for success, but if it fails fetch will throw.
-      setStatus("success", "Thank you — your enquiry has been sent. We’ll respond from clinical@simhealth.pro.");
-      form.reset();
-
-    } catch (err) {
-      console.error(err);
-      setStatus("error", "Something went wrong. Please try again or email clinical@simhealth.pro.");
+    function setStatus(type, msg){
+      statusBox.className = "status " + type;
+      statusBox.textContent = msg;
     }
-  });
-</script>
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const role = document.getElementById("role").value.trim();
+      const org = document.getElementById("org").value.trim();
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const country = document.getElementById("country").value.trim();
+      const primaryInterest = document.getElementById("primaryInterest").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const consent = document.getElementById("consent").checked;
+
+      if (!name) return setStatus("error", "Please enter your full name.");
+      if (!role) return setStatus("error", "Please enter your role.");
+      if (!org) return setStatus("error", "Please enter your organisation / service.");
+      if (!email || !email.includes("@")) return setStatus("error", "Please enter a valid work email address.");
+      if (!country) return setStatus("error", "Please select a country.");
+      if (!primaryInterest) return setStatus("error", "Please select your primary interest.");
+      if (!consent) return setStatus("error", "Please confirm consent so we can respond.");
+
+      try {
+        await fetch(ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            email,
+            lang: "en",
+            source: "clinicians-pilot-page",
+            consent: true,
+            userAgent: navigator.userAgent,
+
+            type: "pilot",
+            name,
+            role,
+            org,
+            country,
+            primaryInterest,
+            message
+          })
+        });
+
+        setStatus("success", "Thank you — your enquiry has been sent. We’ll respond from clinical@simhealth.pro.");
+        form.reset();
+
+      } catch (err) {
+        console.error(err);
+        setStatus("error", "Something went wrong. Please try again or email clinical@simhealth.pro.");
+      }
+    });
+  </script>
+
+</body>
+        </html>
