@@ -183,6 +183,7 @@
   </footer>
 
   <script>
+    // ✅ Single source of truth for your Apps Script endpoint
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbwCQaAA9Whrfykoz70yljHN6p25w09GIsBWPjTEEdtj3NuD4p4pz_VwI_iPzAXgOWdzlQ/exec";
 
     const form = document.getElementById("updatesForm");
@@ -196,7 +197,7 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const email = document.getElementById("email").value.trim();
+      const email = document.getElementById("email").value.trim().toLowerCase();
       const consent = document.getElementById("consent").checked;
 
       if(!email || !email.includes("@")) return setStatus("error", "Please enter a valid email address.");
@@ -212,8 +213,9 @@
             email,
             lang: "en",
             source: "updates-page",
-            consent: consent,   // ✅ IMPORTANT: real value now
-            userAgent: navigator.userAgent
+            consent: consent,
+            userAgent: navigator.userAgent,
+            type: "updates"
           })
         });
 
