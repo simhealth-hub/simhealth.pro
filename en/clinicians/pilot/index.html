@@ -1,4 +1,4 @@
-https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YKPqZwazNnQKjULUyALKS-7RlJyNRTQ/execscript<!doctype html>
+<!doctype html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
@@ -9,7 +9,6 @@ https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YK
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Root-relative paths so it works anywhere -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
@@ -130,7 +129,6 @@ https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YK
 
   <main class="wrap">
 
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-bg" style="background-image:url('/assets/clinician.jpg');"></div>
       <div class="hero-overlay"></div>
@@ -149,7 +147,6 @@ https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YK
       </div>
     </section>
 
-    <!-- CONTENT -->
     <section class="card" id="form" style="margin-top:16px;">
       <h2 style="margin:0 0 10px;">Before you submit</h2>
       <p style="margin:0; color:var(--muted); line-height:1.65;">
@@ -165,7 +162,6 @@ https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YK
 
       <form id="pilotForm" style="margin-top:14px;">
         <div class="form-grid">
-
           <div class="field">
             <label for="name">Full name</label>
             <input class="input" id="name" name="name" type="text" placeholder="Dr Alex Smith" autocomplete="name" required>
@@ -223,7 +219,6 @@ https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YK
             <label for="message">Message (optional)</label>
             <textarea class="textarea" id="message" name="message" placeholder="Briefly describe your context and what you’d like to explore."></textarea>
           </div>
-
         </div>
 
         <div class="consent">
@@ -269,8 +264,8 @@ https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YK
     </div>
   </footer>
 
-  <!-- ✅ WORKING SUBMIT  (do not change content-type to application/json) -->
-  <>
+  <!-- ✅ WORKING SUBMIT SCRIPT -->
+  <script>
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YKPqZwazNnQKjULUyALKS-7RlJyNRTQ/exec";
 
     const form = document.getElementById("pilotForm");
@@ -307,16 +302,16 @@ https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YK
           mode: "no-cors",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
-            email,
+            type: "pilot",
             lang: "en",
             source: "clinicians-pilot-page",
             consent: true,
             userAgent: navigator.userAgent,
 
-            type: "pilot",
             name,
             role,
             org,
+            email,
             country,
             primaryInterest,
             message
@@ -334,4 +329,4 @@ https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YK
   </script>
 
 </body>
-        </html>
+</html>
