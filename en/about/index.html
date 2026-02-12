@@ -3,57 +3,100 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth – About</title>
+  <title>SimHealth — About</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- RELATIVE PATHS -->
-  <link rel="stylesheet" href="../../assets/styles.css">
-  <script src="../../assets/theme.js"></script>
+  <!-- ✅ Root-relative paths so it works from ANY folder -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
 
   <style>
-    .subhead { margin: 0 0 14px; color: var(--muted); line-height: 1.6; max-width: 70ch; }
     .section { margin-top: 18px; }
-    .section h2 { margin: 0 0 10px; font-size: 18px; }
-    .section p { margin: 0; color: var(--muted); line-height: 1.6; }
+    .lead { color: var(--muted); line-height: 1.7; margin: 10px 0 0; }
 
-    .pillgrid {
-      margin-top: 12px;
+    .grid {
       display: grid;
-      gap: 10px;
       grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 14px;
     }
+    .col-7 { grid-column: span 7; }
+    .col-5 { grid-column: span 5; }
+
     .pill {
-      grid-column: span 6;
-      padding: 12px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--text) 6%, transparent);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      user-select: none;
+      white-space: nowrap;
+      transition: transform var(--t-fast) var(--ease);
+    }
+    .pill:hover { transform: translateY(-1px); }
+    .pill:active { transform: translateY(0); }
+
+    .pill .dot {
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: var(--primary);
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 20%, transparent);
+    }
+
+    .note {
+      margin-top: 14px;
+      padding: 14px;
       border-radius: var(--radius-lg);
       border: 1px solid var(--border);
-      background: var(--surface2);
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      color: var(--muted);
+      line-height: 1.6;
     }
-    .pill strong { display:block; margin-bottom: 4px; color: var(--text); }
-    .pill span { display:block; color: var(--muted); line-height: 1.5; }
+    .note strong { color: var(--text); }
 
-    @media (max-width: 800px) {
-      .pill { grid-column: span 12; }
+    .venn-wrap{
+      margin-top: 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .venn-top{
+      padding: 16px 16px 0;
+    }
+    .venn-img{
+      width: 100%;
+      height: auto;
+      display: block;
+      border-top: 1px solid var(--border);
     }
 
-    .callout {
+    .list {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .list strong { color: var(--text); }
+
+    .cta-row{
       margin-top: 16px;
-      padding: 12px 12px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--accent) 10%, var(--surface));
-    }
-    .callout p { margin: 0; color: var(--muted); line-height: 1.55; }
-    .callout strong { color: var(--text); }
-
-    .cta-row {
-      margin-top: 18px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .col-7, .col-5 { grid-column: span 12; }
     }
   </style>
 </head>
@@ -61,33 +104,25 @@
 <body>
 
   <div class="banner">
-    <strong>Under Construction</strong> — This page shares the mission and safeguards guiding SimHealth’s development.
+    <strong>Healthcare first.</strong> SimHealth is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
   </div>
 
   <header class="nav">
-    <a class="brand" href="../../index.html">SimHealth</a>
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
     <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="../home.html">Home</a>
-      <a class="link" href="../patients/">Patients</a>
-      <a class="link" href="../clinicians/">Clinicians</a>
-      <a class="link" href="../research/">Research</a>
+      <a class="link" href="/en/home.html">Home</a>
+      <a class="link" href="/en/patients/">Patients</a>
+      <a class="link" href="/en/clinicians/">Clinicians</a>
+      <a class="link" href="/en/research/">Research</a>
+      <a class="link active" href="/en/about/">About</a>
+      <a class="link" href="/en/contact/">Contact</a>
 
-      <div class="item">
-        <a class="link" href="./">About</a>
-        <div class="dropdown">
-          <a href="#mission">Mission</a>
-          <a href="#ethics">Ethics</a>
-          <a href="#approach">Development approach</a>
-        </div>
-      </div>
-
-      <a class="link" href="../under-construction.html">Contact</a>
-      <a class="btn-primary" href="../under-construction.html">Get Help Now</a>
+      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="./">English</a>
-        <a href="../../fr/accueil.html">Français</a>
+        <a class="active" href="/en/about/">English</a>
+        <a href="/fr/a-propos/">Français</a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -103,129 +138,144 @@
 
   <main class="wrap">
 
-    <!-- HERO TILE WITH IMAGE -->
+    <!-- HERO -->
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('../../assets/about.jpg');"></div>
+      <div class="hero-bg" style="background-image:url('/assets/about-hero.jpg');"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <h1 class="rise-1">About SimHealth</h1>
         <p class="rise-2">
-          A clinical digital companion in development, designed to support people managing gambling-related urges with safety and dignity.
+          A safety-first, clinician-informed project exploring digital support for gambling-related urges —
+          designed to reduce harm, not enable it.
         </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="/en/patients/updates/">Get project updates</a>
+          <a class="btn-secondary" href="/en/clinicians/pilot/">Request pilot info</a>
+        </div>
       </div>
     </section>
 
-    <section class="card" style="margin-top:22px;">
-
-      <p class="subhead">
-        SimHealth is being developed with a clear principle: when the stakes are real, the design must be responsible.
-        This project prioritises patient safety, ethical boundaries, and careful clinical collaboration over speed.
+    <!-- INTRO -->
+    <section class="card section" id="mission">
+      <h2 style="margin:0 0 10px;">Mission</h2>
+      <p class="lead">
+        SimHealth is being developed to support people who experience intense gambling urges — especially in short,
+        high-risk windows where relapse often happens. The goal is to deliver grounded, responsible digital support
+        that fits into real care pathways, without making medical claims.
       </p>
 
-      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
+      <div class="grid">
+        <div class="col-7">
+          <h3 style="margin:14px 0 8px;">What SimHealth aims to do</h3>
+          <ul class="list">
+            <li><strong>Reduce harm:</strong> encourage safer choices during craving spikes and emotionally charged moments.</li>
+            <li><strong>Support continuity:</strong> bridge gaps between sessions and reduce drop-off.</li>
+            <li><strong>Respect clinical reality:</strong> complement care — not replace clinicians, services, or crisis support.</li>
+            <li><strong>Keep trust:</strong> privacy-first design, clear boundaries, and transparent language.</li>
+          </ul>
 
-      <!-- MISSION -->
-      <div class="section" id="mission">
-        <h2>Mission</h2>
-        <p>
-          SimHealth exists to support people who experience gambling-related urges, especially during short windows when risk is elevated.
-          The intention is to offer structured support that helps create space between the urge and the action, reinforcing safer decisions.
-        </p>
+          <div class="note">
+            <strong>Important:</strong> SimHealth is in development and is not presented as a medical device or emergency service.
+            If you need urgent help, use <a href="/en/patients/help-support/">Crisis Resources</a>.
+          </div>
+        </div>
 
-        <div class="pillgrid" aria-label="Mission pillars">
-          <div class="pill">
-            <strong>Reduce harm</strong>
-            <span>Support safer choices when urges are strongest, without judgement.</span>
+        <div class="col-5">
+          <h3 style="margin:14px 0 8px;">Quick links</h3>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
+            <a class="pill" href="/en/patients/updates/"><span class="dot"></span> Updates</a>
+            <a class="pill" href="/en/clinicians/pilot/"><span class="dot"></span> Pilot info</a>
+            <a class="pill" href="/en/research/"><span class="dot"></span> Research</a>
+            <a class="pill" href="/en/patients/help-support/"><span class="dot"></span> Crisis resources</a>
+            <a class="pill" href="/en/contact/"><span class="dot"></span> Contact</a>
           </div>
-          <div class="pill">
-            <strong>Strengthen continuity</strong>
-            <span>Encourage engagement between sessions and recovery milestones.</span>
-          </div>
-          <div class="pill">
-            <strong>Complement care</strong>
-            <span>Designed to support existing treatment approaches, not replace them.</span>
-          </div>
-          <div class="pill">
-            <strong>Build trust</strong>
-            <span>Developed with a safety-first mindset and clear boundaries.</span>
+
+          <div class="note" style="margin-top:14px;">
+            <strong>Clinicians / services:</strong> If you’re exploring supervised collaboration, please use the pilot request page.
+            We reply from <a href="mailto:clinical@simhealth.pro">clinical@simhealth.pro</a>.
           </div>
         </div>
       </div>
+    </section>
 
-      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
+    <!-- VENN / MODEL OVERVIEW -->
+    <section class="card section" id="model">
+      <h2 style="margin:0 0 10px;">Model overview</h2>
+      <p class="lead">
+        SimHealth sits at the intersection of three priorities: evidence-informed behavioural principles,
+        adaptive user experience, and safe clinical governance. The goal is a digital tool that can be evaluated
+        responsibly and used only in appropriate contexts.
+      </p>
 
-      <!-- ETHICS -->
-      <div class="section" id="ethics">
-        <h2>Ethics</h2>
-        <p>
-          SimHealth is being developed for a sensitive clinical context. That means design decisions must prioritise safety, privacy,
-          and responsible use — even when that makes development slower.
-        </p>
-
-        <div class="pillgrid" aria-label="Ethics commitments">
-          <div class="pill">
-            <strong>Not a gambling product</strong>
-            <span>No real-money gambling, and no incentive to chase losses.</span>
-          </div>
-          <div class="pill">
-            <strong>Safety over engagement</strong>
-            <span>We avoid manipulative design patterns that amplify compulsive behaviour.</span>
-          </div>
-          <div class="pill">
-            <strong>Privacy-first</strong>
-            <span>Any future data use would be consent-led, minimised, and governed appropriately.</span>
-          </div>
-          <div class="pill">
-            <strong>Clear boundaries</strong>
-            <span>SimHealth is not a replacement for professional care and not for crisis situations.</span>
-          </div>
-        </div>
-
-        <div class="callout">
-          <p>
-            <strong>Important:</strong> SimHealth is in development. It is presented as a support tool and is not making medical claims.
-            Access will be introduced cautiously through pilot collaborations when appropriate governance is in place.
+      <div class="venn-wrap">
+        <div class="venn-top">
+          <h3 style="margin:0 0 8px;">Concept map</h3>
+          <p style="margin:0; color:var(--muted); line-height:1.6;">
+            This is a high-level public view. Protocol details, measures, and clinical workflows are documented and shared only in appropriate contexts.
           </p>
         </div>
+
+        <!-- ✅ Replace the src with your generated diagram filename (put it in /assets/) -->
+        <img
+          class="venn-img"
+          src="/assets/venn-simhealth.png"
+          alt="SimHealth concept map: CET+, ACUI, and Clinical Governance"
+          loading="lazy"
+        />
       </div>
 
-      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
+      <div class="grid" style="margin-top:14px;">
+        <div class="col-7">
+          <h3 style="margin:0 0 8px;">What CET+ means (public summary)</h3>
+          <p class="lead" style="margin-top:0;">
+            CET+ is a working label for a cue-exposure-informed approach that prioritises safety, reflection, and structured coping,
+            while being compatible with supervised pilots and iterative evaluation.
+          </p>
 
-      <!-- DEVELOPMENT APPROACH -->
-      <div class="section" id="approach">
-        <h2>Development approach</h2>
-        <p>
-          SimHealth is being built using a pilot-led approach: develop, review, test in controlled settings, then iterate.
-          This process is designed to protect patients, support clinicians, and ensure the project remains ethically aligned.
-        </p>
-
-        <div class="pillgrid" aria-label="Development approach">
-          <div class="pill">
-            <strong>Stage-gated release</strong>
-            <span>Progress only when safety, usability, and governance requirements are met.</span>
-          </div>
-          <div class="pill">
-            <strong>Clinical collaboration</strong>
-            <span>Shaped through feedback loops with healthcare professionals and partners.</span>
-          </div>
-          <div class="pill">
-            <strong>Accessibility and inclusion</strong>
-            <span>Designed for clarity, reduced friction, and inclusive usability.</span>
-          </div>
-          <div class="pill">
-            <strong>Evaluation mindset</strong>
-            <span>Outcomes will be discussed publicly only when appropriately supported.</span>
-          </div>
+          <h3 style="margin:14px 0 8px;">What ACUI means (public summary)</h3>
+          <p class="lead" style="margin-top:0;">
+            ACUI (Adaptive Clinical User Interface) is the idea that the experience should adjust for accessibility and cognitive needs
+            (e.g., ADHD-friendly layouts, readable contrast, reduced overload) — without sacrificing clarity or clinical seriousness.
+          </p>
         </div>
 
-        <div class="cta-row">
-          <a class="btn-primary" href="../under-construction.html">Contact SimHealth</a>
-          <a class="btn-secondary" href="#ethics">Our ethics</a>
+        <div class="col-5">
+          <h3 style="margin:0 0 8px;">Governance & boundaries</h3>
+          <ul class="list" style="margin-top:0;">
+            <li><strong>No emergency claims.</strong> Clear signposting to real services.</li>
+            <li><strong>No “magic cure” language.</strong> Evaluation before outcomes are discussed.</li>
+            <li><strong>Consent-led.</strong> Any data use is opt-in and minimised.</li>
+            <li><strong>Clinical oversight.</strong> Pilot use only when appropriate.</li>
+          </ul>
+
+          <div class="note">
+            <strong>Privacy:</strong> Any data collection in pilots is intended to follow GDPR principles.
+            See <a href="/en/legal/privacy/">Privacy</a> for details.
+          </div>
         </div>
       </div>
 
+      <div class="cta-row">
+        <a class="btn-primary" href="/en/clinicians/pilot/">Request pilot information</a>
+        <a class="btn-secondary" href="/en/patients/updates/">Get project updates</a>
+      </div>
     </section>
+
+    <!-- FOOTER CARD -->
+    <section class="card section" id="contact">
+      <h2 style="margin:0 0 10px;">Contact</h2>
+      <p class="lead" style="margin-top:0;">
+        For general enquiries: <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a><br>
+        For clinical / pilot enquiries: <a href="mailto:clinical@simhealth.pro">clinical@simhealth.pro</a>
+      </p>
+      <div class="cta-row">
+        <a class="btn-secondary" href="/en/contact/">Open contact page</a>
+        <a class="btn-secondary" href="/en/patients/help-support/">Crisis resources</a>
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -235,14 +285,15 @@
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
       <nav aria-label="Footer links">
-        <a href="../under-construction.html">Privacy</a>
-        <a href="../under-construction.html">Terms</a>
-        <a href="../under-construction.html">Accessibility</a>
-        <a href="../under-construction.html">Medical Disclaimer</a>
+        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/terms/">Terms</a>
+        <a href="/en/legal/cookies/">Cookies</a>
+        <a href="/en/legal/accessibility/">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
       </nav>
     </div>
   </footer>
 
 </body>
 </html>
-
