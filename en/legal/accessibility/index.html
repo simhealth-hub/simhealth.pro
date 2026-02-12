@@ -1,1 +1,159 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Accessibility</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .legal-meta{ margin-top:12px; color:var(--muted); line-height:1.6; font-size:14px; }
+    .legal-meta strong{ color:var(--text); }
+    .notice{
+      margin-top:14px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:14px;
+      color:var(--muted);
+      background: color-mix(in srgb, var(--text) 4%, transparent);
+      line-height:1.6;
+    }
+    .notice strong{ color:var(--text); }
+    .muted{ color:var(--muted); line-height:1.7; }
+    ul{ color:var(--muted); line-height:1.7; }
+    li strong{ color:var(--text); }
+    .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:999px;
+      border:1px solid var(--border); text-decoration:none;
+      font-weight:800; color:var(--text);
+      background: color-mix(in srgb, var(--text) 6%, transparent);
+      white-space:nowrap;
+    }
+    .pill.primary{
+      background: color-mix(in srgb, var(--primary) 14%, transparent);
+      border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Healthcare first.</strong> This website is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
+
+    <nav class="menu" aria-label="Main navigation">
+      <a class="link" href="/en/home.html">Home</a>
+      <a class="link" href="/en/patients/">Patients</a>
+      <a class="link" href="/en/clinicians/">Clinicians</a>
+      <a class="link" href="/en/research/">Research</a>
+      <a class="link" href="/en/about/">About</a>
+      <a class="link" href="/en/contact/">Contact</a>
+
+      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+
+      <div class="lang-toggle" aria-label="Language">
+        <a class="active" href="/en/legal/accessibility/">English</a>
+        <a href="/fr/accueil.html">Français</a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Toggle theme">
+        <span class="label label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/legal-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Accessibility</h1>
+        <p class="rise-2">
+          We’re building SimHealth with accessibility in mind — including clear navigation, readable contrast, and keyboard-friendly controls.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#accessibility">Read statement</a>
+          <a class="btn-secondary" href="/en/contact/">Report an issue</a>
+        </div>
+
+        <p class="legal-meta">
+          <strong>Last updated:</strong> 2026-02-01
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="accessibility" style="margin-top:16px;">
+
+      <div class="notice">
+        <strong>Commitment:</strong> SimHealth aims to be usable by as many people as possible, including users with visual, motor, cognitive, and attention differences.
+        If you experience any accessibility barriers, tell us and we’ll prioritise fixes.
+      </div>
+
+      <h2>What we’re doing</h2>
+      <ul>
+        <li><strong>Readable typography:</strong> clear font choices and comfortable line spacing.</li>
+        <li><strong>Contrast-aware UI:</strong> dark/light modes to support different preferences.</li>
+        <li><strong>Keyboard navigation:</strong> interactive controls should be reachable and usable without a mouse.</li>
+        <li><strong>Semantic HTML:</strong> structured headings, labels for form fields, and accessible navigation landmarks.</li>
+        <li><strong>Mobile-first considerations:</strong> layouts adapt for smaller screens.</li>
+      </ul>
+
+      <h2>Known limitations</h2>
+      <p class="muted">
+        SimHealth is still in development, so some pages may evolve quickly. If you notice issues (e.g., focus traps, missing labels, low contrast),
+        please report them.
+      </p>
+
+      <h2>Contact for accessibility issues</h2>
+      <p class="muted">
+        Email <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a> with a short description and (if possible) your device/browser.
+      </p>
+
+      <div class="pill-row">
+        <a class="pill primary" href="/en/contact/">Report an issue</a>
+        <a class="pill" href="/en/legal/privacy/">Privacy</a>
+        <a class="pill" href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/terms/">Terms</a>
+        <a href="/en/legal/cookies/">Cookies</a>
+        <a href="/en/legal/accessibility/">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
