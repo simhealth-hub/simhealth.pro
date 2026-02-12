@@ -1,1 +1,327 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Contact</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ✅ Root-relative paths -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .status{
+      display:none;
+      margin-top:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      padding:12px 14px;
+      line-height:1.5;
+      color:var(--muted);
+    }
+    .status.success{
+      display:block;
+      background:color-mix(in srgb, var(--primary) 18%, transparent);
+      border-color:color-mix(in srgb, var(--primary) 38%, var(--border));
+      color:var(--text);
+    }
+    .status.error{
+      display:block;
+      background:color-mix(in srgb, #ef4444 16%, transparent);
+      border-color:color-mix(in srgb, #ef4444 34%, var(--border));
+      color:var(--text);
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+    .field{ grid-column: span 6; }
+    .field.full{ grid-column: span 12; }
+
+    .field label{ display:block; font-weight:800; margin:0 0 8px; }
+    .input, .textarea, .select{
+      width:100%;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--surface) 92%, transparent);
+      color:var(--text);
+      font-size:15px;
+      outline:none;
+    }
+    .textarea{ min-height:140px; resize:vertical; }
+    .input:focus, .textarea:focus, .select:focus{
+      border-color:color-mix(in srgb, var(--primary) 55%, var(--border));
+      background:var(--surface);
+    }
+
+    .notice{
+      margin-top:14px;
+      background: color-mix(in srgb, var(--warn) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--warn) 28%, transparent);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .notice strong { color: var(--text); }
+
+    .consent{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      color:var(--muted);
+      line-height:1.45;
+      font-size:14px;
+    }
+    .consent input{ margin-top:3px; }
+
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    button.btn-primary{ border:none; cursor:pointer; }
+
+    .mini{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    @media (max-width: 800px){
+      .field{ grid-column: span 12; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Healthcare first.</strong> This website is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
+
+    <nav class="menu" aria-label="Main navigation">
+      <a class="link" href="/en/home.html">Home</a>
+      <a class="link" href="/en/patients/">Patients</a>
+      <a class="link" href="/en/clinicians/">Clinicians</a>
+      <a class="link" href="/en/research/">Research</a>
+      <a class="link" href="/en/about/">About</a>
+      <a class="link" href="/en/contact/">Contact</a>
+
+      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+
+      <div class="lang-toggle" aria-label="Language">
+        <a class="active" href="/en/contact/">English</a>
+        <a href="/fr/contact/">Français</a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Toggle theme">
+        <span class="label label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/contact-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Contact</h1>
+        <p class="rise-2">
+          For professional enquiries, collaboration, research discussion, or general questions about the project.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#form">Send a message</a>
+          <a class="btn-secondary" href="/en/patients/updates/">Get updates</a>
+          <a class="btn-secondary" href="/en/clinicians/pilot/">Request pilot info</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="form" style="margin-top:16px;">
+      <h2 style="margin:0 0 10px;">Send a message</h2>
+      <p style="margin:0; color:var(--muted); line-height:1.65;">
+        We aim to respond quickly. If you are a clinician or institution, please use your professional email where possible.
+      </p>
+
+      <div class="notice">
+        <strong>Important:</strong> This form is <strong>not</strong> monitored as an emergency service.
+        If you’re in immediate danger or at risk of self-harm, please use
+        <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
+        or call your local emergency number.
+      </div>
+
+      <div id="statusBox" class="status"></div>
+
+      <form id="contactForm" style="margin-top:14px;">
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input class="input" id="name" name="name" type="text" placeholder="Alex Smith" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="topic">Topic</label>
+            <select class="select" id="topic" name="topic" required>
+              <option value="">Select…</option>
+              <option value="general">General</option>
+              <option value="clinician">Clinician / service</option>
+              <option value="research">Research / evaluation</option>
+              <option value="press">Press / media</option>
+              <option value="partnership">Partnership</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="country">Country (optional)</label>
+            <input class="input" id="country" name="country" type="text" placeholder="France / UK / USA…">
+          </div>
+
+          <div class="field full">
+            <label for="message">Message</label>
+            <textarea class="textarea" id="message" name="message" placeholder="How can we help?" required></textarea>
+          </div>
+        </div>
+
+        <div class="consent">
+          <input id="consent" type="checkbox" required>
+          <label for="consent" style="margin:0;">
+            I consent to SimHealth contacting me about this enquiry.
+            <div style="margin-top:6px;">
+              Data note: We use this information only to respond to you. You can request deletion any time via
+              <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+            </div>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" type="submit">Send message</button>
+          <a class="btn-secondary" href="/en/home.html">Back to Home</a>
+        </div>
+
+        <p class="mini">
+          Prefer email? General: <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a> • Clinical: <a href="mailto:clinical@simhealth.pro">clinical@simhealth.pro</a>
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/terms/">Terms</a>
+        <a href="/en/legal/cookies/">Cookies</a>
+        <a href="/en/legal/accessibility/">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ✅ IMPORTANT: keep text/plain + no-cors for Apps Script web apps -->
+  <script>
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YKPqZwazNnQKjULUyALKS-7RlJyNRTQ/exec";
+
+    const form = document.getElementById("contactForm");
+    const statusBox = document.getElementById("statusBox");
+
+    function setStatus(type, msg){
+      statusBox.className = "status " + type;
+      statusBox.textContent = msg;
+    }
+
+    function routeToEmail(topic){
+      // This is informational only; routing is also done server-side in Apps Script.
+      if (topic === "clinician") return "clinical@simhealth.pro";
+      if (topic === "research") return "contact@simhealth.pro";
+      if (topic === "press") return "contact@simhealth.pro";
+      return "contact@simhealth.pro";
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const topic = document.getElementById("topic").value.trim();
+      const country = document.getElementById("country").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const consent = document.getElementById("consent").checked;
+
+      if (!name) return setStatus("error", "Please enter your name.");
+      if (!email || !email.includes("@")) return setStatus("error", "Please enter a valid email address.");
+      if (!topic) return setStatus("error", "Please select a topic.");
+      if (!message) return setStatus("error", "Please enter a message.");
+      if (!consent) return setStatus("error", "Please confirm consent so we can respond.");
+      if (!ENDPOINT) return setStatus("error", "Setup incomplete: endpoint not set.");
+
+      const routedTo = routeToEmail(topic);
+
+      try {
+        await fetch(ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            type: "contact",
+            lang: "en",
+            source: "contact-page",
+            consent: true,
+            userAgent: navigator.userAgent,
+
+            // payload fields
+            email,
+            name,
+            topic,
+            country,
+            message,
+            routedTo
+          })
+        });
+
+        setStatus("success", "Thanks — your message has been sent. We’ll reply by email as soon as possible.");
+        form.reset();
+
+      } catch (err) {
+        console.error(err);
+        setStatus("error", "Something went wrong. Please email contact@simhealth.pro instead.");
+      }
+    });
+  </script>
+
+</body>
+            </html>
