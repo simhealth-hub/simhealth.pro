@@ -1,1 +1,163 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Medical Disclaimer</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .legal-meta{ margin-top:12px; color:var(--muted); line-height:1.6; font-size:14px; }
+    .legal-meta strong{ color:var(--text); }
+    .notice{
+      margin-top:14px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:14px;
+      color:var(--muted);
+      background: color-mix(in srgb, var(--warn) 12%, transparent);
+      line-height:1.6;
+    }
+    .notice strong{ color:var(--text); }
+    .muted{ color:var(--muted); line-height:1.7; }
+    ul{ color:var(--muted); line-height:1.7; }
+    li strong{ color:var(--text); }
+    .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:999px;
+      border:1px solid var(--border); text-decoration:none;
+      font-weight:800; color:var(--text);
+      background: color-mix(in srgb, var(--text) 6%, transparent);
+      white-space:nowrap;
+    }
+    .pill.primary{
+      background: color-mix(in srgb, var(--primary) 14%, transparent);
+      border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Healthcare first.</strong> This website is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
+
+    <nav class="menu" aria-label="Main navigation">
+      <a class="link" href="/en/home.html">Home</a>
+      <a class="link" href="/en/patients/">Patients</a>
+      <a class="link" href="/en/clinicians/">Clinicians</a>
+      <a class="link" href="/en/research/">Research</a>
+      <a class="link" href="/en/about/">About</a>
+      <a class="link" href="/en/contact/">Contact</a>
+
+      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+
+      <div class="lang-toggle" aria-label="Language">
+        <a class="active" href="/en/legal/medical-disclaimer/">English</a>
+        <a href="/fr/accueil.html">Français</a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Toggle theme">
+        <span class="label label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/legal-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Medical Disclaimer</h1>
+        <p class="rise-2">
+          SimHealth is in development and this website is informational only.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#disclaimer">Read disclaimer</a>
+          <a class="btn-secondary" href="/en/patients/help-support/">Crisis Resources</a>
+        </div>
+
+        <p class="legal-meta">
+          <strong>Effective date:</strong> 2026-02-01
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="disclaimer" style="margin-top:16px;">
+
+      <div class="notice">
+        <strong>Emergency notice:</strong> SimHealth does not provide emergency or crisis care.
+        If you are in immediate danger or at risk of self-harm, call your local emergency number now.
+      </div>
+
+      <h2>1) No medical advice</h2>
+      <p class="muted">
+        Content on this website is provided for general informational purposes only and is not medical advice.
+        It is not intended to diagnose, treat, cure, or prevent any condition.
+      </p>
+
+      <h2>2) Not a substitute for professional care</h2>
+      <p class="muted">
+        Always seek the advice of qualified health professionals with any questions regarding a medical or mental health condition.
+        Do not delay or disregard professional advice because of something you read on this website.
+      </p>
+
+      <h2>3) No emergency service</h2>
+      <p class="muted">
+        If you are experiencing a crisis, use the <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a> page
+        or call your local emergency number.
+      </p>
+
+      <h2>4) Development status</h2>
+      <p class="muted">
+        SimHealth is in development. Any descriptions of future capabilities, pilots, or research are subject to governance, ethics review (where applicable),
+        and careful staged evaluation. No clinical claims are made on this website.
+      </p>
+
+      <div class="pill-row">
+        <a class="pill primary" href="/en/patients/help-support/">Crisis Resources</a>
+        <a class="pill" href="/en/legal/privacy/">Privacy</a>
+        <a class="pill" href="/en/contact/">Contact</a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/terms/">Terms</a>
+        <a href="/en/legal/cookies/">Cookies</a>
+        <a href="/en/legal/accessibility/">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+  </html>
