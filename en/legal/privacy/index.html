@@ -72,4 +72,181 @@
   </div>
 
   <header class="nav">
-    <
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
+
+    <nav class="menu" aria-label="Main navigation">
+      <a class="link" href="/en/home.html">Home</a>
+      <a class="link" href="/en/patients/">Patients</a>
+      <a class="link" href="/en/clinicians/">Clinicians</a>
+      <a class="link" href="/en/research/">Research</a>
+      <a class="link" href="/en/about/">About</a>
+      <a class="link" href="/en/contact/">Contact</a>
+
+      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+
+      <div class="lang-toggle" aria-label="Language">
+        <a class="active" href="/en/legal/privacy/">English</a>
+        <a href="/fr/accueil.html">Français</a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Toggle theme">
+        <span class="label label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/legal-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Privacy Policy</h1>
+        <p class="rise-2">
+          How we handle personal data on simhealth.pro — designed with a privacy-first, safety-first approach.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#policy">Read policy</a>
+          <a class="btn-secondary" href="/en/contact/">Contact</a>
+        </div>
+
+        <p class="legal-meta">
+          <strong>Effective date:</strong> 2026-02-01 •
+          <strong>Website:</strong> simhealth.pro •
+          <strong>Contact:</strong> <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="card legal-section" id="policy" style="margin-top:16px;">
+
+      <div class="notice">
+        <strong>Important:</strong> SimHealth is in development and this site is a project showcase. We do not provide emergency or crisis care.
+        If you are at immediate risk, use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a> or call your local emergency number.
+      </div>
+
+      <div class="legal-toc" aria-label="Privacy policy table of contents">
+        <h2>Contents</h2>
+        <ul style="margin:0; padding-left:18px;">
+          <li><a href="#who">Who we are</a></li>
+          <li><a href="#data">What data we collect</a></li>
+          <li><a href="#why">Why we collect it & legal bases</a></li>
+          <li><a href="#sharing">Sharing & processors</a></li>
+          <li><a href="#retention">Retention</a></li>
+          <li><a href="#rights">Your rights (GDPR)</a></li>
+          <li><a href="#security">Security</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#changes">Changes</a></li>
+        </ul>
+      </div>
+
+      <h2 id="who">Who we are</h2>
+      <p class="muted">
+        “SimHealth” refers to the SimHealth project and the simhealth.pro website. For privacy questions, contact
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+      </p>
+
+      <h2 id="data">What data we collect</h2>
+      <p class="muted">We aim to collect as little personal data as possible. Data may include:</p>
+      <ul>
+        <li><strong>Contact form data:</strong> name, email address, message content, topic, and (optional) country.</li>
+        <li><strong>Pilot enquiries:</strong> professional name, role, organisation, work email, country, and enquiry message.</li>
+        <li><strong>Updates subscription:</strong> email address and consent status (to send project updates).</li>
+        <li><strong>Basic technical data:</strong> browser user-agent and limited metadata used for abuse prevention and reliability.</li>
+      </ul>
+
+      <h2 id="why">Why we collect it & legal bases</h2>
+      <p class="muted">
+        We process personal data only when there is a clear purpose and a lawful basis under GDPR:
+      </p>
+      <ul>
+        <li><strong>To respond to enquiries</strong> (e.g., contact forms, pilot enquiries): <strong>legitimate interests</strong> and/or <strong>steps prior to entering an agreement</strong>.</li>
+        <li><strong>To send project updates</strong> (email list): <strong>consent</strong>. You can unsubscribe at any time.</li>
+        <li><strong>To keep the site safe and reliable</strong> (e.g., prevent abuse): <strong>legitimate interests</strong>.</li>
+      </ul>
+
+      <h2 id="sharing">Sharing & processors</h2>
+      <p class="muted">
+        We do not sell personal data. We may use carefully selected service providers (“processors”) to operate the website and email.
+        For example, we may use:
+      </p>
+      <ul>
+        <li><strong>Email delivery providers</strong> to send confirmations/updates and respond to enquiries.</li>
+        <li><strong>Form handling / storage</strong> such as a secure spreadsheet or database used to store enquiries.</li>
+      </ul>
+      <p class="muted">
+        When we use processors, we aim to limit data to what is necessary and configure services to reduce exposure.
+      </p>
+
+      <h2 id="retention">Retention</h2>
+      <p class="muted">
+        We keep personal data only for as long as needed for the purpose:
+      </p>
+      <ul>
+        <li><strong>Updates list:</strong> until you unsubscribe or request deletion.</li>
+        <li><strong>Enquiries:</strong> as long as needed to respond and maintain an appropriate record of communication.</li>
+      </ul>
+      <p class="muted">
+        You can request deletion at any time by emailing <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+      </p>
+
+      <h2 id="rights">Your rights (GDPR)</h2>
+      <p class="muted">
+        Depending on your situation, you may have rights including access, rectification, deletion, restriction, objection, and data portability.
+        You can also withdraw consent where consent is the basis (e.g., email updates).
+      </p>
+      <p class="muted">
+        To exercise your rights, email <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a> from the address concerned.
+      </p>
+
+      <h2 id="security">Security</h2>
+      <p class="muted">
+        We use reasonable technical and organisational measures to protect data, including least-privilege access and secure service configurations.
+        No method of transmission or storage is 100% secure, but we design for safety and minimisation.
+      </p>
+
+      <h2 id="children">Children</h2>
+      <p class="muted">
+        SimHealth is not designed for children. If you believe a child has provided personal data, contact us and we will take appropriate steps.
+      </p>
+
+      <h2 id="changes">Changes</h2>
+      <p class="muted">
+        We may update this policy as SimHealth evolves. We will update the “Effective date” at the top of this page.
+      </p>
+
+      <div class="pill-row">
+        <a class="pill primary" href="/en/contact/">Contact privacy</a>
+        <a class="pill" href="/en/legal/cookies/">Cookies</a>
+        <a class="pill" href="/en/legal/terms/">Terms</a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/terms/">Terms</a>
+        <a href="/en/legal/cookies/">Cookies</a>
+        <a href="/en/legal/accessibility/">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
