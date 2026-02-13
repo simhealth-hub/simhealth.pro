@@ -1,30 +1,22 @@
-
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth — Self-check (PGSI)</title>
+  <title>SimHealth — PGSI Self-check</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- ✅ Root-relative paths (works from any folder) -->
+  <!-- Root-relative paths -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
   <style>
-    .status{
-      margin-top:14px;
-      border-radius:var(--radius-lg);
-      border:1px solid var(--border);
-      padding:12px 14px;
-      line-height:1.55;
-      color:var(--muted);
-      background:color-mix(in srgb, var(--text) 4%, transparent);
-    }
-    .status strong{ color:var(--text); }
+    .page-head{ margin:16px 0 10px; }
+    .page-head h2{ margin:0 0 8px; font-size:22px; }
+    .page-head p{ margin:0; color:var(--muted); line-height:1.65; }
 
     .notice{
       margin-top:14px;
@@ -35,147 +27,131 @@
       color: var(--muted);
       line-height: 1.55;
     }
-    .notice strong { color: var(--text); }
+    .notice strong{ color: var(--text); }
 
-    .quiz{
-      margin-top:16px;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-    }
-
-    .q{
-      background:var(--surface);
-      border:1px solid var(--border);
-      border-radius:var(--radius-xl);
-      padding:16px;
-    }
-    .q h3{
-      margin:0 0 10px;
-      font-size:16px;
-      line-height:1.35;
-    }
-
-    .opts{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:10px;
-      margin-top:10px;
-    }
-    .opt{
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--text) 4%, transparent);
-      cursor:pointer;
-      user-select:none;
-      line-height:1.35;
-    }
-    .opt:hover{
-      background:color-mix(in srgb, var(--primary) 10%, transparent);
-      border-color:color-mix(in srgb, var(--primary) 22%, var(--border));
-    }
-    .opt input{ margin-top:2px; }
-
-    .bar{
+    .meta-row{
       margin-top:12px;
       display:flex;
       gap:10px;
       flex-wrap:wrap;
       align-items:center;
-      justify-content:space-between;
-    }
-
-    .progress{
-      flex:1;
-      min-width:220px;
-      height:10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--text) 4%, transparent);
-      overflow:hidden;
-    }
-    .progress > span{
-      display:block;
-      height:100%;
-      width:0%;
-      background:var(--primary);
-      transition:width var(--t-fast) var(--ease);
-    }
-
-    .actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:14px;
-    }
-    button.btn-primary{ border:none; cursor:pointer; }
-
-    .result{
-      margin-top:16px;
-      border:1px solid var(--border);
-      border-radius:var(--radius-xl);
-      padding:16px;
-      background:color-mix(in srgb, var(--accent) 10%, var(--surface));
-      display:none;
-    }
-    .result.show{ display:block; }
-
-    .scoreRow{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:baseline;
-      justify-content:space-between;
-    }
-    .scoreBox{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-    .scoreNum{
-      font-size:34px;
-      font-weight:900;
-      letter-spacing:-0.02em;
-      color:var(--text);
-      line-height:1;
-    }
-    .scoreMeta{
       color:var(--muted);
       font-size:13px;
       line-height:1.4;
     }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 6%, transparent);
+      color:var(--text);
+      font-weight:800;
+      letter-spacing:.2px;
+      user-select:none;
+      white-space:nowrap;
+    }
 
-    .band{
-      margin-top:10px;
-      padding:12px 14px;
+    .qwrap{ margin-top:16px; }
+    .q{
+      margin-top:14px;
+      padding:16px;
+      border-radius:var(--radius-xl);
+      border:1px solid var(--border);
+      background:var(--surface);
+    }
+    .q h3{
+      margin:0 0 10px;
+      font-size:16px;
+      line-height:1.45;
+    }
+    .options{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:10px;
+      margin-top:8px;
+    }
+    .opt{
+      grid-column: span 6;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 12px;
       border-radius:var(--radius-lg);
       border:1px solid var(--border);
       background:color-mix(in srgb, var(--text) 4%, transparent);
-      color:var(--muted);
-      line-height:1.55;
+      cursor:pointer;
+      user-select:none;
+      transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
     }
-    .band strong{ color:var(--text); }
+    .opt:hover{ transform: translateY(-1px); }
+    .opt:active{ transform: translateY(0px); }
+    .opt input{ margin-top:3px; }
+    .opt b{ color:var(--text); }
+    .opt span{ color:var(--muted); font-size:13px; line-height:1.45; }
 
-    .nextSteps{
-      margin-top:12px;
+    .actions{
+      margin-top:14px;
       display:flex;
       gap:10px;
       flex-wrap:wrap;
+      align-items:center;
+    }
+    button.btn-primary{
+      border:none;
+      cursor:pointer;
     }
 
-    .small{
+    .status{
+      display:none;
+      margin-top:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      padding:12px 14px;
+      line-height:1.55;
+      color:var(--muted);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+    }
+    .status.show{ display:block; }
+    .status.good{
+      background:color-mix(in srgb, var(--primary) 14%, transparent);
+      border-color:color-mix(in srgb, var(--primary) 35%, var(--border));
+      color:var(--text);
+    }
+    .status.warn{
+      background:color-mix(in srgb, var(--warn) 12%, transparent);
+      border-color:color-mix(in srgb, var(--warn) 30%, var(--border));
+      color:var(--text);
+    }
+    .status.risk{
+      background:color-mix(in srgb, #ef4444 14%, transparent);
+      border-color:color-mix(in srgb, #ef4444 32%, var(--border));
+      color:var(--text);
+    }
+    .status h4{ margin:0 0 8px; }
+    .status p{ margin:0; color:var(--muted); line-height:1.6; }
+    .status p strong{ color:var(--text); }
+    .status .row{
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .fine{
       margin-top:12px;
       color:var(--muted);
       font-size:13px;
-      line-height:1.6;
+      line-height:1.55;
     }
+    .fine a{ color:var(--text); text-decoration:underline; }
 
-    @media (max-width: 820px){
-      .opts{ grid-template-columns:1fr; }
+    @media (max-width: 800px){
+      .opt{ grid-column: span 12; }
+      .page-head h2{ font-size:20px; }
     }
   </style>
 </head>
@@ -183,7 +159,7 @@
 <body>
 
   <div class="banner">
-    <strong>Healthcare first.</strong> If you’re in immediate danger, call your local emergency number now.
+    <strong>Healthcare first.</strong> This page is informational. If you’re in immediate danger or at risk of self-harm, call your local emergency number now.
   </div>
 
   <header class="nav">
@@ -201,7 +177,7 @@
 
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/patients/pgsi/">English</a>
-        <a href="/fr/patients/pgsi/">Français</a>
+        <a href="/fr/patients/">Français</a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -219,180 +195,75 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/pgsi-hero.jpg');"></div>
+      <div class="hero-bg" style="background-image:url('/assets/patient.jpg');"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <h1 class="rise-1">Self-check (PGSI)</h1>
+        <h1 class="rise-1">PGSI self-check</h1>
         <p class="rise-2">
-          A quick, research-used screening questionnaire (9 items) to help you reflect on gambling-related harm and risk.
-          This is <strong>not</strong> a diagnosis.
+          A short, validated questionnaire used internationally to screen for gambling-related risk over the last 12 months.
+          This is not a diagnosis — it’s a structured self-check.
         </p>
 
         <div class="hero-actions rise-3">
           <a class="btn-primary" href="#quiz">Start the self-check</a>
-          <a class="btn-secondary" href="/en/patients/help-support/">Get support</a>
-          <a class="btn-secondary" href="/en/patients/updates/">Get updates</a>
+          <a class="btn-secondary" href="/en/patients/help-support/">Crisis Resources</a>
+          <a class="btn-secondary" href="/en/patients/">Back to Patients</a>
+        </div>
+
+        <div class="notice" style="margin-top:14px;">
+          <strong>If you feel unsafe right now:</strong> use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
+          or call your local emergency number. This website is not monitored as an emergency service.
         </div>
       </div>
     </section>
 
-    <section class="card" id="quiz" style="margin-top:16px;">
-      <h2 style="margin:0 0 8px;">PGSI — Problem Gambling Severity Index</h2>
-      <p style="margin:0; color:var(--muted); line-height:1.65;">
-        Think about the <strong style="color:var(--text);">last 12 months</strong>. Answer each question as honestly as you can.
+    <div class="page-head">
+      <h2>How it works</h2>
+      <p>
+        Answer each question based on your experiences in the <strong style="color:var(--text);">last 12 months</strong>.
+        Your score is calculated locally in your browser — SimHealth does not store your answers on this page.
       </p>
 
-      <div class="notice" role="note" aria-label="Safety notice">
-        <strong>Important:</strong> This page is not an emergency service and does not provide crisis care.
-        If you feel at risk of self-harm or in immediate danger, use
-        <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
-        or call your local emergency number.
+      <div class="meta-row" aria-label="Questionnaire details">
+        <span class="chip">9 questions</span>
+        <span class="chip">Time: ~2 minutes</span>
+        <span class="chip">Scored locally (privacy-first)</span>
       </div>
 
-      <div class="status" role="status" aria-live="polite">
-        <strong>How scoring works:</strong> Each item is scored 0–3 (Never → Almost always). Total score: 0–27.
-        Bands are shown after you complete all questions.
+      <div class="notice">
+        <strong>Important:</strong> This tool can be emotionally activating.
+        If you notice distress rising, pause and use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
+        or speak to a professional you trust.
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <section class="card" id="quiz" style="margin-top:16px;">
+      <h2 style="margin:0 0 8px;">PGSI questionnaire</h2>
+      <p style="margin:0; color:var(--muted); line-height:1.65;">
+        Select one option per question:
+        <strong style="color:var(--text);">Never (0)</strong>,
+        <strong style="color:var(--text);">Sometimes (1)</strong>,
+        <strong style="color:var(--text);">Most of the time (2)</strong>,
+        <strong style="color:var(--text);">Almost always (3)</strong>.
+      </p>
+
+      <form id="pgsiForm" class="qwrap" aria-label="PGSI form"></form>
+
+      <div class="actions">
+        <button class="btn-primary" id="calcBtn" type="button">Calculate score</button>
+        <button class="btn-secondary" id="resetBtn" type="button">Reset</button>
+        <a class="btn-secondary" href="/en/patients/help-support/">Help &amp; support</a>
       </div>
 
-      <div class="bar" aria-label="Progress">
-        <div class="progress" aria-hidden="true"><span id="progFill"></span></div>
-        <div style="color:var(--muted); font-size:13px;">
-          <span id="answeredCount">0</span>/9 answered
-        </div>
-      </div>
+      <div id="resultBox" class="status" aria-live="polite"></div>
 
-      <form id="pgsiForm" class="quiz" autocomplete="off">
-        <!-- Q1 -->
-        <div class="q" data-q="1">
-          <h3>1) Have you bet more than you could really afford to lose?</h3>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="q1" value="0"> Never</label>
-            <label class="opt"><input type="radio" name="q1" value="1"> Sometimes</label>
-            <label class="opt"><input type="radio" name="q1" value="2"> Most of the time</label>
-            <label class="opt"><input type="radio" name="q1" value="3"> Almost always</label>
-          </div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="q" data-q="2">
-          <h3>2) Have you needed to gamble with larger amounts of money to get the same feeling of excitement?</h3>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="q2" value="0"> Never</label>
-            <label class="opt"><input type="radio" name="q2" value="1"> Sometimes</label>
-            <label class="opt"><input type="radio" name="q2" value="2"> Most of the time</label>
-            <label class="opt"><input type="radio" name="q2" value="3"> Almost always</label>
-          </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="q" data-q="3">
-          <h3>3) When you gambled, did you go back another day to try to win back the money you lost?</h3>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="q3" value="0"> Never</label>
-            <label class="opt"><input type="radio" name="q3" value="1"> Sometimes</label>
-            <label class="opt"><input type="radio" name="q3" value="2"> Most of the time</label>
-            <label class="opt"><input type="radio" name="q3" value="3"> Almost always</label>
-          </div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="q" data-q="4">
-          <h3>4) Have you borrowed money or sold anything to get money to gamble?</h3>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="q4" value="0"> Never</label>
-            <label class="opt"><input type="radio" name="q4" value="1"> Sometimes</label>
-            <label class="opt"><input type="radio" name="q4" value="2"> Most of the time</label>
-            <label class="opt"><input type="radio" name="q4" value="3"> Almost always</label>
-          </div>
-        </div>
-
-        <!-- Q5 -->
-        <div class="q" data-q="5">
-          <h3>5) Have you felt that you might have a problem with gambling?</h3>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="q5" value="0"> Never</label>
-            <label class="opt"><input type="radio" name="q5" value="1"> Sometimes</label>
-            <label class="opt"><input type="radio" name="q5" value="2"> Most of the time</label>
-            <label class="opt"><input type="radio" name="q5" value="3"> Almost always</label>
-          </div>
-        </div>
-
-        <!-- Q6 -->
-        <div class="q" data-q="6">
-          <h3>6) Has gambling caused you any health problems, including stress or anxiety?</h3>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="q6" value="0"> Never</label>
-            <label class="opt"><input type="radio" name="q6" value="1"> Sometimes</label>
-            <label class="opt"><input type="radio" name="q6" value="2"> Most of the time</label>
-            <label class="opt"><input type="radio" name="q6" value="3"> Almost always</label>
-          </div>
-        </div>
-
-        <!-- Q7 -->
-        <div class="q" data-q="7">
-          <h3>7) Have people criticised your betting or told you that you had a gambling problem, regardless of whether you thought it was true?</h3>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="q7" value="0"> Never</label>
-            <label class="opt"><input type="radio" name="q7" value="1"> Sometimes</label>
-            <label class="opt"><input type="radio" name="q7" value="2"> Most of the time</label>
-            <label class="opt"><input type="radio" name="q7" value="3"> Almost always</label>
-          </div>
-        </div>
-
-        <!-- Q8 -->
-        <div class="q" data-q="8">
-          <h3>8) Has your gambling caused any financial problems for you or your household?</h3>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="q8" value="0"> Never</label>
-            <label class="opt"><input type="radio" name="q8" value="1"> Sometimes</label>
-            <label class="opt"><input type="radio" name="q8" value="2"> Most of the time</label>
-            <label class="opt"><input type="radio" name="q8" value="3"> Almost always</label>
-          </div>
-        </div>
-
-        <!-- Q9 -->
-        <div class="q" data-q="9">
-          <h3>9) Have you felt guilty about the way you gamble or what happens when you gamble?</h3>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="q9" value="0"> Never</label>
-            <label class="opt"><input type="radio" name="q9" value="1"> Sometimes</label>
-            <label class="opt"><input type="radio" name="q9" value="2"> Most of the time</label>
-            <label class="opt"><input type="radio" name="q9" value="3"> Almost always</label>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button class="btn-primary" type="button" id="calcBtn">View results</button>
-          <button class="btn-secondary" type="button" id="resetBtn">Reset</button>
-          <a class="btn-secondary" href="/en/patients/">Back to Patients</a>
-        </div>
-      </form>
-
-      <!-- RESULTS -->
-      <div id="resultBox" class="result" aria-live="polite">
-        <div class="scoreRow">
-          <div class="scoreBox">
-            <div class="scoreNum" id="scoreNum">0</div>
-            <div class="scoreMeta">Total score (0–27)</div>
-          </div>
-
-          <div class="scoreBox" style="text-align:right;">
-            <div style="font-weight:900; color:var(--text);" id="bandTitle">—</div>
-            <div class="scoreMeta" id="bandSub">Complete all questions to view a band.</div>
-          </div>
-        </div>
-
-        <div class="band" id="bandBody"></div>
-
-        <div class="nextSteps" id="nextSteps"></div>
-
-        <p class="small">
-          Note: PGSI is a screening tool used in research and clinical contexts. It cannot diagnose a condition.
-          If you’re concerned, consider discussing results with a qualified professional.
-        </p>
-      </div>
-
+      <p class="fine">
+        The PGSI (Problem Gambling Severity Index) is widely used as a screening measure in population and service settings.
+        This page is informational and does not provide medical advice.
+        If you want to talk to someone today, use <a href="/en/patients/help-support/">Crisis Resources</a>.
+      </p>
     </section>
 
   </main>
@@ -415,166 +286,152 @@
   </footer>
 
   <script>
-    (function(){
-      const form = document.getElementById("pgsiForm");
-      const calcBtn = document.getElementById("calcBtn");
-      const resetBtn = document.getElementById("resetBtn");
+    // PGSI questions (standard 9-item PGSI)
+    const QUESTIONS = [
+      "In the past 12 months, have you bet more than you could really afford to lose?",
+      "In the past 12 months, have you needed to gamble with larger amounts of money to get the same feeling of excitement?",
+      "In the past 12 months, when you gambled, did you go back another day to try to win back the money you lost?",
+      "In the past 12 months, have you borrowed money or sold anything to get money to gamble?",
+      "In the past 12 months, have you felt that you might have a problem with gambling?",
+      "In the past 12 months, has gambling caused you any health problems, including stress or anxiety?",
+      "In the past 12 months, have people criticised your betting or told you that you had a gambling problem, regardless of whether or not you thought it was true?",
+      "In the past 12 months, has your gambling caused any financial problems for you or your household?",
+      "In the past 12 months, have you felt guilty about the way you gamble or what happens when you gamble?"
+    ];
 
-      const answeredCountEl = document.getElementById("answeredCount");
-      const progFill = document.getElementById("progFill");
+    const OPTIONS = [
+      { label: "Never (0)", value: 0, hint: "Not at all in the last 12 months." },
+      { label: "Sometimes (1)", value: 1, hint: "Occasional / intermittent." },
+      { label: "Most of the time (2)", value: 2, hint: "Frequent / recurring." },
+      { label: "Almost always (3)", value: 3, hint: "Very frequent / near constant." }
+    ];
 
-      const resultBox = document.getElementById("resultBox");
-      const scoreNum = document.getElementById("scoreNum");
-      const bandTitle = document.getElementById("bandTitle");
-      const bandSub = document.getElementById("bandSub");
-      const bandBody = document.getElementById("bandBody");
-      const nextSteps = document.getElementById("nextSteps");
+    const form = document.getElementById("pgsiForm");
+    const resultBox = document.getElementById("resultBox");
+    const calcBtn = document.getElementById("calcBtn");
+    const resetBtn = document.getElementById("resetBtn");
 
-      const TOTAL_Q = 9;
+    function escapeHtml(s){
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
 
-      function getAnsweredCount(){
-        let c = 0;
-        for(let i=1;i<=TOTAL_Q;i++){
-          const v = form.querySelector(`input[name="q${i}"]:checked`);
-          if(v) c++;
-        }
-        return c;
-      }
-
-      function updateProgress(){
-        const a = getAnsweredCount();
-        answeredCountEl.textContent = String(a);
-        const pct = Math.round((a / TOTAL_Q) * 100);
-        progFill.style.width = pct + "%";
-      }
-
-      function computeScore(){
-        let total = 0;
-        for(let i=1;i<=TOTAL_Q;i++){
-          const el = form.querySelector(`input[name="q${i}"]:checked`);
-          if(!el) return null;
-          total += Number(el.value || 0);
-        }
-        return total;
-      }
-
-      function btn(href, label, primary){
-        const a = document.createElement("a");
-        a.className = primary ? "btn-primary" : "btn-secondary";
-        a.href = href;
-        a.textContent = label;
-        return a;
-      }
-
-      function renderResults(score){
-        // Bands: 0, 1–2, 3–7, 8+
-        scoreNum.textContent = String(score);
-
-        let title = "";
-        let subtitle = "";
-        let body = "";
-        let actions = [];
-
-        if(score === 0){
-          title = "Non-problem gambling";
-          subtitle = "Score 0";
-          body = `
-            <strong>What this suggests:</strong> Your answers don’t indicate recent gambling-related harm on this screening.
-            <br><br>
-            <strong>Still useful:</strong> If gambling is on your mind a lot, or you’re worried about escalation, you can still explore support and prevention tools.
-          `;
-          actions = [
-            btn("/en/patients/updates/", "Get project updates", true),
-            btn("/en/patients/help-support/", "Support resources", false),
-            btn("/en/patients/", "Back to Patients", false)
-          ];
-        } else if(score >= 1 && score <= 2){
-          title = "Low risk";
-          subtitle = "Score 1–2";
-          body = `
-            <strong>What this suggests:</strong> Some signs of risk or harm may be present.
-            <br><br>
-            <strong>Consider:</strong> setting limits, taking breaks, and speaking with someone you trust if urges feel difficult to manage.
-          `;
-          actions = [
-            btn("/en/patients/help-support/", "Find gambling support", true),
-            btn("/en/patients/updates/", "Get updates", false),
-            btn("/en/patients/", "Back to Patients", false)
-          ];
-        } else if(score >= 3 && score <= 7){
-          title = "Moderate risk";
-          subtitle = "Score 3–7";
-          body = `
-            <strong>What this suggests:</strong> Your answers indicate a meaningful level of gambling-related harm or risk.
-            <br><br>
-            <strong>Best next step:</strong> consider professional support (GP/psychiatrist/therapist or specialist gambling services),
-            and use structured resources during high-risk moments.
-          `;
-          actions = [
-            btn("/en/patients/help-support/", "Get support now", true),
-            btn("/en/patients/updates/", "Get updates", false),
-            btn("/en/contact/", "Contact SimHealth", false)
-          ];
-        } else {
-          title = "Problem gambling range";
-          subtitle = "Score 8+";
-          body = `
-            <strong>What this suggests:</strong> This score is consistent with significant gambling-related harm on this screening tool.
-            <br><br>
-            <strong>Support matters:</strong> You deserve help that’s structured and non-judgemental. If you’re currently overwhelmed,
-            reach out to a professional or a specialist service today.
-            <br><br>
-            <strong>If you feel unsafe:</strong> use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
-            or call your local emergency number.
-          `;
-          actions = [
-            btn("/en/patients/help-support/", "Crisis & support resources", true),
-            btn("/en/contact/", "Contact SimHealth", false),
-            btn("/en/patients/updates/", "Get updates", false)
-          ];
-        }
-
-        bandTitle.textContent = title;
-        bandSub.textContent = subtitle;
-        bandBody.innerHTML = body;
-
-        nextSteps.innerHTML = "";
-        actions.forEach(a => nextSteps.appendChild(a));
-
-        resultBox.classList.add("show");
-        resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-
-      form.addEventListener("change", updateProgress);
-
-      calcBtn.addEventListener("click", () => {
-        const a = getAnsweredCount();
-        if(a !== TOTAL_Q){
-          alert("Please answer all 9 questions to view your result.");
-          return;
-        }
-        const score = computeScore();
-        if(score === null){
-          alert("Please answer all 9 questions to view your result.");
-          return;
-        }
-        renderResults(score);
+    function buildForm(){
+      form.innerHTML = "";
+      QUESTIONS.forEach((q, idx) => {
+        const wrap = document.createElement("div");
+        wrap.className = "q";
+        wrap.innerHTML = `
+          <h3>${idx + 1}. ${escapeHtml(q)}</h3>
+          <div class="options" role="radiogroup" aria-label="Question ${idx + 1}">
+            ${OPTIONS.map((o, j) => `
+              <label class="opt">
+                <input type="radio" name="q${idx}" value="${o.value}" aria-label="${escapeHtml(o.label)}" />
+                <div>
+                  <b>${escapeHtml(o.label)}</b><br>
+                  <span>${escapeHtml(o.hint)}</span>
+                </div>
+              </label>
+            `).join("")}
+          </div>
+        `;
+        form.appendChild(wrap);
       });
+    }
 
-      resetBtn.addEventListener("click", () => {
-        form.reset();
-        updateProgress();
-        resultBox.classList.remove("show");
-        bandTitle.textContent = "—";
-        bandSub.textContent = "Complete all questions to view a band.";
-        bandBody.textContent = "";
-        nextSteps.innerHTML = "";
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
+    function getScore(){
+      let score = 0;
+      for(let i=0; i<QUESTIONS.length; i++){
+        const checked = document.querySelector(`input[name="q${i}"]:checked`);
+        if(!checked) return { ok:false, score:0, missing:i+1 };
+        score += Number(checked.value);
+      }
+      return { ok:true, score };
+    }
 
-      // initial
-      updateProgress();
-    })();
+    function band(score){
+      if(score === 0) return { label:"No problems (0)", cls:"good" };
+      if(score <= 2) return { label:"Low risk (1–2)", cls:"good" };
+      if(score <= 7) return { label:"Moderate risk (3–7)", cls:"warn" };
+      return { label:"Problem gambling (8+)", cls:"risk" };
+    }
+
+    function renderResult(score){
+      const b = band(score);
+
+      let guidance = "";
+      if(score === 0){
+        guidance = `
+          <p><strong>What this suggests:</strong> No reported gambling-related problems in the last 12 months on this screening tool.</p>
+          <p>If you’re here because you feel worried anyway, trust that instinct — support can still help.</p>
+        `;
+      } else if(score <= 2){
+        guidance = `
+          <p><strong>What this suggests:</strong> Low risk on this screening tool, but some early signals may be present.</p>
+          <p>If you notice urges escalating, consider setting boundaries and talking to a professional or support service early.</p>
+        `;
+      } else if(score <= 7){
+        guidance = `
+          <p><strong>What this suggests:</strong> Moderate risk. This score range is commonly associated with meaningful harm in day-to-day life.</p>
+          <p><strong>Consider support:</strong> speaking with a clinician or contacting a gambling support service can be a strong next step.</p>
+        `;
+      } else {
+        guidance = `
+          <p><strong>What this suggests:</strong> A score of <strong>${score}</strong> is in the problem gambling range on this screening tool.</p>
+          <p><strong>This is not a diagnosis</strong>, but it strongly suggests your gambling has been causing harm or distress.</p>
+          <p>If you feel at risk of self-harm, please use crisis support immediately.</p>
+        `;
+      }
+
+      const nextSteps = `
+        <div class="row">
+          <a class="btn-primary" href="/en/patients/help-support/">Crisis &amp; support resources</a>
+          <a class="btn-secondary" href="/en/contact/">Contact (non-urgent)</a>
+          <a class="btn-secondary" href="/en/patients/">Back to Patients</a>
+        </div>
+        <p class="fine" style="margin-top:10px;">
+          Reminder: this reflects the <strong>last 12 months</strong>. If your situation has changed recently, your current needs may be different.
+        </p>
+      `;
+
+      resultBox.className = `status show ${b.cls}`;
+      resultBox.innerHTML = `
+        <h4>Your score: ${score} — ${escapeHtml(b.label)}</h4>
+        ${guidance}
+        ${nextSteps}
+      `;
+      resultBox.scrollIntoView({ behavior:"smooth", block:"start" });
+    }
+
+    calcBtn.addEventListener("click", () => {
+      const s = getScore();
+      if(!s.ok){
+        resultBox.className = "status show warn";
+        resultBox.innerHTML = `
+          <h4>Almost there</h4>
+          <p>Please answer <strong>question ${s.missing}</strong> to calculate your score.</p>
+        `;
+        const qEl = document.querySelectorAll(".q")[s.missing - 1];
+        if(qEl) qEl.scrollIntoView({ behavior:"smooth", block:"center" });
+        return;
+      }
+      renderResult(s.score);
+    });
+
+    resetBtn.addEventListener("click", () => {
+      document.getElementById("pgsiForm").reset?.();
+      // Some browsers don't support reset() on non-form elements; we used a DIV container
+      document.querySelectorAll('#pgsiForm input[type="radio"]').forEach(r => r.checked = false);
+      resultBox.className = "status";
+      resultBox.innerHTML = "";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    buildForm();
   </script>
 
 </body>
