@@ -1,1 +1,581 @@
 
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Self-check (PGSI)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ✅ Root-relative paths (works from any folder) -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .status{
+      margin-top:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      padding:12px 14px;
+      line-height:1.55;
+      color:var(--muted);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+    }
+    .status strong{ color:var(--text); }
+
+    .notice{
+      margin-top:14px;
+      background: color-mix(in srgb, var(--warn) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--warn) 28%, transparent);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .notice strong { color: var(--text); }
+
+    .quiz{
+      margin-top:16px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .q{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:16px;
+    }
+    .q h3{
+      margin:0 0 10px;
+      font-size:16px;
+      line-height:1.35;
+    }
+
+    .opts{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top:10px;
+    }
+    .opt{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      cursor:pointer;
+      user-select:none;
+      line-height:1.35;
+    }
+    .opt:hover{
+      background:color-mix(in srgb, var(--primary) 10%, transparent);
+      border-color:color-mix(in srgb, var(--primary) 22%, var(--border));
+    }
+    .opt input{ margin-top:2px; }
+
+    .bar{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .progress{
+      flex:1;
+      min-width:220px;
+      height:10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      overflow:hidden;
+    }
+    .progress > span{
+      display:block;
+      height:100%;
+      width:0%;
+      background:var(--primary);
+      transition:width var(--t-fast) var(--ease);
+    }
+
+    .actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    button.btn-primary{ border:none; cursor:pointer; }
+
+    .result{
+      margin-top:16px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:16px;
+      background:color-mix(in srgb, var(--accent) 10%, var(--surface));
+      display:none;
+    }
+    .result.show{ display:block; }
+
+    .scoreRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:baseline;
+      justify-content:space-between;
+    }
+    .scoreBox{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .scoreNum{
+      font-size:34px;
+      font-weight:900;
+      letter-spacing:-0.02em;
+      color:var(--text);
+      line-height:1;
+    }
+    .scoreMeta{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .band{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      color:var(--muted);
+      line-height:1.55;
+    }
+    .band strong{ color:var(--text); }
+
+    .nextSteps{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .small{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    @media (max-width: 820px){
+      .opts{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Healthcare first.</strong> If you’re in immediate danger, call your local emergency number now.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
+
+    <nav class="menu" aria-label="Main navigation">
+      <a class="link" href="/en/home.html">Home</a>
+      <a class="link" href="/en/patients/">Patients</a>
+      <a class="link" href="/en/clinicians/">Clinicians</a>
+      <a class="link" href="/en/research/">Research</a>
+      <a class="link" href="/en/about/">About</a>
+      <a class="link" href="/en/contact/">Contact</a>
+
+      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+
+      <div class="lang-toggle" aria-label="Language">
+        <a class="active" href="/en/patients/pgsi/">English</a>
+        <a href="/fr/patients/pgsi/">Français</a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Toggle theme">
+        <span class="label label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/pgsi-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Self-check (PGSI)</h1>
+        <p class="rise-2">
+          A quick, research-used screening questionnaire (9 items) to help you reflect on gambling-related harm and risk.
+          This is <strong>not</strong> a diagnosis.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#quiz">Start the self-check</a>
+          <a class="btn-secondary" href="/en/patients/help-support/">Get support</a>
+          <a class="btn-secondary" href="/en/patients/updates/">Get updates</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="quiz" style="margin-top:16px;">
+      <h2 style="margin:0 0 8px;">PGSI — Problem Gambling Severity Index</h2>
+      <p style="margin:0; color:var(--muted); line-height:1.65;">
+        Think about the <strong style="color:var(--text);">last 12 months</strong>. Answer each question as honestly as you can.
+      </p>
+
+      <div class="notice" role="note" aria-label="Safety notice">
+        <strong>Important:</strong> This page is not an emergency service and does not provide crisis care.
+        If you feel at risk of self-harm or in immediate danger, use
+        <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
+        or call your local emergency number.
+      </div>
+
+      <div class="status" role="status" aria-live="polite">
+        <strong>How scoring works:</strong> Each item is scored 0–3 (Never → Almost always). Total score: 0–27.
+        Bands are shown after you complete all questions.
+      </div>
+
+      <div class="bar" aria-label="Progress">
+        <div class="progress" aria-hidden="true"><span id="progFill"></span></div>
+        <div style="color:var(--muted); font-size:13px;">
+          <span id="answeredCount">0</span>/9 answered
+        </div>
+      </div>
+
+      <form id="pgsiForm" class="quiz" autocomplete="off">
+        <!-- Q1 -->
+        <div class="q" data-q="1">
+          <h3>1) Have you bet more than you could really afford to lose?</h3>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q1" value="0"> Never</label>
+            <label class="opt"><input type="radio" name="q1" value="1"> Sometimes</label>
+            <label class="opt"><input type="radio" name="q1" value="2"> Most of the time</label>
+            <label class="opt"><input type="radio" name="q1" value="3"> Almost always</label>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="q" data-q="2">
+          <h3>2) Have you needed to gamble with larger amounts of money to get the same feeling of excitement?</h3>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q2" value="0"> Never</label>
+            <label class="opt"><input type="radio" name="q2" value="1"> Sometimes</label>
+            <label class="opt"><input type="radio" name="q2" value="2"> Most of the time</label>
+            <label class="opt"><input type="radio" name="q2" value="3"> Almost always</label>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="q" data-q="3">
+          <h3>3) When you gambled, did you go back another day to try to win back the money you lost?</h3>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q3" value="0"> Never</label>
+            <label class="opt"><input type="radio" name="q3" value="1"> Sometimes</label>
+            <label class="opt"><input type="radio" name="q3" value="2"> Most of the time</label>
+            <label class="opt"><input type="radio" name="q3" value="3"> Almost always</label>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="q" data-q="4">
+          <h3>4) Have you borrowed money or sold anything to get money to gamble?</h3>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q4" value="0"> Never</label>
+            <label class="opt"><input type="radio" name="q4" value="1"> Sometimes</label>
+            <label class="opt"><input type="radio" name="q4" value="2"> Most of the time</label>
+            <label class="opt"><input type="radio" name="q4" value="3"> Almost always</label>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="q" data-q="5">
+          <h3>5) Have you felt that you might have a problem with gambling?</h3>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q5" value="0"> Never</label>
+            <label class="opt"><input type="radio" name="q5" value="1"> Sometimes</label>
+            <label class="opt"><input type="radio" name="q5" value="2"> Most of the time</label>
+            <label class="opt"><input type="radio" name="q5" value="3"> Almost always</label>
+          </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="q" data-q="6">
+          <h3>6) Has gambling caused you any health problems, including stress or anxiety?</h3>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q6" value="0"> Never</label>
+            <label class="opt"><input type="radio" name="q6" value="1"> Sometimes</label>
+            <label class="opt"><input type="radio" name="q6" value="2"> Most of the time</label>
+            <label class="opt"><input type="radio" name="q6" value="3"> Almost always</label>
+          </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="q" data-q="7">
+          <h3>7) Have people criticised your betting or told you that you had a gambling problem, regardless of whether you thought it was true?</h3>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q7" value="0"> Never</label>
+            <label class="opt"><input type="radio" name="q7" value="1"> Sometimes</label>
+            <label class="opt"><input type="radio" name="q7" value="2"> Most of the time</label>
+            <label class="opt"><input type="radio" name="q7" value="3"> Almost always</label>
+          </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="q" data-q="8">
+          <h3>8) Has your gambling caused any financial problems for you or your household?</h3>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q8" value="0"> Never</label>
+            <label class="opt"><input type="radio" name="q8" value="1"> Sometimes</label>
+            <label class="opt"><input type="radio" name="q8" value="2"> Most of the time</label>
+            <label class="opt"><input type="radio" name="q8" value="3"> Almost always</label>
+          </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="q" data-q="9">
+          <h3>9) Have you felt guilty about the way you gamble or what happens when you gamble?</h3>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q9" value="0"> Never</label>
+            <label class="opt"><input type="radio" name="q9" value="1"> Sometimes</label>
+            <label class="opt"><input type="radio" name="q9" value="2"> Most of the time</label>
+            <label class="opt"><input type="radio" name="q9" value="3"> Almost always</label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" type="button" id="calcBtn">View results</button>
+          <button class="btn-secondary" type="button" id="resetBtn">Reset</button>
+          <a class="btn-secondary" href="/en/patients/">Back to Patients</a>
+        </div>
+      </form>
+
+      <!-- RESULTS -->
+      <div id="resultBox" class="result" aria-live="polite">
+        <div class="scoreRow">
+          <div class="scoreBox">
+            <div class="scoreNum" id="scoreNum">0</div>
+            <div class="scoreMeta">Total score (0–27)</div>
+          </div>
+
+          <div class="scoreBox" style="text-align:right;">
+            <div style="font-weight:900; color:var(--text);" id="bandTitle">—</div>
+            <div class="scoreMeta" id="bandSub">Complete all questions to view a band.</div>
+          </div>
+        </div>
+
+        <div class="band" id="bandBody"></div>
+
+        <div class="nextSteps" id="nextSteps"></div>
+
+        <p class="small">
+          Note: PGSI is a screening tool used in research and clinical contexts. It cannot diagnose a condition.
+          If you’re concerned, consider discussing results with a qualified professional.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/terms/">Terms</a>
+        <a href="/en/legal/cookies/">Cookies</a>
+        <a href="/en/legal/accessibility/">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const form = document.getElementById("pgsiForm");
+      const calcBtn = document.getElementById("calcBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      const answeredCountEl = document.getElementById("answeredCount");
+      const progFill = document.getElementById("progFill");
+
+      const resultBox = document.getElementById("resultBox");
+      const scoreNum = document.getElementById("scoreNum");
+      const bandTitle = document.getElementById("bandTitle");
+      const bandSub = document.getElementById("bandSub");
+      const bandBody = document.getElementById("bandBody");
+      const nextSteps = document.getElementById("nextSteps");
+
+      const TOTAL_Q = 9;
+
+      function getAnsweredCount(){
+        let c = 0;
+        for(let i=1;i<=TOTAL_Q;i++){
+          const v = form.querySelector(`input[name="q${i}"]:checked`);
+          if(v) c++;
+        }
+        return c;
+      }
+
+      function updateProgress(){
+        const a = getAnsweredCount();
+        answeredCountEl.textContent = String(a);
+        const pct = Math.round((a / TOTAL_Q) * 100);
+        progFill.style.width = pct + "%";
+      }
+
+      function computeScore(){
+        let total = 0;
+        for(let i=1;i<=TOTAL_Q;i++){
+          const el = form.querySelector(`input[name="q${i}"]:checked`);
+          if(!el) return null;
+          total += Number(el.value || 0);
+        }
+        return total;
+      }
+
+      function btn(href, label, primary){
+        const a = document.createElement("a");
+        a.className = primary ? "btn-primary" : "btn-secondary";
+        a.href = href;
+        a.textContent = label;
+        return a;
+      }
+
+      function renderResults(score){
+        // Bands: 0, 1–2, 3–7, 8+
+        scoreNum.textContent = String(score);
+
+        let title = "";
+        let subtitle = "";
+        let body = "";
+        let actions = [];
+
+        if(score === 0){
+          title = "Non-problem gambling";
+          subtitle = "Score 0";
+          body = `
+            <strong>What this suggests:</strong> Your answers don’t indicate recent gambling-related harm on this screening.
+            <br><br>
+            <strong>Still useful:</strong> If gambling is on your mind a lot, or you’re worried about escalation, you can still explore support and prevention tools.
+          `;
+          actions = [
+            btn("/en/patients/updates/", "Get project updates", true),
+            btn("/en/patients/help-support/", "Support resources", false),
+            btn("/en/patients/", "Back to Patients", false)
+          ];
+        } else if(score >= 1 && score <= 2){
+          title = "Low risk";
+          subtitle = "Score 1–2";
+          body = `
+            <strong>What this suggests:</strong> Some signs of risk or harm may be present.
+            <br><br>
+            <strong>Consider:</strong> setting limits, taking breaks, and speaking with someone you trust if urges feel difficult to manage.
+          `;
+          actions = [
+            btn("/en/patients/help-support/", "Find gambling support", true),
+            btn("/en/patients/updates/", "Get updates", false),
+            btn("/en/patients/", "Back to Patients", false)
+          ];
+        } else if(score >= 3 && score <= 7){
+          title = "Moderate risk";
+          subtitle = "Score 3–7";
+          body = `
+            <strong>What this suggests:</strong> Your answers indicate a meaningful level of gambling-related harm or risk.
+            <br><br>
+            <strong>Best next step:</strong> consider professional support (GP/psychiatrist/therapist or specialist gambling services),
+            and use structured resources during high-risk moments.
+          `;
+          actions = [
+            btn("/en/patients/help-support/", "Get support now", true),
+            btn("/en/patients/updates/", "Get updates", false),
+            btn("/en/contact/", "Contact SimHealth", false)
+          ];
+        } else {
+          title = "Problem gambling range";
+          subtitle = "Score 8+";
+          body = `
+            <strong>What this suggests:</strong> This score is consistent with significant gambling-related harm on this screening tool.
+            <br><br>
+            <strong>Support matters:</strong> You deserve help that’s structured and non-judgemental. If you’re currently overwhelmed,
+            reach out to a professional or a specialist service today.
+            <br><br>
+            <strong>If you feel unsafe:</strong> use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
+            or call your local emergency number.
+          `;
+          actions = [
+            btn("/en/patients/help-support/", "Crisis & support resources", true),
+            btn("/en/contact/", "Contact SimHealth", false),
+            btn("/en/patients/updates/", "Get updates", false)
+          ];
+        }
+
+        bandTitle.textContent = title;
+        bandSub.textContent = subtitle;
+        bandBody.innerHTML = body;
+
+        nextSteps.innerHTML = "";
+        actions.forEach(a => nextSteps.appendChild(a));
+
+        resultBox.classList.add("show");
+        resultBox.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      form.addEventListener("change", updateProgress);
+
+      calcBtn.addEventListener("click", () => {
+        const a = getAnsweredCount();
+        if(a !== TOTAL_Q){
+          alert("Please answer all 9 questions to view your result.");
+          return;
+        }
+        const score = computeScore();
+        if(score === null){
+          alert("Please answer all 9 questions to view your result.");
+          return;
+        }
+        renderResults(score);
+      });
+
+      resetBtn.addEventListener("click", () => {
+        form.reset();
+        updateProgress();
+        resultBox.classList.remove("show");
+        bandTitle.textContent = "—";
+        bandSub.textContent = "Complete all questions to view a band.";
+        bandBody.textContent = "";
+        nextSteps.innerHTML = "";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // initial
+      updateProgress();
+    })();
+  </script>
+
+</body>
+</html>
