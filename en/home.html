@@ -20,68 +20,32 @@
   </div>
 
   <header class="nav">
-    <a class="brand" href="../index.html" aria-label="Back to language selection">SimHealth</a>
+  <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="./home.html">Home</a>
+  <nav class="menu" aria-label="Main navigation">
+    <a class="link" href="/en/home.html">Home</a>
+    <a class="link" href="/en/patients/">Patients</a>
+    <a class="link" href="/en/clinicians/">Clinicians</a>
+    <a class="link" href="/en/research/">Research</a>
+    <a class="link" href="/en/about/">About</a>
+    <a class="link" href="/en/contact/">Contact</a>
 
-      <div class="item">
-        <a class="link" href="./patients/">Patients</a>
-        <div class="dropdown">
-          <a href="./under-construction.html">Inscription (Sign up)</a>
-          <a href="./under-construction.html">Sign in</a>
-          <a href="./under-construction.html">Help and Support</a>
-          <a href="./under-construction.html">Get Help Now</a>
-        </div>
-      </div>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
-      <div class="item">
-        <a class="link" href="./clinicians/">Clinicians</a>
-        <div class="dropdown">
-          <a href="./clinicians/">Overview</a>
-          <a href="./under-construction.html">Sign in</a>
-          <a href="./under-construction.html">Resources</a>
-          <a href="./under-construction.html">CET / CET+ Protocol</a>
-        </div>
-      </div>
+    <div class="lang-toggle" aria-label="Language">
+      <a class="active" href="/en/home.html">English</a>
+      <a href="/fr/accueil.html">Français</a>
+    </div>
 
-      <div class="item">
-        <a class="link" href="./research/">Research</a>
-        <div class="dropdown">
-          <a href="./under-construction.html">Overview</a>
-          <a href="./under-construction.html">Evidence and Method</a>
-          <a href="./under-construction.html">Publications</a>
-        </div>
-      </div>
-
-      <!-- ✅ FIXED: About now points to real page -->
-      <div class="item">
-        <a class="link" href="./about/">About</a>
-        <div class="dropdown">
-          <a href="./about/">About SimHealth</a>
-          <a href="./under-construction.html">Team</a>
-          <a href="./under-construction.html">Partners</a>
-          <a href="./under-construction.html">Press / Media kit</a>
-        </div>
-      </div>
-
-      <a class="link" href="./under-construction.html">Contact</a>
-      <a class="btn-primary" href="./under-construction.html">Get Help Now</a>
-
-      <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="./home.html">English</a>
-        <a href="../fr/accueil.html">Français</a>
-      </div>
-
-      <div class="theme-toggle" role="button" tabindex="0"
-           onclick="SimHealthTheme.toggleTheme()"
-           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
-           aria-label="Toggle theme">
-        <span class="label label-dark">Dark</span>
-        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
-        <span class="label label-light">Light</span>
-      </div>
-    </nav>
+    <div class="theme-toggle" role="button" tabindex="0"
+         onclick="SimHealthTheme.toggleTheme()"
+         onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+         aria-label="Toggle theme">
+      <span class="label label-dark">Dark</span>
+      <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+      <span class="label label-light">Light</span>
+    </div>
+  </nav>
   </header>
 
   <main class="wrap">
