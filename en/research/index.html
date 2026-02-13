@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- ✅ Root-relative so it works from ANY folder -->
+  <!-- ✅ Root-relative paths -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
@@ -58,6 +58,9 @@
       align-items:center;
     }
     .muted{ color:var(--muted); }
+    @media (max-width: 800px){
+      .status-bar{ gap:8px; }
+    }
   </style>
 </head>
 
@@ -116,8 +119,8 @@
 
         <div class="link-row rise-3">
           <a class="btn-primary" href="/en/clinicians/pilot/">Request pilot information</a>
-          <a class="btn-secondary" href="/en/research/#methodology">View methodology</a>
-          <a class="btn-secondary" href="/en/contact/">Contact</a>
+          <a class="btn-secondary" href="#methodology">View methodology</a>
+          <a class="btn-secondary" href="#outcomes">View outcomes</a>
         </div>
       </div>
     </section>
@@ -214,11 +217,10 @@
         <a href="/en/legal/cookies/">Cookies</a>
         <a href="/en/legal/accessibility/">Accessibility</a>
         <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
-        <a href="/en/patients/help-support/">Crisis Resources</a>
         <a href="/en/contact/">Contact</a>
       </nav>
     </div>
   </footer>
 
 </body>
-</html>
+        </html>
