@@ -9,26 +9,69 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- Root-relative -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
   <style>
-    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:14px; margin-top:14px; }
+    .sitemap-wrap{ margin-top:16px; }
+    .cols{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
+      margin-top:12px;
+    }
     .col{ grid-column: span 6; }
-    @media (max-width: 900px){ .col{ grid-column: span 12; } }
+    .col.full{ grid-column: span 12; }
+
+    .panel{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:18px;
+    }
+
+    .panel h2{ margin:0 0 10px; font-size:18px; }
+    .panel p{ margin:0 0 12px; color:var(--muted); line-height:1.55; }
+
+    .list{
+      margin:0;
+      padding-left:18px;
+      line-height:1.7;
+      color:var(--muted);
+    }
     .list a{ color:var(--text); text-decoration:none; }
     .list a:hover{ text-decoration:underline; }
-    .muted{ color:var(--muted); line-height:1.7; }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:color-mix(in srgb, var(--text) 6%, transparent);
+      color:var(--text);
+      font-weight:800;
+      font-size:13px;
+      margin-top:10px;
+      text-decoration:none;
+    }
+
+    @media (max-width: 800px){
+      .col{ grid-column: span 12; }
+    }
   </style>
 </head>
 
 <body>
+
   <div class="banner">
-    <strong>Healthcare first.</strong> This website is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
+    <strong>Healthcare first.</strong> SimHealth is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
   </div>
 
   <header class="nav">
-    <a class="brand" href="/index.html">SimHealth</a>
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
     <nav class="menu" aria-label="Main navigation">
       <a class="link" href="/en/home.html">Home</a>
@@ -42,7 +85,7 @@
 
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/sitemap.html">English</a>
-        <a href="/fr/accueil.html">Français</a>
+        <a href="/fr/plan-du-site.html">Français</a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -56,67 +99,109 @@
     </nav>
   </header>
 
-  <main class="wrap">
+  <main class="wrap sitemap-wrap">
+
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/legal-hero.jpg');"></div>
+      <div class="hero-bg" style="background-image:url('/assets/hero.jpg');"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <h1 class="rise-1">Sitemap</h1>
-        <p class="rise-2">All current SimHealth pages (English-first).</p>
+        <p class="rise-2">An overview of all public SimHealth pages (English first).</p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="/en/home.html">Go to Home</a>
+          <a class="btn-secondary" href="/en/patients/help-support/">Crisis Resources</a>
+        </div>
       </div>
     </section>
 
-    <section class="card" style="margin-top:16px;">
-      <p class="muted" style="margin:0;">
-        If a link doesn’t work, it usually means the folder/file doesn’t exist yet or a page is still being moved.
-        This sitemap helps us keep navigation consistent.
-      </p>
+    <section class="cols" aria-label="Sitemap sections">
 
-      <div class="grid">
+      <!-- ENGLISH -->
+      <div class="col">
+        <div class="panel">
+          <h2>English</h2>
+          <p>Primary content. All links below are live or intended to be live in the current build.</p>
 
-        <div class="col">
-          <h2 style="margin:14px 0 8px;">Core</h2>
-          <ul class="list" style="margin:0; padding-left:18px; line-height:1.8;">
+          <ul class="list">
             <li><a href="/index.html">Language selection</a></li>
-            <li><a href="/en/home.html">Home (EN)</a></li>
+            <li><a href="/en/home.html">Home</a></li>
+
+            <li><a href="/en/patients/">Patients hub</a>
+              <ul class="list">
+                <li><a href="/en/patients/help-support/">Help &amp; Support (Crisis Resources)</a></li>
+                <li><a href="/en/patients/updates/">Get updates</a></li>
+              </ul>
+            </li>
+
+            <li><a href="/en/clinicians/">Clinicians hub</a>
+              <ul class="list">
+                <li><a href="/en/clinicians/pilot/">Request pilot information</a></li>
+              </ul>
+            </li>
+
+            <li><a href="/en/research/">Research</a></li>
             <li><a href="/en/about/">About</a></li>
             <li><a href="/en/contact/">Contact</a></li>
-            <li><a href="/en/research/">Research</a></li>
           </ul>
 
-          <h2 style="margin:18px 0 8px;">Patients</h2>
-          <ul class="list" style="margin:0; padding-left:18px; line-height:1.8;">
-            <li><a href="/en/patients/">Patients hub</a></li>
-            <li><a href="/en/patients/help-support/">Crisis Resources</a></li>
-            <li><a href="/en/patients/updates/">Get project updates</a></li>
-          </ul>
+          <a class="tag" href="/en/patients/updates/">→ Subscribe to updates</a>
         </div>
+      </div>
 
-        <div class="col">
-          <h2 style="margin:14px 0 8px;">Clinicians</h2>
-          <ul class="list" style="margin:0; padding-left:18px; line-height:1.8;">
-            <li><a href="/en/clinicians/">Clinicians hub</a></li>
-            <li><a href="/en/clinicians/pilot/">Request pilot info</a></li>
-          </ul>
+      <!-- LEGAL -->
+      <div class="col">
+        <div class="panel">
+          <h2>Legal</h2>
+          <p>Policies and required notices.</p>
 
-          <h2 style="margin:18px 0 8px;">Legal</h2>
-          <ul class="list" style="margin:0; padding-left:18px; line-height:1.8;">
+          <ul class="list">
             <li><a href="/en/legal/privacy/">Privacy</a></li>
             <li><a href="/en/legal/terms/">Terms</a></li>
             <li><a href="/en/legal/cookies/">Cookies</a></li>
             <li><a href="/en/legal/accessibility/">Accessibility</a></li>
             <li><a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a></li>
           </ul>
+
+          <a class="tag" href="/en/legal/cookies/">→ Cookie policy</a>
         </div>
-
       </div>
 
-      <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn-primary" href="/en/home.html">Back to Home</a>
-        <a class="btn-secondary" href="/en/contact/">Report an issue</a>
+      <!-- FRENCH (PLACEHOLDER MAP) -->
+      <div class="col full">
+        <div class="panel">
+          <h2>Français (structure)</h2>
+          <p>
+            French pages can be filled once English is fully locked. These links reflect the target structure.
+            If a page isn’t ready yet, it can temporarily redirect or show “En construction”.
+          </p>
+
+          <ul class="list">
+            <li><a href="/fr/accueil.html">Accueil</a></li>
+
+            <li><a href="/fr/patients/">Patients</a>
+              <ul class="list">
+                <li><a href="/fr/patients/aide-soutien/">Aide &amp; soutien</a></li>
+                <li><a href="/fr/patients/updates/">Mises à jour</a></li>
+              </ul>
+            </li>
+
+            <li><a href="/fr/cliniciens/">Cliniciens</a>
+              <ul class="list">
+                <li><a href="/fr/cliniciens/pilote/">Demande pilote</a></li>
+              </ul>
+            </li>
+
+            <li><a href="/fr/recherche/">Recherche</a></li>
+            <li><a href="/fr/a-propos/">À propos</a></li>
+            <li><a href="/fr/contact/">Contact</a></li>
+          </ul>
+        </div>
       </div>
+
     </section>
+
   </main>
 
   <footer>
@@ -132,110 +217,10 @@
         <a href="/en/legal/cookies/">Cookies</a>
         <a href="/en/legal/accessibility/">Accessibility</a>
         <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+        <a href="/en/contact/">Contact</a>
       </nav>
     </div>
   </footer>
+
 </body>
-</html>      <a class="link" href="/en/research/">Research</a>
-      <a class="link" href="/en/about/">About</a>
-      <a class="link" href="/en/contact/">Contact</a>
-
-      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
-
-      <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/sitemap.html">English</a>
-        <a href="/fr/accueil.html">Français</a>
-      </div>
-
-      <div class="theme-toggle" role="button" tabindex="0"
-           onclick="SimHealthTheme.toggleTheme()"
-           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
-           aria-label="Toggle theme">
-        <span class="label label-dark">Dark</span>
-        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
-        <span class="label label-light">Light</span>
-      </div>
-    </nav>
-  </header>
-
-  <main class="wrap">
-    <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/legal-hero.jpg');"></div>
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-        <h1 class="rise-1">Sitemap</h1>
-        <p class="rise-2">All current SimHealth pages (English-first).</p>
-      </div>
-    </section>
-
-    <section class="card" style="margin-top:16px;">
-      <p class="muted" style="margin:0;">
-        If a link doesn’t work, it usually means the folder/file doesn’t exist yet or a page is still being moved.
-        This sitemap helps us keep navigation consistent.
-      </p>
-
-      <div class="grid">
-
-        <div class="col">
-          <h2 style="margin:14px 0 8px;">Core</h2>
-          <ul class="list" style="margin:0; padding-left:18px; line-height:1.8;">
-            <li><a href="/index.html">Language selection</a></li>
-            <li><a href="/en/home.html">Home (EN)</a></li>
-            <li><a href="/en/about/">About</a></li>
-            <li><a href="/en/contact/">Contact</a></li>
-            <li><a href="/en/research/">Research</a></li>
-          </ul>
-
-          <h2 style="margin:18px 0 8px;">Patients</h2>
-          <ul class="list" style="margin:0; padding-left:18px; line-height:1.8;">
-            <li><a href="/en/patients/">Patients hub</a></li>
-            <li><a href="/en/patients/help-support/">Crisis Resources</a></li>
-            <li><a href="/en/patients/updates/">Get project updates</a></li>
-          </ul>
-        </div>
-
-        <div class="col">
-          <h2 style="margin:14px 0 8px;">Clinicians</h2>
-          <ul class="list" style="margin:0; padding-left:18px; line-height:1.8;">
-            <li><a href="/en/clinicians/">Clinicians hub</a></li>
-            <li><a href="/en/clinicians/pilot/">Request pilot info</a></li>
-          </ul>
-
-          <h2 style="margin:18px 0 8px;">Legal</h2>
-          <ul class="list" style="margin:0; padding-left:18px; line-height:1.8;">
-            <li><a href="/en/legal/privacy/">Privacy</a></li>
-            <li><a href="/en/legal/terms/">Terms</a></li>
-            <li><a href="/en/legal/cookies/">Cookies</a></li>
-            <li><a href="/en/legal/accessibility/">Accessibility</a></li>
-            <li><a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="btn-primary" href="/en/home.html">Back to Home</a>
-        <a class="btn-secondary" href="/en/contact/">Report an issue</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="row">
-      <div>
-        © 2026 SimHealth. All rights reserved. •
-        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
-      </div>
-      <nav aria-label="Footer links">
-        <a href="/sitemap.html">Sitemap</a>
-        <a href="/en/legal/privacy/">Privacy</a>
-        <a href="/en/legal/terms/">Terms</a>
-        <a href="/en/legal/cookies/">Cookies</a>
-        <a href="/en/legal/accessibility/">Accessibility</a>
-        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
-      </nav>
-    </div>
-  </footer>
-</body>
-        </html>
+</html>
