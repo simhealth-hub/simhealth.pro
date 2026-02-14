@@ -25,3 +25,10 @@
   applyTheme(getPreferredTheme());
   window.SimHealthTheme = { toggleTheme };
 })();
+window.SimHealthNav = {
+  toggleMenu() {
+    const menu = document.querySelector('.nav .menu');
+    if (!menu) return;
+    menu.classList.toggle('open');
+  }
+};
