@@ -423,14 +423,11 @@
     });
 
     resetBtn.addEventListener("click", () => {
-      document.getElementById("pgsiForm").reset?.();
-      // Some browsers don't support reset() on non-form elements; we used a DIV container
-      document.querySelectorAll('#pgsiForm input[type="radio"]').forEach(r => r.checked = false);
-      resultBox.className = "status";
-      resultBox.innerHTML = "";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
+  document.getElementById("pgsiForm").reset();
+  resultBox.className = "status";
+  resultBox.innerHTML = "";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
     buildForm();
   </script>
 
