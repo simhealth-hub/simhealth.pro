@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- ✅ Root-relative paths so it works from ANY folder -->
+  <!-- Root-relative paths -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
@@ -63,23 +63,6 @@
     }
     .note strong { color: var(--text); }
 
-    .venn-wrap{
-      margin-top: 14px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      background: var(--surface);
-    }
-    .venn-top{
-      padding: 16px 16px 0;
-    }
-    .venn-img{
-      width: 100%;
-      height: auto;
-      display: block;
-      border-top: 1px solid var(--border);
-    }
-
     .list {
       margin: 10px 0 0;
       padding-left: 18px;
@@ -93,6 +76,45 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
+    }
+
+    /* Text-first hero */
+    .hero.hero--text{
+      min-height: unset;
+      padding: 46px 0 28px;
+    }
+    .hero.hero--text .hero-bg,
+    .hero.hero--text .hero-overlay{
+      display: none;
+    }
+
+    /* Status bar (same visual language as Research) */
+    .status-bar{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      color:var(--muted);
+      line-height:1.55;
+    }
+    .status-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--primary) 12%, transparent);
+      color:var(--text);
+      font-weight:800;
+      letter-spacing:0.2px;
+      user-select:none;
+      white-space:nowrap;
     }
 
     @media (max-width: 900px) {
@@ -111,7 +133,7 @@
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
     <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="/en/home/"">Home</a>
+      <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
@@ -138,19 +160,21 @@
 
   <main class="wrap">
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/about.jpg');"></div>
-      <div class="hero-overlay"></div>
-
+    <!-- HERO (text-only, serious) -->
+    <section class="hero hero--text">
       <div class="hero-content">
         <h1 class="rise-1">About SimHealth</h1>
         <p class="rise-2">
-          A safety-first, clinician-informed project exploring digital support for gambling-related urges —
-          designed to reduce harm, not enable it.
+          SimHealth is a clinician-informed digital project exploring support for gambling-related urges —
+          designed for safety, governance, and staged evaluation. It is not emergency care.
         </p>
 
-        <div class="hero-actions rise-3">
+        <div class="status-bar rise-3" role="note" aria-label="Project status">
+          <span class="status-pill">Stage: Pre-pilot / evaluation design</span>
+          <span>No medical claims • Not a medical device • Not monitored as crisis support</span>
+        </div>
+
+        <div class="hero-actions rise-3" style="margin-top:14px;">
           <a class="btn-primary" href="/en/patients/updates/">Get project updates</a>
           <a class="btn-secondary" href="/en/clinicians/pilot/">Request pilot info</a>
         </div>
@@ -162,8 +186,8 @@
       <h2 style="margin:0 0 10px;">Mission</h2>
       <p class="lead">
         SimHealth is being developed to support people who experience intense gambling urges — especially in short,
-        high-risk windows where relapse often happens. The goal is to deliver grounded, responsible digital support
-        that fits into real care pathways, without making medical claims.
+        high-risk windows where relapse often happens. The goal is grounded, responsible digital support that can fit
+        within real care pathways, without making medical claims.
       </p>
 
       <div class="grid">
@@ -173,7 +197,7 @@
             <li><strong>Reduce harm:</strong> encourage safer choices during craving spikes and emotionally charged moments.</li>
             <li><strong>Support continuity:</strong> bridge gaps between sessions and reduce drop-off.</li>
             <li><strong>Respect clinical reality:</strong> complement care — not replace clinicians, services, or crisis support.</li>
-            <li><strong>Keep trust:</strong> privacy-first design, clear boundaries, and transparent language.</li>
+            <li><strong>Keep trust:</strong> privacy-first design, clear boundaries, transparent language.</li>
           </ul>
 
           <div class="note">
@@ -200,52 +224,33 @@
       </div>
     </section>
 
-    <!-- VENN / MODEL OVERVIEW -->
-    <section class="card section" id="model">
-      <h2 style="margin:0 0 10px;">Model overview</h2>
-      <p class="lead">
-        SimHealth sits at the intersection of three priorities: evidence-informed behavioural principles,
-        adaptive user experience, and safe clinical governance. The goal is a digital tool that can be evaluated
-        responsibly and used only in appropriate contexts.
+    <!-- PRINCIPLES (replaces the image section) -->
+    <section class="card section" id="principles">
+      <h2 style="margin:0 0 10px;">Principles</h2>
+      <p class="lead" style="margin-top:0;">
+        The project is designed to be evaluated responsibly, with clear boundaries and governance.
+        Public language is intentionally conservative: no outcomes are presented without appropriate evaluation.
       </p>
 
-      <div class="venn-wrap">
-        <div class="venn-top">
-          <h3 style="margin:0 0 8px;">Concept map</h3>
-          <p style="margin:0; color:var(--muted); line-height:1.6;">
-            This is a high-level public view. Protocol details, measures, and clinical workflows are documented and shared only in appropriate contexts.
-          </p>
-        </div>
-
-        <!-- ✅ Replace the src with your generated diagram filename (put it in /assets/) -->
-        <img
-          class="venn-img"
-          src="/assets/venn-simhealth.png"
-          alt="SimHealth concept map: CET+, ACUI, and Clinical Governance"
-          loading="lazy"
-        />
-      </div>
-
-      <div class="grid" style="margin-top:14px;">
+      <div class="grid">
         <div class="col-7">
-          <h3 style="margin:0 0 8px;">What CET+ means (public summary)</h3>
-          <p class="lead" style="margin-top:0;">
-            CET+ is a working label for a cue-exposure-informed approach that prioritises safety, reflection, and structured coping,
-            while being compatible with supervised pilots and iterative evaluation.
-          </p>
+          <h3 style="margin:14px 0 8px;">Frameworks (public summary)</h3>
+          <ul class="list">
+            <li><strong>CET+:</strong> a working label for a cue-exposure-informed approach prioritising safety, reflection, and structured coping.</li>
+            <li><strong>ACUI:</strong> Adaptive Clinical User Interface — accessibility- and cognition-aware UX (readable contrast, reduced overload, clear pathways).</li>
+          </ul>
 
-          <h3 style="margin:14px 0 8px;">What ACUI means (public summary)</h3>
-          <p class="lead" style="margin-top:0;">
-            ACUI (Adaptive Clinical User Interface) is the idea that the experience should adjust for accessibility and cognitive needs
-            (e.g., ADHD-friendly layouts, readable contrast, reduced overload) — without sacrificing clarity or clinical seriousness.
-          </p>
+          <div class="note">
+            <strong>Positioning:</strong> SimHealth is intended to complement clinical care, not replace it.
+            Where crisis risk is present, the correct response is real-world emergency and crisis services.
+          </div>
         </div>
 
         <div class="col-5">
-          <h3 style="margin:0 0 8px;">Governance & boundaries</h3>
+          <h3 style="margin:14px 0 8px;">Governance & boundaries</h3>
           <ul class="list" style="margin-top:0;">
             <li><strong>No emergency claims.</strong> Clear signposting to real services.</li>
-            <li><strong>No “magic cure” language.</strong> Evaluation before outcomes are discussed.</li>
+            <li><strong>No “magic cure” language.</strong> Evaluation before public outcomes.</li>
             <li><strong>Consent-led.</strong> Any data use is opt-in and minimised.</li>
             <li><strong>Clinical oversight.</strong> Pilot use only when appropriate.</li>
           </ul>
@@ -259,11 +264,11 @@
 
       <div class="cta-row">
         <a class="btn-primary" href="/en/clinicians/pilot/">Request pilot information</a>
-        <a class="btn-secondary" href="/en/patients/updates/">Get project updates</a>
+        <a class="btn-secondary" href="/en/research/">Research approach</a>
       </div>
     </section>
 
-    <!-- FOOTER CARD -->
+    <!-- CONTACT CARD -->
     <section class="card section" id="contact">
       <h2 style="margin:0 0 10px;">Contact</h2>
       <p class="lead" style="margin-top:0;">
@@ -296,4 +301,4 @@
   </footer>
 
 </body>
-</html>
+                  </html>
