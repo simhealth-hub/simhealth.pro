@@ -1,1 +1,179 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Accessibilité</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .legal-meta{ margin-top:12px; color:var(--muted); line-height:1.6; font-size:14px; }
+    .legal-meta strong{ color:var(--text); }
+    .notice{
+      margin-top:14px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:14px;
+      color:var(--muted);
+      background: color-mix(in srgb, var(--text) 4%, transparent);
+      line-height:1.6;
+    }
+    .notice strong{ color:var(--text); }
+    .muted{ color:var(--muted); line-height:1.7; }
+    ul{ color:var(--muted); line-height:1.7; }
+    li strong{ color:var(--text); }
+    .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:999px;
+      border:1px solid var(--border); text-decoration:none;
+      font-weight:800; color:var(--text);
+      background: color-mix(in srgb, var(--text) 6%, transparent);
+      white-space:nowrap;
+    }
+    .pill.primary{
+      background: color-mix(in srgb, var(--primary) 14%, transparent);
+      border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité santé.</strong> Ce site est une vitrine professionnelle du projet. En cas de danger immédiat, appelez les services d’urgence.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
+
+    <!-- ✅ Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Ouvrir/fermer la navigation">
+      ☰
+    </button>
+
+    <nav class="menu" aria-label="Navigation principale">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle" aria-label="Langue">
+        <a href="/en/legal/accessibility/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a class="active" href="/fr/legal/accessibilite/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
+        <span class="label label-dark">Sombre</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Clair</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/legal-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Accessibilité</h1>
+        <p class="rise-2">
+          Nous concevons SimHealth en pensant à l’accessibilité : navigation claire, contraste lisible, et contrôles utilisables au clavier.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#accessibilite">Lire la déclaration</a>
+          <a class="btn-secondary" href="/fr/contact/">Signaler un problème</a>
+        </div>
+
+        <p class="legal-meta">
+          <strong>Dernière mise à jour :</strong> 2026-02-01
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="accessibilite" style="margin-top:16px;">
+
+      <div class="notice">
+        <strong>Engagement :</strong> SimHealth vise à être utilisable par le plus grand nombre, y compris les personnes présentant des différences
+        visuelles, motrices, cognitives ou attentionnelles. Si vous rencontrez un obstacle d’accessibilité, dites-le-nous : nous prioriserons les corrections.
+      </div>
+
+      <h2>Ce que nous mettons en place</h2>
+      <ul>
+        <li><strong>Typographie lisible :</strong> choix de police clair et interlignage confortable.</li>
+        <li><strong>Interface attentive au contraste :</strong> modes sombre/clair pour s’adapter aux préférences.</li>
+        <li><strong>Navigation au clavier :</strong> les éléments interactifs doivent être accessibles et utilisables sans souris.</li>
+        <li><strong>HTML sémantique :</strong> titres structurés, libellés de champs, et repères de navigation (landmarks) cohérents.</li>
+        <li><strong>Approche mobile-first :</strong> mise en page adaptée aux petits écrans.</li>
+      </ul>
+
+      <h2>Limites connues</h2>
+      <p class="muted">
+        SimHealth est encore en développement : certaines pages peuvent évoluer rapidement.
+        Si vous constatez un problème (ex. focus bloqué, libellés manquants, contraste insuffisant), merci de nous le signaler.
+      </p>
+
+      <h2>Contact en cas de difficulté d’accessibilité</h2>
+      <p class="muted">
+        Écrivez à <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a> avec une brève description et, si possible, votre appareil/navigateur.
+      </p>
+
+      <div class="pill-row">
+        <a class="pill primary" href="/fr/contact/">Signaler un problème</a>
+        <a class="pill" href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a class="pill" href="/fr/legal/avis-medical/">Avis médical</a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a href="/fr/legal/conditions/">Conditions</a>
+        <a href="/fr/legal/cookies/">Cookies</a>
+        <a href="/fr/legal/accessibilite/">Accessibilité</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ✅ Mobile always-visible crisis access (French pages) -->
+  <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+</body>
+</html>
+```0
