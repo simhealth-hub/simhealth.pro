@@ -53,14 +53,16 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
 
-    <!-- ✅ Mobile: Menu button -->
+    <!-- ✅ Mobile: Menu button (wired to theme.js menu controller) -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
-      aria-label="Ouvrir/fermer la navigation">
+      aria-label="Ouvrir/fermer la navigation"
+      aria-expanded="false"
+      aria-controls="main-menu">
       ☰
     </button>
 
-    <nav class="menu" aria-label="Navigation principale">
+    <nav class="menu" id="main-menu" aria-label="Navigation principale">
       <a class="link" href="/fr/accueil/">Accueil</a>
       <a class="link" href="/fr/patients/">Patients</a>
       <a class="link" href="/fr/cliniciens/">Cliniciens</a>
