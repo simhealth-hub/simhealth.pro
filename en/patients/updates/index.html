@@ -68,6 +68,16 @@
 
     .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
     button.btn-primary{ border:none; cursor:pointer; }
+
+    /* Footer helper: keep it readable */
+    .footer-note{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .footer-note a{ color:var(--muted); }
+    .footer-note a:hover{ color:var(--text); }
   </style>
 </head>
 
@@ -99,12 +109,13 @@
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
+      <!-- ✅ FIXED: French link must match your real FR route -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/patients/updates/">
           <span class="lang-full">English</span>
           <span class="lang-short" aria-hidden="true">EN</span>
         </a>
-        <a href="/fr/patients/updates/">
+        <a href="/fr/patients/mises-a-jour/">
           <span class="lang-full">Français</span>
           <span class="lang-short" aria-hidden="true">FR</span>
         </a>
@@ -189,7 +200,18 @@
       <div>
         © 2026 SimHealth. All rights reserved. •
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+
+        <div class="footer-note">
+          Looking for French legal pages? Use:
+          <a href="/fr/legal/confidentialite/">Confidentialité</a>,
+          <a href="/fr/legal/conditions/">Conditions</a>,
+          <a href="/fr/legal/cookies/">Cookies</a>,
+          <a href="/fr/legal/accessibilite/">Accessibilité</a>,
+          <a href="/fr/legal/avis-medical/">Avis médical</a>.
+        </div>
       </div>
+
+      <!-- ✅ Keep EN footer links here (this is EN page) -->
       <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
         <a href="/en/legal/privacy/">Privacy</a>
@@ -208,7 +230,7 @@
   </div>
 
   <script>
-    // ✅ Single source of truth for your Apps Script endpoint
+    // Single source of truth for your Apps Script endpoint
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YKPqZwazNnQKjULUyALKS-7RlJyNRTQ/exec";
 
     const form = document.getElementById("updatesForm");
