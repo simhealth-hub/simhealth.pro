@@ -61,12 +61,33 @@
       .col{ grid-column: span 12; }
     }
 
-    /* Desktop words / Mobile abbreviations (for the language toggle) */
+    /* Desktop words / Mobile abbreviations (language toggle only) */
     .lang-full{ display:inline; }
     .lang-short{ display:none; }
     @media (max-width: 800px){
       .lang-full{ display:none; }
       .lang-short{ display:inline; }
+    }
+
+    /* Footer: add spacing + separators (page-scoped, doesn't affect other pages) */
+    footer nav{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:0;
+    }
+    footer nav a{
+      padding: 6px 10px;
+      position:relative;
+    }
+    footer nav a + a::before{
+      content:"|";
+      position:absolute;
+      left:-2px;
+      color: color-mix(in srgb, var(--muted) 70%, transparent);
+    }
+    @media (max-width: 520px){
+      footer nav a{ padding: 6px 8px; }
     }
   </style>
 </head>
@@ -252,4 +273,4 @@
   </div>
 
 </body>
-        </html>
+</html>
