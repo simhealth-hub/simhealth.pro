@@ -13,7 +13,6 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* Page-specific only (keep global rules in /assets/styles.css) */
     .lang-actions{
       display:flex;
       gap:10px;
@@ -37,7 +36,6 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="SimHealth home">SimHealth</a>
 
-    <!-- Mobile menu button -->
     <button class="nav-toggle" type="button"
       onclick="document.querySelector('header.nav .menu')?.classList.toggle('open')"
       aria-label="Open menu">
@@ -71,7 +69,7 @@
             <span class="lang-full">English</span>
             <span class="lang-short" aria-hidden="true">EN</span>
           </a>
-          <a class="btn-secondary" href="/fr/accueil.html">
+          <a class="btn-secondary" href="/fr/accueil/">
             <span class="lang-full">Français</span>
             <span class="lang-short" aria-hidden="true">FR</span>
           </a>
@@ -93,13 +91,11 @@
         © 2026 SimHealth. All rights reserved. •
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
+
       <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
-        <a href="/en/legal/privacy/">Privacy</a>
-        <a href="/en/legal/terms/">Terms</a>
-        <a href="/en/legal/cookies/">Cookies</a>
-        <a href="/en/legal/accessibility/">Accessibility</a>
-        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+        <a href="/en/legal/privacy/">Privacy (EN)</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité (FR)</a>
       </nav>
     </div>
   </footer>
