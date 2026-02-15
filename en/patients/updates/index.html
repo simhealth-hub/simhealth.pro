@@ -34,6 +34,7 @@
       border-color:color-mix(in srgb, #ef4444 34%, var(--border));
       color:var(--text);
     }
+
     .field label{ display:block; font-weight:800; margin:14px 0 8px; }
     .input{
       width:100%;
@@ -49,6 +50,7 @@
       border-color:color-mix(in srgb, var(--primary) 55%, var(--border));
       background:var(--surface);
     }
+
     .consent{
       margin-top:12px;
       display:flex;
@@ -63,6 +65,7 @@
       font-size:14px;
     }
     .consent input{ margin-top:3px; }
+
     .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
     button.btn-primary{ border:none; cursor:pointer; }
   </style>
@@ -75,11 +78,20 @@
   </div>
 
   <header class="nav">
-    <a class="brand" href="/index.html">SimHealth</a>
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="/en/home/"">Home</a>
-      <a class="link" href="/en/patients/">Patients</a>
+    <!-- Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" id="main-menu" aria-label="Main navigation">
+      <a class="link" href="/en/home/">Home</a>
+      <a class="link active" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
       <a class="link" href="/en/about/">About</a>
@@ -88,13 +100,20 @@
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/en/patients/updates/">English</a>
-        <a href="/fr/patients/updates/">Français</a>
+        <a class="active" href="/en/patients/updates/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a href="/fr/patients/updates/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
            onclick="SimHealthTheme.toggleTheme()"
-           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }">
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Toggle theme">
         <span class="label label-dark">Dark</span>
         <span class="track" aria-hidden="true"><span class="thumb"></span></span>
         <span class="label label-light">Light</span>
@@ -125,9 +144,9 @@
         This list is for project updates only. We do not sell data, and you can unsubscribe any time.
       </p>
 
-      <div id="statusBox" class="status"></div>
+      <div id="statusBox" class="status" role="status" aria-live="polite"></div>
 
-      <form id="updatesForm">
+      <form id="updatesForm" novalidate>
         <div class="field">
           <label for="email">Email address</label>
           <input
@@ -182,6 +201,12 @@
     </div>
   </footer>
 
+  <!-- Mobile always-visible crisis access (English pages only) -->
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
+
   <script>
     // ✅ Single source of truth for your Apps Script endpoint
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YKPqZwazNnQKjULUyALKS-7RlJyNRTQ/exec";
@@ -197,8 +222,11 @@
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const email = document.getElementById("email").value.trim().toLowerCase();
-      const consent = document.getElementById("consent").checked;
+      const emailEl = document.getElementById("email");
+      const consentEl = document.getElementById("consent");
+
+      const email = (emailEl.value || "").trim().toLowerCase();
+      const consent = !!consentEl.checked;
 
       if(!email || !email.includes("@")) return setStatus("error", "Please enter a valid email address.");
       if(!consent) return setStatus("error", "Please confirm consent to receive updates.");
