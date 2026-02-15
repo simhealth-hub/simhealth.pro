@@ -54,13 +54,16 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Retour au choix de la langue">SimHealth</a>
 
+    <!-- ✅ Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
-      aria-label="Ouvrir le menu">
+      aria-label="Ouvrir/fermer la navigation"
+      aria-expanded="false"
+      aria-controls="main-menu">
       ☰
     </button>
 
-    <nav class="menu" aria-label="Navigation principale">
+    <nav class="menu" id="main-menu" aria-label="Navigation principale">
       <a class="link" href="/fr/accueil/">Accueil</a>
       <a class="link" href="/fr/patients/">Patients</a>
       <a class="link" href="/fr/cliniciens/">Cliniciens</a>
@@ -81,11 +84,13 @@
         </a>
       </div>
 
+      <!-- ✅ Keyboard + consistent structure -->
       <div class="theme-toggle" role="button" tabindex="0"
            onclick="SimHealthTheme.toggleTheme()"
-           aria-label="Changer de thème">
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
         <span class="label label-dark">Sombre</span>
-        <span class="track"><span class="thumb"></span></span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
         <span class="label label-light">Clair</span>
       </div>
     </nav>
@@ -136,9 +141,7 @@
         Ce site ne fournit aucun conseil médical. Il ne doit pas être utilisé comme substitut à une consultation,
         un diagnostic ou un traitement professionnel.
         En cas de détresse, adressez-vous à des professionnels qualifiés ou utilisez les
-        <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">
-          ressources d’aide
-        </a>.
+        <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">ressources d’aide</a>.
       </p>
 
       <h2>3) Utilisation acceptable</h2>
@@ -207,10 +210,11 @@
     </div>
   </footer>
 
+  <!-- Mobile always-visible crisis access (French pages) -->
   <div class="mobile-crisis" aria-label="Accès rapide à l’aide">
-    <span class="label">Besoin d’aide maintenant ?</span>
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
     <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
   </div>
 
 </body>
-</html>
+        </html>
