@@ -87,13 +87,14 @@
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
+      <!-- ✅ FIX: FR toggle now points to a known-safe French route to prevent 404s.
+           When /fr/cliniciens/ exists, switch href to "/fr/cliniciens/" -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/clinicians/">
           <span class="lang-full">English</span>
           <span class="lang-short" aria-hidden="true">EN</span>
         </a>
-        <!-- French later: point to French home for now so it's not a dead link -->
-        <a href="/fr/cliniciens/">
+        <a href="/fr/accueil/">
           <span class="lang-full">Français</span>
           <span class="lang-short" aria-hidden="true">FR</span>
         </a>
@@ -249,4 +250,4 @@
   </div>
 
 </body>
-          </html>
+</html>
