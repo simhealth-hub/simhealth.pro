@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- ✅ Root-relative paths -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
@@ -113,19 +112,32 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
+    <!-- ✅ Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Toggle navigation">
+      ☰
+    </button>
+
     <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="/en/home/"">Home</a>
+      <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
       <a class="link" href="/en/about/">About</a>
-      <a class="link" href="/en/contact/">Contact</a>
+      <a class="link active" href="/en/contact/">Contact</a>
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/en/contact/">English</a>
-        <a href="/fr/contact/">Français</a>
+        <a class="active" href="/en/contact/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a href="/fr/contact/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -141,7 +153,6 @@
 
   <main class="wrap">
 
-    <!-- HERO -->
     <section class="hero">
       <div class="hero-bg" style="background-image:url('/assets/contact.jpg');"></div>
       <div class="hero-overlay"></div>
@@ -224,11 +235,12 @@
 
         <div class="actions">
           <button class="btn-primary" type="submit">Send message</button>
-          <a class="btn-secondary" href="/en/home/"">Back to Home</a>
+          <a class="btn-secondary" href="/en/home/">Back to Home</a>
         </div>
 
         <p class="mini">
-          Prefer email? General: <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a> • Clinical: <a href="mailto:clinical@simhealth.pro">clinical@simhealth.pro</a>
+          Prefer email? General: <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a> •
+          Clinical: <a href="mailto:clinical@simhealth.pro">clinical@simhealth.pro</a>
         </p>
       </form>
     </section>
@@ -252,7 +264,12 @@
     </div>
   </footer>
 
-  <!-- ✅ IMPORTANT: keep text/plain + no-cors for Apps Script web apps -->
+  <!-- ✅ Mobile always-visible crisis access (English pages only) -->
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
+
   <script>
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YKPqZwazNnQKjULUyALKS-7RlJyNRTQ/exec";
 
@@ -265,10 +282,7 @@
     }
 
     function routeToEmail(topic){
-      // This is informational only; routing is also done server-side in Apps Script.
       if (topic === "clinician") return "clinical@simhealth.pro";
-      if (topic === "research") return "contact@simhealth.pro";
-      if (topic === "press") return "contact@simhealth.pro";
       return "contact@simhealth.pro";
     }
 
@@ -303,9 +317,8 @@
             consent: true,
             userAgent: navigator.userAgent,
 
-            // payload fields
-            email,
             name,
+            email,
             topic,
             country,
             message,
@@ -324,4 +337,4 @@
   </script>
 
 </body>
-            </html>
+  </html>
