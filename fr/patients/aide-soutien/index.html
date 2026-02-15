@@ -50,4 +50,366 @@
     .support-card p { margin: 0 0 12px; color: var(--muted); line-height: 1.55; }
 
     .pill-row {
-      display:
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .phone-pill, .web-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .phone-pill {
+      background: color-mix(in srgb, var(--primary) 14%, transparent);
+      color: var(--text);
+      border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+    }
+    .phone-pill .icon {
+      width: 22px; height: 22px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--primary);
+      color: #071018;
+      font-size: 13px;
+    }
+
+    .web-pill {
+      background: color-mix(in srgb, var(--text) 6%, transparent);
+      color: var(--text);
+    }
+
+    .phone-pill:hover, .web-pill:hover { transform: translateY(-1px); }
+    .phone-pill:active, .web-pill:active { transform: translateY(0px); }
+
+    .small-links {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .small-links a { color: var(--muted); text-decoration: none; }
+    .small-links a:hover { color: var(--text); }
+
+    /* Wider hero copy for this page */
+    .hero .hero-content { width: min(720px, 92%); }
+
+    @media (max-width: 800px) {
+      .support-card { grid-column: span 12; }
+      .page-head h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité à la santé.</strong> Cette page partage des contacts d’aide réels. En cas de danger immédiat, appelez votre numéro d’urgence local.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
+
+    <!-- Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" id="main-menu" aria-label="Navigation principale">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link active" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle" aria-label="Langue">
+        <a href="/en/patients/help-support/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a class="active" href="/fr/patients/aide-soutien/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
+        <span class="label label-dark">Sombre</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Clair</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/help-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Aide &amp; soutien</h1>
+        <p class="rise-2">
+          Si vous traversez une période difficile, vous n’avez pas à rester seul·e.
+          Voici des services officiels que vous pouvez contacter dès aujourd’hui.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#crise">Crise &amp; prévention du suicide</a>
+          <a class="btn-secondary" href="#jeu">Aide liée au jeu d’argent</a>
+        </div>
+
+        <p style="margin:12px 0 0; color:var(--muted); line-height:1.55;">
+          <strong style="color:var(--text);">En cas de danger immédiat,</strong>
+          appelez votre numéro d’urgence local.
+          <br><span style="font-size:13px;">SimHealth n’est pas un service d’urgence ni une ligne de crise.</span>
+        </p>
+      </div>
+    </section>
+
+    <div class="page-head">
+      <h2>Repères rapides</h2>
+      <p>
+        SimHealth est une vitrine professionnelle du projet. Ces contacts sont fournis car la sécurité prime sur tout.
+        Si vous vous sentez en danger, appelez immédiatement les urgences ou une ligne de crise.
+      </p>
+
+      <div class="notice">
+        <strong>Important :</strong> SimHealth est en développement et ne fournit pas de services d’urgence.
+        Cette page vous oriente vers des organisations d’aide réelles, selon les pays.
+      </div>
+    </div>
+
+    <!-- CRISIS -->
+    <div class="section-title" id="crise">
+      <h3>Crise &amp; prévention du suicide</h3>
+      <p>Appuyez sur un numéro pour appeler. Sur mobile, l’appel devrait s’ouvrir automatiquement.</p>
+    </div>
+
+    <div class="support-grid" aria-label="Aide en cas de crise par pays">
+
+      <div class="support-card">
+        <h4>France</h4>
+        <p>Numéro national de prévention du suicide (gratuit). En cas de danger immédiat, appelez les urgences.</p>
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:3114" aria-label="Appeler le 3114">
+            <span class="icon">☎</span> 3114
+          </a>
+          <a class="phone-pill" href="tel:112" aria-label="Appeler le 112">
+            <span class="icon">☎</span> 112 (Urgences)
+          </a>
+        </div>
+        <div class="small-links">
+          <a href="https://3114.fr" target="_blank" rel="noreferrer">Officiel : 3114</a>
+        </div>
+      </div>
+
+      <div class="support-card">
+        <h4>États-Unis</h4>
+        <p>988 Suicide &amp; Crisis Lifeline (appel ou SMS). En cas de danger immédiat : 911.</p>
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:988" aria-label="Appeler le 988">
+            <span class="icon">☎</span> 988
+          </a>
+          <a class="web-pill" href="sms:988" aria-label="Envoyer un SMS au 988">SMS 988</a>
+          <a class="phone-pill" href="tel:911" aria-label="Appeler le 911">
+            <span class="icon">☎</span> 911 (Urgences)
+          </a>
+        </div>
+        <div class="small-links">
+          <a href="https://988lifeline.org" target="_blank" rel="noreferrer">Officiel : 988 Lifeline</a>
+        </div>
+      </div>
+
+      <div class="support-card">
+        <h4>Canada</h4>
+        <p>988 Suicide Crisis Helpline (appel ou SMS). En cas de danger immédiat : 911.</p>
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:988" aria-label="Appeler le 988">
+            <span class="icon">☎</span> 988
+          </a>
+          <a class="web-pill" href="sms:988" aria-label="Envoyer un SMS au 988">SMS 988</a>
+          <a class="phone-pill" href="tel:911" aria-label="Appeler le 911">
+            <span class="icon">☎</span> 911 (Urgences)
+          </a>
+        </div>
+        <div class="small-links">
+          <a href="https://www.canada.ca/en/public-health/services/mental-health-services/988.html" target="_blank" rel="noreferrer">
+            Officiel : Canada 988
+          </a>
+        </div>
+      </div>
+
+      <div class="support-card">
+        <h4>Royaume-Uni &amp; Irlande</h4>
+        <p>Samaritans (numéro gratuit). Urgences : 999 (UK) / 112.</p>
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:116123" aria-label="Appeler le 116123">
+            <span class="icon">☎</span> 116 123
+          </a>
+          <a class="phone-pill" href="tel:999" aria-label="Appeler le 999">
+            <span class="icon">☎</span> 999 (Urgences)
+          </a>
+          <a class="phone-pill" href="tel:112" aria-label="Appeler le 112">
+            <span class="icon">☎</span> 112 (Urgences)
+          </a>
+        </div>
+        <div class="small-links">
+          <a href="https://www.samaritans.org/how-we-can-help/contact-samaritan/" target="_blank" rel="noreferrer">
+            Officiel : Samaritans
+          </a>
+        </div>
+      </div>
+
+      <div class="support-card">
+        <h4>Australie</h4>
+        <p>Lifeline (soutien en situation de crise). En cas de danger immédiat : 000.</p>
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:131114" aria-label="Appeler le 131114">
+            <span class="icon">☎</span> 13 11 14
+          </a>
+          <a class="phone-pill" href="tel:000" aria-label="Appeler le 000">
+            <span class="icon">☎</span> 000 (Urgences)
+          </a>
+        </div>
+        <div class="small-links">
+          <a href="https://www.lifeline.org.au" target="_blank" rel="noreferrer">Officiel : Lifeline</a>
+        </div>
+      </div>
+
+      <div class="support-card">
+        <h4>Nouvelle-Zélande</h4>
+        <p>Appelez ou envoyez un SMS au 1737 pour un soutien gratuit par un·e conseiller·e formé·e.</p>
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:1737" aria-label="Appeler le 1737">
+            <span class="icon">☎</span> 1737
+          </a>
+          <a class="web-pill" href="sms:1737" aria-label="Envoyer un SMS au 1737">SMS 1737</a>
+          <a class="phone-pill" href="tel:111" aria-label="Appeler le 111">
+            <span class="icon">☎</span> 111 (Urgences)
+          </a>
+        </div>
+        <div class="small-links">
+          <a href="https://1737.org.nz" target="_blank" rel="noreferrer">Officiel : 1737</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GAMBLING -->
+    <div class="section-title" id="jeu">
+      <h3>Aide liée au jeu d’argent</h3>
+      <p>Services confidentiels pour le jeu d’argent problématique, la réduction des risques et l’orientation vers des soins.</p>
+    </div>
+
+    <div class="support-grid" aria-label="Aide liée au jeu d’argent par pays">
+
+      <div class="support-card">
+        <h4>France</h4>
+        <p>Joueurs Info Service — information, écoute et soutien en cas de difficultés liées au jeu d’argent.</p>
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:+33974751313" aria-label="Appeler le +33974751313">
+            <span class="icon">☎</span> +33 9 74 75 13 13
+          </a>
+          <a class="web-pill" href="https://www.joueurs-info-service.fr" target="_blank" rel="noreferrer">Site web</a>
+        </div>
+      </div>
+
+      <div class="support-card">
+        <h4>Royaume-Uni</h4>
+        <p>National Gambling Helpline (via GamCare) — aide gratuite et confidentielle.</p>
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:08088020133" aria-label="Appeler le 08088020133">
+            <span class="icon">☎</span> 0808 8020 133
+          </a>
+          <a class="web-pill" href="https://www.gamcare.org.uk" target="_blank" rel="noreferrer">Site web</a>
+        </div>
+      </div>
+
+      <div class="support-card">
+        <h4>États-Unis</h4>
+        <p>National Problem Gambling Helpline (NCPG) — appel, SMS ou chat 24/7.</p>
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:18006997338" aria-label="Appeler le 18006997338">
+            <span class="icon">☎</span> 1-800-MY-RESET
+          </a>
+          <a class="web-pill" href="sms:800426" aria-label="Envoyer un SMS au 800426">SMS 800GAM</a>
+          <a class="web-pill" href="https://www.ncpgambling.org/help-treatment/about-the-national-problem-gambling-helpline/" target="_blank" rel="noreferrer">
+            Site web
+          </a>
+        </div>
+      </div>
+
+      <div class="support-card">
+        <h4>Australie</h4>
+        <p>Gambling Help Online — aide gratuite et confidentielle.</p>
+        <div class="pill-row">
+          <a class="phone-pill" href="tel:1800858858" aria-label="Appeler le 1800858858">
+            <span class="icon">☎</span> 1800 858 858
+          </a>
+          <a class="web-pill" href="https://www.gamblinghelponline.org.au" target="_blank" rel="noreferrer">Site web</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="notice" style="margin-top:16px;">
+      <strong>Note :</strong> SimHealth est conçu selon une approche “sécurité d’abord” : orientation vers des services réels, aucune promesse d’urgence,
+      et une gouvernance prudente. Toute future évaluation impliquant des données serait fondée sur le consentement et alignée avec les exigences légales
+      et l’éthique clinique.
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+
+      <nav aria-label="Liens du pied de page">
+        <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a href="/fr/legal/conditions/">Conditions</a>
+        <a href="/fr/legal/cookies/">Cookies</a>
+        <a href="/fr/legal/accessibilite/">Accessibilité</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Mobile always-visible crisis access (French pages) -->
+  <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+</body>
+        </html>
