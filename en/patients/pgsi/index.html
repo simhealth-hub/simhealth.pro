@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Root-relative paths -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
@@ -165,9 +164,18 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <nav class="menu" aria-label="Main navigation">
+    <!-- Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" id="main-menu" aria-label="Main navigation">
       <a class="link" href="/en/home/">Home</a>
-      <a class="link" href="/en/patients/">Patients</a>
+      <a class="link active" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
       <a class="link" href="/en/about/">About</a>
@@ -176,8 +184,14 @@
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/en/patients/pgsi/">English</a>
-        <a href="/fr/patients/">Français</a>
+        <a class="active" href="/en/patients/pgsi/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a href="/fr/patients/pgsi/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -193,9 +207,9 @@
 
   <main class="wrap">
 
-    <!-- HERO -->
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/patient.jpg');"></div>
+      <!-- NOTE: change back to /assets/patient.jpg if that's the real filename -->
+      <div class="hero-bg" style="background-image:url('/assets/patients.jpg');"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
@@ -212,7 +226,8 @@
         </div>
 
         <div class="notice" style="margin-top:14px;">
-          <strong>If you feel unsafe right now:</strong> use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
+          <strong>If you feel unsafe right now:</strong> use
+          <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
           or call your local emergency number. This website is not monitored as an emergency service.
         </div>
       </div>
@@ -233,12 +248,12 @@
 
       <div class="notice">
         <strong>Important:</strong> This tool can be emotionally activating.
-        If you notice distress rising, pause and use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
+        If you notice distress rising, pause and use
+        <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
         or speak to a professional you trust.
       </div>
     </div>
 
-    <!-- QUIZ -->
     <section class="card" id="quiz" style="margin-top:16px;">
       <h2 style="margin:0 0 8px;">PGSI questionnaire</h2>
       <p style="margin:0; color:var(--muted); line-height:1.65;">
@@ -257,7 +272,7 @@
         <a class="btn-secondary" href="/en/patients/help-support/">Help &amp; support</a>
       </div>
 
-      <div id="resultBox" class="status" aria-live="polite"></div>
+      <div id="resultBox" class="status" role="status" aria-live="polite"></div>
 
       <p class="fine">
         The PGSI (Problem Gambling Severity Index) is widely used as a screening measure in population and service settings.
@@ -285,8 +300,13 @@
     </div>
   </footer>
 
+  <!-- Mobile always-visible crisis access (English pages only) -->
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
+
   <script>
-    // PGSI questions (standard 9-item PGSI)
     const QUESTIONS = [
       "In the past 12 months, have you bet more than you could really afford to lose?",
       "In the past 12 months, have you needed to gamble with larger amounts of money to get the same feeling of excitement?",
@@ -328,7 +348,7 @@
         wrap.innerHTML = `
           <h3>${idx + 1}. ${escapeHtml(q)}</h3>
           <div class="options" role="radiogroup" aria-label="Question ${idx + 1}">
-            ${OPTIONS.map((o, j) => `
+            ${OPTIONS.map((o) => `
               <label class="opt">
                 <input type="radio" name="q${idx}" value="${o.value}" aria-label="${escapeHtml(o.label)}" />
                 <div>
@@ -423,11 +443,12 @@
     });
 
     resetBtn.addEventListener("click", () => {
-  document.getElementById("pgsiForm").reset();
-  resultBox.className = "status";
-  resultBox.innerHTML = "";
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+      form.reset();
+      resultBox.className = "status";
+      resultBox.innerHTML = "";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
     buildForm();
   </script>
 
