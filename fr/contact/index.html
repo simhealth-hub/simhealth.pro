@@ -1,1 +1,339 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Contact</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .status{
+      display:none;
+      margin-top:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      padding:12px 14px;
+      line-height:1.5;
+      color:var(--muted);
+    }
+    .status.success{
+      display:block;
+      background:color-mix(in srgb, var(--primary) 18%, transparent);
+      border-color:color-mix(in srgb, var(--primary) 38%, var(--border));
+      color:var(--text);
+    }
+    .status.error{
+      display:block;
+      background:color-mix(in srgb, #ef4444 16%, transparent);
+      border-color:color-mix(in srgb, #ef4444 34%, var(--border));
+      color:var(--text);
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
+      margin-top:14px;
+    }
+    .field{ grid-column: span 6; }
+    .field.full{ grid-column: span 12; }
+
+    .field label{ display:block; font-weight:800; margin:0 0 8px; }
+    .input, .textarea, .select{
+      width:100%;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--surface) 92%, transparent);
+      color:var(--text);
+      font-size:15px;
+      outline:none;
+    }
+    .textarea{ min-height:140px; resize:vertical; }
+    .input:focus, .textarea:focus, .select:focus{
+      border-color:color-mix(in srgb, var(--primary) 55%, var(--border));
+      background:var(--surface);
+    }
+
+    .notice{
+      margin-top:14px;
+      background: color-mix(in srgb, var(--warn) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--warn) 28%, transparent);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .notice strong { color: var(--text); }
+
+    .consent{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      color:var(--muted);
+      line-height:1.45;
+      font-size:14px;
+    }
+    .consent input{ margin-top:3px; }
+
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    button.btn-primary{ border:none; cursor:pointer; }
+
+    .mini{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    @media (max-width: 800px){
+      .field{ grid-column: span 12; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité santé.</strong> Ce site est une vitrine professionnelle du projet. En cas de danger immédiat, appelez les services d’urgence.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
+
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Ouvrir/fermer la navigation">
+      ☰
+    </button>
+
+    <nav class="menu" aria-label="Navigation principale">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link active" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle" aria-label="Langue">
+        <a href="/en/contact/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a class="active" href="/fr/contact/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
+        <span class="label label-dark">Sombre</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Clair</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/contact.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Contact</h1>
+        <p class="rise-2">
+          Pour les demandes professionnelles, la collaboration, les échanges de recherche, ou toute question générale sur le projet.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#form">Envoyer un message</a>
+          <a class="btn-secondary" href="/fr/patients/updates/">Recevoir les actualités</a>
+          <a class="btn-secondary" href="/fr/cliniciens/pilote/">Infos pilote</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="form" style="margin-top:16px;">
+      <h2 style="margin:0 0 10px;">Envoyer un message</h2>
+      <p style="margin:0; color:var(--muted); line-height:1.65;">
+        Nous essayons de répondre rapidement. Si vous êtes clinicien·ne ou une institution, utilisez votre e-mail professionnel si possible.
+      </p>
+
+      <div class="notice">
+        <strong>Important :</strong> ce formulaire n’est <strong>pas</strong> surveillé comme un service d’urgence.
+        En cas de danger immédiat ou de risque d’automutilation, utilisez
+        <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">Ressources d’aide</a>
+        ou appelez les services d’urgence.
+      </div>
+
+      <div id="statusBox" class="status" role="status" aria-live="polite"></div>
+
+      <form id="contactForm" style="margin-top:14px;">
+        <div class="form-grid">
+          <div class="field">
+            <label for="name">Votre nom</label>
+            <input class="input" id="name" name="name" type="text" placeholder="Alex Martin" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input class="input" id="email" name="email" type="email" placeholder="vous@email.com" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="topic">Sujet</label>
+            <select class="select" id="topic" name="topic" required>
+              <option value="">Sélectionner…</option>
+              <option value="general">Général</option>
+              <option value="clinician">Clinicien·ne / service</option>
+              <option value="research">Recherche / évaluation</option>
+              <option value="press">Presse / médias</option>
+              <option value="partnership">Partenariat</option>
+              <option value="other">Autre</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="country">Pays (optionnel)</label>
+            <input class="input" id="country" name="country" type="text" placeholder="France / Suisse / Belgique…">
+          </div>
+
+          <div class="field full">
+            <label for="message">Message</label>
+            <textarea class="textarea" id="message" name="message" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+          </div>
+        </div>
+
+        <div class="consent">
+          <input id="consent" type="checkbox" required>
+          <label for="consent" style="margin:0;">
+            J’accepte d’être recontacté·e par SimHealth au sujet de cette demande.
+            <div style="margin-top:6px;">
+              Note données : nous utilisons ces informations uniquement pour vous répondre. Vous pouvez demander la suppression à tout moment via
+              <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+            </div>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" type="submit">Envoyer</button>
+          <a class="btn-secondary" href="/fr/accueil/">Retour à l’accueil</a>
+        </div>
+
+        <p class="mini">
+          Préférez l’e-mail ? Général : <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a> •
+          Clinique : <a href="mailto:clinical@simhealth.pro">clinical@simhealth.pro</a>
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a href="/fr/legal/conditions/">Conditions</a>
+        <a href="/fr/legal/cookies/">Cookies</a>
+        <a href="/fr/legal/accessibilite/">Accessibilité</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Mobile always-visible crisis access (French pages) -->
+  <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+  <script>
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YKPqZwazNnQKjULUyALKS-7RlJyNRTQ/exec";
+
+    const form = document.getElementById("contactForm");
+    const statusBox = document.getElementById("statusBox");
+
+    function setStatus(type, msg){
+      statusBox.className = "status " + type;
+      statusBox.textContent = msg;
+    }
+
+    function routeToEmail(topic){
+      if (topic === "clinician") return "clinical@simhealth.pro";
+      return "contact@simhealth.pro";
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const topic = document.getElementById("topic").value.trim();
+      const country = document.getElementById("country").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const consent = document.getElementById("consent").checked;
+
+      if (!name) return setStatus("error", "Veuillez saisir votre nom.");
+      if (!email || !email.includes("@")) return setStatus("error", "Veuillez saisir une adresse e-mail valide.");
+      if (!topic) return setStatus("error", "Veuillez sélectionner un sujet.");
+      if (!message) return setStatus("error", "Veuillez saisir un message.");
+      if (!consent) return setStatus("error", "Veuillez confirmer votre accord afin que nous puissions vous répondre.");
+      if (!ENDPOINT) return setStatus("error", "Configuration incomplète : endpoint non défini.");
+
+      const routedTo = routeToEmail(topic);
+
+      try {
+        await fetch(ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            type: "contact",
+            lang: "fr",
+            source: "contact-page",
+            consent: true,
+            userAgent: navigator.userAgent,
+
+            name,
+            email,
+            topic,
+            country,
+            message,
+            routedTo
+          })
+        });
+
+        setStatus("success", "Merci — votre message a bien été envoyé. Nous vous répondrons par e-mail dès que possible.");
+        form.reset();
+
+      } catch (err) {
+        console.error(err);
+        setStatus("error", "Un problème est survenu. Vous pouvez aussi écrire à contact@simhealth.pro.");
+      }
+    });
+  </script>
+
+</body>
+</html>
