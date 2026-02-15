@@ -1,1 +1,279 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Politique de confidentialité</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .legal-meta{
+      margin-top:12px;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+    .legal-meta strong{ color:var(--text); }
+    .legal-toc{
+      margin-top:14px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:14px;
+      background: color-mix(in srgb, var(--text) 4%, transparent);
+    }
+    .legal-toc h2{ margin:0 0 8px; font-size:16px; }
+    .legal-toc a{ color:var(--text); text-decoration:none; }
+    .legal-toc a:hover{ text-decoration:underline; }
+    .legal-section h2{ margin-top:18px; }
+    .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      font-weight:800;
+      color:var(--text);
+      background: color-mix(in srgb, var(--text) 6%, transparent);
+      white-space:nowrap;
+    }
+    .pill.primary{
+      background: color-mix(in srgb, var(--primary) 14%, transparent);
+      border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+    }
+    .notice{
+      margin-top:14px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:14px;
+      color:var(--muted);
+      background: color-mix(in srgb, var(--warn) 12%, transparent);
+      line-height:1.6;
+    }
+    .notice strong{ color:var(--text); }
+    .muted{ color:var(--muted); line-height:1.7; }
+    ul{ color:var(--muted); line-height:1.7; }
+    li strong{ color:var(--text); }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité santé.</strong> Ce site est une vitrine professionnelle du projet. En cas de danger immédiat, appelez votre numéro d’urgence local.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
+
+    <!-- ✅ Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Ouvrir/fermer la navigation">
+      ☰
+    </button>
+
+    <nav class="menu" aria-label="Navigation principale">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle" aria-label="Langue">
+        <a href="/en/legal/privacy/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a class="active" href="/fr/legal/confidentialite/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
+        <span class="label label-dark">Sombre</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Clair</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/legal-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Politique de confidentialité</h1>
+        <p class="rise-2">
+          Comment nous traitons les données personnelles sur simhealth.pro — avec une approche « confidentialité d’abord » et « sécurité d’abord ».
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#policy">Lire la politique</a>
+          <a class="btn-secondary" href="/fr/contact/">Contact</a>
+        </div>
+
+        <p class="legal-meta">
+          <strong>Date d’entrée en vigueur :</strong> 2026-02-01 •
+          <strong>Site :</strong> simhealth.pro •
+          <strong>Contact :</strong> <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="card legal-section" id="policy" style="margin-top:16px;">
+
+      <div class="notice">
+        <strong>Important :</strong> SimHealth est en cours de développement et ce site est une vitrine du projet.
+        Nous ne fournissons pas de prise en charge d’urgence ni de service de crise.
+        En cas de risque immédiat, utilisez
+        <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">Ressources d’aide</a>
+        ou appelez votre numéro d’urgence local.
+      </div>
+
+      <div class="legal-toc" aria-label="Sommaire de la politique de confidentialité">
+        <h2>Sommaire</h2>
+        <ul style="margin:0; padding-left:18px;">
+          <li><a href="#who">Qui sommes-nous ?</a></li>
+          <li><a href="#data">Quelles données collectons-nous ?</a></li>
+          <li><a href="#why">Finalités &amp; bases légales</a></li>
+          <li><a href="#sharing">Partage &amp; sous-traitants</a></li>
+          <li><a href="#retention">Durées de conservation</a></li>
+          <li><a href="#rights">Vos droits (RGPD)</a></li>
+          <li><a href="#security">Sécurité</a></li>
+          <li><a href="#children">Mineurs</a></li>
+          <li><a href="#changes">Modifications</a></li>
+        </ul>
+      </div>
+
+      <h2 id="who">Qui sommes-nous ?</h2>
+      <p class="muted">
+        « SimHealth » désigne le projet SimHealth et le site simhealth.pro.
+        Pour toute question relative à la confidentialité, contactez
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+      </p>
+
+      <h2 id="data">Quelles données collectons-nous ?</h2>
+      <p class="muted">Nous cherchons à collecter le minimum de données personnelles. Les données peuvent inclure :</p>
+      <ul>
+        <li><strong>Formulaire de contact :</strong> nom, adresse e-mail, contenu du message, sujet et (facultatif) pays.</li>
+        <li><strong>Demandes de pilote :</strong> nom professionnel, fonction, organisation, e-mail professionnel, pays et message.</li>
+        <li><strong>Inscription aux mises à jour :</strong> adresse e-mail et statut de consentement (pour recevoir les actualités du projet).</li>
+        <li><strong>Données techniques de base :</strong> user-agent du navigateur et métadonnées limitées utilisées pour la fiabilité et la prévention des abus.</li>
+      </ul>
+
+      <h2 id="why">Finalités &amp; bases légales</h2>
+      <p class="muted">
+        Nous traitons des données personnelles uniquement lorsqu’il existe une finalité claire et une base légale au sens du RGPD :
+      </p>
+      <ul>
+        <li><strong>Répondre aux demandes</strong> (contact, pilote) : <strong>intérêt légitime</strong> et/ou <strong>mesures précontractuelles</strong> (selon le contexte).</li>
+        <li><strong>Envoyer des mises à jour du projet</strong> (liste e-mail) : <strong>consentement</strong>. Vous pouvez vous désinscrire à tout moment.</li>
+        <li><strong>Assurer la sécurité et la fiabilité du site</strong> (prévention des abus) : <strong>intérêt légitime</strong>.</li>
+      </ul>
+
+      <h2 id="sharing">Partage &amp; sous-traitants</h2>
+      <p class="muted">
+        Nous ne vendons pas vos données personnelles. Nous pouvons recourir à des prestataires (« sous-traitants ») soigneusement sélectionnés
+        pour faire fonctionner le site et les e-mails. Par exemple :
+      </p>
+      <ul>
+        <li><strong>Prestataires d’envoi d’e-mails</strong> pour envoyer des confirmations/mises à jour et répondre aux demandes.</li>
+        <li><strong>Traitement/stockage des formulaires</strong> (ex. tableur ou base de données sécurisée) pour conserver les demandes.</li>
+      </ul>
+      <p class="muted">
+        Lorsque nous utilisons des sous-traitants, nous limitons les données au strict nécessaire et configurons les services afin de réduire l’exposition.
+      </p>
+
+      <h2 id="retention">Durées de conservation</h2>
+      <p class="muted">
+        Nous conservons les données uniquement le temps nécessaire à la finalité :
+      </p>
+      <ul>
+        <li><strong>Liste « mises à jour » :</strong> jusqu’à désinscription ou demande de suppression.</li>
+        <li><strong>Demandes :</strong> le temps de répondre et de conserver un historique raisonnable des échanges.</li>
+      </ul>
+      <p class="muted">
+        Vous pouvez demander la suppression à tout moment en écrivant à
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+      </p>
+
+      <h2 id="rights">Vos droits (RGPD)</h2>
+      <p class="muted">
+        Selon votre situation, vous disposez de droits : accès, rectification, effacement, limitation, opposition et portabilité.
+        Vous pouvez aussi retirer votre consentement lorsque le consentement est la base (ex. e-mails de mises à jour).
+      </p>
+      <p class="muted">
+        Pour exercer vos droits, écrivez à <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a> depuis l’adresse concernée.
+      </p>
+
+      <h2 id="security">Sécurité</h2>
+      <p class="muted">
+        Nous mettons en œuvre des mesures techniques et organisationnelles raisonnables pour protéger les données
+        (accès au strict nécessaire, configurations sécurisées, minimisation). Aucune transmission/stockage n’est totalement sécurisé,
+        mais nous concevons le site selon une logique de réduction des risques.
+      </p>
+
+      <h2 id="children">Mineurs</h2>
+      <p class="muted">
+        SimHealth n’est pas conçu pour les mineurs. Si vous pensez qu’un mineur a fourni des données personnelles,
+        contactez-nous et nous prendrons les mesures appropriées.
+      </p>
+
+      <h2 id="changes">Modifications</h2>
+      <p class="muted">
+        Nous pouvons mettre à jour cette politique au fil de l’évolution du projet. La « date d’entrée en vigueur » en haut de page sera actualisée.
+      </p>
+
+      <div class="pill-row">
+        <a class="pill primary" href="/fr/contact/">Contacter (confidentialité)</a>
+        <a class="pill" href="/fr/legal/cookies/">Cookies</a>
+        <a class="pill" href="/fr/legal/conditions/">Conditions</a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a href="/fr/legal/conditions/">Conditions</a>
+        <a href="/fr/legal/cookies/">Cookies</a>
+        <a href="/fr/legal/accessibilite/">Accessibilité</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Mobile always-visible crisis access (French pages) -->
+  <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+</body>
+</html>
+```0
