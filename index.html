@@ -13,7 +13,7 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* Keep this page clean + centered */
+    /* Page-specific only (keep global rules in /assets/styles.css) */
     .lang-actions{
       display:flex;
       gap:10px;
@@ -24,39 +24,6 @@
       margin:0;
       color:var(--muted);
       line-height:1.55;
-    }
-
-    /* Desktop: show full words */
-    .lang-full{ display:inline; }
-    .lang-short{ display:none; }
-
-    /* Mobile: show EN/FR only */
-    @media (max-width: 800px){
-      .lang-full{ display:none; }
-      .lang-short{ display:inline; }
-    }
-
-    /* Footer spacing with separators */
-    footer nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap:0;               /* separators handle spacing */
-      align-items:center;
-    }
-    footer nav a{
-      padding: 6px 10px;
-      position:relative;
-    }
-    footer nav a + a::before{
-      content:"|";
-      position:absolute;
-      left:-2px;
-      color: color-mix(in srgb, var(--muted) 70%, transparent);
-    }
-
-    /* On very small screens, reduce padding so it doesn't feel cramped */
-    @media (max-width: 520px){
-      footer nav a{ padding: 6px 8px; }
     }
   </style>
 </head>
@@ -70,7 +37,7 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="SimHealth home">SimHealth</a>
 
-    <!-- ✅ Mobile: Menu button -->
+    <!-- Mobile menu button -->
     <button class="nav-toggle" type="button"
       onclick="document.querySelector('header.nav .menu')?.classList.toggle('open')"
       aria-label="Open menu">
@@ -78,7 +45,6 @@
     </button>
 
     <nav class="menu" aria-label="Top controls">
-      <!-- Keep this page minimal: theme only -->
       <div class="theme-toggle" role="button" tabindex="0"
            onclick="SimHealthTheme.toggleTheme()"
            onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
@@ -137,12 +103,6 @@
       </nav>
     </div>
   </footer>
-
-  <!-- ✅ Optional: mobile always-visible crisis access -->
-  <div class="mobile-crisis" aria-label="Crisis quick access">
-    <span class="label">Need help now?</span>
-    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
-  </div>
 
 </body>
 </html>
