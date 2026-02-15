@@ -67,8 +67,6 @@
       background:color-mix(in srgb, var(--primary) 12%, transparent);
       color:var(--text);
       font-weight:800;
-      letter-spacing:0.2px;
-      user-select:none;
       white-space:nowrap;
     }
 
@@ -78,12 +76,6 @@
       gap: 10px;
       flex-wrap: wrap;
     }
-
-    /* “Text-first” hero using your existing .hero but with no background image */
-    .hero-text .hero-bg,
-    .hero-text .hero-overlay{ display:none; }
-    .hero-text{ min-height: unset; }
-    .hero-text .hero-content{ width: min(820px, 92%); }
 
     @media (max-width: 900px) {
       .col-7, .col-5 { grid-column: span 12; }
@@ -95,16 +87,16 @@
 
   <div class="banner">
     <strong>Priorité santé.</strong>
-    SimHealth est une vitrine professionnelle du projet. En cas de danger immédiat, contactez les services d’urgence.
+    SimHealth est une vitrine professionnelle du projet.
+    En cas de danger immédiat, contactez les services d’urgence.
   </div>
 
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
 
-    <!-- Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
-      aria-label="Ouvrir/fermer la navigation">
+      aria-label="Ouvrir ou fermer la navigation">
       ☰
     </button>
 
@@ -121,20 +113,20 @@
       <div class="lang-toggle" aria-label="Langue">
         <a href="/en/about/">
           <span class="lang-full">English</span>
-          <span class="lang-short" aria-hidden="true">EN</span>
+          <span class="lang-short">EN</span>
         </a>
         <a class="active" href="/fr/a-propos/">
           <span class="lang-full">Français</span>
-          <span class="lang-short" aria-hidden="true">FR</span>
+          <span class="lang-short">FR</span>
         </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
-           onclick="SimHealthTheme.toggleTheme()"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();SimHealthTheme.toggleTheme();}"
-           aria-label="Changer le thème">
+        onclick="SimHealthTheme.toggleTheme()"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();SimHealthTheme.toggleTheme();}"
+        aria-label="Changer le thème">
         <span class="label label-dark">Sombre</span>
-        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="track"><span class="thumb"></span></span>
         <span class="label label-light">Clair</span>
       </div>
     </nav>
@@ -142,18 +134,21 @@
 
   <main class="wrap">
 
-    <!-- HERO (text-first) -->
-    <section class="hero hero-text">
+    <!-- ✅ HERO AVEC IMAGE -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/about.jpg');"></div>
+      <div class="hero-overlay"></div>
+
       <div class="hero-content">
         <h1 class="rise-1">À propos de SimHealth</h1>
-        <p class="lead rise-2">
-          SimHealth est un projet numérique <strong style="color:var(--text);">conçu avec des clinicien·ne·s</strong> qui explore un soutien structuré
-          face aux <strong style="color:var(--text);">envies de jeu d’argent</strong>.
-          Il est pensé pour la sécurité, la gouvernance et une évaluation progressive — et <strong style="color:var(--text);">pas</strong> pour une utilisation en urgence.
+        <p class="rise-2">
+          Un projet numérique conçu avec des clinicien·ne·s,
+          explorant un soutien structuré face aux envies de jeu d’argent,
+          avec des limites claires de sécurité et de gouvernance.
         </p>
 
-        <div class="status-bar rise-3" role="note" aria-label="Statut du projet">
-          <span class="status-pill">Étape : pré-pilote</span>
+        <div class="status-bar rise-3">
+          <span class="status-pill">Étape&nbsp;: pré-pilote</span>
           <span>Aucune allégation médicale • Pas un dispositif médical • Pas un service de crise</span>
         </div>
 
@@ -168,33 +163,37 @@
     <section class="card section">
       <h2>Mission</h2>
       <p class="lead">
-        Le projet se concentre sur les moments à haut risque, lorsque les envies de jeu d’argent montent très vite et que l’aide habituelle
-        est souvent difficile d’accès. SimHealth vise à évaluer si des outils numériques, correctement encadrés, peuvent soutenir des décisions
-        plus sûres au sein de parcours cliniques réels.
+        Le projet se concentre sur les moments à haut risque, lorsque les envies de jeu d’argent augmentent rapidement
+        et que l’aide traditionnelle est souvent indisponible.
+        SimHealth explore si des outils numériques rigoureusement encadrés peuvent soutenir des décisions plus sûres
+        au sein de parcours cliniques réels.
       </p>
 
       <div class="grid">
         <div class="col-7">
-          <h3>Ce que SimHealth cherche à apporter</h3>
+          <h3>Objectifs du projet</h3>
           <ul class="list">
-            <li><strong>Réduction des risques :</strong> aider à faire des choix plus sûrs pendant les fenêtres de craving aigu.</li>
-            <li><strong>Continuité :</strong> limiter le décrochage entre les séances et les rendez-vous.</li>
-            <li><strong>Complémentarité :</strong> fonctionner avec les clinicien·ne·s, sans s’y substituer.</li>
-            <li><strong>Confiance :</strong> conception centrée confidentialité, communication prudente (pas de promesses sans preuves).</li>
+            <li><strong>Réduction des risques :</strong> soutenir des choix plus sûrs lors des pics de craving.</li>
+            <li><strong>Continuité :</strong> limiter les ruptures entre les séances cliniques.</li>
+            <li><strong>Complémentarité :</strong> agir en soutien, sans remplacer les professionnel·le·s.</li>
+            <li><strong>Confiance :</strong> conception centrée sur la confidentialité et la prudence scientifique.</li>
           </ul>
 
           <div class="note">
-            <strong>Important :</strong>
+            <strong>Important&nbsp;:</strong>
             SimHealth ne fournit pas d’assistance d’urgence.
-            Si vous êtes en danger ou à risque, utilisez <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">Ressources d’aide</a>.
+            En cas de danger, consultez
+            <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">
+              Ressources d’aide
+            </a>.
           </div>
         </div>
 
         <div class="col-5">
-          <h3>À qui s’adresse ce projet</h3>
+          <h3>À qui s’adresse SimHealth</h3>
           <ul class="list">
-            <li><strong>Patients :</strong> à la recherche d’un soutien structuré, sans jugement.</li>
-            <li><strong>Clinicien·ne·s :</strong> souhaitant explorer des compléments numériques supervisés.</li>
+            <li><strong>Patients :</strong> recherchant un soutien structuré et non jugeant.</li>
+            <li><strong>Clinicien·ne·s :</strong> explorant des compléments numériques supervisés.</li>
             <li><strong>Chercheur·euse·s :</strong> intéressé·e·s par l’évaluation de la faisabilité et de la sécurité.</li>
           </ul>
         </div>
@@ -205,21 +204,23 @@
     <section class="card section">
       <h2>Principes de conception</h2>
       <p class="lead">
-        SimHealth est construit autour de limites explicites. La communication publique est volontairement prudente
-        tant qu’une évaluation appropriée n’a pas été menée.
+        SimHealth est conçu autour de limites explicites.
+        La communication publique reste volontairement prudente
+        tant qu’aucune évaluation formelle n’a été menée.
       </p>
 
       <div class="grid">
         <div class="col-7">
-          <h3>Cadres (aperçu public)</h3>
+          <h3>Cadres conceptuels</h3>
           <ul class="list">
-            <li><strong>CET+ :</strong> approche informée par l’exposition aux indices (cue-exposure), orientée réflexion, sécurité et prévention des risques.</li>
-            <li><strong>ACUI :</strong> Adaptive Clinical User Interface — interface clinique adaptative, pensée pour l’accessibilité et une charge cognitive réduite.</li>
+            <li><strong>CET+ :</strong> approche inspirée de l’exposition aux indices, orientée sécurité et réflexion.</li>
+            <li><strong>ACUI :</strong> interface clinique adaptative, pensée pour l’accessibilité et la charge cognitive réduite.</li>
           </ul>
 
           <div class="note">
             <strong>Positionnement :</strong>
-            Tout usage futur est envisagé sous supervision professionnelle et avec une gouvernance adaptée.
+            Toute utilisation future est envisagée sous supervision professionnelle
+            et dans un cadre de gouvernance adapté.
           </div>
         </div>
 
@@ -227,14 +228,14 @@
           <h3>Bornes de gouvernance</h3>
           <ul class="list">
             <li>Aucune promesse d’urgence</li>
-            <li>Aucun résultat annoncé sans évaluation</li>
-            <li>Données uniquement sur consentement</li>
+            <li>Aucun résultat sans évaluation</li>
+            <li>Données uniquement avec consentement</li>
             <li>Supervision clinique requise pour les pilotes</li>
           </ul>
 
           <div class="note">
             <strong>Confidentialité :</strong>
-            Toute collecte de données en pilote est conçue pour s’aligner sur les principes du RGPD.
+            Toute collecte de données respecte les principes du RGPD.
             Voir <a href="/fr/legal/confidentialite/" style="color:var(--text); text-decoration:underline;">Confidentialité</a>.
           </div>
         </div>
@@ -265,11 +266,10 @@
     </div>
   </footer>
 
-  <!-- Mobile always-visible crisis access (French pages) -->
   <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
     <span class="label">Besoin d’aide maintenant&nbsp;?</span>
     <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
   </div>
 
 </body>
-  </html>
+</html>
