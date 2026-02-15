@@ -54,7 +54,7 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <!-- ✅ Mobile: Menu button -->
+    <!-- Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
       aria-label="Toggle navigation"
@@ -63,7 +63,6 @@
       ☰
     </button>
 
-    <!-- ✅ IMPORTANT: id must match aria-controls -->
     <nav class="menu" id="main-menu" aria-label="Main navigation">
       <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
@@ -74,7 +73,7 @@
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
-      <!-- ✅ FIXED: French route must match your real FR page -->
+      <!-- Language toggle -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/legal/accessibility/">
           <span class="lang-full">English</span>
@@ -162,6 +161,8 @@
         © 2026 SimHealth. All rights reserved. •
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
+
+      <!-- ✅ EN footer includes correct FR equivalents to stop “English → French” dead-links -->
       <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
         <a href="/en/legal/privacy/">Privacy</a>
@@ -169,6 +170,14 @@
         <a href="/en/legal/cookies/">Cookies</a>
         <a href="/en/legal/accessibility/">Accessibility</a>
         <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+
+        <span style="opacity:.55;">•</span>
+
+        <a href="/fr/legal/confidentialite/">FR Confidentialité</a>
+        <a href="/fr/legal/conditions/">FR Conditions</a>
+        <a href="/fr/legal/cookies/">FR Cookies</a>
+        <a href="/fr/legal/accessibilite/">FR Accessibilité</a>
+        <a href="/fr/legal/avis-medical/">FR Avis médical</a>
       </nav>
     </div>
   </footer>
