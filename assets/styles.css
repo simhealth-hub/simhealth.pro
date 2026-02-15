@@ -157,22 +157,6 @@ body {
 .btn-secondary:hover { background: color-mix(in srgb, var(--text) 6%, transparent); transform: translateY(-1px); }
 .btn-secondary:active { transform: translateY(0px); }
 
-.icon-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
-}
-.icon-btn:hover { background: color-mix(in srgb, var(--text) 6%, transparent); transform: translateY(-1px); }
-.icon-btn:active { transform: translateY(0px); }
-
 /* Page layout */
 .wrap { width: min(1100px, 92vw); margin: 0 auto; padding: 22px 0 48px; }
 
@@ -206,7 +190,6 @@ body {
 }
 .tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 
-/* Desktop tile image */
 .tile .img {
   height: 230px;
   background-size: cover;
@@ -249,7 +232,7 @@ body {
 .tile .meta h3 { margin: 0 0 6px; }
 
 /* =========================
-   FOOTER
+   FOOTER (with separators)
    ========================= */
 
 footer {
@@ -269,8 +252,28 @@ footer .row {
 footer a { color: var(--muted); text-decoration: none; }
 footer a:hover { color: var(--text); }
 
+footer nav{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:0;
+}
+footer nav a{
+  padding: 6px 10px;
+  position:relative;
+}
+footer nav a + a::before{
+  content:"|";
+  position:absolute;
+  left:-2px;
+  color: color-mix(in srgb, var(--muted) 70%, transparent);
+}
+@media (max-width: 520px){
+  footer nav a{ padding: 6px 8px; }
+}
+
 /* =========================
-   THEME TOGGLE (smaller on mobile)
+   THEME TOGGLE
    ========================= */
 
 .theme-toggle {
@@ -314,7 +317,10 @@ footer a:hover { color: var(--text); }
 :root[data-theme="light"] .theme-toggle .label-light { color: var(--text); }
 
 /* =========================
-   LANGUAGE TOGGLE (EN/FR)
+   LANGUAGE TOGGLE
+   - Use spans in HTML:
+     <span class="lang-full">English</span>
+     <span class="lang-short">EN</span>
    ========================= */
 
 .lang-toggle {
@@ -326,16 +332,16 @@ footer a:hover { color: var(--text); }
   border: 1px solid var(--border);
   background: var(--surface);
 }
+
 .lang-toggle a {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 900;
-  letter-spacing: 0.22px;
+  letter-spacing: 0.2px;
   padding: 7px 10px;
   border-radius: 999px;
   text-decoration: none;
   color: var(--muted);
   transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
-  text-transform: uppercase;
 }
 .lang-toggle a:hover { background: color-mix(in srgb, var(--text) 6%, transparent); color: var(--text); }
 .lang-toggle a:active { transform: translateY(1px); }
@@ -343,6 +349,13 @@ footer a:hover { color: var(--text); }
   background: color-mix(in srgb, var(--primary) 22%, transparent);
   color: var(--text);
   border: 1px solid color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.lang-full{ display:inline; }
+.lang-short{ display:none; }
+@media (max-width: 800px){
+  .lang-full{ display:none; }
+  .lang-short{ display:inline; }
 }
 
 /* =========================
@@ -441,7 +454,7 @@ footer a:hover { color: var(--text); }
 .acc[open] summary { background: color-mix(in srgb, var(--text) 5%, transparent); }
 
 /* =========================
-   MOBILE: FIX CLUNK
+   MOBILE: NAV + TILES + BUTTONS
    ========================= */
 
 .nav-toggle{
@@ -458,17 +471,15 @@ footer a:hover { color: var(--text); }
 }
 .nav-toggle .chev{ opacity: .85; }
 
-/* Full-bleed tile images + better spacing on mobile */
 @media (max-width: 900px) {
-  .wrap{ width: min(1100px, 92vw); padding-bottom: 82px; } /* leave space for sticky crisis bar */
+  .wrap{ padding-bottom: 86px; } /* room for sticky crisis bar */
 
   .nav { padding: 12px 14px; }
-  .menu { display:none; }
 
-  /* if you add class="open" to .menu, it becomes a drawer */
+  /* Collapse menu into drawer */
+  .nav .menu { display:none; width:100%; }
   .nav .menu.open{
     display:flex;
-    width: 100%;
     margin-top: 10px;
     padding: 12px;
     flex-direction: column;
@@ -482,12 +493,15 @@ footer a:hover { color: var(--text); }
 
   .nav-toggle{ display:inline-flex; }
 
+  /* Controls feel less “giant” but still tappable */
   .link, .btn-primary, .btn-secondary{
     width: 100%;
     justify-content: center;
     padding: 12px 12px;
+    border-radius: 14px;
   }
 
+  /* Theme toggle smaller */
   .theme-toggle{
     padding: 6px 8px;
     gap: 8px;
@@ -510,14 +524,20 @@ footer a:hover { color: var(--text); }
 
   .tile{ grid-column: span 12; }
 
-  /* The fix: make tile image fill phone proportions (no “letterbox” feel) */
+  /* ✅ MOBILE TILE IMAGE FIX:
+     Use a phone-friendly aspect ratio so it feels “full image”, not letterboxed */
   .tile .img{
-    height: clamp(220px, 42vw, 340px);
+    height: clamp(240px, 58vw, 420px);
     background-position: center;
   }
 }
 
-/* Sticky mobile crisis bar (requires one HTML element added) */
+/* =========================
+   STICKY MOBILE CRISIS BAR
+   (add this HTML on pages you want it)
+   <div class="mobile-crisis"><span class="label">Need help now?</span> ... </div>
+   ========================= */
+
 .mobile-crisis {
   display: none;
 }
@@ -554,4 +574,4 @@ footer a:hover { color: var(--text); }
     padding: 12px 12px;
     border-radius: 999px;
   }
-  }
+                   }
