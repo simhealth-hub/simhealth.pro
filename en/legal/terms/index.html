@@ -47,20 +47,23 @@
 <body>
 
   <div class="banner">
-    <strong>Healthcare first.</strong> This website is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
+    <strong>Healthcare first.</strong> This website is a professional project showcase.
+    If you’re in immediate danger, call your local emergency number now.
   </div>
 
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <!-- ✅ Mobile: Menu button -->
+    <!-- ✅ Mobile menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
-      aria-label="Toggle navigation">
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="main-menu">
       ☰
     </button>
 
-    <nav class="menu" aria-label="Main navigation">
+    <nav class="menu" id="main-menu" aria-label="Main navigation">
       <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
@@ -70,7 +73,6 @@
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
-      <!-- ✅ FIXED: language routes match your real folder structure -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/legal/terms/">
           <span class="lang-full">English</span>
@@ -120,56 +122,55 @@
     <section class="card" id="terms" style="margin-top:16px;">
 
       <div class="notice">
-        <strong>Important:</strong> SimHealth is a project in development and this website is a professional showcase. It does not provide medical advice,
-        diagnosis, treatment, or emergency support. If you are at immediate risk, call your local emergency number.
+        <strong>Important:</strong> SimHealth is a project in development and this website is a professional showcase.
+        It does not provide medical advice, diagnosis, treatment, or emergency support.
       </div>
 
       <h2>1) About this site</h2>
       <p class="muted">
-        simhealth.pro presents information about the SimHealth project, including research intentions and pilot collaboration pathways.
-        The content is informational and may change as the project evolves.
+        simhealth.pro presents information about the SimHealth project, including research intentions
+        and pilot collaboration pathways. Content may change as the project evolves.
       </p>
 
       <h2>2) No medical advice</h2>
       <p class="muted">
-        The site does not provide medical advice. Do not use this site as a substitute for professional diagnosis or treatment.
-        If you are experiencing distress, seek help from qualified professionals or use our
+        This site does not provide medical advice. Do not substitute it for professional care.
+        If you are in distress, use our
         <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
       </p>
 
       <h2>3) Acceptable use</h2>
-      <p class="muted">You agree not to:</p>
       <ul>
-        <li>Use the site unlawfully or to harm others.</li>
-        <li>Attempt to disrupt the site (e.g., probing, scanning, or attacking infrastructure).</li>
-        <li>Submit false information via forms, impersonate others, or spam our inboxes.</li>
+        <li>Do not use the site unlawfully or to harm others.</li>
+        <li>Do not attempt to disrupt or attack the site.</li>
+        <li>Do not submit false or abusive information.</li>
       </ul>
 
       <h2>4) Intellectual property</h2>
       <p class="muted">
-        Unless otherwise stated, site text, design, branding, and content are owned by SimHealth or licensed appropriately.
-        You may not reproduce or redistribute materials without permission.
+        Site content, branding, and design are owned by SimHealth or licensed appropriately.
+        Reuse without permission is prohibited.
       </p>
 
-      <h2>5) Links to third parties</h2>
+      <h2>5) Third-party links</h2>
       <p class="muted">
-        The site may link to third-party resources (e.g., crisis services). We are not responsible for third-party content, policies, or availability.
+        We are not responsible for third-party content, services, or policies.
       </p>
 
-      <h2>6) Disclaimers &amp; limitation of liability</h2>
+      <h2>6) Disclaimers &amp; liability</h2>
       <p class="muted">
-        We provide the website “as is” without warranties. To the extent permitted by law, SimHealth is not liable for losses arising from
-        the use of the site or reliance on its content.
+        The website is provided “as is” without warranties.
+        SimHealth is not liable for losses arising from use of this site.
       </p>
 
       <h2>7) Changes</h2>
       <p class="muted">
-        We may update these Terms. The “Effective date” will be updated when changes are made.
+        These Terms may be updated. The effective date will reflect changes.
       </p>
 
       <h2>8) Contact</h2>
       <p class="muted">
-        Questions about these Terms? Email <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+        Questions? Email <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
       </p>
 
       <div class="pill-row">
@@ -198,7 +199,6 @@
     </div>
   </footer>
 
-  <!-- Mobile always-visible crisis access (English pages only) -->
   <div class="mobile-crisis" aria-label="Crisis quick access">
     <span class="label">Need help now?</span>
     <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
