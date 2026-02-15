@@ -25,6 +25,39 @@
       color:var(--muted);
       line-height:1.55;
     }
+
+    /* Desktop: show full words */
+    .lang-full{ display:inline; }
+    .lang-short{ display:none; }
+
+    /* Mobile: show EN/FR only */
+    @media (max-width: 800px){
+      .lang-full{ display:none; }
+      .lang-short{ display:inline; }
+    }
+
+    /* Footer spacing with separators */
+    footer nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0;               /* separators handle spacing */
+      align-items:center;
+    }
+    footer nav a{
+      padding: 6px 10px;
+      position:relative;
+    }
+    footer nav a + a::before{
+      content:"|";
+      position:absolute;
+      left:-2px;
+      color: color-mix(in srgb, var(--muted) 70%, transparent);
+    }
+
+    /* On very small screens, reduce padding so it doesn't feel cramped */
+    @media (max-width: 520px){
+      footer nav a{ padding: 6px 8px; }
+    }
   </style>
 </head>
 
@@ -68,8 +101,14 @@
         <p class="rise-2">Please choose your language to continue.</p>
 
         <div class="hero-actions rise-3 lang-actions" aria-label="Language selection">
-          <a class="btn-primary" href="/en/home/">EN</a>
-          <a class="btn-secondary" href="/fr/accueil.html">FR</a>
+          <a class="btn-primary" href="/en/home/">
+            <span class="lang-full">English</span>
+            <span class="lang-short" aria-hidden="true">EN</span>
+          </a>
+          <a class="btn-secondary" href="/fr/accueil.html">
+            <span class="lang-full">Français</span>
+            <span class="lang-short" aria-hidden="true">FR</span>
+          </a>
         </div>
       </div>
     </section>
