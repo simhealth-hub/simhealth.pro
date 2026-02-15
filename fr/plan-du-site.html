@@ -1,1 +1,210 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Plan du site</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .sitemap-wrap{ margin-top:16px; }
+    .cols{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
+      margin-top:12px;
+    }
+    .col{ grid-column: span 6; }
+    .col.full{ grid-column: span 12; }
+
+    .panel{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:18px;
+    }
+
+    .panel h2{ margin:0 0 10px; font-size:18px; }
+    .panel p{ margin:0 0 12px; color:var(--muted); line-height:1.55; }
+
+    .list{
+      margin:0;
+      padding-left:18px;
+      line-height:1.7;
+      color:var(--muted);
+    }
+    .list a{ color:var(--text); text-decoration:none; }
+    .list a:hover{ text-decoration:underline; }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:color-mix(in srgb, var(--text) 6%, transparent);
+      color:var(--text);
+      font-weight:800;
+      font-size:13px;
+      margin-top:10px;
+      text-decoration:none;
+    }
+
+    @media (max-width: 800px){
+      .col{ grid-column: span 12; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité santé.</strong>
+    SimHealth est un projet professionnel. En cas de danger immédiat, contactez les services d’urgence locaux.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/" aria-label="Retour à la sélection de langue">SimHealth</a>
+
+    <button class="nav-toggle" type="button"
+      onclick="document.querySelector('header.nav .menu')?.classList.toggle('open')"
+      aria-label="Ouvrir le menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" aria-label="Navigation principale">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle" aria-label="Langue">
+        <a href="/sitemap.html">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a class="active" href="/fr/plan-du-site.html">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
+        <span class="label label-dark">Sombre</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Clair</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap sitemap-wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Plan du site</h1>
+        <p class="rise-2">
+          Vue d’ensemble des pages publiques SimHealth (version française).
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="/fr/accueil/">Aller à l’accueil</a>
+          <a class="btn-secondary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cols" aria-label="Sections du plan du site">
+
+      <!-- FR -->
+      <div class="col">
+        <div class="panel">
+          <h2>Français</h2>
+          <p>Structure cible des pages en français. Certaines pages peuvent être en cours de finalisation.</p>
+
+          <ul class="list">
+            <li><a href="/">Sélection de la langue</a></li>
+            <li><a href="/fr/accueil/">Accueil</a></li>
+
+            <li><a href="/fr/patients/">Patients</a>
+              <ul class="list">
+                <li><a href="/fr/patients/aide-soutien/">Aide &amp; soutien</a></li>
+                <li><a href="/fr/patients/updates/">Mises à jour</a></li>
+                <li><a href="/fr/patients/pgsi/">Auto-évaluation PGSI</a></li>
+              </ul>
+            </li>
+
+            <li><a href="/fr/cliniciens/">Cliniciens</a>
+              <ul class="list">
+                <li><a href="/fr/cliniciens/pilote/">Demande de pilote</a></li>
+              </ul>
+            </li>
+
+            <li><a href="/fr/recherche/">Recherche</a></li>
+            <li><a href="/fr/a-propos/">À propos</a></li>
+            <li><a href="/fr/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LEGAL -->
+      <div class="col">
+        <div class="panel">
+          <h2>Informations légales</h2>
+          <p>
+            Certaines pages légales peuvent actuellement être disponibles uniquement en anglais.
+            Les versions françaises seront ajoutées progressivement.
+          </p>
+
+          <ul class="list">
+            <li><a href="/en/legal/privacy/">Politique de confidentialité (EN)</a></li>
+            <li><a href="/en/legal/terms/">Conditions d’utilisation (EN)</a></li>
+            <li><a href="/en/legal/cookies/">Cookies (EN)</a></li>
+            <li><a href="/en/legal/accessibility/">Accessibilité (EN)</a></li>
+            <li><a href="/en/legal/medical-disclaimer/">Avertissement médical (EN)</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Liens de pied de page">
+        <a href="/fr/plan-du-site.html">Plan du site</a>
+        <a href="/en/legal/privacy/">Confidentialité</a>
+        <a href="/en/legal/terms/">Conditions</a>
+        <a href="/fr/contact/">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="mobile-crisis" aria-label="Accès rapide aide">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+</body>
+  </html>
