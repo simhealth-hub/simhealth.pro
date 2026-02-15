@@ -1,1 +1,201 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Cookies</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .legal-meta{ margin-top:12px; color:var(--muted); line-height:1.6; font-size:14px; }
+    .legal-meta strong{ color:var(--text); }
+    .notice{
+      margin-top:14px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:14px;
+      color:var(--muted);
+      background: color-mix(in srgb, var(--text) 4%, transparent);
+      line-height:1.6;
+    }
+    .notice strong{ color:var(--text); }
+    .muted{ color:var(--muted); line-height:1.7; }
+    ul{ color:var(--muted); line-height:1.7; }
+    li strong{ color:var(--text); }
+    .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:999px;
+      border:1px solid var(--border); text-decoration:none;
+      font-weight:800; color:var(--text);
+      background: color-mix(in srgb, var(--text) 6%, transparent);
+      white-space:nowrap;
+    }
+    .pill.primary{
+      background: color-mix(in srgb, var(--primary) 14%, transparent);
+      border-color: color-mix(in srgb, var(--primary) 28%, var(--border));
+    }
+    code{
+      background: color-mix(in srgb, var(--text) 10%, transparent);
+      border:1px solid var(--border);
+      padding:2px 6px;
+      border-radius:8px;
+      color:var(--text);
+      font-size:13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité santé.</strong> Ce site est une vitrine professionnelle du projet. En cas de danger immédiat, appelez les services d’urgence.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
+
+    <!-- ✅ Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Ouvrir/fermer la navigation">
+      ☰
+    </button>
+
+    <nav class="menu" aria-label="Navigation principale">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle" aria-label="Langue">
+        <a href="/en/legal/cookies/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a class="active" href="/fr/legal/cookies/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
+        <span class="label label-dark">Sombre</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Clair</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/legal-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Cookies</h1>
+        <p class="rise-2">
+          Résumé clair des cookies et du stockage local utilisés par simhealth.pro.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#cookies">Lire l’information cookies</a>
+          <a class="btn-secondary" href="/fr/legal/confidentialite/">Confidentialité</a>
+        </div>
+
+        <p class="legal-meta">
+          <strong>Date d’entrée en vigueur :</strong> 2026-02-01
+        </p>
+      </div>
+    </section>
+
+    <section class="card" id="cookies" style="margin-top:16px;">
+
+      <div class="notice">
+        <strong>Résumé :</strong> SimHealth vise à minimiser le suivi. Le site actuel utilise principalement le stockage
+        pour mémoriser des préférences (par ex. le thème). Si des outils de mesure/analytics ou des cookies supplémentaires
+        sont ajoutés ultérieurement, cette page sera mise à jour et, lorsque la loi l’exige, des mécanismes de consentement seront mis en place.
+      </div>
+
+      <h2>1) Qu’est-ce qu’un cookie ?</h2>
+      <p class="muted">
+        Les cookies sont de petits fichiers texte enregistrés sur votre appareil par les sites web. Des technologies similaires incluent
+        le stockage local (<code>localStorage</code>) et le stockage de session. Certains sont nécessaires au fonctionnement de base ;
+        d’autres peuvent être utilisés pour la mesure/les statistiques.
+      </p>
+
+      <h2>2) Ce que nous utilisons actuellement</h2>
+      <p class="muted">
+        À ce stade, simhealth.pro est conçu pour fonctionner sans traceurs publicitaires. La principale préférence mémorisée
+        est votre choix de thème (sombre/clair).
+      </p>
+      <ul>
+        <li><strong>Préférence de thème :</strong> stockée pour mémoriser votre choix entre deux visites (par exemple via <code>localStorage</code>).</li>
+      </ul>
+
+      <h2>3) Ce que nous ne faisons pas</h2>
+      <ul>
+        <li><strong>Pas de traçage publicitaire :</strong> nous n’installons pas volontairement de traceurs de publicité comportementale.</li>
+        <li><strong>Pas de vente de données :</strong> nous ne vendons pas vos données de navigation.</li>
+      </ul>
+
+      <h2>4) Gérer les cookies / le stockage</h2>
+      <p class="muted">
+        Vous pouvez supprimer les préférences enregistrées en effaçant les cookies/données du site pour simhealth.pro dans votre navigateur.
+        Vous pouvez aussi naviguer en mode privé/incognito.
+      </p>
+
+      <h2>5) Statistiques futures (analytics)</h2>
+      <p class="muted">
+        Si des statistiques respectueuses de la vie privée sont introduites, nous mettrons à jour cette page et déploierons,
+        si nécessaire, des contrôles de consentement conformes à la réglementation.
+      </p>
+
+      <div class="pill-row">
+        <a class="pill primary" href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a class="pill" href="/fr/legal/conditions/">Conditions</a>
+        <a class="pill" href="/fr/contact/">Contact</a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a href="/fr/legal/conditions/">Conditions</a>
+        <a href="/fr/legal/cookies/">Cookies</a>
+        <a href="/fr/legal/accessibilite/">Accessibilité</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ✅ Mobile always-visible crisis access (French pages) -->
+  <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+</body>
+          </html>
