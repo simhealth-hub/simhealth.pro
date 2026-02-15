@@ -101,8 +101,17 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="/en/home/"">Home</a>
+    <!-- Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" id="main-menu" aria-label="Main navigation">
+      <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
@@ -112,8 +121,14 @@
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/en/clinicians/pilot/">English</a>
-        <a href="/fr/cliniciens/pilote/">Français</a>
+        <a class="active" href="/en/clinicians/pilot/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a href="/fr/cliniciens/pilote/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -158,7 +173,7 @@
         We’ll respond from <a href="mailto:clinical@simhealth.pro">clinical@simhealth.pro</a>.
       </p>
 
-      <div id="statusBox" class="status"></div>
+      <div id="statusBox" class="status" aria-live="polite"></div>
 
       <form id="pilotForm" style="margin-top:14px;">
         <div class="form-grid">
@@ -264,7 +279,13 @@
     </div>
   </footer>
 
-  <!-- ✅ WORKING SUBMIT SCRIPT -->
+  <!-- Mobile always-visible crisis access (English pages only) -->
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
+
+  <!-- WORKING SUBMIT SCRIPT -->
   <script>
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YKPqZwazNnQKjULUyALKS-7RlJyNRTQ/exec";
 
@@ -295,6 +316,7 @@
       if (!country) return setStatus("error", "Please select a country.");
       if (!primaryInterest) return setStatus("error", "Please select your primary interest.");
       if (!consent) return setStatus("error", "Please confirm consent so we can respond.");
+      if (!ENDPOINT) return setStatus("error", "Setup incomplete: endpoint not set.");
 
       try {
         await fetch(ENDPOINT, {
