@@ -37,7 +37,15 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="SimHealth home">SimHealth</a>
 
+    <!-- ✅ Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="document.querySelector('header.nav .menu')?.classList.toggle('open')"
+      aria-label="Open menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
     <nav class="menu" aria-label="Top controls">
+      <!-- Keep this page minimal: theme only -->
       <div class="theme-toggle" role="button" tabindex="0"
            onclick="SimHealthTheme.toggleTheme()"
            onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
@@ -90,6 +98,12 @@
       </nav>
     </div>
   </footer>
+
+  <!-- ✅ Optional: mobile always-visible crisis access -->
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
 
 </body>
 </html>
