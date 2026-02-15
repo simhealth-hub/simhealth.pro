@@ -67,8 +67,6 @@
       background:color-mix(in srgb, var(--primary) 12%, transparent);
       color:var(--text);
       font-weight:800;
-      letter-spacing:0.2px;
-      user-select:none;
       white-space:nowrap;
     }
 
@@ -78,12 +76,6 @@
       gap: 10px;
       flex-wrap: wrap;
     }
-
-    /* “Text-first” hero using your existing .hero but with no background image */
-    .hero-text .hero-bg,
-    .hero-text .hero-overlay{ display:none; }
-    .hero-text{ min-height: unset; }
-    .hero-text .hero-content{ width: min(820px, 92%); }
 
     @media (max-width: 900px) {
       .col-7, .col-5 { grid-column: span 12; }
@@ -101,7 +93,6 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <!-- ✅ Mobile: Menu button (consistent with your other pages) -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
       aria-label="Toggle navigation">
@@ -118,24 +109,23 @@
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
-      <!-- ✅ Language toggle with EN/FR on mobile -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/about/">
           <span class="lang-full">English</span>
-          <span class="lang-short" aria-hidden="true">EN</span>
+          <span class="lang-short">EN</span>
         </a>
         <a href="/fr/a-propos/">
           <span class="lang-full">Français</span>
-          <span class="lang-short" aria-hidden="true">FR</span>
+          <span class="lang-short">FR</span>
         </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
-           onclick="SimHealthTheme.toggleTheme()"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();SimHealthTheme.toggleTheme();}"
-           aria-label="Toggle theme">
+        onclick="SimHealthTheme.toggleTheme()"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();SimHealthTheme.toggleTheme();}"
+        aria-label="Toggle theme">
         <span class="label label-dark">Dark</span>
-        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="track"><span class="thumb"></span></span>
         <span class="label label-light">Light</span>
       </div>
     </nav>
@@ -143,16 +133,19 @@
 
   <main class="wrap">
 
-    <!-- ✅ HERO (text-first, uses your global .hero styles safely) -->
-    <section class="hero hero-text">
+    <!-- ✅ HERO WITH IMAGE -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/about.jpg');"></div>
+      <div class="hero-overlay"></div>
+
       <div class="hero-content">
         <h1 class="rise-1">About SimHealth</h1>
-        <p class="lead rise-2">
-          SimHealth is a clinician-informed digital project exploring structured support for gambling-related urges.
-          It is designed for safety, governance, and staged evaluation — not for emergency use.
+        <p class="rise-2">
+          A clinician-informed digital project exploring structured support
+          for gambling-related urges — designed with explicit safety and governance boundaries.
         </p>
 
-        <div class="status-bar rise-3" role="note" aria-label="Project status">
+        <div class="status-bar rise-3">
           <span class="status-pill">Stage: Pre-pilot</span>
           <span>No medical claims • Not a medical device • Not crisis care</span>
         </div>
@@ -168,8 +161,9 @@
     <section class="card section">
       <h2>Mission</h2>
       <p class="lead">
-        The project focuses on high-risk moments where gambling urges escalate quickly and traditional support
-        is often unavailable. SimHealth aims to explore whether carefully governed digital tools can support
+        SimHealth focuses on high-risk moments where gambling urges escalate rapidly
+        and traditional support is often unavailable.
+        The project explores whether carefully governed digital tools can support
         safer decision-making within real clinical pathways.
       </p>
 
@@ -186,7 +180,10 @@
           <div class="note">
             <strong>Important:</strong>
             SimHealth does not provide emergency support.
-            If you are at risk, use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
+            If you are at risk, use
+            <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">
+              Crisis Resources
+            </a>.
           </div>
         </div>
 
@@ -205,7 +202,8 @@
     <section class="card section">
       <h2>Design principles</h2>
       <p class="lead">
-        SimHealth is built around explicit boundaries. Public communication is intentionally conservative
+        SimHealth is built around explicit boundaries.
+        Public communication is intentionally conservative
         until appropriate evaluation is completed.
       </p>
 
@@ -213,13 +211,14 @@
         <div class="col-7">
           <h3>Frameworks (public overview)</h3>
           <ul class="list">
-            <li><strong>CET+:</strong> a cue-exposure-informed approach prioritising reflection and safety.</li>
-            <li><strong>ACUI:</strong> Adaptive Clinical User Interface — accessibility-aware, low-overload UX.</li>
+            <li><strong>CET+:</strong> cue-exposure-informed, reflection-first approach.</li>
+            <li><strong>ACUI:</strong> Adaptive Clinical User Interface — accessibility-aware UX.</li>
           </ul>
 
           <div class="note">
             <strong>Positioning:</strong>
-            Any future use is intended to occur under professional oversight and appropriate governance.
+            Any future use is intended to occur under professional oversight
+            and appropriate governance.
           </div>
         </div>
 
@@ -234,7 +233,7 @@
 
           <div class="note">
             <strong>Privacy:</strong>
-            Any pilot data collection is designed to align with GDPR principles.
+            All pilot data design aligns with GDPR principles.
             See <a href="/en/legal/privacy/" style="color:var(--text); text-decoration:underline;">Privacy</a>.
           </div>
         </div>
@@ -265,7 +264,6 @@
     </div>
   </footer>
 
-  <!-- Mobile always-visible crisis access (English pages only) -->
   <div class="mobile-crisis" aria-label="Crisis quick access">
     <span class="label">Need help now?</span>
     <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
