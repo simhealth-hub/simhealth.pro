@@ -61,6 +61,90 @@
     @media (max-width: 800px){
       .col{ grid-column: span 12; }
     }
+
+    /* Desktop words / Mobile abbreviations */
+    .lang-full{ display:inline; }
+    .lang-short{ display:none; }
+    @media (max-width: 800px){
+      .lang-full{ display:none; }
+      .lang-short{ display:inline; }
+    }
+
+    /* Footer separators */
+    footer nav{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:0;
+    }
+    footer nav a{
+      padding: 6px 10px;
+      position:relative;
+    }
+    footer nav a + a::before{
+      content:"|";
+      position:absolute;
+      left:-2px;
+      color: color-mix(in srgb, var(--muted) 70%, transparent);
+    }
+    @media (max-width: 520px){
+      footer nav a{ padding: 6px 8px; }
+    }
+
+    /* Mobile menu overlay look */
+    @media (max-width: 900px){
+      header.nav .menu{
+        border:1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 10px;
+        background: color-mix(in srgb, var(--bg) 70%, transparent);
+        backdrop-filter: blur(12px);
+      }
+    }
+
+    /* Smaller theme toggle on mobile */
+    @media (max-width: 800px){
+      .theme-toggle{
+        padding: 6px 8px;
+        gap: 8px;
+      }
+      .theme-toggle .label{ font-size:12px; }
+      .theme-toggle .track{ width:40px; height:22px; }
+      .theme-toggle .thumb{ width:18px; height:18px; }
+      :root[data-theme="light"] .theme-toggle .thumb { transform: translateX(18px); }
+    }
+
+    /* Sticky crisis bar (mobile only) */
+    .mobile-crisis{
+      display:none;
+      position:fixed;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      z-index: 60;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 10px;
+      background: color-mix(in srgb, var(--bg) 65%, transparent);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 14px 50px rgba(0,0,0,0.25);
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .mobile-crisis .label{
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .mobile-crisis a{ white-space:nowrap; }
+    @media (max-width: 900px){
+      .mobile-crisis{ display:flex; }
+      body{ padding-bottom: 74px; } /* room for the sticky bar */
+    }
   </style>
 </head>
 
@@ -73,6 +157,13 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
+    <!-- ✅ Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="document.querySelector('header.nav .menu')?.classList.toggle('open')"
+      aria-label="Open menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
     <nav class="menu" aria-label="Main navigation">
       <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
@@ -84,8 +175,14 @@
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/sitemap.html">EN</a>
-        <a href="/fr/plan-du-site.html">FR</a>
+        <a class="active" href="/sitemap.html">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a href="/fr/plan-du-site.html">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -224,6 +321,12 @@
       </nav>
     </div>
   </footer>
+
+  <!-- ✅ Mobile always-visible crisis access -->
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
 
 </body>
   </html>
