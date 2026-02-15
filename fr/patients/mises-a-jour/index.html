@@ -1,1 +1,262 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Mises à jour</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .status{
+      display:none;
+      margin-top:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      padding:12px 14px;
+      line-height:1.5;
+      color:var(--muted);
+    }
+    .status.success{
+      display:block;
+      background:color-mix(in srgb, var(--primary) 18%, transparent);
+      border-color:color-mix(in srgb, var(--primary) 38%, var(--border));
+      color:var(--text);
+    }
+    .status.error{
+      display:block;
+      background:color-mix(in srgb, #ef4444 16%, transparent);
+      border-color:color-mix(in srgb, #ef4444 34%, var(--border));
+      color:var(--text);
+    }
+
+    .field label{ display:block; font-weight:800; margin:14px 0 8px; }
+    .input{
+      width:100%;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--surface) 92%, transparent);
+      color:var(--text);
+      font-size:15px;
+      outline:none;
+    }
+    .input:focus{
+      border-color:color-mix(in srgb, var(--primary) 55%, var(--border));
+      background:var(--surface);
+    }
+
+    .consent{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      color:var(--muted);
+      line-height:1.45;
+      font-size:14px;
+    }
+    .consent input{ margin-top:3px; }
+
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    button.btn-primary{ border:none; cursor:pointer; }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité à la santé.</strong> Ce site est une vitrine professionnelle. En cas de danger immédiat, appelez votre numéro d’urgence local.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
+
+    <!-- Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" id="main-menu" aria-label="Navigation principale">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link active" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle" aria-label="Langue">
+        <a href="/en/patients/updates/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a class="active" href="/fr/patients/mises-a-jour/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
+        <span class="label label-dark">Sombre</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Clair</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/updates-hero.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Recevoir les mises à jour du projet</h1>
+        <p class="rise-2">Emails occasionnels : avancées, évaluation, accès pilote. Aucun spam.</p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#form">S’inscrire</a>
+          <a class="btn-secondary" href="/fr/patients/">Retour à Patients</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="form" style="margin-top:16px;">
+      <h2 style="margin:0 0 8px;">Inscription</h2>
+      <p style="margin:0; color:var(--muted); line-height:1.65;">
+        Cette liste sert uniquement aux mises à jour SimHealth. Nous ne vendons pas vos données, et vous pouvez vous désinscrire à tout moment.
+      </p>
+
+      <div id="statusBox" class="status" role="status" aria-live="polite"></div>
+
+      <form id="updatesForm" novalidate>
+        <div class="field">
+          <label for="email">Adresse email</label>
+          <input
+            class="input"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="vous@exemple.com"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="consent">
+          <input id="consent" name="consent" type="checkbox" required>
+          <label for="consent" style="margin:0;">
+            J’accepte de recevoir des emails de SimHealth et je comprends que je peux me désinscrire à tout moment.
+            <div style="margin-top:6px;">
+              Note RGPD : nous utiliserons votre email uniquement pour vous envoyer des mises à jour du projet.
+              Vous pouvez demander la suppression de vos données à tout moment en écrivant à
+              <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+            </div>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" type="submit">S’inscrire</button>
+          <a class="btn-secondary" href="/fr/patients/">Retour au site</a>
+        </div>
+
+        <p style="margin:14px 0 0; color:var(--muted); font-size:13px; line-height:1.5;">
+          Si vous avez besoin d’aide immédiate, utilisez les <a href="/fr/patients/aide-soutien/">Ressources d’aide</a>.
+        </p>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a href="/fr/legal/conditions/">Conditions</a>
+        <a href="/fr/legal/cookies/">Cookies</a>
+        <a href="/fr/legal/accessibilite/">Accessibilité</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Mobile always-visible crisis access (French pages) -->
+  <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+  <script>
+    // ✅ Single source of truth for your Apps Script endpoint
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YKPqZwazNnQKjULUyALKS-7RlJyNRTQ/exec";
+
+    const form = document.getElementById("updatesForm");
+    const statusBox = document.getElementById("statusBox");
+
+    function setStatus(type, msg){
+      statusBox.className = "status " + type;
+      statusBox.textContent = msg;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const emailEl = document.getElementById("email");
+      const consentEl = document.getElementById("consent");
+
+      const email = (emailEl.value || "").trim().toLowerCase();
+      const consent = !!consentEl.checked;
+
+      if(!email || !email.includes("@")) return setStatus("error", "Veuillez entrer une adresse email valide.");
+      if(!consent) return setStatus("error", "Veuillez confirmer votre accord pour recevoir les mises à jour.");
+      if(!ENDPOINT) return setStatus("error", "Configuration incomplète : endpoint non défini.");
+
+      try {
+        await fetch(ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            email,
+            lang: "fr",
+            source: "updates-page",
+            consent: consent,
+            userAgent: navigator.userAgent,
+            type: "updates"
+          })
+        });
+
+        setStatus("success", "Merci ! Votre inscription est confirmée. Si vous ne recevez rien, vérifiez vos spams.");
+        form.reset();
+
+      } catch (err) {
+        console.error(err);
+        setStatus("error", "Une erreur est survenue. Réessayez ou écrivez à contact@simhealth.pro.");
+      }
+    });
+  </script>
+
+</body>
+  </html>
