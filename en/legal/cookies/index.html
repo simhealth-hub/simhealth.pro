@@ -30,10 +30,15 @@
     li strong{ color:var(--text); }
     .pill-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
     .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px; border-radius:999px;
-      border:1px solid var(--border); text-decoration:none;
-      font-weight:800; color:var(--text);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      font-weight:800;
+      color:var(--text);
       background: color-mix(in srgb, var(--text) 6%, transparent);
       white-space:nowrap;
     }
@@ -55,14 +60,14 @@
 <body>
 
   <div class="banner">
-    <strong>Healthcare first.</strong> This website is a professional project showcase.
+    <strong>Healthcare first.</strong>
+    This website is a professional project showcase.
     If you’re in immediate danger, call your local emergency number now.
   </div>
 
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <!-- ✅ Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
       aria-label="Toggle navigation"
@@ -71,7 +76,6 @@
       ☰
     </button>
 
-    <!-- ✅ IMPORTANT: id must match aria-controls -->
     <nav class="menu" id="main-menu" aria-label="Main navigation">
       <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
@@ -82,7 +86,6 @@
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
-      <!-- ✅ FIXED: language routes match your real folder structure -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/legal/cookies/">
           <span class="lang-full">English</span>
@@ -131,39 +134,42 @@
     <section class="card" id="cookies" style="margin-top:16px;">
 
       <div class="notice">
-        <strong>Summary:</strong> SimHealth aims to minimise tracking. The current website primarily uses storage only to remember user preferences (e.g., theme).
-        If analytics or additional cookies are added later, this notice will be updated and (where required) consent mechanisms will be implemented.
+        <strong>Summary:</strong>
+        SimHealth aims to minimise tracking. The current website primarily stores preferences only (for example, theme selection).
+        If analytics or additional cookies are introduced, this page will be updated and consent mechanisms added where required.
       </div>
 
       <h2>1) What are cookies?</h2>
       <p class="muted">
-        Cookies are small text files stored on your device by websites. Similar technologies include local storage and session storage.
-        Some are necessary for basic functionality; others may be used for measurement/analytics.
+        Cookies are small text files stored on your device by websites. Similar technologies include localStorage and session storage.
+        Some are essential for basic functionality; others may be used for measurement or analytics.
       </p>
 
       <h2>2) What we currently use</h2>
       <p class="muted">
-        At this time, simhealth.pro is designed to work without advertising trackers. The main “preference” we store is your theme choice (dark/light).
+        At present, simhealth.pro is designed to operate without advertising trackers.
+        The main preference stored is your theme choice (dark or light).
       </p>
       <ul>
-        <li><strong>Theme preference:</strong> stored to remember your selection between visits (e.g., via <code>localStorage</code>).</li>
+        <li><strong>Theme preference:</strong> stored to remember your selection between visits (e.g. via <code>localStorage</code>).</li>
       </ul>
 
       <h2>3) What we do not do</h2>
       <ul>
-        <li><strong>No ad tracking:</strong> we do not run behavioural advertising trackers on purpose.</li>
-        <li><strong>No sale of personal data:</strong> we do not sell browsing data.</li>
+        <li><strong>No advertising trackers:</strong> we do not intentionally deploy behavioural advertising trackers.</li>
+        <li><strong>No data sales:</strong> we do not sell browsing or personal data.</li>
       </ul>
 
-      <h2>4) Managing cookies / storage</h2>
+      <h2>4) Managing cookies and storage</h2>
       <p class="muted">
-        You can remove stored preferences by clearing your browser cookies/site data for simhealth.pro.
-        You can also browse in private/incognito mode.
+        You can remove stored preferences by clearing site data for simhealth.pro in your browser.
+        You can also browse in private or incognito mode.
       </p>
 
       <h2>5) Future analytics</h2>
       <p class="muted">
-        If privacy-preserving analytics are introduced, we will update this page and implement appropriate consent controls where required by law.
+        If privacy-respecting analytics are introduced, this notice will be updated and appropriate consent controls implemented
+        in line with applicable regulations.
       </p>
 
       <div class="pill-row">
