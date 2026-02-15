@@ -1,1 +1,249 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Recherche</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Root-relative paths -->
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .status-bar{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      color:var(--muted);
+      line-height:1.55;
+    }
+    .status-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--primary) 12%, transparent);
+      color:var(--text);
+      font-weight:800;
+      letter-spacing:0.2px;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .section-note{
+      margin-top:14px;
+      padding:12px 12px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      background:color-mix(in srgb, var(--accent) 10%, var(--surface));
+      color:var(--muted);
+      line-height:1.55;
+    }
+    .link-row{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .muted{ color:var(--muted); }
+    @media (max-width: 800px){
+      .status-bar{ gap:8px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Orientation recherche.</strong> SimHealth est préparé pour une évaluation par étapes (d’abord pilote), avec la sécurité, la gouvernance et l’intégrité clinique au centre.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
+
+    <!-- Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Ouvrir/fermer la navigation"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      ☰
+    </button>
+
+    <nav class="menu" id="main-menu" aria-label="Navigation principale">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link active" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle" aria-label="Langue">
+        <a href="/en/research/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a class="active" href="/fr/recherche/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
+        <span class="label label-dark">Sombre</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Clair</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/research.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Recherche</h1>
+        <p class="rise-2">
+          Construire un soutien numérique cliniquement informé face aux <strong style="color:var(--text);">envies de jeu d’argent</strong> —
+          conçu pour une évaluation rigoureuse, une gouvernance éthique et la sécurité des personnes dès le départ.
+        </p>
+
+        <div class="status-bar rise-3" role="note" aria-label="État du programme de recherche">
+          <span class="status-pill">Étape : pré-pilote / préparation du pilote</span>
+          <span>Aucune allégation médicale. Les résultats ne seront communiqués publiquement que lorsqu’ils seront étayés par une évaluation appropriée.</span>
+        </div>
+
+        <div class="link-row rise-3">
+          <a class="btn-primary" href="/fr/cliniciens/pilote/">Demander des informations pilote</a>
+          <a class="btn-secondary" href="#methodologie">Voir la méthodologie</a>
+          <a class="btn-secondary" href="#resultats">Voir les résultats</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px;">
+
+      <h2 id="preuves">Fondements</h2>
+      <p class="muted" style="line-height:1.65;">
+        SimHealth est développé comme un compagnon numérique structuré pour soutenir les personnes confrontées à des envies liées au jeu d’argent.
+        L’orientation s’appuie sur des principes établis en santé comportementale, couramment utilisés en pratique clinique,
+        notamment des stratégies basées sur les compétences (skills-based) et des approches informées par l’exposition.
+      </p>
+
+      <p class="muted" style="line-height:1.65;">
+        L’objectif n’est pas de « prouver qu’une application fonctionne du jour au lendemain », mais d’évaluer si un soutien numérique
+        <strong style="color:var(--text);">supervisé</strong> et correctement gouverné peut : renforcer la continuité des soins,
+        réduire le décrochage entre les séances, et aider à des décisions plus sûres lors des moments à risque.
+      </p>
+
+      <div class="section-note">
+        <strong style="color:var(--text);">Alignement clinique :</strong>
+        SimHealth est conçu pour compléter les soins, pas pour les remplacer.
+        En présence d’un risque de crise, la réponse appropriée est l’accès aux services d’urgence et de crise dans le monde réel.
+      </div>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
+
+      <h2 id="methodologie">Méthodologie</h2>
+      <p class="muted" style="line-height:1.65;">
+        SimHealth est conçu pour une évaluation par étapes — en commençant par de petits pilotes supervisés et en progressant uniquement lorsque
+        la sécurité, la gouvernance et l’encadrement clinique sont en place. Le programme vise une itération prudente, pas une diffusion non contrôlée.
+      </p>
+
+      <h3 style="margin:16px 0 8px;">Approche d’évaluation par étapes</h3>
+      <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7;">
+        <li><strong style="color:var(--text);">Phase 0 — Conception &amp; faisabilité :</strong> UX orientée sécurité, orientation vers l’aide, consentement, documentation de gouvernance.</li>
+        <li><strong style="color:var(--text);">Phase 1 — Pilote supervisé :</strong> petite cohorte, supervision clinique, signaux de faisabilité + sécurité.</li>
+        <li><strong style="color:var(--text);">Phase 2 — Évaluation élargie (si justifiée) :</strong> design d’étude plus large et supervision formelle selon les exigences.</li>
+      </ul>
+
+      <h3 style="margin:16px 0 8px;">Données (priorité à la confidentialité)</h3>
+      <p class="muted" style="line-height:1.65;">
+        Lorsque la collecte de données est incluse dans un pilote, elle est conçue pour être strictement optionnelle et réalisée uniquement
+        avec le consentement explicite des participant·e·s. La collecte doit être limitée à ce qui est nécessaire à l’évaluation et à l’amélioration,
+        et structurée conformément aux principes du RGPD.
+      </p>
+
+      <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7;">
+        <li><strong style="color:var(--text);">Consentement :</strong> participation sur opt-in, informations claires, retrait lorsque applicable.</li>
+        <li><strong style="color:var(--text);">Minimisation :</strong> collecte du strict nécessaire ; éviter les identifiants inutiles.</li>
+        <li><strong style="color:var(--text);">Protection :</strong> anonymisation si possible ; sinon pseudonymisation + accès restreint.</li>
+        <li><strong style="color:var(--text);">Finalité :</strong> pas d’usage secondaire sans gouvernance appropriée.</li>
+      </ul>
+
+      <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
+
+      <h2 id="resultats">Résultats</h2>
+      <p class="muted" style="line-height:1.65;">
+        Les résultats ne seront communiqués publiquement que lorsqu’ils seront étayés par une évaluation appropriée.
+        Les travaux précoces portent sur la faisabilité, la sécurité et l’engagement — pas sur des affirmations médicales.
+      </p>
+
+      <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7;">
+        <li><strong style="color:var(--text);">Faisabilité :</strong> usage sûr et cohérent dans des parcours réels</li>
+        <li><strong style="color:var(--text);">Engagement :</strong> continuité entre les séances</li>
+        <li><strong style="color:var(--text);">Signaux de sécurité :</strong> réduction des risques de dommages</li>
+        <li><strong style="color:var(--text);">Utilisabilité clinique :</strong> charge minimale</li>
+        <li><strong style="color:var(--text);">Préparation à la recherche :</strong> structure pour des études plus larges si justifié</li>
+      </ul>
+
+      <div class="section-note" style="margin-top:16px;">
+        <strong style="color:var(--text);">Positionnement :</strong>
+        SimHealth est en développement et ne fournit pas de prise en charge d’urgence.
+        Tout programme de recherche futur doit être mené avec une gouvernance adaptée et une supervision professionnelle.
+      </div>
+
+      <div class="link-row">
+        <a class="btn-primary" href="/fr/cliniciens/pilote/">Demander des informations pilote</a>
+        <a class="btn-secondary" href="/fr/contact/">Questions recherche</a>
+        <a class="btn-secondary" href="/fr/accueil/">Retour à l’accueil</a>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a href="/fr/legal/conditions/">Conditions</a>
+        <a href="/fr/legal/cookies/">Cookies</a>
+        <a href="/fr/legal/accessibilite/">Accessibilité</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
+        <a href="/fr/contact/">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Mobile always-visible crisis access (French pages) -->
+  <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+</body>
+            </html>
