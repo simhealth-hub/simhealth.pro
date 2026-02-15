@@ -1,1 +1,459 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Auto-évaluation PGSI</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .page-head{ margin:16px 0 10px; }
+    .page-head h2{ margin:0 0 8px; font-size:22px; }
+    .page-head p{ margin:0; color:var(--muted); line-height:1.65; }
+
+    .notice{
+      margin-top:14px;
+      background: color-mix(in srgb, var(--warn) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--warn) 28%, transparent);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .notice strong{ color: var(--text); }
+
+    .meta-row{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.4;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 6%, transparent);
+      color:var(--text);
+      font-weight:800;
+      letter-spacing:.2px;
+      user-select:none;
+      white-space:nowrap;
+    }
+
+    .qwrap{ margin-top:16px; }
+    .q{
+      margin-top:14px;
+      padding:16px;
+      border-radius:var(--radius-xl);
+      border:1px solid var(--border);
+      background:var(--surface);
+    }
+    .q h3{
+      margin:0 0 10px;
+      font-size:16px;
+      line-height:1.45;
+    }
+    .options{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:10px;
+      margin-top:8px;
+    }
+    .opt{
+      grid-column: span 6;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 12px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      cursor:pointer;
+      user-select:none;
+      transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+    }
+    .opt:hover{ transform: translateY(-1px); }
+    .opt:active{ transform: translateY(0px); }
+    .opt input{ margin-top:3px; }
+    .opt b{ color:var(--text); }
+    .opt span{ color:var(--muted); font-size:13px; line-height:1.45; }
+
+    .actions{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    button.btn-primary{
+      border:none;
+      cursor:pointer;
+    }
+
+    .status{
+      display:none;
+      margin-top:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      padding:12px 14px;
+      line-height:1.55;
+      color:var(--muted);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+    }
+    .status.show{ display:block; }
+    .status.good{
+      background:color-mix(in srgb, var(--primary) 14%, transparent);
+      border-color:color-mix(in srgb, var(--primary) 35%, var(--border));
+      color:var(--text);
+    }
+    .status.warn{
+      background:color-mix(in srgb, var(--warn) 12%, transparent);
+      border-color:color-mix(in srgb, var(--warn) 30%, var(--border));
+      color:var(--text);
+    }
+    .status.risk{
+      background:color-mix(in srgb, #ef4444 14%, transparent);
+      border-color:color-mix(in srgb, #ef4444 32%, var(--border));
+      color:var(--text);
+    }
+    .status h4{ margin:0 0 8px; }
+    .status p{ margin:0; color:var(--muted); line-height:1.6; }
+    .status p strong{ color:var(--text); }
+    .status .row{
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .fine{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .fine a{ color:var(--text); text-decoration:underline; }
+
+    @media (max-width: 800px){
+      .opt{ grid-column: span 12; }
+      .page-head h2{ font-size:20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité à la santé.</strong> Cette page est informative. En cas de danger immédiat ou de risque d’auto-agression, appelez votre numéro d’urgence local.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
+
+    <!-- Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" id="main-menu" aria-label="Navigation principale">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link active" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle" aria-label="Langue">
+        <a href="/en/patients/pgsi/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a class="active" href="/fr/patients/pgsi/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
+        <span class="label label-dark">Sombre</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Clair</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/patients.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Auto-évaluation PGSI</h1>
+        <p class="rise-2">
+          Court questionnaire validé, utilisé internationalement pour repérer un risque lié aux <strong style="color:var(--text);">jeux d’argent</strong>
+          sur les <strong style="color:var(--text);">12 derniers mois</strong>.
+          Ce n’est pas un diagnostic — c’est un repérage structuré.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#quiz">Commencer</a>
+          <a class="btn-secondary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+          <a class="btn-secondary" href="/fr/patients/">Retour à Patients</a>
+        </div>
+
+        <div class="notice" style="margin-top:14px;">
+          <strong>Si vous vous sentez en danger maintenant :</strong> utilisez les
+          <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">Ressources d’aide</a>
+          ou appelez votre numéro d’urgence local. Ce site n’est pas surveillé comme un service d’urgence.
+        </div>
+      </div>
+    </section>
+
+    <div class="page-head">
+      <h2>Comment ça fonctionne</h2>
+      <p>
+        Répondez à chaque question en vous basant sur vos expériences au cours des
+        <strong style="color:var(--text);">12 derniers mois</strong>.
+        Le score est calculé <strong style="color:var(--text);">localement dans votre navigateur</strong> — vos réponses ne sont pas enregistrées sur cette page.
+      </p>
+
+      <div class="meta-row" aria-label="Détails du questionnaire">
+        <span class="chip">9 questions</span>
+        <span class="chip">Durée : ~2 minutes</span>
+        <span class="chip">Calcul local (confidentialité)</span>
+      </div>
+
+      <div class="notice">
+        <strong>Important :</strong> ce questionnaire peut être émotionnellement sensible.
+        Si vous ressentez une montée de détresse, faites une pause et utilisez les
+        <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">Ressources d’aide</a>
+        ou parlez à un professionnel de confiance.
+      </div>
+    </div>
+
+    <section class="card" id="quiz" style="margin-top:16px;">
+      <h2 style="margin:0 0 8px;">Questionnaire PGSI</h2>
+      <p style="margin:0; color:var(--muted); line-height:1.65;">
+        Choisissez une réponse par question :
+        <strong style="color:var(--text);">Jamais (0)</strong>,
+        <strong style="color:var(--text);">Parfois (1)</strong>,
+        <strong style="color:var(--text);">La plupart du temps (2)</strong>,
+        <strong style="color:var(--text);">Presque toujours (3)</strong>.
+      </p>
+
+      <form id="pgsiForm" class="qwrap" aria-label="Formulaire PGSI"></form>
+
+      <div class="actions">
+        <button class="btn-primary" id="calcBtn" type="button">Calculer le score</button>
+        <button class="btn-secondary" id="resetBtn" type="button">Réinitialiser</button>
+        <a class="btn-secondary" href="/fr/patients/aide-soutien/">Aide &amp; soutien</a>
+      </div>
+
+      <div id="resultBox" class="status" role="status" aria-live="polite"></div>
+
+      <p class="fine">
+        Le PGSI (Problem Gambling Severity Index) est largement utilisé comme outil de repérage en population générale et dans les services.
+        Cette page est informative et ne fournit pas de conseil médical.
+        Si vous souhaitez parler à quelqu’un aujourd’hui, consultez les <a href="/fr/patients/aide-soutien/">Ressources d’aide</a>.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a href="/fr/legal/conditions/">Conditions</a>
+        <a href="/fr/legal/cookies/">Cookies</a>
+        <a href="/fr/legal/accessibilite/">Accessibilité</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Mobile always-visible crisis access (French pages) -->
+  <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+  <script>
+    // FR wording: explicit “jeux d’argent”, natural FR clinical phrasing
+    const QUESTIONS = [
+      "Au cours des 12 derniers mois, vous est-il arrivé de miser plus d’argent que vous ne pouviez réellement vous permettre de perdre ?",
+      "Au cours des 12 derniers mois, avez-vous eu besoin de miser des sommes plus importantes pour ressentir le même niveau d’excitation ?",
+      "Au cours des 12 derniers mois, après avoir joué, vous est-il arrivé de revenir un autre jour pour tenter de récupérer l’argent perdu ?",
+      "Au cours des 12 derniers mois, avez-vous emprunté de l’argent ou vendu quelque chose afin d’obtenir de l’argent pour jouer ?",
+      "Au cours des 12 derniers mois, avez-vous eu le sentiment d’avoir un problème de jeu ?",
+      "Au cours des 12 derniers mois, le jeu a-t-il provoqué chez vous des problèmes de santé, notamment du stress ou de l’anxiété ?",
+      "Au cours des 12 derniers mois, des personnes ont-elles critiqué votre façon de jouer ou vous ont-elles dit que vous aviez un problème de jeu, que vous soyez d’accord ou non ?",
+      "Au cours des 12 derniers mois, votre pratique des jeux d’argent a-t-elle entraîné des difficultés financières pour vous ou pour votre foyer ?",
+      "Au cours des 12 derniers mois, vous êtes-vous senti(e) coupable de votre façon de jouer ou de ce qui se passe lorsque vous jouez ?"
+    ];
+
+    const OPTIONS = [
+      { label: "Jamais (0)", value: 0, hint: "Pas du tout au cours des 12 derniers mois." },
+      { label: "Parfois (1)", value: 1, hint: "Occasionnel / par moments." },
+      { label: "La plupart du temps (2)", value: 2, hint: "Fréquent / récurrent." },
+      { label: "Presque toujours (3)", value: 3, hint: "Très fréquent / quasi constant." }
+    ];
+
+    const form = document.getElementById("pgsiForm");
+    const resultBox = document.getElementById("resultBox");
+    const calcBtn = document.getElementById("calcBtn");
+    const resetBtn = document.getElementById("resetBtn");
+
+    function escapeHtml(s){
+      return String(s)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function buildForm(){
+      form.innerHTML = "";
+      QUESTIONS.forEach((q, idx) => {
+        const wrap = document.createElement("div");
+        wrap.className = "q";
+        wrap.innerHTML = `
+          <h3>${idx + 1}. ${escapeHtml(q)}</h3>
+          <div class="options" role="radiogroup" aria-label="Question ${idx + 1}">
+            ${OPTIONS.map((o) => `
+              <label class="opt">
+                <input type="radio" name="q${idx}" value="${o.value}" aria-label="${escapeHtml(o.label)}" />
+                <div>
+                  <b>${escapeHtml(o.label)}</b><br>
+                  <span>${escapeHtml(o.hint)}</span>
+                </div>
+              </label>
+            `).join("")}
+          </div>
+        `;
+        form.appendChild(wrap);
+      });
+    }
+
+    function getScore(){
+      let score = 0;
+      for(let i=0; i<QUESTIONS.length; i++){
+        const checked = document.querySelector(`input[name="q${i}"]:checked`);
+        if(!checked) return { ok:false, score:0, missing:i+1 };
+        score += Number(checked.value);
+      }
+      return { ok:true, score };
+    }
+
+    function band(score){
+      if(score === 0) return { label:"Absence de problème (0)", cls:"good" };
+      if(score <= 2) return { label:"Risque faible (1–2)", cls:"good" };
+      if(score <= 7) return { label:"Risque modéré (3–7)", cls:"warn" };
+      return { label:"Risque élevé / probable jeu problématique (8+)", cls:"risk" };
+    }
+
+    function renderResult(score){
+      const b = band(score);
+
+      let guidance = "";
+      if(score === 0){
+        guidance = `
+          <p><strong>Ce que cela suggère :</strong> aucun problème lié aux jeux d’argent signalé sur les 12 derniers mois selon cet outil de repérage.</p>
+          <p>Si vous êtes ici parce que vous vous inquiétez malgré tout, faites confiance à ce ressenti : un soutien peut rester utile.</p>
+        `;
+      } else if(score <= 2){
+        guidance = `
+          <p><strong>Ce que cela suggère :</strong> risque faible selon cet outil, avec possiblement quelques signaux précoces.</p>
+          <p>Si les envies de jouer s’intensifient, fixer des limites et en parler tôt à un professionnel ou à un service d’aide peut être bénéfique.</p>
+        `;
+      } else if(score <= 7){
+        guidance = `
+          <p><strong>Ce que cela suggère :</strong> risque modéré. Cette tranche de score est souvent associée à des impacts concrets au quotidien.</p>
+          <p><strong>Étape utile :</strong> envisager un échange avec un professionnel et/ou contacter un service spécialisé jeux d’argent.</p>
+        `;
+      } else {
+        guidance = `
+          <p><strong>Ce que cela suggère :</strong> un score de <strong>${score}</strong> correspond à un risque élevé / probable jeu problématique sur cet outil.</p>
+          <p><strong>Ce n’est pas un diagnostic</strong>, mais cela indique fortement que le jeu a pu entraîner une souffrance ou des conséquences.</p>
+          <p>Si vous vous sentez en danger ou à risque d’auto-agression, utilisez immédiatement les ressources d’urgence.</p>
+        `;
+      }
+
+      const nextSteps = `
+        <div class="row">
+          <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+          <a class="btn-secondary" href="/fr/contact/">Contact (non urgent)</a>
+          <a class="btn-secondary" href="/fr/patients/">Retour à Patients</a>
+        </div>
+        <p class="fine" style="margin-top:10px;">
+          Rappel : ce score concerne les <strong>12 derniers mois</strong>. Si votre situation a changé récemment, vos besoins actuels peuvent être différents.
+        </p>
+      `;
+
+      resultBox.className = `status show ${b.cls}`;
+      resultBox.innerHTML = `
+        <h4>Votre score : ${score} — ${escapeHtml(b.label)}</h4>
+        ${guidance}
+        ${nextSteps}
+      `;
+      resultBox.scrollIntoView({ behavior:"smooth", block:"start" });
+    }
+
+    calcBtn.addEventListener("click", () => {
+      const s = getScore();
+      if(!s.ok){
+        resultBox.className = "status show warn";
+        resultBox.innerHTML = `
+          <h4>Presque terminé</h4>
+          <p>Merci de répondre à la <strong>question ${s.missing}</strong> pour calculer votre score.</p>
+        `;
+        const qEl = document.querySelectorAll(".q")[s.missing - 1];
+        if(qEl) qEl.scrollIntoView({ behavior:"smooth", block:"center" });
+        return;
+      }
+      renderResult(s.score);
+    });
+
+    resetBtn.addEventListener("click", () => {
+      form.reset();
+      resultBox.className = "status";
+      resultBox.innerHTML = "";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    buildForm();
+  </script>
+
+</body>
+</html>
+```0
