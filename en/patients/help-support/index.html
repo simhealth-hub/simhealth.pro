@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth — Help & Support</title>
+  <title>SimHealth — Help &amp; Support</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- ✅ Use root-relative paths so it works from ANY folder -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
@@ -108,7 +107,7 @@
     .small-links a { color: var(--muted); text-decoration: none; }
     .small-links a:hover { color: var(--text); }
 
-    /* Make hero text area a bit wider on this page */
+    /* Wider hero copy for this page */
     .hero .hero-content { width: min(720px, 92%); }
 
     @media (max-width: 800px) {
@@ -127,33 +126,34 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="/en/home/"">Home</a>
+    <!-- Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      Menu <span class="chev">▾</span>
+    </button>
 
-      <div class="item">
-        <a class="link" href="/en/patients/">Patients</a>
-      </div>
-
-      <div class="item">
-        <a class="link" href="/en/clinicians/">Clinicians</a>
-      </div>
-
-      <div class="item">
-        <a class="link" href="/en/research/">Research</a>
-      </div>
-
-      <div class="item">
-        <a class="link" href="/en/about/">About</a>
-      </div>
-
+    <nav class="menu" id="main-menu" aria-label="Main navigation">
+      <a class="link" href="/en/home/">Home</a>
+      <a class="link active" href="/en/patients/">Patients</a>
+      <a class="link" href="/en/clinicians/">Clinicians</a>
+      <a class="link" href="/en/research/">Research</a>
+      <a class="link" href="/en/about/">About</a>
       <a class="link" href="/en/contact/">Contact</a>
 
-      <!-- ✅ Always works + ethical wording -->
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/en/patients/help-support/">English</a>
-        <a href="/fr/accueil.html">Français</a>
+        <a class="active" href="/en/patients/help-support/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a href="/fr/patients/aide-soutien/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -169,17 +169,15 @@
 
   <main class="wrap">
 
-    <!-- ✅ HERO (matches the rest of your site) -->
     <section class="hero">
-      <!-- ✅ This must match your actual filename in /assets/ -->
       <div class="hero-bg" style="background-image:url('/assets/help-hero.jpg');"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <h1 class="rise-1">Help & Support</h1>
+        <h1 class="rise-1">Help &amp; Support</h1>
         <p class="rise-2">
-          If you’re struggling right now — you don’t have to carry it alone.
-          Below are real, official services you can contact today.
+          If you’re struggling right now, you don’t have to carry it alone.
+          Below are official services you can contact today.
         </p>
 
         <div class="hero-actions rise-3">
@@ -190,7 +188,7 @@
         <p style="margin:12px 0 0; color:var(--muted); line-height:1.55;">
           <strong style="color:var(--text);">If you are in immediate danger,</strong>
           call your local emergency number now.
-          <br><span style="font-size:13px;">SimHealth does not provide emergency or crisis care.</span>
+          <br><span style="font-size:13px;">SimHealth is not monitored as an emergency or crisis service.</span>
         </p>
       </div>
     </section>
@@ -198,7 +196,7 @@
     <div class="page-head">
       <h2>Quick guidance</h2>
       <p>
-        This website is a professional project showcase. These contacts are provided because safety matters more than anything.
+        SimHealth is a professional project showcase. These contacts are provided because safety matters more than anything.
         If you feel at risk of harming yourself, call your local emergency number or a crisis line now.
       </p>
 
@@ -216,11 +214,9 @@
 
     <div class="support-grid" aria-label="Crisis support by country">
 
-      <!-- FRANCE -->
       <div class="support-card">
         <h4>France</h4>
         <p>National suicide prevention line (free). If there’s immediate danger, call emergency services.</p>
-
         <div class="pill-row">
           <a class="phone-pill" href="tel:3114" aria-label="Call 3114">
             <span class="icon">☎</span> 3114
@@ -229,17 +225,14 @@
             <span class="icon">☎</span> 112 (Emergency)
           </a>
         </div>
-
         <div class="small-links">
           <a href="https://3114.fr" target="_blank" rel="noreferrer">Official: 3114</a>
         </div>
       </div>
 
-      <!-- USA -->
       <div class="support-card">
         <h4>United States</h4>
         <p>988 Suicide &amp; Crisis Lifeline (call or text). For immediate danger, call 911.</p>
-
         <div class="pill-row">
           <a class="phone-pill" href="tel:988" aria-label="Call 988">
             <span class="icon">☎</span> 988
@@ -249,17 +242,14 @@
             <span class="icon">☎</span> 911 (Emergency)
           </a>
         </div>
-
         <div class="small-links">
           <a href="https://988lifeline.org" target="_blank" rel="noreferrer">Official: 988 Lifeline</a>
         </div>
       </div>
 
-      <!-- CANADA -->
       <div class="support-card">
         <h4>Canada</h4>
         <p>988 Suicide Crisis Helpline (call or text). For immediate danger, call 911.</p>
-
         <div class="pill-row">
           <a class="phone-pill" href="tel:988" aria-label="Call 988">
             <span class="icon">☎</span> 988
@@ -269,7 +259,6 @@
             <span class="icon">☎</span> 911 (Emergency)
           </a>
         </div>
-
         <div class="small-links">
           <a href="https://www.canada.ca/en/public-health/services/mental-health-services/988.html" target="_blank" rel="noreferrer">
             Official: Canada 988
@@ -277,11 +266,9 @@
         </div>
       </div>
 
-      <!-- UK -->
       <div class="support-card">
         <h4>United Kingdom &amp; ROI</h4>
         <p>Samaritans (freephone). For emergency services: 999 (UK) / 112.</p>
-
         <div class="pill-row">
           <a class="phone-pill" href="tel:116123" aria-label="Call 116123">
             <span class="icon">☎</span> 116 123
@@ -293,7 +280,6 @@
             <span class="icon">☎</span> 112 (Emergency)
           </a>
         </div>
-
         <div class="small-links">
           <a href="https://www.samaritans.org/how-we-can-help/contact-samaritan/" target="_blank" rel="noreferrer">
             Official: Samaritans
@@ -301,11 +287,9 @@
         </div>
       </div>
 
-      <!-- AUSTRALIA -->
       <div class="support-card">
         <h4>Australia</h4>
         <p>Lifeline crisis support. If there’s immediate danger: 000.</p>
-
         <div class="pill-row">
           <a class="phone-pill" href="tel:131114" aria-label="Call 131114">
             <span class="icon">☎</span> 13 11 14
@@ -314,17 +298,14 @@
             <span class="icon">☎</span> 000 (Emergency)
           </a>
         </div>
-
         <div class="small-links">
           <a href="https://www.lifeline.org.au" target="_blank" rel="noreferrer">Official: Lifeline</a>
         </div>
       </div>
 
-      <!-- NEW ZEALAND -->
       <div class="support-card">
         <h4>New Zealand</h4>
         <p>Call or text 1737 for free support from a trained counsellor.</p>
-
         <div class="pill-row">
           <a class="phone-pill" href="tel:1737" aria-label="Call 1737">
             <span class="icon">☎</span> 1737
@@ -334,7 +315,6 @@
             <span class="icon">☎</span> 111 (Emergency)
           </a>
         </div>
-
         <div class="small-links">
           <a href="https://1737.org.nz" target="_blank" rel="noreferrer">Official: 1737</a>
         </div>
@@ -350,11 +330,9 @@
 
     <div class="support-grid" aria-label="Gambling support by country">
 
-      <!-- FRANCE -->
       <div class="support-card">
         <h4>France</h4>
         <p>Joueurs Info Service — information, listening, and support for gambling-related harm.</p>
-
         <div class="pill-row">
           <a class="phone-pill" href="tel:+33974751313" aria-label="Call +33974751313">
             <span class="icon">☎</span> +33 9 74 75 13 13
@@ -363,11 +341,9 @@
         </div>
       </div>
 
-      <!-- UK -->
       <div class="support-card">
         <h4>United Kingdom</h4>
         <p>National Gambling Helpline (via GamCare) — free, confidential support.</p>
-
         <div class="pill-row">
           <a class="phone-pill" href="tel:08088020133" aria-label="Call 08088020133">
             <span class="icon">☎</span> 0808 8020 133
@@ -376,11 +352,9 @@
         </div>
       </div>
 
-      <!-- USA -->
       <div class="support-card">
         <h4>United States</h4>
         <p>National Problem Gambling Helpline (NCPG) — call, text, or chat 24/7.</p>
-
         <div class="pill-row">
           <a class="phone-pill" href="tel:18006997338" aria-label="Call 18006997338">
             <span class="icon">☎</span> 1-800-MY-RESET
@@ -392,11 +366,9 @@
         </div>
       </div>
 
-      <!-- AUSTRALIA -->
       <div class="support-card">
         <h4>Australia</h4>
         <p>Gambling Help Online — free, confidential support.</p>
-
         <div class="pill-row">
           <a class="phone-pill" href="tel:1800858858" aria-label="Call 1800858858">
             <span class="icon">☎</span> 1800 858 858
@@ -408,8 +380,8 @@
     </div>
 
     <div class="notice" style="margin-top:16px;">
-      <strong>Clinician note:</strong> SimHealth is built with a safety-first approach: clear signposting to real services, no emergency claims, and careful governance.
-      Where any research involves data, it must be consent-based and compliant with applicable laws and clinical ethics.
+      <strong>Note:</strong> SimHealth is built with a safety-first approach: signposting to real services, no emergency claims, and careful governance.
+      Any future evaluation involving data would be consent-based and aligned with applicable laws and clinical ethics.
     </div>
 
   </main>
@@ -421,18 +393,22 @@
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
 
-      <nav aria-label="Footer quick links">
+      <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
         <a href="/en/legal/privacy/">Privacy</a>
         <a href="/en/legal/terms/">Terms</a>
         <a href="/en/legal/cookies/">Cookies</a>
         <a href="/en/legal/accessibility/">Accessibility</a>
         <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
-        <a href="/en/patients/help-support/">Crisis Resources</a>
-        <a href="/en/contact/">Contact</a>
       </nav>
     </div>
   </footer>
 
+  <!-- Mobile always-visible crisis access (English pages only) -->
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
+
 </body>
-</html>
+              </html>
