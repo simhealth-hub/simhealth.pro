@@ -318,9 +318,9 @@ footer nav a + a::before{
 
 /* =========================
    LANGUAGE TOGGLE
-   - Use spans in HTML:
-     <span class="lang-full">English</span>
-     <span class="lang-short">EN</span>
+   (Use spans in HTML:
+    <span class="lang-full">English</span>
+    <span class="lang-short">EN</span>)
    ========================= */
 
 .lang-toggle {
@@ -472,11 +472,12 @@ footer nav a + a::before{
 .nav-toggle .chev{ opacity: .85; }
 
 @media (max-width: 900px) {
-  .wrap{ padding-bottom: 86px; } /* room for sticky crisis bar */
+  /* leave space for sticky crisis bar */
+  .wrap{ padding-bottom: 90px; }
 
   .nav { padding: 12px 14px; }
 
-  /* Collapse menu into drawer */
+  /* Collapse menu into a semi-transparent drawer */
   .nav .menu { display:none; width:100%; }
   .nav .menu.open{
     display:flex;
@@ -493,11 +494,11 @@ footer nav a + a::before{
 
   .nav-toggle{ display:inline-flex; }
 
-  /* Controls feel less “giant” but still tappable */
+  /* Buttons/links: less chunky, still tappable */
   .link, .btn-primary, .btn-secondary{
     width: 100%;
     justify-content: center;
-    padding: 12px 12px;
+    padding: 11px 12px;
     border-radius: 14px;
   }
 
@@ -524,23 +525,20 @@ footer nav a + a::before{
 
   .tile{ grid-column: span 12; }
 
-  /* ✅ MOBILE TILE IMAGE FIX:
-     Use a phone-friendly aspect ratio so it feels “full image”, not letterboxed */
+  /* ✅ Mobile tile “full image” feel */
   .tile .img{
-    height: clamp(240px, 58vw, 420px);
+    height: clamp(260px, 62vw, 520px);
     background-position: center;
   }
 }
 
 /* =========================
    STICKY MOBILE CRISIS BAR
-   (add this HTML on pages you want it)
-   <div class="mobile-crisis"><span class="label">Need help now?</span> ... </div>
+   Add this HTML where you want it:
+   <div class="mobile-crisis"><span class="label">Need help now?</span><a ...>Crisis Resources</a></div>
    ========================= */
 
-.mobile-crisis {
-  display: none;
-}
+.mobile-crisis { display:none; }
 
 @media (max-width: 900px){
   .mobile-crisis{
@@ -566,6 +564,9 @@ footer nav a + a::before{
     color: var(--text);
     font-size: 13px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 45%;
   }
   .mobile-crisis a{
     flex: 1;
@@ -573,5 +574,6 @@ footer nav a + a::before{
     justify-content: center;
     padding: 12px 12px;
     border-radius: 999px;
+    white-space: nowrap;
   }
-                   }
+              }
