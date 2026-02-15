@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Root-relative paths so it works anywhere -->
+  <!-- Root-relative -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
@@ -19,7 +19,7 @@
     .section-title h2{ margin:0 0 6px; font-size:20px; }
     .section-title p{ margin:0; color:var(--muted); line-height:1.6; }
 
-    .grid{
+    .p-grid{
       display:grid;
       grid-template-columns:repeat(12, 1fr);
       gap:14px;
@@ -71,9 +71,18 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="/en/home/"">Home</a>
-      <a class="link" href="/en/patients/">Patients</a>
+    <!-- Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" id="main-menu" aria-label="Main navigation">
+      <a class="link" href="/en/home/">Home</a>
+      <a class="link active" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
       <a class="link" href="/en/about/">About</a>
@@ -82,8 +91,14 @@
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/en/patients/">English</a>
-        <a href="/fr/patients/">Français</a>
+        <a class="active" href="/en/patients/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a href="/fr/patients/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -101,7 +116,6 @@
 
     <!-- HERO -->
     <section class="hero">
-      <!-- NOTE: set this to the filename you actually have in /assets/ -->
       <div class="hero-bg" style="background-image:url('/assets/patients.jpg');"></div>
       <div class="hero-overlay"></div>
 
@@ -118,7 +132,7 @@
           <a class="btn-secondary" href="#how">How it works</a>
         </div>
 
-        <div class="notice" style="margin-top:14px;">
+        <div class="notice">
           <strong>If you are in immediate danger,</strong> call your local emergency number now.
           <br><span style="font-size:13px;">This website is not monitored as an emergency service.</span>
         </div>
@@ -131,54 +145,54 @@
       <p>Choose what you need right now.</p>
     </section>
 
-<section class="grid" aria-label="Patient options">
+    <section class="p-grid" aria-label="Patient options">
 
-  <div class="card-tile">
-    <h3>Help &amp; Support</h3>
-    <p>
-      Official crisis and gambling support services by country. If you’re at risk of harm, use these first.
-    </p>
-    <div class="actions">
-      <a class="btn-primary" href="/en/patients/help-support/">Open Crisis Resources</a>
-      <a class="btn-secondary" href="/en/contact/">Contact (non-urgent)</a>
-    </div>
-  </div>
+      <div class="card-tile">
+        <h3>Help &amp; Support</h3>
+        <p>
+          Official crisis and gambling support services by country. If you feel at risk of harm, use these first.
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="/en/patients/help-support/">Open Crisis Resources</a>
+          <a class="btn-secondary" href="/en/contact/">Contact (non-urgent)</a>
+        </div>
+      </div>
 
-  <div class="card-tile">
-    <h3>Get updates</h3>
-    <p>
-      Occasional emails about releases, research progress, and early access. No spam. Unsubscribe any time.
-    </p>
-    <div class="actions">
-      <a class="btn-primary" href="/en/patients/updates/">Subscribe</a>
-      <a class="btn-secondary" href="/en/research/">Research approach</a>
-    </div>
-  </div>
+      <div class="card-tile">
+        <h3>Get updates</h3>
+        <p>
+          Occasional emails about releases, research progress, and early access. No spam. Unsubscribe any time.
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="/en/patients/updates/">Subscribe</a>
+          <a class="btn-secondary" href="/en/research/">Research approach</a>
+        </div>
+      </div>
 
-  <div class="card-tile">
-    <h3>PGSI self-check</h3>
-    <p>
-      A short, validated screening questionnaire used internationally to understand gambling-related risk over the last 12 months.
-      This is not a diagnosis.
-    </p>
-    <div class="actions">
-      <a class="btn-primary" href="/en/patients/pgsi/">Start self-check</a>
-      <a class="btn-secondary" href="/en/patients/help-support/">Get support</a>
-    </div>
-  </div>
+      <div class="card-tile">
+        <h3>PGSI self-check</h3>
+        <p>
+          A short, validated screening questionnaire used internationally to understand gambling-related risk over the last 12 months.
+          This is not a diagnosis.
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="/en/patients/pgsi/">Start self-check</a>
+          <a class="btn-secondary" href="/en/patients/help-support/">Get support</a>
+        </div>
+      </div>
 
-  <div class="card-tile">
-    <h3>What SimHealth is (and isn’t)</h3>
-    <p>
-      A clinician-informed project being evaluated carefully. Not a medical device, and not a substitute for care.
-    </p>
-    <div class="actions">
-      <a class="btn-primary" href="#how">Read overview</a>
-      <a class="btn-secondary" href="/en/about/">About</a>
-    </div>
-  </div>
+      <div class="card-tile">
+        <h3>What SimHealth is (and isn’t)</h3>
+        <p>
+          A clinician-informed project being evaluated carefully. Not a medical device, and not a substitute for care.
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="#how">Read overview</a>
+          <a class="btn-secondary" href="/en/about/">About</a>
+        </div>
+      </div>
 
-</section>
+    </section>
 
     <!-- HOW IT WORKS -->
     <section class="card" id="how" style="margin-top:16px;">
@@ -196,10 +210,11 @@
         <li><strong style="color:var(--text);">Clinical governance:</strong> intended for supervised pilots before any broader use.</li>
       </ul>
 
-      <div style="margin-top:14px; padding:12px 12px; border:1px solid var(--border); border-radius:var(--radius-lg); background:color-mix(in srgb, var(--accent) 10%, var(--surface));">
+      <div style="margin-top:14px; padding:12px; border:1px solid var(--border); border-radius:var(--radius-lg); background:color-mix(in srgb, var(--accent) 10%, var(--surface));">
         <p style="margin:0; color:var(--muted); line-height:1.55;">
           <strong style="color:var(--text);">Important:</strong> SimHealth is not a substitute for professional care.
-          If you feel unsafe or at risk, please use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
+          If you feel unsafe or at risk, please use
+          <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
         </p>
       </div>
 
@@ -228,6 +243,12 @@
       </nav>
     </div>
   </footer>
+
+  <!-- Mobile always-visible crisis access (English pages only) -->
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
 
 </body>
 </html>
