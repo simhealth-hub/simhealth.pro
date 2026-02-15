@@ -54,7 +54,10 @@ body {
 }
 .banner strong { color: var(--text); }
 
-/* Nav */
+/* =========================
+   NAV
+   ========================= */
+
 .nav {
   display: flex;
   align-items: center;
@@ -64,7 +67,7 @@ body {
   background: color-mix(in srgb, var(--bg) 85%, transparent);
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 50;
   backdrop-filter: blur(10px);
 }
 
@@ -96,6 +99,7 @@ body {
 }
 .link:hover { background: color-mix(in srgb, var(--text) 8%, transparent); }
 .link:active { transform: translateY(1px); }
+.link.active { background: color-mix(in srgb, var(--text) 8%, transparent); }
 
 .dropdown {
   display: none;
@@ -121,6 +125,7 @@ body {
 }
 .item:hover .dropdown { display: block; }
 
+/* Buttons */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -135,6 +140,22 @@ body {
 }
 .btn-primary:hover { filter: brightness(0.98); transform: translateY(-1px); }
 .btn-primary:active { transform: translateY(0px); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+}
+.btn-secondary:hover { background: color-mix(in srgb, var(--text) 6%, transparent); transform: translateY(-1px); }
+.btn-secondary:active { transform: translateY(0px); }
 
 .icon-btn {
   width: 40px;
@@ -162,7 +183,10 @@ body {
   padding: 22px;
 }
 
-/* Tiles grid */
+/* =========================
+   TILES GRID
+   ========================= */
+
 .grid {
   display: grid;
   gap: 14px;
@@ -182,9 +206,9 @@ body {
 }
 .tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
 
-/* Tile image (kept visible + consistent) */
+/* Desktop tile image */
 .tile .img {
-  height: 230px; /* ✅ ~20% taller than 190px */
+  height: 230px;
   background-size: cover;
   background-position: center 35%;
   position: relative;
@@ -224,6 +248,10 @@ body {
 .tile .meta p { margin: 0; color: var(--muted); line-height: 1.45; }
 .tile .meta h3 { margin: 0 0 6px; }
 
+/* =========================
+   FOOTER
+   ========================= */
+
 footer {
   border-top: 1px solid var(--border);
   padding: 18px 16px;
@@ -241,7 +269,10 @@ footer .row {
 footer a { color: var(--muted); text-decoration: none; }
 footer a:hover { color: var(--text); }
 
-/* Theme toggle slider */
+/* =========================
+   THEME TOGGLE (smaller on mobile)
+   ========================= */
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -282,7 +313,10 @@ footer a:hover { color: var(--text); }
 :root[data-theme="light"] .theme-toggle .label-dark { color: var(--muted); }
 :root[data-theme="light"] .theme-toggle .label-light { color: var(--text); }
 
-/* Language toggle */
+/* =========================
+   LANGUAGE TOGGLE (EN/FR)
+   ========================= */
+
 .lang-toggle {
   display: inline-flex;
   align-items: center;
@@ -293,14 +327,15 @@ footer a:hover { color: var(--text); }
   background: var(--surface);
 }
 .lang-toggle a {
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.2px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.22px;
   padding: 7px 10px;
   border-radius: 999px;
   text-decoration: none;
   color: var(--muted);
   transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+  text-transform: uppercase;
 }
 .lang-toggle a:hover { background: color-mix(in srgb, var(--text) 6%, transparent); color: var(--text); }
 .lang-toggle a:active { transform: translateY(1px); }
@@ -311,40 +346,26 @@ footer a:hover { color: var(--text); }
 }
 
 /* =========================
-   HERO SYSTEM (ALL PAGES)
+   HERO
    ========================= */
 
-/* HOME hero (all pages that use .hero) */
 .hero {
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--surface);
-  min-height: 500px; /* ✅ ~20% taller than 340px */
+  min-height: 500px;
 }
 
-/* Inner-page hero (Patients/Clinicians/Research/About/Help) */
-.page-hero {
-  position: relative;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  min-height: 500px; /* ✅ ~20% taller than 320px */
-}
-
-.hero-bg,
-.page-hero-bg {
+.hero-bg {
   position: absolute;
   inset: 0;
   background-repeat: no-repeat;
-
-  /* KEY CHANGES */
-  background-size: 110%;        /* zooms OUT without shrinking */
+  background-size: cover;
   background-position: center 45%;
 }
-/* HOME overlay */
+
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -378,47 +399,6 @@ footer a:hover { color: var(--text); }
 .hero p { margin: 0 0 18px; color: var(--muted); line-height: 1.55; font-size: 16px; }
 .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
 
-/* Page hero overlay */
-.page-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(11,18,32,0.88) 0%,
-    rgba(11,18,32,0.58) 45%,
-    rgba(11,18,32,0.12) 75%,
-    rgba(11,18,32,0.00) 100%
-  );
-}
-:root[data-theme="light"] .page-hero-overlay {
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0.92) 0%,
-    rgba(255,255,255,0.72) 45%,
-    rgba(255,255,255,0.20) 75%,
-    rgba(255,255,255,0.00) 100%
-  );
-}
-
-.page-hero-content {
-  position: relative;
-  padding: 42px 26px;
-  width: min(720px, 92%);
-}
-.page-hero h1 { margin: 0 0 10px; font-size: 36px; letter-spacing: 0.2px; }
-.page-hero p { margin: 0 0 16px; color: var(--muted); line-height: 1.55; font-size: 16px; }
-
-.page-hero-note {
-  margin-top: 12px;
-  padding: 12px 14px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--surface) 80%, transparent);
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
 /* Slide-up animation */
 @keyframes riseIn {
   from { opacity: 0; transform: translateY(14px); }
@@ -427,22 +407,6 @@ footer a:hover { color: var(--text); }
 .rise-1 { animation: riseIn 650ms var(--ease) both; }
 .rise-2 { animation: riseIn 650ms var(--ease) both; animation-delay: 120ms; }
 .rise-3 { animation: riseIn 650ms var(--ease) both; animation-delay: 220ms; }
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  font-weight: 800;
-  text-decoration: none;
-  transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
-}
-.btn-secondary:hover { background: color-mix(in srgb, var(--text) 6%, transparent); transform: translateY(-1px); }
-.btn-secondary:active { transform: translateY(0px); }
 
 /* ===== Help & Support accordion ===== */
 .accordion { display: grid; gap: 10px; }
@@ -476,43 +440,118 @@ footer a:hover { color: var(--text); }
 }
 .acc[open] summary { background: color-mix(in srgb, var(--text) 5%, transparent); }
 
-/* Responsive */
-@media (max-width: 800px) {
-  .tile { grid-column: span 12; }
+/* =========================
+   MOBILE: FIX CLUNK
+   ========================= */
 
-  .hero-content { padding: 34px 18px; }
-  .hero h1 { font-size: 32px; }
-
-  .page-hero-content { padding: 28px 18px; }
-  .page-hero h1 { font-size: 28px; }
-
-  /* slightly taller on mobile so text never feels cramped */
-  .hero { min-height: 460px; }
-  .page-hero { min-height: 440px; }
-  }
-/* Mobile nav toggle */
-.nav-toggle {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
+.nav-toggle{
+  display:none;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius: 999px;
+  border:1px solid var(--border);
   background: color-mix(in srgb, var(--text) 6%, transparent);
   color: var(--text);
-  cursor: pointer;
+  cursor:pointer;
+  user-select:none;
 }
+.nav-toggle .chev{ opacity: .85; }
 
+/* Full-bleed tile images + better spacing on mobile */
 @media (max-width: 900px) {
-  .nav .menu {
-    display: none;
+  .wrap{ width: min(1100px, 92vw); padding-bottom: 82px; } /* leave space for sticky crisis bar */
+
+  .nav { padding: 12px 14px; }
+  .menu { display:none; }
+
+  /* if you add class="open" to .menu, it becomes a drawer */
+  .nav .menu.open{
+    display:flex;
     width: 100%;
     margin-top: 10px;
+    padding: 12px;
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    backdrop-filter: blur(12px);
   }
-  .nav .menu.open { display: flex; }
-  .nav-toggle { display: inline-flex; }
-    }
+
+  .nav-toggle{ display:inline-flex; }
+
+  .link, .btn-primary, .btn-secondary{
+    width: 100%;
+    justify-content: center;
+    padding: 12px 12px;
+  }
+
+  .theme-toggle{
+    padding: 6px 8px;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+  }
+  .theme-toggle .label{ font-size: 12px; }
+  .theme-toggle .track{ width: 38px; height: 22px; }
+  .theme-toggle .thumb{ width: 18px; height: 18px; }
+  :root[data-theme="light"] .theme-toggle .thumb { transform: translateX(16px); }
+
+  .lang-toggle{
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero{ min-height: 440px; }
+  .hero-content{ padding: 34px 18px; }
+  .hero h1{ font-size: 32px; }
+
+  .tile{ grid-column: span 12; }
+
+  /* The fix: make tile image fill phone proportions (no “letterbox” feel) */
+  .tile .img{
+    height: clamp(220px, 42vw, 340px);
+    background-position: center;
+  }
+}
+
+/* Sticky mobile crisis bar (requires one HTML element added) */
+.mobile-crisis {
+  display: none;
+}
+
+@media (max-width: 900px){
+  .mobile-crisis{
+    display: flex;
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 60;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--bg) 70%, transparent);
+    backdrop-filter: blur(12px);
+    padding: 10px;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+  }
+  .mobile-crisis .label{
+    font-weight: 900;
+    letter-spacing: .2px;
+    color: var(--text);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .mobile-crisis a{
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    padding: 12px 12px;
+    border-radius: 999px;
+  }
+  }
