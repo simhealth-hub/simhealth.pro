@@ -1,1 +1,253 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Cliniciens</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .section-title{ margin:22px 0 10px; }
+    .section-title h2{ margin:0 0 6px; font-size:20px; }
+    .section-title p{ margin:0; color:var(--muted); line-height:1.6; }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
+      margin-top:12px;
+    }
+
+    .card-tile{
+      grid-column: span 6;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+    }
+    .card-tile h3{ margin:0 0 8px; font-size:18px; }
+    .card-tile p{ margin:0 0 12px; color:var(--muted); line-height:1.55; }
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+
+    .notice{
+      margin-top:14px;
+      background: color-mix(in srgb, var(--warn) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--warn) 28%, transparent);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .notice strong{ color: var(--text); }
+
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    @media (max-width: 800px){
+      .card-tile{ grid-column: span 12; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité à la santé.</strong> SimHealth est une vitrine professionnelle du projet. En cas de danger immédiat, appelez votre numéro d’urgence local.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
+
+    <!-- Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" id="main-menu" aria-label="Navigation principale">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link" href="/fr/patients/">Patients</a>
+      <a class="link active" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle" aria-label="Langue">
+        <a href="/en/clinicians/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a class="active" href="/fr/cliniciens/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Changer le thème">
+        <span class="label label-dark">Sombre</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Clair</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/clinician.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Cliniciens</h1>
+        <p class="rise-2">
+          Informations pour les cliniciens, services et institutions souhaitant discuter d’un pilote supervisé,
+          de la gouvernance / éthique, ou d’une collaboration de recherche.
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="/fr/cliniciens/pilote/">Demander des informations pilote</a>
+          <a class="btn-secondary" href="/fr/recherche/#methodologie">Approche de recherche</a>
+          <a class="btn-secondary" href="/fr/contact/">Contact</a>
+        </div>
+
+        <div class="notice" style="margin-top:14px;">
+          <strong>Note :</strong> SimHealth est en développement. Il n’est pas présenté comme un dispositif médical ni comme un traitement,
+          et ne fournit pas de service d’urgence ou de crise.
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK PATHS -->
+    <section class="section-title">
+      <h2>Voies de collaboration</h2>
+      <p>Choisissez la voie la plus pertinente — nous répondrons depuis la boîte mail appropriée.</p>
+    </section>
+
+    <section class="grid" aria-label="Options pour cliniciens">
+
+      <div class="card-tile">
+        <h3>Demandes de pilote</h3>
+        <p>
+          Accès précoce structuré et supervisé pour services et institutions, centré sur la faisabilité, la sécurité,
+          et la gouvernance clinique.
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="/fr/cliniciens/pilote/">Ouvrir le formulaire pilote</a>
+          <a class="btn-secondary" href="/fr/recherche/#methodologie">Cadre d’évaluation</a>
+        </div>
+      </div>
+
+      <div class="card-tile">
+        <h3>Collaboration de recherche</h3>
+        <p>
+          Orientation, principes méthodologiques et engagement de communication des résultats
+          (pas d’affirmations sans évaluation).
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="/fr/recherche/">Explorer la recherche</a>
+          <a class="btn-secondary" href="/fr/contact/">Discuter d’une collaboration</a>
+        </div>
+      </div>
+
+      <div class="card-tile">
+        <h3>Contact professionnel</h3>
+        <p>
+          Questions institutionnelles, gouvernance/éthique et demandes professionnelles générales.
+          Non surveillé comme un service d’urgence.
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="/fr/contact/">Ouvrir la page Contact</a>
+          <a class="btn-secondary" href="/fr/a-propos/">À propos de SimHealth</a>
+        </div>
+      </div>
+
+      <div class="card-tile">
+        <h3>Actualités du projet</h3>
+        <p>
+          Emails occasionnels sur les mises à jour, l’avancement de la recherche et l’accès pilote. Pas de spam. Désinscription à tout moment.
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="/fr/patients/actualites/">S’abonner aux actualités</a>
+          <a class="btn-secondary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- GOVERNANCE / ETHICS -->
+    <section class="card" style="margin-top:16px;">
+      <h2 style="margin:0 0 10px;">Priorités de gouvernance clinique</h2>
+
+      <p style="margin:0; color:var(--muted); line-height:1.65;">
+        SimHealth est conçu avec une approche “sécurité d’abord”, adaptée à des contextes cliniques.
+        L’accès pilote est destiné à être supervisé et documenté, avec des limites explicites et une communication responsable.
+      </p>
+
+      <ul class="list">
+        <li><strong style="color:var(--text);">Pas d’affirmation d’urgence :</strong> orientation claire vers des services réels de crise.</li>
+        <li><strong style="color:var(--text);">Rigueur scientifique :</strong> pas de résultats publics sans évaluation appropriée.</li>
+        <li><strong style="color:var(--text);">Confidentialité :</strong> données minimisées et fondées sur le consentement ; gouvernance définie avec les partenaires.</li>
+        <li><strong style="color:var(--text);">Préparation éthique :</strong> clarté des protocoles, documentation et supervision lorsque nécessaire.</li>
+      </ul>
+
+      <div style="margin-top:14px; padding:12px 12px; border:1px solid var(--border); border-radius:var(--radius-lg); background:color-mix(in srgb, var(--accent) 10%, var(--surface));">
+        <p style="margin:0; color:var(--muted); line-height:1.55;">
+          <strong style="color:var(--text);">Pour les institutions :</strong> pour recevoir des informations sur un pilote, la voie la plus rapide est
+          <a href="/fr/cliniciens/pilote/" style="color:var(--text); text-decoration:underline;">Demander des informations pilote</a>.
+        </p>
+      </div>
+
+      <div class="actions" style="margin-top:14px;">
+        <a class="btn-primary" href="/fr/cliniciens/pilote/">Informations pilote</a>
+        <a class="btn-secondary" href="/fr/contact/">Contact</a>
+        <a class="btn-secondary" href="/fr/recherche/">Recherche</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Liens du pied de page">
+        <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a href="/fr/legal/conditions/">Conditions</a>
+        <a href="/fr/legal/cookies/">Cookies</a>
+        <a href="/fr/legal/accessibilite/">Accessibilité</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Mobile always-visible crisis access (French pages) -->
+  <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+</body>
+</html>
+```0
