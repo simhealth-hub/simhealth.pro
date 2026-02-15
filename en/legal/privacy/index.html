@@ -68,20 +68,24 @@
 <body>
 
   <div class="banner">
-    <strong>Healthcare first.</strong> This website is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
+    <strong>Healthcare first.</strong> This website is a professional project showcase.
+    If you’re in immediate danger, call your local emergency number now.
   </div>
 
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <!-- ✅ Mobile: Menu button -->
+    <!-- ✅ Mobile menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
-      aria-label="Toggle navigation">
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="main-menu">
       ☰
     </button>
 
-    <nav class="menu" aria-label="Main navigation">
+    <!-- ✅ IMPORTANT: id must match aria-controls -->
+    <nav class="menu" id="main-menu" aria-label="Main navigation">
       <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
@@ -91,12 +95,13 @@
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
+      <!-- ✅ FIXED: point to real FR privacy route -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/legal/privacy/">
           <span class="lang-full">English</span>
           <span class="lang-short" aria-hidden="true">EN</span>
         </a>
-        <a href="/fr/accueil.html">
+        <a href="/fr/legal/confidentialite/">
           <span class="lang-full">Français</span>
           <span class="lang-short" aria-hidden="true">FR</span>
         </a>
@@ -141,8 +146,10 @@
     <section class="card legal-section" id="policy" style="margin-top:16px;">
 
       <div class="notice">
-        <strong>Important:</strong> SimHealth is in development and this site is a project showcase. We do not provide emergency or crisis care.
-        If you are at immediate risk, use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a> or call your local emergency number.
+        <strong>Important:</strong> SimHealth is in development and this site is a project showcase.
+        We do not provide emergency or crisis care. If you are at immediate risk, use
+        <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
+        or call your local emergency number.
       </div>
 
       <div class="legal-toc" aria-label="Privacy policy table of contents">
@@ -188,7 +195,6 @@
       <h2 id="sharing">Sharing &amp; processors</h2>
       <p class="muted">
         We do not sell personal data. We may use carefully selected service providers (“processors”) to operate the website and email.
-        For example, we may use:
       </p>
       <ul>
         <li><strong>Email delivery providers</strong> to send confirmations/updates and respond to enquiries.</li>
@@ -199,9 +205,7 @@
       </p>
 
       <h2 id="retention">Retention</h2>
-      <p class="muted">
-        We keep personal data only for as long as needed for the purpose:
-      </p>
+      <p class="muted">We keep personal data only for as long as needed for the purpose:</p>
       <ul>
         <li><strong>Updates list:</strong> until you unsubscribe or request deletion.</li>
         <li><strong>Enquiries:</strong> as long as needed to respond and maintain an appropriate record of communication.</li>
@@ -221,7 +225,7 @@
 
       <h2 id="security">Security</h2>
       <p class="muted">
-        We use reasonable technical and organisational measures to protect data, including least-privilege access and secure service configurations.
+        We use reasonable technical and organisational measures to protect data.
         No method of transmission or storage is 100% secure, but we design for safety and minimisation.
       </p>
 
@@ -261,12 +265,10 @@
     </div>
   </footer>
 
-  <!-- Mobile always-visible crisis access (English pages only) -->
   <div class="mobile-crisis" aria-label="Crisis quick access">
     <span class="label">Need help now?</span>
     <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
   </div>
 
 </body>
-</html>
-```0
+                                                                      </html>
