@@ -47,7 +47,8 @@
 <body>
 
   <div class="banner">
-    <strong>Healthcare first.</strong> This website is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
+    <strong>Healthcare first.</strong> This website is a professional project showcase.
+    If you’re in immediate danger, call your local emergency number now.
   </div>
 
   <header class="nav">
@@ -56,11 +57,14 @@
     <!-- ✅ Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
-      aria-label="Toggle navigation">
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="main-menu">
       ☰
     </button>
 
-    <nav class="menu" aria-label="Main navigation">
+    <!-- ✅ IMPORTANT: id must match aria-controls -->
+    <nav class="menu" id="main-menu" aria-label="Main navigation">
       <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
@@ -70,12 +74,13 @@
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
+      <!-- ✅ FIXED: French route must match your real FR page -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/legal/accessibility/">
           <span class="lang-full">English</span>
           <span class="lang-short" aria-hidden="true">EN</span>
         </a>
-        <a href="/fr/accueil.html">
+        <a href="/fr/legal/accessibilite/">
           <span class="lang-full">Français</span>
           <span class="lang-short" aria-hidden="true">FR</span>
         </a>
@@ -168,7 +173,6 @@
     </div>
   </footer>
 
-  <!-- ✅ Mobile always-visible crisis access (English pages only) -->
   <div class="mobile-crisis" aria-label="Crisis quick access">
     <span class="label">Need help now?</span>
     <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
