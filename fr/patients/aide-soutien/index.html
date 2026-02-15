@@ -1,1 +1,53 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Aide &amp; soutien</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    /* Page-specific helpers (kept minimal) */
+    .page-head { margin: 16px 0 12px; }
+    .page-head h2 { margin: 0 0 8px; font-size: 26px; }
+    .page-head p { margin: 0; color: var(--muted); line-height: 1.6; }
+
+    .notice {
+      margin-top: 14px;
+      background: color-mix(in srgb, var(--warn) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .notice strong { color: var(--text); }
+
+    .section-title { margin: 22px 0 10px; }
+    .section-title h3 { margin: 0 0 6px; font-size: 18px; }
+    .section-title p { margin: 0; color: var(--muted); line-height: 1.55; }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .support-card {
+      grid-column: span 6;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 18px;
+    }
+    .support-card h4 { margin: 0 0 8px; }
+    .support-card p { margin: 0 0 12px; color: var(--muted); line-height: 1.55; }
+
+    .pill-row {
+      display:
