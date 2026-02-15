@@ -61,8 +61,15 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
+    <!-- ✅ Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Toggle navigation">
+      ☰
+    </button>
+
     <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="/en/home/"">Home</a>
+      <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
@@ -72,8 +79,14 @@
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/en/legal/cookies/">English</a>
-        <a href="/fr/accueil.html">Français</a>
+        <a class="active" href="/en/legal/cookies/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a href="/fr/accueil.html">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -173,5 +186,12 @@
     </div>
   </footer>
 
+  <!-- ✅ Mobile always-visible crisis access (English pages only) -->
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
+
 </body>
 </html>
+```0
