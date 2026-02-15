@@ -13,6 +13,9 @@
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --t-fast: 140ms;
   --t-med: 220ms;
+
+  /* Tap sizing baseline */
+  --tap: 44px;
 }
 
 /* Default theme is dark */
@@ -36,6 +39,8 @@
 }
 
 * { box-sizing: border-box; }
+
+html, body { height: 100%; }
 
 body {
   margin: 0;
@@ -62,6 +67,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   padding: 14px 16px;
   border-bottom: 1px solid var(--border);
   background: color-mix(in srgb, var(--bg) 85%, transparent);
@@ -90,6 +96,7 @@ body {
 .link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 12px;
   border-radius: var(--radius-md);
@@ -129,6 +136,7 @@ body {
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 12px;
   border-radius: var(--radius-md);
@@ -137,6 +145,7 @@ body {
   font-weight: 800;
   text-decoration: none;
   transition: transform var(--t-fast) var(--ease), filter var(--t-fast) var(--ease);
+  min-height: 40px;
 }
 .btn-primary:hover { filter: brightness(0.98); transform: translateY(-1px); }
 .btn-primary:active { transform: translateY(0px); }
@@ -144,6 +153,7 @@ body {
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 10px 12px;
   border-radius: var(--radius-md);
@@ -153,6 +163,7 @@ body {
   font-weight: 800;
   text-decoration: none;
   transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
+  min-height: 40px;
 }
 .btn-secondary:hover { background: color-mix(in srgb, var(--text) 6%, transparent); transform: translateY(-1px); }
 .btn-secondary:active { transform: translateY(0px); }
@@ -199,7 +210,6 @@ body {
   transform: scale(1);
   transition: transform var(--t-med) var(--ease);
 }
-
 .tile .img::after {
   content: "";
   position: absolute;
@@ -232,7 +242,7 @@ body {
 .tile .meta h3 { margin: 0 0 6px; }
 
 /* =========================
-   FOOTER (with separators)
+   FOOTER (separators)
    ========================= */
 
 footer {
@@ -318,9 +328,6 @@ footer nav a + a::before{
 
 /* =========================
    LANGUAGE TOGGLE
-   (Use spans in HTML:
-    <span class="lang-full">English</span>
-    <span class="lang-short">EN</span>)
    ========================= */
 
 .lang-toggle {
@@ -351,6 +358,7 @@ footer nav a + a::before{
   border: 1px solid color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
+/* Helper classes for EN/FR */
 .lang-full{ display:inline; }
 .lang-short{ display:none; }
 @media (max-width: 800px){
@@ -375,6 +383,8 @@ footer nav a + a::before{
   position: absolute;
   inset: 0;
   background-repeat: no-repeat;
+
+  /* Key: always cover to avoid letterboxing */
   background-size: cover;
   background-position: center 45%;
 }
@@ -454,7 +464,7 @@ footer nav a + a::before{
 .acc[open] summary { background: color-mix(in srgb, var(--text) 5%, transparent); }
 
 /* =========================
-   MOBILE: NAV + TILES + BUTTONS
+   MOBILE: NAV + BUTTONS + HERO + TILES
    ========================= */
 
 .nav-toggle{
@@ -471,9 +481,10 @@ footer nav a + a::before{
 }
 .nav-toggle .chev{ opacity: .85; }
 
+/* Prevent layout jumps */
 @media (max-width: 900px) {
-  /* leave space for sticky crisis bar */
-  .wrap{ padding-bottom: 90px; }
+  /* Leave space for sticky crisis bar */
+  .wrap{ padding-bottom: 92px; }
 
   .nav { padding: 12px 14px; }
 
@@ -488,16 +499,16 @@ footer nav a + a::before{
     gap: 10px;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    background: color-mix(in srgb, var(--bg) 70%, transparent);
-    backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(14px);
   }
 
   .nav-toggle{ display:inline-flex; }
 
-  /* Buttons/links: less chunky, still tappable */
+  /* Less chunky but still good tap targets */
   .link, .btn-primary, .btn-secondary{
     width: 100%;
-    justify-content: center;
+    min-height: var(--tap);
     padding: 11px 12px;
     border-radius: 14px;
   }
@@ -508,34 +519,38 @@ footer nav a + a::before{
     gap: 8px;
     width: 100%;
     justify-content: center;
+    min-height: var(--tap);
   }
   .theme-toggle .label{ font-size: 12px; }
   .theme-toggle .track{ width: 38px; height: 22px; }
   .theme-toggle .thumb{ width: 18px; height: 18px; }
   :root[data-theme="light"] .theme-toggle .thumb { transform: translateX(16px); }
 
-  .lang-toggle{
-    width: 100%;
-    justify-content: center;
-  }
+  .lang-toggle{ width: 100%; justify-content: center; }
 
-  .hero{ min-height: 440px; }
-  .hero-content{ padding: 34px 18px; }
+  /* HERO: make it feel like “full image” without black bars */
+  .hero{
+    min-height: 78vh;       /* key mobile feel */
+  }
+  .hero-bg{
+    background-position: center center;
+  }
+  .hero-content{
+    padding: 34px 18px;
+  }
   .hero h1{ font-size: 32px; }
 
   .tile{ grid-column: span 12; }
 
-  /* ✅ Mobile tile “full image” feel */
+  /* Mobile tiles: give a phone-friendly ratio (avoids letterbox feel) */
   .tile .img{
-    height: clamp(260px, 62vw, 520px);
-    background-position: center;
+    height: clamp(280px, 66vw, 560px);
+    background-position: center center;
   }
 }
 
 /* =========================
    STICKY MOBILE CRISIS BAR
-   Add this HTML where you want it:
-   <div class="mobile-crisis"><span class="label">Need help now?</span><a ...>Crisis Resources</a></div>
    ========================= */
 
 .mobile-crisis { display:none; }
@@ -566,7 +581,7 @@ footer nav a + a::before{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 45%;
+    max-width: 46%;
   }
   .mobile-crisis a{
     flex: 1;
@@ -576,4 +591,4 @@ footer nav a + a::before{
     border-radius: 999px;
     white-space: nowrap;
   }
-              }
+}
