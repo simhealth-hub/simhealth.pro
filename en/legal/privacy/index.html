@@ -74,8 +74,15 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
+    <!-- ✅ Mobile: Menu button -->
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Toggle navigation">
+      ☰
+    </button>
+
     <nav class="menu" aria-label="Main navigation">
-      <a class="link" href="/en/home/"">Home</a>
+      <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
@@ -85,8 +92,14 @@
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
       <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/en/legal/privacy/">English</a>
-        <a href="/fr/accueil.html">Français</a>
+        <a class="active" href="/en/legal/privacy/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
+        </a>
+        <a href="/fr/accueil.html">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
+        </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
@@ -137,8 +150,8 @@
         <ul style="margin:0; padding-left:18px;">
           <li><a href="#who">Who we are</a></li>
           <li><a href="#data">What data we collect</a></li>
-          <li><a href="#why">Why we collect it & legal bases</a></li>
-          <li><a href="#sharing">Sharing & processors</a></li>
+          <li><a href="#why">Why we collect it &amp; legal bases</a></li>
+          <li><a href="#sharing">Sharing &amp; processors</a></li>
           <li><a href="#retention">Retention</a></li>
           <li><a href="#rights">Your rights (GDPR)</a></li>
           <li><a href="#security">Security</a></li>
@@ -162,7 +175,7 @@
         <li><strong>Basic technical data:</strong> browser user-agent and limited metadata used for abuse prevention and reliability.</li>
       </ul>
 
-      <h2 id="why">Why we collect it & legal bases</h2>
+      <h2 id="why">Why we collect it &amp; legal bases</h2>
       <p class="muted">
         We process personal data only when there is a clear purpose and a lawful basis under GDPR:
       </p>
@@ -172,7 +185,7 @@
         <li><strong>To keep the site safe and reliable</strong> (e.g., prevent abuse): <strong>legitimate interests</strong>.</li>
       </ul>
 
-      <h2 id="sharing">Sharing & processors</h2>
+      <h2 id="sharing">Sharing &amp; processors</h2>
       <p class="muted">
         We do not sell personal data. We may use carefully selected service providers (“processors”) to operate the website and email.
         For example, we may use:
@@ -248,5 +261,12 @@
     </div>
   </footer>
 
+  <!-- Mobile always-visible crisis access (English pages only) -->
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
+
 </body>
 </html>
+```0
