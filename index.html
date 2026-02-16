@@ -13,13 +13,30 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* Language gate: make the choices sit lower + feel mobile-friendly */
+    /* --- LANGUAGE GATE FIX --- */
+
+    /* Push content to LOWER THIRD of hero */
+    .hero-content{
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      min-height:70vh;
+      padding-bottom:clamp(48px, 10vh, 96px);
+    }
+
     .lang-actions{
       display:flex;
-      gap:12px;
-      flex-wrap:wrap;
+      gap:14px;
+      flex-direction:column;
+      width:min(520px, 92%);
+      margin:32px auto 0;
+    }
+
+    .lang-actions a{
+      width:100%;
       justify-content:center;
-      margin-top:32px; /* pushes buttons lower on all screens */
+      font-size:18px;
+      padding:16px 18px;
     }
 
     .mini-note{
@@ -28,19 +45,15 @@
       line-height:1.55;
     }
 
-    /* Mobile: stack buttons + push them further down */
-    @media (max-width: 700px){
+    /* Desktop: allow buttons side-by-side */
+    @media (min-width: 900px){
       .lang-actions{
-        flex-direction:column;
-        align-items:stretch;
-        width:min(520px, 92%);
-        margin-left:auto;
-        margin-right:auto;
-        margin-top:56px; /* pushes buttons lower on mobile */
+        flex-direction:row;
+        width:auto;
       }
       .lang-actions a{
-        width:100%;
-        justify-content:center;
+        width:auto;
+        min-width:200px;
       }
     }
   </style>
@@ -81,7 +94,13 @@
 
       <div class="hero-content">
         <h1 class="rise-1">SimHealth</h1>
-        <p class="rise-2">Please choose your language.</p>
+
+        <p class="rise-2">
+          Please choose your language<br>
+          <span style="font-size:15px; opacity:.85;">
+            (Veuillez choisir votre langue)
+          </span>
+        </p>
 
         <div class="hero-actions rise-3 lang-actions" aria-label="Language selection">
           <a class="btn-primary" href="/en/home/">English</a>
