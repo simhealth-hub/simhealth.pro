@@ -13,24 +13,39 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* --- HERO IMAGE POSITIONING --- */
+    /* -----------------------------
+       HERO IMAGE POSITIONING
+    ----------------------------- */
+
+    /* Desktop */
     .hero-bg{
-      background-position: 40% center;
+      background-position: 45% center;
     }
 
+    /* Mobile: move image RIGHT so face is visible */
     @media (max-width: 700px){
       .hero-bg{
-        background-position: 32% center;
+        background-position: 70% center; /* ≈ 30% shift right */
       }
     }
 
-    /* --- LANGUAGE CTA LAYOUT --- */
+    /* -----------------------------
+       LANGUAGE BUTTON LAYOUT
+    ----------------------------- */
+
     .lang-actions{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
       justify-content:center;
-      margin-top:48px; /* pushes buttons down */
+      margin-top:72px; /* pushes buttons DOWN */
+    }
+
+    /* Extra spacing on mobile so buttons don't cover face */
+    @media (max-width: 700px){
+      .lang-actions{
+        margin-top:96px;
+      }
     }
 
     .hero-content p{
