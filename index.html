@@ -13,50 +13,41 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* -----------------------------
-       HERO IMAGE POSITIONING
-    ----------------------------- */
-
-    /* Desktop */
-    .hero-bg{
-      background-position: 45% center;
-    }
-
-    /* Mobile: move image RIGHT so face is visible */
-    @media (max-width: 700px){
-      .hero-bg{
-        background-position: 70% center; /* ≈ 30% shift right */
-      }
-    }
-
-    /* -----------------------------
-       LANGUAGE BUTTON LAYOUT
-    ----------------------------- */
-
     .lang-actions{
       display:flex;
-      gap:12px;
+      gap:10px;
       flex-wrap:wrap;
       justify-content:center;
-      margin-top:72px; /* pushes buttons DOWN */
     }
-
-    /* Extra spacing on mobile so buttons don't cover face */
-    @media (max-width: 700px){
-      .lang-actions{
-        margin-top:96px;
-      }
-    }
-
-    .hero-content p{
-      margin-top:14px;
-    }
-
     .mini-note{
       margin:0;
       color:var(--muted);
-      line-height:1.6;
-      text-align:center;
+      line-height:1.55;
+    }
+
+    /* Keep title at top; spacing handled via margins below */
+    .hero .hero-content{
+      width:min(720px, 92%);
+    }
+    .hero .hero-content h1{
+      margin:0;
+    }
+    .hero .hero-content p{
+      margin-top:10px;
+      margin-bottom:0;
+    }
+
+    /* MOBILE: protect faces + reposition hero image */
+    @media (max-width: 700px){
+      /* Move image right ~30% to reveal the guy on the left */
+      .hero .hero-bg{
+        background-position: 30% center; /* right shift */
+      }
+
+      /* Create more vertical breathing room so buttons don't cover faces */
+      .lang-actions{
+        margin-top:110px; /* moved down ~15% from previous 96px */
+      }
     }
   </style>
 </head>
@@ -64,8 +55,7 @@
 <body>
 
   <div class="banner">
-    <strong>Under construction.</strong>
-    SimHealth is being built carefully and responsibly.
+    <strong>Under Construction</strong> — SimHealth is being built carefully and responsibly.
   </div>
 
   <header class="nav">
@@ -99,24 +89,29 @@
         <h1 class="rise-1">SimHealth</h1>
 
         <p class="rise-2">
-          Please choose your language<br>
-          <span style="font-size:15px; color:var(--muted);">
-            (Choisissez votre langue)
-          </span>
+          Please choose your language to continue.
+          <br>
+          <span style="color:var(--muted);">(Veuillez choisir votre langue pour continuer.)</span>
         </p>
 
         <div class="hero-actions rise-3 lang-actions" aria-label="Language selection">
-          <a class="btn-primary" href="/en/home/">English</a>
-          <a class="btn-secondary" href="/fr/accueil/">Français</a>
+          <a class="btn-primary" href="/en/home/">
+            <span class="lang-full">English</span>
+            <span class="lang-short" aria-hidden="true">EN</span>
+          </a>
+          <a class="btn-secondary" href="/fr/accueil/">
+            <span class="lang-full">Français</span>
+            <span class="lang-short" aria-hidden="true">FR</span>
+          </a>
         </div>
       </div>
     </section>
 
-    <div class="card" style="margin-top:16px;">
+    <div class="card" style="margin-top:14px;">
       <p class="mini-note">
-        SimHealth is a clinician-informed digital project in development. This website is a professional preview of work in progress.
-        <br><br>
-        SimHealth est un projet numérique conçu avec des clinicien·ne·s. Ce site est une présentation professionnelle d’un travail en cours.
+        SimHealth is a clinician-informed digital project in development. This website is a professional preview of the work in progress.
+        <br>
+        <span style="color:var(--muted);">(SimHealth est un projet numérique conçu avec des clinicien·ne·s, actuellement en développement. Ce site est un aperçu professionnel du travail en cours.)</span>
       </p>
     </div>
 
@@ -139,3 +134,4 @@
 
 </body>
 </html>
+```0
