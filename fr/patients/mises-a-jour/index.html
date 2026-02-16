@@ -34,6 +34,12 @@
       border-color:color-mix(in srgb, #ef4444 34%, var(--border));
       color:var(--text);
     }
+    .status.info{
+      display:block;
+      background:color-mix(in srgb, var(--text) 6%, transparent);
+      border-color:var(--border);
+      color:var(--text);
+    }
 
     .field label{ display:block; font-weight:800; margin:14px 0 8px; }
     .input{
@@ -67,7 +73,18 @@
     .consent input{ margin-top:3px; }
 
     .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+
     button.btn-primary{ border:none; cursor:pointer; }
+    button.btn-primary[disabled]{ opacity:0.7; cursor:not-allowed; transform:none; }
+
+    /* Honeypot (anti-bot) */
+    .hp-wrap{
+      position:absolute;
+      left:-9999px;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
   </style>
 </head>
 
@@ -141,12 +158,20 @@
     <section class="card" id="form" style="margin-top:16px;">
       <h2 style="margin:0 0 8px;">Inscription</h2>
       <p style="margin:0; color:var(--muted); line-height:1.65;">
-        Cette liste sert uniquement aux mises à jour SimHealth. Nous ne vendons pas vos données, et vous pouvez vous désinscrire à tout moment.
+        Cette liste sert uniquement aux mises à jour SimHealth. Nous ne vendons pas vos données,
+        et vous pouvez vous désinscrire à tout moment.
       </p>
 
       <div id="statusBox" class="status" role="status" aria-live="polite"></div>
 
       <form id="updatesForm" novalidate>
+
+        <!-- Honeypot (bots fill this; humans won’t) -->
+        <div class="hp-wrap" aria-hidden="true">
+          <label for="company">Entreprise</label>
+          <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
         <div class="field">
           <label for="email">Adresse email</label>
           <input
@@ -173,7 +198,7 @@
         </div>
 
         <div class="actions">
-          <button class="btn-primary" type="submit">S’inscrire</button>
+          <button id="submitBtn" class="btn-primary" type="submit">S’inscrire</button>
           <a class="btn-secondary" href="/fr/patients/">Retour au site</a>
         </div>
 
@@ -192,7 +217,8 @@
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
       <nav aria-label="Liens du pied de page">
-        <a href="/fr/plan-du-site.html">Plan du site</a>
+        <!-- ✅ FIX: keep consistent with the rest of the site -->
+        <a href="/sitemap.html">Plan du site</a>
         <a href="/fr/legal/confidentialite/">Confidentialité</a>
         <a href="/fr/legal/conditions/">Conditions</a>
         <a href="/fr/legal/cookies/">Cookies</a>
@@ -214,6 +240,7 @@
 
     const form = document.getElementById("updatesForm");
     const statusBox = document.getElementById("statusBox");
+    const submitBtn = document.getElementById("submitBtn");
 
     function setStatus(type, msg){
       statusBox.className = "status " + type;
@@ -225,6 +252,12 @@
 
       const emailEl = document.getElementById("email");
       const consentEl = document.getElementById("consent");
+      const hpEl = document.getElementById("company"); // honeypot
+
+      // Bot check
+      if ((hpEl.value || "").trim().length > 0) {
+        return; // silently ignore bots
+      }
 
       const email = (emailEl.value || "").trim().toLowerCase();
       const consent = !!consentEl.checked;
@@ -232,6 +265,9 @@
       if(!email || !email.includes("@")) return setStatus("error", "Veuillez entrer une adresse email valide.");
       if(!consent) return setStatus("error", "Veuillez confirmer votre accord pour recevoir les mises à jour.");
       if(!ENDPOINT) return setStatus("error", "Configuration incomplète : endpoint non défini.");
+
+      submitBtn.disabled = true;
+      setStatus("info", "Envoi en cours…");
 
       try {
         await fetch(ENDPOINT, {
@@ -248,15 +284,17 @@
           })
         });
 
-        setStatus("success", "Merci ! Votre inscription est confirmée. Si vous ne recevez rien, vérifiez vos spams.");
+        setStatus("success", "Merci. Votre inscription a été prise en compte. Si vous ne recevez rien, vérifiez vos spams.");
         form.reset();
 
       } catch (err) {
         console.error(err);
         setStatus("error", "Une erreur est survenue. Réessayez ou écrivez à contact@simhealth.pro.");
+      } finally {
+        submitBtn.disabled = false;
       }
     });
   </script>
 
 </body>
-  </html>
+            </html>
