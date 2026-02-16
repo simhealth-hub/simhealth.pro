@@ -15,38 +15,41 @@
   <style>
     .lang-actions{
       display:flex;
-      gap:10px;
+      gap:12px;
       flex-wrap:wrap;
       justify-content:center;
     }
+
     .mini-note{
       margin:0;
       color:var(--muted);
       line-height:1.55;
     }
 
-    /* Keep title at top; spacing handled via margins below */
+    /* Keep title at top, spacing handled below */
     .hero .hero-content{
       width:min(720px, 92%);
     }
+
     .hero .hero-content h1{
       margin:0;
     }
+
     .hero .hero-content p{
       margin-top:10px;
       margin-bottom:0;
     }
 
-    /* MOBILE: protect faces + reposition hero image */
+    /* MOBILE ADJUSTMENTS */
     @media (max-width: 700px){
-      /* Move image right ~30% to reveal the guy on the left */
+      /* Move hero image further right so the man is visible */
       .hero .hero-bg{
-        background-position: 30% center; /* right shift */
+        background-position: 50% center; /* was 30%, now +20% */
       }
 
-      /* Create more vertical breathing room so buttons don't cover faces */
+      /* Push language buttons further down so they don’t cover faces */
       .lang-actions{
-        margin-top:110px; /* moved down ~15% from previous 96px */
+        margin-top:110px;
       }
     }
   </style>
@@ -91,18 +94,14 @@
         <p class="rise-2">
           Please choose your language to continue.
           <br>
-          <span style="color:var(--muted);">(Veuillez choisir votre langue pour continuer.)</span>
+          <span style="color:var(--muted);">
+            (Veuillez choisir votre langue pour continuer.)
+          </span>
         </p>
 
         <div class="hero-actions rise-3 lang-actions" aria-label="Language selection">
-          <a class="btn-primary" href="/en/home/">
-            <span class="lang-full">English</span>
-            <span class="lang-short" aria-hidden="true">EN</span>
-          </a>
-          <a class="btn-secondary" href="/fr/accueil/">
-            <span class="lang-full">Français</span>
-            <span class="lang-short" aria-hidden="true">FR</span>
-          </a>
+          <a class="btn-primary" href="/en/home/">English</a>
+          <a class="btn-secondary" href="/fr/accueil/">Français</a>
         </div>
       </div>
     </section>
@@ -111,7 +110,9 @@
       <p class="mini-note">
         SimHealth is a clinician-informed digital project in development. This website is a professional preview of the work in progress.
         <br>
-        <span style="color:var(--muted);">(SimHealth est un projet numérique conçu avec des clinicien·ne·s, actuellement en développement. Ce site est un aperçu professionnel du travail en cours.)</span>
+        <span style="color:var(--muted);">
+          (SimHealth est un projet numérique conçu avec des clinicien·ne·s, actuellement en développement. Ce site est un aperçu professionnel du travail en cours.)
+        </span>
       </p>
     </div>
 
@@ -134,4 +135,3 @@
 
 </body>
 </html>
-```0
