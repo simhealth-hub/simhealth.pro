@@ -9,21 +9,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Root-relative -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
+
+  <style>
+    /* ↓ Hero un peu plus bas pour laisser apparaître le haut des tuiles */
+    .hero { min-height: 72vh; }
+    @media (max-width: 768px) {
+      .hero { min-height: 64vh; }
+    }
+  </style>
 </head>
 
 <body>
 
   <div class="banner">
-    <strong>En construction</strong> — SimHealth est développé avec soin et responsabilité.
+    <strong>En construction.</strong> SimHealth est développé avec soin et responsabilité.
   </div>
 
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Retour au choix de la langue">SimHealth</a>
 
-    <!-- Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
       aria-label="Ouvrir le menu"
@@ -72,22 +78,30 @@
 
       <div class="hero-content">
         <h1 class="rise-1">SimHealth</h1>
-        <p class="rise-2">Soutien pour gérer les envies de jeu d’argent, conçu avec des cliniciens.</p>
 
-        <div class="hero-actions rise-3">
-          <a class="btn-primary" href="/fr/patients/">Espace Patients</a>
-          <a class="btn-secondary" href="/fr/cliniciens/">Espace Cliniciens</a>
-        </div>
+        <p class="rise-2">
+          Un projet numérique <strong style="color:var(--text);">conçu avec des clinicien·ne·s</strong>,
+          explorant un soutien structuré pour aider à gérer les <strong style="color:var(--text);">envies de jeu d’argent</strong>.
+        </p>
+
+        <p class="rise-3" style="max-width:680px; color:var(--muted); line-height:1.6;">
+          Conçu avec des limites explicites de sécurité, une supervision clinique
+          et une approche centrée recherche.
+          <br>
+          <strong style="color:var(--text);">
+            Pas un service d’urgence. Pas un dispositif médical.
+          </strong>
+        </p>
       </div>
     </section>
 
-    <div class="grid" aria-label="Tableau d’accès">
+    <div class="grid" aria-label="Accès principaux">
 
       <a class="tile" href="/fr/patients/">
         <div class="img" style="background-image:url('/assets/patients.jpg');"></div>
         <div class="meta">
           <h3>Patients</h3>
-          <p>Outils, repères et soutien — bientôt disponible.</p>
+          <p>Repères, outils structurés et parcours de soutien.</p>
         </div>
       </a>
 
@@ -95,7 +109,7 @@
         <div class="img" style="background-image:url('/assets/clinician.jpg');"></div>
         <div class="meta">
           <h3>Cliniciens</h3>
-          <p>Ressources cliniques et informations de prise en charge.</p>
+          <p>Rationnel clinique, information pilote et gouvernance.</p>
         </div>
       </a>
 
@@ -103,7 +117,7 @@
         <div class="img" style="background-image:url('/assets/research.jpg');"></div>
         <div class="meta">
           <h3>Recherche</h3>
-          <p>Données, méthodologie et objectifs d’évaluation.</p>
+          <p>Méthodologie, évaluation progressive et éthique.</p>
         </div>
       </a>
 
@@ -111,7 +125,7 @@
         <div class="img" style="background-image:url('/assets/about.jpg');"></div>
         <div class="meta">
           <h3>À propos</h3>
-          <p>Mission, éthique et approche de développement.</p>
+          <p>Mission, principes et contexte de développement.</p>
         </div>
       </a>
 
@@ -126,21 +140,20 @@
       </div>
 
       <nav aria-label="Liens de pied de page">
-        <a href="/sitemap.html">Plan-du-site</a>
+        <a href="/sitemap.html">Plan du site</a>
         <a href="/fr/legal/confidentialite/">Confidentialité</a>
         <a href="/fr/legal/conditions/">Conditions</a>
         <a href="/fr/legal/cookies/">Cookies</a>
         <a href="/fr/legal/accessibilite/">Accessibilité</a>
-        <a href="/fr/legal/avis-medical/">Avertissement médical</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
         <a href="/fr/patients/aide-soutien/">Ressources d’aide</a>
         <a href="/fr/contact/">Contact</a>
       </nav>
     </div>
   </footer>
 
-  <!-- Accès rapide mobile (pages FR) -->
   <div class="mobile-crisis" aria-label="Accès rapide à l’aide">
-    <span class="label">Besoin d’aide maintenant ?</span>
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
     <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
   </div>
 
