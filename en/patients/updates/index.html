@@ -34,6 +34,12 @@
       border-color:color-mix(in srgb, #ef4444 34%, var(--border));
       color:var(--text);
     }
+    .status.info{
+      display:block;
+      background:color-mix(in srgb, var(--text) 6%, transparent);
+      border-color:var(--border);
+      color:var(--text);
+    }
 
     .field label{ display:block; font-weight:800; margin:14px 0 8px; }
     .input{
@@ -68,16 +74,16 @@
 
     .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
     button.btn-primary{ border:none; cursor:pointer; }
+    button.btn-primary[disabled]{ opacity:0.7; cursor:not-allowed; transform:none; }
 
-    /* Footer helper: keep it readable */
-    .footer-note{
-      margin-top:10px;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
+    /* Honeypot (anti-bot) */
+    .hp-wrap{
+      position:absolute;
+      left:-9999px;
+      width:1px;
+      height:1px;
+      overflow:hidden;
     }
-    .footer-note a{ color:var(--muted); }
-    .footer-note a:hover{ color:var(--text); }
   </style>
 </head>
 
@@ -109,7 +115,6 @@
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
-      <!-- ✅ French link matches the real FR route -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/patients/updates/">
           <span class="lang-full">English</span>
@@ -158,6 +163,13 @@
       <div id="statusBox" class="status" role="status" aria-live="polite"></div>
 
       <form id="updatesForm" novalidate>
+
+        <!-- Honeypot (bots fill this; humans won’t) -->
+        <div class="hp-wrap" aria-hidden="true">
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
         <div class="field">
           <label for="email">Email address</label>
           <input
@@ -183,7 +195,7 @@
         </div>
 
         <div class="actions">
-          <button class="btn-primary" type="submit">Subscribe</button>
+          <button id="submitBtn" class="btn-primary" type="submit">Subscribe</button>
           <a class="btn-secondary" href="/en/patients/">Back to site</a>
         </div>
 
@@ -200,18 +212,8 @@
       <div>
         © 2026 SimHealth. All rights reserved. •
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
-
-        <div class="footer-note">
-          Looking for French legal pages? Use:
-          <a href="/fr/legal/confidentialite/">Confidentialité</a>,
-          <a href="/fr/legal/conditions/">Conditions</a>,
-          <a href="/fr/legal/cookies/">Cookies</a>,
-          <a href="/fr/legal/accessibilite/">Accessibilité</a>,
-          <a href="/fr/legal/avis-medical/">Avis médical</a>.
-        </div>
       </div>
 
-      <!-- ✅ EN footer links (this is an EN page) -->
       <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
         <a href="/en/legal/privacy/">Privacy</a>
@@ -230,11 +232,12 @@
   </div>
 
   <script>
-    // Single source of truth for your Apps Script endpoint
+    // ✅ Single source of truth for your Apps Script endpoint
     const ENDPOINT = "https://script.google.com/macros/s/AKfycbxbexQAO_Wszfgaf8WiyctLIbWh4yGXktj1YG4YKPqZwazNnQKjULUyALKS-7RlJyNRTQ/exec";
 
     const form = document.getElementById("updatesForm");
     const statusBox = document.getElementById("statusBox");
+    const submitBtn = document.getElementById("submitBtn");
 
     function setStatus(type, msg){
       statusBox.className = "status " + type;
@@ -246,6 +249,12 @@
 
       const emailEl = document.getElementById("email");
       const consentEl = document.getElementById("consent");
+      const hpEl = document.getElementById("company"); // honeypot
+
+      // Bot check
+      if ((hpEl.value || "").trim().length > 0) {
+        return; // silently ignore bots
+      }
 
       const email = (emailEl.value || "").trim().toLowerCase();
       const consent = !!consentEl.checked;
@@ -253,6 +262,9 @@
       if(!email || !email.includes("@")) return setStatus("error", "Please enter a valid email address.");
       if(!consent) return setStatus("error", "Please confirm consent to receive updates.");
       if(!ENDPOINT) return setStatus("error", "Setup incomplete: endpoint not set.");
+
+      submitBtn.disabled = true;
+      setStatus("info", "Sending…");
 
       try {
         await fetch(ENDPOINT, {
@@ -269,12 +281,14 @@
           })
         });
 
-        setStatus("success", "Thank you! You’re subscribed. If you don’t see emails later, check spam.");
+        setStatus("success", "Thank you. Your subscription has been recorded. If you don’t receive emails later, check spam.");
         form.reset();
 
       } catch (err) {
         console.error(err);
         setStatus("error", "Something went wrong. Please try again or email contact@simhealth.pro.");
+      } finally {
+        submitBtn.disabled = false;
       }
     });
   </script>
