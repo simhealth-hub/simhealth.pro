@@ -9,21 +9,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Root-relative -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
+
+  <style>
+    /* ↓ Make hero slightly shorter so tiles peek */
+    .hero {
+      min-height: 72vh;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 64vh;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
   <div class="banner">
-    <strong>Under Construction</strong> — SimHealth is being built carefully and responsibly.
+    <strong>Under construction.</strong>
+    SimHealth is being developed carefully and responsibly.
   </div>
 
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <!-- Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
       aria-label="Open menu"
@@ -66,28 +78,38 @@
 
   <main class="wrap">
 
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-bg" style="background-image:url('/assets/hero-clinic.jpg');"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <h1 class="rise-1">SimHealth</h1>
-        <p class="rise-2">Support for managing gambling urges, built with clinicians.</p>
 
-        <div class="hero-actions rise-3">
-          <a class="btn-primary" href="/en/patients/">For Patients</a>
-          <a class="btn-secondary" href="/en/clinicians/">For Clinicians</a>
-        </div>
+        <p class="rise-2">
+          A clinician-informed digital project exploring structured support
+          for managing gambling-related urges.
+        </p>
+
+        <p class="rise-3" style="max-width:680px; color:var(--muted); line-height:1.6;">
+          Designed with explicit safety boundaries, clinical oversight,
+          and a research-first approach.
+          <br>
+          <strong style="color:var(--text);">
+            Not an emergency service. Not a medical device.
+          </strong>
+        </p>
       </div>
     </section>
 
-    <div class="grid" aria-label="Dashboard">
+    <!-- TILES -->
+    <div class="grid" aria-label="Main pathways">
 
       <a class="tile" href="/en/patients/">
         <div class="img" style="background-image:url('/assets/patients.jpg');"></div>
         <div class="meta">
           <h3>Patients</h3>
-          <p>Tools, guidance, and support — coming soon.</p>
+          <p>Guidance, structured tools, and support pathways.</p>
         </div>
       </a>
 
@@ -95,7 +117,7 @@
         <div class="img" style="background-image:url('/assets/clinician.jpg');"></div>
         <div class="meta">
           <h3>Clinicians</h3>
-          <p>Clinical resources and treatment information.</p>
+          <p>Clinical rationale, pilot information, and governance.</p>
         </div>
       </a>
 
@@ -103,7 +125,7 @@
         <div class="img" style="background-image:url('/assets/research.jpg');"></div>
         <div class="meta">
           <h3>Research</h3>
-          <p>Evidence, methodology, and outcomes.</p>
+          <p>Methodology, evaluation approach, and ethics.</p>
         </div>
       </a>
 
@@ -111,7 +133,7 @@
         <div class="img" style="background-image:url('/assets/about.jpg');"></div>
         <div class="meta">
           <h3>About</h3>
-          <p>Mission, ethics, and development approach.</p>
+          <p>Mission, principles, and development context.</p>
         </div>
       </a>
 
@@ -138,7 +160,6 @@
     </div>
   </footer>
 
-  <!-- Mobile always-visible crisis access (English pages only) -->
   <div class="mobile-crisis" aria-label="Crisis quick access">
     <span class="label">Need help now?</span>
     <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
