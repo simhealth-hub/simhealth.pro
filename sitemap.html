@@ -118,12 +118,13 @@
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
+      <!-- ✅ Fix: avoid 404 until you create /fr/plan-du-site(.html) -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/sitemap.html">
           <span class="lang-full">English</span>
           <span class="lang-short" aria-hidden="true">EN</span>
         </a>
-        <a href="/fr/plan-du-site.html">
+        <a href="/sitemap.html#fr">
           <span class="lang-full">Français</span>
           <span class="lang-short" aria-hidden="true">FR</span>
         </a>
@@ -211,22 +212,21 @@
         </div>
       </div>
 
-      <!-- FRENCH (STRUCTURE) -->
-      <div class="col full">
+      <!-- FRENCH -->
+      <div class="col full" id="fr">
         <div class="panel">
-          <h2>Français (structure)</h2>
-          <p>
-            French pages can be filled once English is fully locked. These links reflect the target structure.
-            If a page isn’t ready yet, it can temporarily redirect or show “En construction”.
-          </p>
+          <h2>Français</h2>
+          <p>French routes (live pages).</p>
 
           <ul class="list">
-            <li><a href="/fr/accueil.html">Accueil</a></li>
+            <!-- ✅ Fix: /fr/accueil/ (not /fr/accueil.html) -->
+            <li><a href="/fr/accueil/">Accueil</a></li>
 
             <li><a href="/fr/patients/">Patients</a>
               <ul class="list">
                 <li><a href="/fr/patients/aide-soutien/">Aide &amp; soutien</a></li>
-                <li><a href="/fr/patients/updates/">Mises à jour</a></li>
+                <!-- ✅ Fix: /fr/patients/mises-a-jour/ (not /fr/patients/updates/) -->
+                <li><a href="/fr/patients/mises-a-jour/">Mises à jour</a></li>
                 <li><a href="/fr/patients/pgsi/">Auto-évaluation PGSI</a></li>
               </ul>
             </li>
