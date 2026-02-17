@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — FAQ</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .faq-nav{
+      margin-top:12px;
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      background:var(--surface);
+    }
+    .faq-nav ul{
+      margin:0;
+      padding-left:18px;
+      line-height:1.7;
+    }
+    .faq-nav a{ color:var(--text); text-decoration:none; }
+    .faq-nav a:hover{ text-decoration:underline; }
+
+    .faq-section{ margin-top:22px; }
+    .faq-section h2{ margin-bottom:8px; }
+    .faq-item{ margin-top:14px; }
+    .faq-item h3{ margin:0 0 6px; font-size:16px; }
+    .faq-item p{ margin:0; color:var(--muted); line-height:1.65; }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité à la sécurité.</strong>
+    SimHealth est un projet en développement et ne fournit pas de soins d’urgence.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html">SimHealth</a>
+
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Ouvrir le menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/a-propos/">À propos</a>
+      <a class="link active" href="/fr/faq/">FAQ</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle">
+        <a href="/en/faq/">English</a>
+        <a class="active" href="/fr/faq/">Français</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/about.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Foire aux questions (FAQ)</h1>
+        <p class="rise-2">
+          Transparence, sécurité et cadre du projet SimHealth.
+        </p>
+      </div>
+    </section>
+
+    <!-- JUMP LINKS -->
+    <section class="card faq-nav">
+      <strong>Aller directement à :</strong>
+      <ul>
+        <li><a href="#section-1">1. À propos du projet</a></li>
+        <li><a href="#section-2">2. Cadre médical et réglementaire</a></li>
+        <li><a href="#section-3">3. Sécurité et situations de crise</a></li>
+        <li><a href="#section-4">4. Données, confidentialité et RGPD</a></li>
+        <li><a href="#section-5">5. Recherche, pilotes et gouvernance</a></li>
+      </ul>
+    </section>
+
+    <!-- SECTION 1 -->
+    <section class="card faq-section" id="section-1">
+      <h2>1. À propos du projet</h2>
+
+      <div class="faq-item">
+        <h3>1a. Qu’est-ce que SimHealth&nbsp;?</h3>
+        <p>
+          SimHealth est un projet numérique en développement, conçu avec l’apport de clinicien·ne·s,
+          qui explore comment des outils structurés et orientés sécurité peuvent soutenir les personnes
+          confrontées à des envies liées au jeu d’argent.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>1b. À qui s’adresse SimHealth&nbsp;?</h3>
+        <p>
+          Le projet s’adresse principalement aux adultes concernés par des comportements de jeu à risque,
+          ainsi qu’aux clinicien·ne·s et chercheur·euse·s intéressé·e·s par l’évaluation de solutions numériques
+          complémentaires aux parcours de soins existants.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>1c. À quel stade de développement se trouve le projet&nbsp;?</h3>
+        <p>
+          SimHealth est actuellement en phase pré-pilote. Il ne s’agit pas d’un produit finalisé,
+          ni d’un service déployé en routine clinique.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="card faq-section" id="section-2">
+      <h2>2. Cadre médical et réglementaire</h2>
+
+      <div class="faq-item">
+        <h3>2a. SimHealth est-il un dispositif médical&nbsp;?</h3>
+        <p>
+          Non. SimHealth n’est pas présenté comme un dispositif médical et ne revendique aucun statut
+          réglementaire à ce stade. Il ne fournit ni diagnostic, ni traitement, ni recommandation médicale.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>2b. SimHealth remplace-t-il un professionnel de santé&nbsp;?</h3>
+        <p>
+          Non. SimHealth est conçu pour compléter, et non remplacer, l’accompagnement par des professionnel·le·s
+          de santé. Il ne se substitue jamais à un avis médical ou thérapeutique.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>2c. Faites-vous des promesses d’efficacité clinique&nbsp;?</h3>
+        <p>
+          Non. Aucune affirmation d’efficacité clinique n’est formulée. Toute discussion de résultats
+          éventuels n’aura lieu qu’après des évaluations appropriées.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 3 -->
+    <section class="card faq-section" id="section-3">
+      <h2>3. Sécurité et situations de crise</h2>
+
+      <div class="faq-item">
+        <h3>3a. SimHealth peut-il aider en cas de crise ou d’urgence&nbsp;?</h3>
+        <p>
+          Non. SimHealth ne fournit pas de prise en charge d’urgence ou de crise.
+          En cas de danger immédiat, il est essentiel de contacter les services d’urgence locaux
+          ou des ressources spécialisées.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>3b. Pourquoi des liens vers des ressources d’aide sont-ils affichés&nbsp;?</h3>
+        <p>
+          La sécurité est une priorité. Le site oriente explicitement vers des services d’aide
+          réels et reconnus lorsque cela est nécessaire.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 4 -->
+    <section class="card faq-section" id="section-4">
+      <h2>4. Données, confidentialité et RGPD</h2>
+
+      <div class="faq-item">
+        <h3>4a. Collectez-vous des données personnelles&nbsp;?</h3>
+        <p>
+          Toute collecte éventuelle de données est minimale, explicitement expliquée
+          et fondée sur le consentement. Aucune donnée n’est collectée à l’insu des utilisateurs.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>4b. Les données de santé sont-elles concernées&nbsp;?</h3>
+        <p>
+          Si des données sensibles sont impliquées dans un cadre de recherche ou de pilote,
+          elles sont traitées conformément au RGPD, avec des mesures de protection renforcées.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>4c. Puis-je demander la suppression de mes données&nbsp;?</h3>
+        <p>
+          Oui. Conformément au RGPD, vous pouvez exercer vos droits d’accès, de rectification
+          et de suppression à tout moment.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 5 -->
+    <section class="card faq-section" id="section-5">
+      <h2>5. Recherche, pilotes et gouvernance</h2>
+
+      <div class="faq-item">
+        <h3>5a. Des clinicien·ne·s sont-ils impliqué·e·s dans le projet&nbsp;?</h3>
+        <p>
+          Oui. Le projet est développé avec l’apport de clinicien·ne·s,
+          notamment pour cadrer la sécurité, l’éthique et la pertinence clinique.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>5b. Des études ou pilotes sont-ils prévus&nbsp;?</h3>
+        <p>
+          Oui. Toute utilisation dans un cadre pilote sera supervisée,
+          documentée et, le cas échéant, soumise à des procédures d’éthique appropriées.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>5c. Comment signaler une question ou un problème&nbsp;?</h3>
+        <p>
+          Vous pouvez nous contacter via la page <a href="/fr/contact/">Contact</a>.
+          Toute préoccupation liée à la sécurité ou à l’éthique est prise au sérieux.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. Tous droits réservés. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav>
+        <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité</a>
+        <a href="/fr/legal/conditions/">Conditions</a>
+        <a href="/fr/legal/avis-medical/">Avis médical</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="mobile-crisis">
+    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+  </div>
+
+</body>
+</html>
