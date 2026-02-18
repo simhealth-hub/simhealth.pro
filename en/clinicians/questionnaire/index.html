@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Clinician & Research Questionnaire</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .status{
+      display:none;
+      margin-top:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      padding:12px 14px;
+      line-height:1.5;
+      color:var(--muted);
+    }
+    .status.success{
+      display:block;
+      background:color-mix(in srgb, var(--primary) 18%, transparent);
+      border-color:color-mix(in srgb, var(--primary) 38%, var(--border));
+      color:var(--text);
+    }
+    .status.error{
+      display:block;
+      background:color-mix(in srgb, #ef4444 16%, transparent);
+      border-color:color-mix(in srgb, #ef4444 34%, var(--border));
+      color:var(--text);
+    }
+
+    .field label{ display:block; font-weight:800; margin:14px 0 8px; }
+    .hint{ margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.5; }
+    .input, .select, .textarea{
+      width:100%;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--surface) 92%, transparent);
+      color:var(--text);
+      font-size:15px;
+      outline:none;
+    }
+    .textarea{ min-height:120px; resize:vertical; }
+    .input:focus, .select:focus, .textarea:focus{
+      border-color:color-mix(in srgb, var(--primary) 55%, var(--border));
+      background:var(--surface);
+    }
+
+    .consent{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--text) 4%, transparent);
+      color:var(--muted);
+      line-height:1.45;
+      font-size:14px;
+    }
+    .consent input{ margin-top:3px; }
+
+    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    button.btn-primary{ border:none; cursor:pointer; }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:14px;
+      margin-top:8px;
+    }
+    .col-6{ grid-column:span 6; }
+    @media (max-width: 800px){
+      .col-6{ grid-column:span 12; }
+    }
+
+    .divider{ border:none; border-top:1px solid var(--border); margin:18px 0; }
+    .small{ font-size:13px; color:var(--muted); line-height:1.55; }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Healthcare first.</strong> This website is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
+
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="main-menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" id="main-menu" aria-label="Main navigation">
+      <a class="link" href="/en/home/">Home</a>
+      <a class="link" href="/en/patients/">Patients</a>
+      <a class="link active" href="/en/clinicians/">Clinicians</a>
+      <a class="link" href="/en/research/">Research</a>
+      <a class="link" href="/en/about/">About</a>
+      <a class="link" href="/en/contact/">Contact</a>
+
+      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+
+      <div class="lang-toggle" aria-label="Language">
+        <a class="active" href="/en/clinicians/questionnaire/">
+          <span class="lang-full">English</span>
+          <span class="lang-short" aria-hidden="true">English</span>
+        </a>
+        <a href="/fr/cliniciens/questionnaire/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short" aria-hidden="true">Français</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Toggle theme">
+        <span class="label label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/research.jpg'); background-position: 60% center;"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">Clinician &amp; research questionnaire</h1>
+        <p class="rise-2">
+          A short questionnaire to help shape SimHealth’s pre-pilot direction, governance, and evaluation plan.
+          <br><span style="color:var(--muted); font-size:13px;">For clinicians, researchers, services, and institutions only.</span>
+        </p>
+
+        <div class="hero-actions rise-3">
+          <a class="btn-primary" href="#form">Start questionnaire</a>
+          <a class="btn-secondary" href="/en/clinicians/">Back to Clinicians</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="form" style="margin-top:16px;">
+      <h2 style="margin:0 0 10px;">Purpose & boundaries</h2>
+
+      <p style="margin:0; color:var(--muted); line-height:1.65;">
+        This questionnaire is used to gather professional feedback to improve the project’s design, governance,
+        and research readiness. SimHealth is in development and is not presented as emergency care, a medical device,
+        or a substitute for clinical judgment.
+      </p>
+
+      <div style="margin-top:12px; padding:12px 14px; border:1px solid var(--border); border-radius:var(--radius-lg); background:color-mix(in srgb, var(--accent) 10%, var(--surface));">
+        <p style="margin:0; color:var(--muted); line-height:1.55;">
+          <strong style="color:var(--text);">Important:</strong>
+          Please do not enter patient-identifying information or clinical case details. If you need to discuss anything sensitive,
+          use the <a href="/en/contact/" style="color:var(--text); text-decoration:underline;">Contact</a> page instead.
+        </p>
+      </div>
+
+      <div id="statusBox" class="status" role="status" aria-live="polite"></div>
+
+      <form id="qForm" novalidate>
+
+        <!-- SECTION 1 (background numbering is in field names) -->
+        <h3 style="margin:18px 0 6px;">Professional context</h3>
+        <p class="small" style="margin:0 0 6px;">These questions help interpret responses responsibly.</p>
+
+        <div class="two-col">
+          <div class="col-6">
+            <div class="field">
+              <label for="role">1a) Your primary role</label>
+              <select class="select" id="role" name="role" required>
+                <option value="">Select…</option>
+                <option>Clinician (psychologist/therapist)</option>
+                <option>Psychiatrist</option>
+                <option>GP / Primary care</option>
+                <option>Addiction specialist service</option>
+                <option>Researcher / academic</option>
+                <option>Service manager / institution</option>
+                <option>Other</option>
+              </select>
+              <p class="hint">If “Other”, specify below.</p>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="field">
+              <label for="roleOther">1b) If other, please specify (optional)</label>
+              <input class="input" id="roleOther" name="roleOther" type="text" placeholder="e.g., clinical psychologist / commissioner">
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="col-6">
+            <div class="field">
+              <label for="country">1c) Country / jurisdiction</label>
+              <input class="input" id="country" name="country" type="text" placeholder="e.g., France / UK / USA" required>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="field">
+              <label for="setting">1d) Primary setting (optional)</label>
+              <input class="input" id="setting" name="setting" type="text" placeholder="e.g., hospital, outpatient clinic, NGO, university">
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- SECTION 2 -->
+        <h3 style="margin:0 0 6px;">Use case & boundaries</h3>
+        <p class="small" style="margin:0 0 6px;">Focused on supervised, safety-first pilot contexts.</p>
+
+        <div class="field">
+          <label for="useCase">2a) In your view, where could supervised digital support be most helpful?</label>
+          <textarea class="textarea" id="useCase" name="useCase" placeholder="e.g., between sessions, high-risk moments, structured reflection…" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="redLines">2b) What are your “red lines” (features/claims you would not accept)?</label>
+          <textarea class="textarea" id="redLines" name="redLines" placeholder="e.g., diagnosis claims, unsupervised deployment, unsafe nudges…" required></textarea>
+        </div>
+
+        <hr class="divider">
+
+        <!-- SECTION 3 -->
+        <h3 style="margin:0 0 6px;">Pilot design & evaluation</h3>
+        <p class="small" style="margin:0 0 6px;">No outcome claims; evaluation readiness only.</p>
+
+        <div class="field">
+          <label for="pilotSignals">3a) What minimum “success signals” would you expect in a supervised pilot?</label>
+          <textarea class="textarea" id="pilotSignals" name="pilotSignals" placeholder="e.g., feasibility, safety signals, clinician burden, engagement…" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="risks">3b) What are the main risks to mitigate?</label>
+          <textarea class="textarea" id="risks" name="risks" placeholder="e.g., unintended harm, over-reliance, data risk, clinical workflow risk…" required></textarea>
+        </div>
+
+        <hr class="divider">
+
+        <!-- SECTION 4 -->
+        <h3 style="margin:0 0 6px;">Data, privacy & governance</h3>
+        <p class="small" style="margin:0 0 6px;">Designed to be consent-led and minimised.</p>
+
+        <div class="field">
+          <label for="dataComfort">4a) What data (if any) would be acceptable to collect in a pilot?</label>
+          <textarea class="textarea" id="dataComfort" name="dataComfort" placeholder="e.g., engagement events, opt-in questionnaires, non-identifying usage…" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="governance">4b) What governance requirements would your institution expect?</label>
+          <textarea class="textarea" id="governance" name="governance" placeholder="e.g., DPIA, ethics review, data agreements, clinical oversight…" required></textarea>
+        </div>
+
+        <hr class="divider">
+
+        <!-- OPTIONAL IDENTITY + UPDATES -->
+        <h3 style="margin:0 0 6px;">Optional contact</h3>
+        <p class="small" style="margin:0 0 6px;">
+          You may submit anonymously. If you share contact details, they will only be used for the purposes you consent to below.
+        </p>
+
+        <div class="two-col">
+          <div class="col-6">
+            <div class="field">
+              <label for="name">Name (optional)</label>
+              <input class="input" id="name" name="name" type="text" autocomplete="name" placeholder="Your name">
+            </div>
+          </div>
+
+          <div class="col-6">
+            <div class="field">
+              <label for="org">Organisation (optional)</label>
+              <input class="input" id="org" name="org" type="text" placeholder="Hospital / university / service">
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email (optional)</label>
+          <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@organisation.org">
+          <p class="hint">Only required if you consent to being contacted or receiving updates.</p>
+        </div>
+
+        <!-- CONSENTS -->
+        <div class="consent">
+          <input id="consentResearch" name="consentResearch" type="checkbox" required>
+          <label for="consentResearch" style="margin:0;">
+            <strong style="color:var(--text);">Consent (required):</strong>
+            I consent to SimHealth processing my questionnaire responses for the purpose of research planning and project improvement.
+            I understand I should not include patient-identifying information.
+            <div style="margin-top:6px;">
+              Data will be handled in line with the SimHealth <a href="/en/legal/privacy/" style="color:var(--text); text-decoration:underline;">Privacy</a> notice.
+              You can request deletion by emailing <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
+            </div>
+          </label>
+        </div>
+
+        <div class="consent">
+          <input id="consentContact" name="consentContact" type="checkbox">
+          <label for="consentContact" style="margin:0;">
+            <strong style="color:var(--text);">Optional:</strong>
+            You may contact me about my submission (e.g., clarification, pilot/gov discussion).
+            <div style="margin-top:6px;">If checked, please provide an email address above.</div>
+          </label>
+        </div>
+
+        <div class="consent">
+          <input id="consentUpdates" name="consentUpdates" type="checkbox">
+          <label for="consentUpdates" style="margin:0;">
+            <strong style="color:var(--text);">Optional:</strong>
+            Send me SimHealth project updates by email. I understand I can unsubscribe at any time.
+            <div style="margin-top:6px;">If checked, please provide an email address above.</div>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" type="submit">Submit questionnaire</button>
+          <a class="btn-secondary" href="/en/clinicians/">Back</a>
+        </div>
+
+        <p class="small" style="margin:14px 0 0;">
+          If you need immediate help, use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
+          This questionnaire is not monitored as an emergency service.
+        </p>
+
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/terms/">Terms</a>
+        <a href="/en/legal/cookies/">Cookies</a>
+        <a href="/en/legal/accessibility/">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
+
+  <script>
+    // ✅ Replace with your NEW questionnaire Apps Script Web App URL
+    const ENDPOINT = "PASTE_YOUR_NEW_QUESTIONNAIRE_WEB_APP_URL_HERE";
+
+    const form = document.getElementById("qForm");
+    const statusBox = document.getElementById("statusBox");
+
+    function setStatus(type, msg){
+      statusBox.className = "status " + type;
+      statusBox.textContent = msg;
+      statusBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    function isValidEmail(v){
+      const s = (v || "").trim();
+      return s.includes("@") && s.includes(".");
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      if(!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_NEW")){
+        return setStatus("error", "Setup incomplete: endpoint not set.");
+      }
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      // Required consent
+      const consentResearch = !!document.getElementById("consentResearch").checked;
+      if(!consentResearch){
+        return setStatus("error", "Please confirm the required consent checkbox to submit.");
+      }
+
+      // If contact/updates checked, email becomes required
+      const wantsContact = !!document.getElementById("consentContact").checked;
+      const wantsUpdates = !!document.getElementById("consentUpdates").checked;
+      const email = (data.email || "").trim().toLowerCase();
+
+      if((wantsContact || wantsUpdates) && !isValidEmail(email)){
+        return setStatus("error", "Please enter a valid email address if you consent to contact or updates.");
+      }
+
+      // Add safe metadata
+      const payload = {
+        ...data,
+        email,
+        lang: "en",
+        page: "clinicians-questionnaire",
+        consentResearch,
+        consentContact: wantsContact,
+        consentUpdates: wantsUpdates,
+        timestampISO: new Date().toISOString(),
+        referrer: document.referrer || "",
+        userAgent: navigator.userAgent || ""
+      };
+
+      try {
+        await fetch(ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+
+        // With no-cors we can't read response; show optimistic confirmation.
+        setStatus("success",
+          "Thank you — your response has been submitted. If you requested updates, you’ll receive emails and can unsubscribe any time."
+        );
+        form.reset();
+
+      } catch (err) {
+        console.error(err);
+        setStatus("error", "Something went wrong. Please try again, or email contact@simhealth.pro.");
+      }
+    });
+  </script>
+
+</body>
+  </html>
