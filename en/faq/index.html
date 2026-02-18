@@ -14,112 +14,113 @@
 
   <style>
     /* Page-scoped helpers only */
-    .muted { color: var(--muted); }
+    .intro{
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .faq-grid{
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .faq-left{ grid-column: span 5; }
+    .faq-right{ grid-column: span 7; }
+
     .toc{
-      margin-top: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 16px;
+    }
+    .toc h2{
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+    .toc .group{
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .toc .group:first-of-type{
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+    .toc h3{
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--text);
+      letter-spacing: 0.2px;
+    }
+
+    /* One-line clickable questions */
+    .toc a{
+      display: block;
+      padding: 9px 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid transparent;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .toc a:hover{
+      background: color-mix(in srgb, var(--text) 6%, transparent);
+      border-color: var(--border);
+    }
+
+    .faq-card{
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
       padding: 18px;
     }
-    .toc h2{ margin:0 0 10px; font-size:18px; }
-    .toc p{ margin:0 0 12px; line-height:1.6; color:var(--muted); }
-
-    .toc-grid{
-      display:grid;
-      grid-template-columns:repeat(12, 1fr);
-      gap:14px;
-      margin-top:10px;
+    .faq-card h2{
+      margin: 0 0 10px;
+      font-size: 18px;
     }
-    .toc-col{ grid-column: span 6; }
-    @media (max-width: 900px){
-      .toc-col{ grid-column: span 12; }
+    .faq-card h3{
+      margin: 18px 0 8px;
+      font-size: 16px;
     }
-
-    .toc-list{
-      margin:0;
-      padding-left:18px;
-      line-height:1.75;
-      color:var(--muted);
+    .faq-card p{
+      margin: 0 0 10px;
+      color: var(--muted);
+      line-height: 1.7;
     }
-    .toc-list a{
-      color:var(--text);
-      text-decoration:none;
+    .faq-card ul{
+      margin: 8px 0 12px;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
     }
-    .toc-list a:hover{ text-decoration:underline; }
-
-    .faq-card{ margin-top:16px; }
-    .faq-card h2{ margin:0 0 10px; }
-    .faq-card .intro{ margin:0; line-height:1.65; color:var(--muted); }
-
-    .q{
-      margin-top:14px;
-      padding-top:14px;
-      border-top:1px solid var(--border);
-    }
-    .q:first-of-type{
-      margin-top:12px;
-      padding-top:0;
-      border-top:none;
-    }
-    .q h3{
-      margin:0 0 8px;
-      font-size:16px;
-      line-height:1.35;
-    }
-    .q p{
-      margin:0 0 10px;
-      color:var(--muted);
-      line-height:1.65;
-    }
-
-    .pill-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      margin-top:10px;
-    }
-
-    .mini-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--text) 6%, transparent);
-      color:var(--text);
-      font-weight:800;
-      text-decoration:none;
-      user-select:none;
-      white-space:nowrap;
-    }
-    .mini-pill:hover{ transform: translateY(-1px); }
-    .mini-pill:active{ transform: translateY(0px); }
+    .faq-card li strong{ color: var(--text); }
 
     .note{
-      margin-top:14px;
-      padding:12px 12px;
-      border:1px solid var(--border);
-      border-radius:var(--radius-lg);
-      background:color-mix(in srgb, var(--accent) 10%, var(--surface));
-      color:var(--muted);
-      line-height:1.55;
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      color: var(--muted);
+      line-height: 1.6;
     }
-    .note strong{ color:var(--text); }
+    .note strong{ color: var(--text); }
 
-    .backtop{
-      margin-top:12px;
-      display:inline-block;
-      color:var(--muted);
-      text-decoration:none;
-      font-weight:800;
+    /* Make hero text spacing match your preference */
+    .hero .hero-content{ width: min(760px, 92%); }
+    .hero p{ max-width: 58ch; }
+
+    @media (max-width: 900px){
+      .faq-left{ grid-column: span 12; }
+      .faq-right{ grid-column: span 12; }
+      .toc a{ padding: 10px 10px; }
     }
-    .backtop:hover{ color:var(--text); text-decoration:underline; }
-
-    /* Anchor offset so headings aren't hidden by sticky nav (if any) */
-    :target{ scroll-margin-top: 90px; }
   </style>
 </head>
 
@@ -132,7 +133,6 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <!-- Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
       aria-label="Open menu"
@@ -173,304 +173,233 @@
     </nav>
   </header>
 
-  <main class="wrap" id="top">
+  <main class="wrap">
 
-    <!-- HERO -->
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/faq.jpg');"></div>
+      <div class="hero-bg" style="background-image:url('/assets/about.jpg');"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
         <h1 class="rise-1">FAQ</h1>
         <p class="rise-2">
-          Clear answers about SimHealth, safety boundaries, development stage, and data handling.
-          This page is designed to support trust and transparent expectations.
+          This section helps you understand what SimHealth is, what it aims to achieve, and what it isn’t —
+          in clear, practical language.
         </p>
 
-        <div class="hero-actions rise-3">
-          <a class="btn-primary" href="#toc">Jump to questions</a>
-          <a class="btn-secondary" href="/en/patients/help-support/">Crisis Resources</a>
-          <a class="btn-secondary" href="/en/contact/">Contact</a>
-        </div>
-
-        <div class="note" style="margin-top:14px;">
-          <strong>Important:</strong> SimHealth is not an emergency or crisis service, and does not provide medical advice.
-          If you feel unsafe, use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
+        <div class="note rise-3" style="margin-top:14px;">
+          <strong>Important:</strong> SimHealth is in development. It does not provide crisis care.
+          If you need urgent help, use
+          <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
         </div>
       </div>
     </section>
 
-    <!-- TABLE OF CONTENTS -->
-    <section class="toc" id="toc" aria-label="FAQ table of contents">
-      <h2>Jump to a question</h2>
-      <p>Sections are numbered (1, 2, 3...). Questions inside each section use a letter (1a, 1b, 1c...).</p>
+    <section class="faq-grid" aria-label="FAQ layout">
 
-      <div class="toc-grid">
-        <div class="toc-col">
-          <p style="margin:0 0 8px; font-weight:800; color:var(--text);">1. General</p>
-          <ul class="toc-list">
-            <li><a href="#q-1a">1a. What is SimHealth?</a></li>
-            <li><a href="#q-1b">1b. Who is SimHealth for?</a></li>
-            <li><a href="#q-1c">1c. What stage is the project at?</a></li>
-            <li><a href="#q-1d">1d. What does “clinician-informed” mean?</a></li>
+      <!-- LEFT: CLICKABLE QUESTIONS -->
+      <aside class="faq-left">
+        <div class="toc" aria-label="FAQ questions">
+          <h2>Questions</h2>
+
+          <div class="group">
+            <h3>About SimHealth</h3>
+            <a href="#q1">What is SimHealth?</a>
+            <a href="#q1a">Who is SimHealth for?</a>
+            <a href="#q1b">What problem is it trying to address?</a>
+            <a href="#q1c">What is SimHealth not?</a>
+          </div>
+
+          <div class="group">
+            <h3>Safety and boundaries</h3>
+            <a href="#q2">Is SimHealth emergency support or crisis care?</a>
+            <a href="#q2a">What should I do if I feel unsafe or at risk?</a>
+            <a href="#q2b">Does SimHealth give medical advice?</a>
+            <a href="#q2c">Can SimHealth diagnose or treat a condition?</a>
+          </div>
+
+          <div class="group">
+            <h3>Clinical and research positioning</h3>
+            <a href="#q3">Is SimHealth a medical device?</a>
+            <a href="#q3a">What does “clinician-informed” mean?</a>
+            <a href="#q3b">What stage is the project at?</a>
+            <a href="#q3c">How will outcomes be shared?</a>
+          </div>
+
+          <div class="group">
+            <h3>Privacy, data, and consent</h3>
+            <a href="#q4">Do you collect personal data?</a>
+            <a href="#q4a">Do you collect health data?</a>
+            <a href="#q4b">How is data protected?</a>
+            <a href="#q4c">Can I ask you to delete my data?</a>
+          </div>
+
+          <div class="group">
+            <h3>Using the website</h3>
+            <a href="#q5">Do you use cookies or analytics?</a>
+            <a href="#q5a">Is the site accessible?</a>
+            <a href="#q5b">How can I contact you?</a>
+          </div>
+
+        </div>
+      </aside>
+
+      <!-- RIGHT: ANSWERS -->
+      <section class="faq-right">
+        <div class="faq-card">
+
+          <h2>Answers</h2>
+          <p class="intro">
+            If you’re a patient, clinician, researcher, or partner, these answers clarify the project’s boundaries and intent.
+            We keep public language conservative until proper evaluation is completed.
+          </p>
+
+          <!-- SECTION 1 -->
+          <h2 id="s1" style="margin-top:18px;">About SimHealth</h2>
+
+          <h3 id="q1">What is SimHealth?</h3>
+          <p>
+            SimHealth is a clinician-informed digital project in development, exploring structured support for people
+            experiencing gambling-related urges — especially during high-risk moments when support may be unavailable.
+          </p>
+
+          <h3 id="q1a">Who is SimHealth for?</h3>
+          <p>
+            SimHealth is being designed for:
+          </p>
+          <ul>
+            <li><strong>Patients:</strong> who want structured, non-judgemental support during urges.</li>
+            <li><strong>Clinicians and services:</strong> who may want supervised pilot evaluation tools.</li>
+            <li><strong>Researchers:</strong> interested in feasibility, safety, and real-world evaluation.</li>
           </ul>
-        </div>
 
-        <div class="toc-col">
-          <p style="margin:0 0 8px; font-weight:800; color:var(--text);">2. Medical, safety & boundaries</p>
-          <ul class="toc-list">
-            <li><a href="#q-2a">2a. Is SimHealth a medical device?</a></li>
-            <li><a href="#q-2b">2b. Does SimHealth provide medical advice or treatment?</a></li>
-            <li><a href="#q-2c">2c. Is SimHealth for emergencies or crises?</a></li>
-            <li><a href="#q-2d">2d. What should I do if I feel at risk?</a></li>
+          <h3 id="q1b">What problem is it trying to address?</h3>
+          <p>
+            Gambling-related harm often occurs outside clinical settings — during late-night urges, stress spikes,
+            or impulse windows. SimHealth explores whether carefully governed digital support can help people pause,
+            reflect, and choose safer actions in those moments.
+          </p>
+
+          <h3 id="q1c">What is SimHealth not?</h3>
+          <ul>
+            <li>It is <strong>not</strong> emergency or crisis care.</li>
+            <li>It is <strong>not</strong> a substitute for professional treatment.</li>
+            <li>It does <strong>not</strong> diagnose conditions or provide medical advice.</li>
+            <li>It does <strong>not</strong> claim proven outcomes without appropriate evaluation.</li>
           </ul>
+
+          <!-- SECTION 2 -->
+          <h2 id="s2" style="margin-top:18px;">Safety and boundaries</h2>
+
+          <h3 id="q2">Is SimHealth emergency support or crisis care?</h3>
+          <p>
+            No. SimHealth is not monitored as an emergency service and does not provide crisis intervention.
+            If you are in immediate danger, contact your local emergency services.
+          </p>
+
+          <h3 id="q2a">What should I do if I feel unsafe or at risk?</h3>
+          <p>
+            Use official real-world help immediately. On this site, go to
+            <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>
+            for country-specific services.
+          </p>
+
+          <h3 id="q2b">Does SimHealth give medical advice?</h3>
+          <p>
+            No. SimHealth content is informational and supportive in nature and is not a replacement for clinical judgment.
+            Always seek help from qualified professionals for diagnosis or treatment decisions.
+          </p>
+
+          <h3 id="q2c">Can SimHealth diagnose or treat a condition?</h3>
+          <p>
+            No. SimHealth does not diagnose, treat, cure, or prevent any disease or condition.
+            Any future evaluation would be communicated carefully and only after appropriate oversight.
+          </p>
+
+          <!-- SECTION 3 -->
+          <h2 id="s3" style="margin-top:18px;">Clinical and research positioning</h2>
+
+          <h3 id="q3">Is SimHealth a medical device?</h3>
+          <p>
+            SimHealth is presented publicly as a project in development, with conservative claims and pilot-first intentions.
+            Regulatory classification depends on the final intended use and functionality. Public wording is designed to avoid
+            over-claiming and to keep boundaries explicit.
+          </p>
+
+          <h3 id="q3a">What does “clinician-informed” mean?</h3>
+          <p>
+            It means the project direction and safety boundaries are being shaped with clinical input.
+            This does not automatically imply clinical validation or endorsement, and we avoid implying that it does.
+          </p>
+
+          <h3 id="q3b">What stage is the project at?</h3>
+          <p>
+            Pre-pilot / pilot planning. The focus is on safety-first design, governance readiness, and staged evaluation.
+          </p>
+
+          <h3 id="q3c">How will outcomes be shared?</h3>
+          <p>
+            We do not publish outcome claims without appropriate evaluation. If pilot work progresses,
+            public updates will focus on feasibility and safety, and only discuss outcomes once they are properly supported.
+          </p>
+
+          <!-- SECTION 4 -->
+          <h2 id="s4" style="margin-top:18px;">Privacy, data, and consent</h2>
+
+          <h3 id="q4">Do you collect personal data?</h3>
+          <p>
+            If you submit a form (for example, project updates), we may collect the information you provide (like your email).
+            We aim to minimise collection and use it only for the stated purpose.
+          </p>
+
+          <h3 id="q4a">Do you collect health data?</h3>
+          <p>
+            Public pages are designed to avoid collecting sensitive health information by default.
+            Any future pilot-related data design would be consent-led and described clearly to participants.
+          </p>
+
+          <h3 id="q4b">How is data protected?</h3>
+          <p>
+            We use standard web protections (HTTPS) and design toward access restriction and minimised collection.
+            Details are documented in the relevant privacy policy pages.
+          </p>
+
+          <h3 id="q4c">Can I ask you to delete my data?</h3>
+          <p>
+            Yes. You can request deletion by contacting
+            <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
+            Your rights and related details are described in the privacy policy.
+          </p>
+
+          <!-- SECTION 5 -->
+          <h2 id="s5" style="margin-top:18px;">Using the website</h2>
+
+          <h3 id="q5">Do you use cookies or analytics?</h3>
+          <p>
+            If cookies or analytics are used, they should be described in the cookie policy and privacy policy.
+            SimHealth aims to keep tracking conservative and transparent.
+          </p>
+
+          <h3 id="q5a">Is the site accessible?</h3>
+          <p>
+            Accessibility is a priority and the project aims to support clear navigation, readable typography,
+            keyboard use, and accessibility-aware design patterns. See the Accessibility page for the current statement.
+          </p>
+
+          <h3 id="q5b">How can I contact you?</h3>
+          <p>
+            Use the <a href="/en/contact/" style="color:var(--text); text-decoration:underline;">Contact</a> page for professional enquiries.
+            If you need urgent support, use
+            <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
+          </p>
+
+          <div class="note" style="margin-top:16px;">
+            <strong>Reminder:</strong> SimHealth is not a crisis service. If you are at risk, contact local emergency services
+            or use <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
+          </div>
+
         </div>
+      </section>
 
-        <div class="toc-col">
-          <p style="margin:0 0 8px; font-weight:800; color:var(--text);">3. Research & pilots</p>
-          <ul class="toc-list">
-            <li><a href="#q-3a">3a. Is SimHealth clinically validated?</a></li>
-            <li><a href="#q-3b">3b. How will evaluation be done?</a></li>
-            <li><a href="#q-3c">3c. Can clinicians or institutions participate in a pilot?</a></li>
-          </ul>
-        </div>
-
-        <div class="toc-col">
-          <p style="margin:0 0 8px; font-weight:800; color:var(--text);">4. Privacy, data & security</p>
-          <ul class="toc-list">
-            <li><a href="#q-4a">4a. Does SimHealth collect personal or health data?</a></li>
-            <li><a href="#q-4b">4b. How is data protected?</a></li>
-            <li><a href="#q-4c">4c. Can I delete my data or unsubscribe?</a></li>
-            <li><a href="#q-4d">4d. Does SimHealth use AI?</a></li>
-          </ul>
-        </div>
-
-        <div class="toc-col full" style="grid-column: span 12;">
-          <p style="margin:0 0 8px; font-weight:800; color:var(--text);">5. Practical</p>
-          <ul class="toc-list">
-            <li><a href="#q-5a">5a. How can I get updates?</a></li>
-            <li><a href="#q-5b">5b. How do I contact SimHealth?</a></li>
-            <li><a href="#q-5c">5c. Where can I read the policies?</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="pill-row">
-        <a class="mini-pill" href="/en/patients/updates/">Subscribe to updates</a>
-        <a class="mini-pill" href="/en/clinicians/pilot/">Pilot information</a>
-        <a class="mini-pill" href="/en/patients/help-support/">Crisis Resources</a>
-      </div>
-    </section>
-
-    <!-- 1. GENERAL -->
-    <section class="card faq-card" id="section-1" aria-label="Section 1: General">
-      <h2>1. General</h2>
-      <p class="intro">Plain-language overview of what SimHealth is and what it is not.</p>
-
-      <div class="q" id="q-1a">
-        <h3>1a. What is SimHealth?</h3>
-        <p>
-          SimHealth is a clinician-informed digital project in development exploring how structured, safety-first tools may support
-          people experiencing gambling-related urges. It is designed to complement existing care pathways and is currently in a pre-pilot phase.
-        </p>
-      </div>
-
-      <div class="q" id="q-1b">
-        <h3>1b. Who is SimHealth for?</h3>
-        <p>
-          SimHealth is intended for adults seeking structured, reflective support related to gambling urges, as well as clinicians and researchers
-          interested in supervised evaluation and governance-minded digital support tools.
-        </p>
-      </div>
-
-      <div class="q" id="q-1c">
-        <h3>1c. What stage is the project at?</h3>
-        <p>
-          SimHealth is in a pre-pilot / pilot-planning stage. Content and features may change based on testing, feedback, and safety review.
-          Public communication is intentionally conservative until appropriate evaluation is completed.
-        </p>
-      </div>
-
-      <div class="q" id="q-1d">
-        <h3>1d. What does “clinician-informed” mean?</h3>
-        <p>
-          “Clinician-informed” means healthcare professionals have contributed advisory input during design. It does not imply clinical validation,
-          endorsement, or regulatory approval.
-        </p>
-      </div>
-
-      <a class="backtop" href="#toc">↑ Back to questions</a>
-    </section>
-
-    <!-- 2. MEDICAL, SAFETY & BOUNDARIES -->
-    <section class="card faq-card" id="section-2" aria-label="Section 2: Medical, safety and boundaries">
-      <h2>2. Medical, safety & boundaries</h2>
-      <p class="intro">Clear boundaries to prevent confusion and protect patient safety.</p>
-
-      <div class="q" id="q-2a">
-        <h3>2a. Is SimHealth a medical device?</h3>
-        <p>
-          No. SimHealth is not a medical device and is not currently regulated as one. It does not diagnose, treat, prevent, or cure medical conditions.
-        </p>
-      </div>
-
-      <div class="q" id="q-2b">
-        <h3>2b. Does SimHealth provide medical advice or treatment?</h3>
-        <p>
-          No. SimHealth does not provide medical advice, diagnosis, or treatment. It is not a substitute for professional healthcare
-          or clinical judgment.
-        </p>
-      </div>
-
-      <div class="q" id="q-2c">
-        <h3>2c. Is SimHealth for emergencies or crises?</h3>
-        <p>
-          No. SimHealth is not an emergency or crisis service, and the website is not monitored for urgent situations.
-          If there is immediate risk, use local emergency services or crisis support organisations.
-        </p>
-      </div>
-
-      <div class="q" id="q-2d">
-        <h3>2d. What should I do if I feel at risk?</h3>
-        <p>
-          If you feel at immediate risk of harm, contact your local emergency number now. If you need urgent emotional support,
-          use official crisis services listed on our <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a> page.
-        </p>
-
-        <div class="pill-row">
-          <a class="mini-pill" href="/en/patients/help-support/">Open Crisis Resources</a>
-          <a class="mini-pill" href="/en/contact/">Contact (non-urgent)</a>
-        </div>
-      </div>
-
-      <a class="backtop" href="#toc">↑ Back to questions</a>
-    </section>
-
-    <!-- 3. RESEARCH & PILOTS -->
-    <section class="card faq-card" id="section-3" aria-label="Section 3: Research and pilots">
-      <h2>3. Research & pilots</h2>
-      <p class="intro">How evaluation is planned (pilot-first), and how clinicians can engage.</p>
-
-      <div class="q" id="q-3a">
-        <h3>3a. Is SimHealth clinically validated?</h3>
-        <p>
-          Not yet. SimHealth has not undergone clinical validation. Any future outcomes will only be communicated publicly
-          when supported by appropriate evaluation and governance.
-        </p>
-      </div>
-
-      <div class="q" id="q-3b">
-        <h3>3b. How will evaluation be done?</h3>
-        <p>
-          The project is designed for staged evaluation — beginning with small supervised pilots focused on feasibility, safety, and usability.
-          Progression would depend on governance readiness and clinical oversight.
-        </p>
-        <p>
-          You can read the current public overview on the
-          <a href="/en/research/" style="color:var(--text); text-decoration:underline;">Research</a> page.
-        </p>
-      </div>
-
-      <div class="q" id="q-3c">
-        <h3>3c. Can clinicians or institutions participate in a pilot?</h3>
-        <p>
-          Potentially. Pilot access (when available) is intended to be supervised and governance-led.
-          If you represent a service or institution, the best route is the pilot enquiry page.
-        </p>
-
-        <div class="pill-row">
-          <a class="mini-pill" href="/en/clinicians/pilot/">Request pilot information</a>
-          <a class="mini-pill" href="/en/contact/">Discuss collaboration</a>
-        </div>
-      </div>
-
-      <a class="backtop" href="#toc">↑ Back to questions</a>
-    </section>
-
-    <!-- 4. PRIVACY, DATA & SECURITY -->
-    <section class="card faq-card" id="section-4" aria-label="Section 4: Privacy, data and security">
-      <h2>4. Privacy, data & security</h2>
-      <p class="intro">Transparent, GDPR-aligned expectations for early-stage development.</p>
-
-      <div class="q" id="q-4a">
-        <h3>4a. Does SimHealth collect personal or health data?</h3>
-        <p>
-          At this stage, SimHealth collects minimal information (for example, an email address if you subscribe to updates).
-          Any future pilot data collection would be optional, consent-based, and limited to what is necessary for evaluation.
-        </p>
-      </div>
-
-      <div class="q" id="q-4b">
-        <h3>4b. How is data protected?</h3>
-        <p>
-          Data protection is taken seriously. Where applicable, data handling is designed to align with GDPR principles
-          including minimisation, purpose limitation, and user rights. Access is restricted and data use is governed.
-        </p>
-        <p class="muted">
-          For full details, see <a href="/en/legal/privacy/" style="color:var(--text); text-decoration:underline;">Privacy</a>.
-        </p>
-      </div>
-
-      <div class="q" id="q-4c">
-        <h3>4c. Can I delete my data or unsubscribe?</h3>
-        <p>
-          Yes. You can unsubscribe from updates at any time. You can also request deletion of your data by contacting
-          <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
-        </p>
-      </div>
-
-      <div class="q" id="q-4d">
-        <h3>4d. Does SimHealth use AI?</h3>
-        <p>
-          SimHealth may explore AI-assisted features in future, but any such work will be governed conservatively and evaluated appropriately.
-          SimHealth does not provide automated medical decisions, diagnosis, or treatment recommendations.
-        </p>
-      </div>
-
-      <a class="backtop" href="#toc">↑ Back to questions</a>
-    </section>
-
-    <!-- 5. PRACTICAL -->
-    <section class="card faq-card" id="section-5" aria-label="Section 5: Practical">
-      <h2>5. Practical</h2>
-      <p class="intro">How to stay informed, contact the team, and find the policies.</p>
-
-      <div class="q" id="q-5a">
-        <h3>5a. How can I get updates?</h3>
-        <p>
-          You can subscribe to occasional project updates (no spam, unsubscribe any time) on the updates page.
-        </p>
-        <div class="pill-row">
-          <a class="mini-pill" href="/en/patients/updates/">Subscribe to updates</a>
-        </div>
-      </div>
-
-      <div class="q" id="q-5b">
-        <h3>5b. How do I contact SimHealth?</h3>
-        <p>
-          For non-urgent enquiries, use the contact page or email
-          <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
-          This inbox is not monitored as an emergency service.
-        </p>
-        <div class="pill-row">
-          <a class="mini-pill" href="/en/contact/">Open Contact page</a>
-        </div>
-      </div>
-
-      <div class="q" id="q-5c">
-        <h3>5c. Where can I read the policies?</h3>
-        <p>
-          You can find policies in the footer of every page, including Privacy, Terms, Cookies, Accessibility, and the Medical Disclaimer.
-        </p>
-        <div class="pill-row">
-          <a class="mini-pill" href="/en/legal/privacy/">Privacy</a>
-          <a class="mini-pill" href="/en/legal/terms/">Terms</a>
-          <a class="mini-pill" href="/en/legal/cookies/">Cookies</a>
-          <a class="mini-pill" href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
-        </div>
-      </div>
-
-      <a class="backtop" href="#toc">↑ Back to questions</a>
     </section>
 
   </main>
@@ -492,12 +421,10 @@
     </div>
   </footer>
 
-  <!-- Mobile always-visible crisis access (English pages only) -->
   <div class="mobile-crisis" aria-label="Crisis quick access">
     <span class="label">Need help now?</span>
     <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
   </div>
 
 </body>
-</html>
-```0
+  </html>
