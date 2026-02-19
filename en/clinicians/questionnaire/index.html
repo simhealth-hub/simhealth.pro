@@ -1,637 +1,122 @@
-<!doctype html>
-<html lang="en" data-theme="dark">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth | Clinician & Research Questionnaire</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="/assets/styles.css">
-  <script src="/assets/theme.js"></script>
-
-  <style>
-    .status{
-      display:none;
-      margin-top:12px;
-      border-radius:var(--radius-lg);
-      border:1px solid var(--border);
-      padding:12px 14px;
-      line-height:1.5;
-      color:var(--muted);
-    }
-    .status.success{
-      display:block;
-      background:color-mix(in srgb, var(--primary) 18%, transparent);
-      border-color:color-mix(in srgb, var(--primary) 38%, var(--border));
-      color:var(--text);
-    }
-    .status.error{
-      display:block;
-      background:color-mix(in srgb, #ef4444 16%, transparent);
-      border-color:color-mix(in srgb, #ef4444 34%, var(--border));
-      color:var(--text);
-    }
-
-    .field label{ display:block; font-weight:800; margin:14px 0 8px; }
-    .hint{ margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.5; }
-
-    .input, .select, .textarea{
-      width:100%;
-      padding:12px 14px;
-      border-radius:var(--radius-lg);
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--surface) 92%, transparent);
-      color:var(--text);
-      font-size:15px;
-      outline:none;
-    }
-    .textarea{ min-height:120px; resize:vertical; }
-    .input:focus, .select:focus, .textarea:focus{
-      border-color:color-mix(in srgb, var(--primary) 55%, var(--border));
-      background:var(--surface);
-    }
-
-    .consent{
-      margin-top:12px;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-      padding:12px 14px;
-      border-radius:var(--radius-lg);
-      border:1px solid var(--border);
-      background:color-mix(in srgb, var(--text) 4%, transparent);
-      color:var(--muted);
-      line-height:1.45;
-      font-size:14px;
-    }
-    .consent input{ margin-top:3px; }
-
-    .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
-    button.btn-primary{ border:none; cursor:pointer; }
-
-    .two-col{
-      display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:14px;
-      margin-top:8px;
-    }
-    .col-6{ grid-column:span 6; }
-    @media (max-width: 800px){
-      .col-6{ grid-column:span 12; }
-    }
-
-    .divider{ border:none; border-top:1px solid var(--border); margin:18px 0; }
-    .small{ font-size:13px; color:var(--muted); line-height:1.55; }
-
-    .callout{
-      margin-top:12px;
-      padding:12px 14px;
-      border:1px solid var(--border);
-      border-radius:var(--radius-lg);
-      background:color-mix(in srgb, var(--accent) 10%, var(--surface));
-      color:var(--muted);
-      line-height:1.55;
-    }
-
-    /* Country filter helpers */
-    .country-wrap{ position:relative; }
-    .country-search{
-      margin-bottom:10px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="banner">
-    <strong>Healthcare first.</strong> This website is a professional project showcase. If you’re in immediate danger, call your local emergency number now.
-  </div>
-
-  <header class="nav">
-    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
-
-    <button class="nav-toggle" type="button"
-      onclick="SimHealthNav.toggleMenu()"
-      aria-label="Open menu"
-      aria-expanded="false"
-      aria-controls="main-menu">
-      Menu <span class="chev">▾</span>
-    </button>
-
-    <nav class="menu" id="main-menu" aria-label="Main navigation">
-      <a class="link" href="/en/home/">Home</a>
-      <a class="link" href="/en/patients/">Patients</a>
-      <a class="link active" href="/en/clinicians/">Clinicians</a>
-      <a class="link" href="/en/research/">Research</a>
-      <a class="link" href="/en/about/">About</a>
-      <a class="link" href="/en/contact/">Contact</a>
-
-      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
-
-      <div class="lang-toggle" aria-label="Language">
-        <a class="active" href="/en/clinicians/questionnaire/">
-          <span class="lang-full">English</span>
-          <span class="lang-short" aria-hidden="true">English</span>
-        </a>
-        <a href="/fr/cliniciens/questionnaire/">
-          <span class="lang-full">Français</span>
-          <span class="lang-short" aria-hidden="true">Français</span>
-        </a>
-      </div>
-
-      <div class="theme-toggle" role="button" tabindex="0"
-           onclick="SimHealthTheme.toggleTheme()"
-           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
-           aria-label="Toggle theme">
-        <span class="label label-dark">Dark</span>
-        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
-        <span class="label label-light">Light</span>
-      </div>
-    </nav>
-  </header>
-
-  <main class="wrap">
-
-    <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/research.jpg'); background-position:60% center;"></div>
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-        <h1 class="rise-1">Clinician &amp; research questionnaire</h1>
-        <p class="rise-2">
-          A short questionnaire to help shape SimHealth’s pre-pilot direction, governance, and evaluation plan.
-          <br><span style="color:var(--muted); font-size:13px;">For clinicians, researchers, services, and institutions only.</span>
-        </p>
-
-        <div class="hero-actions rise-3">
-          <a class="btn-primary" href="#form">Start questionnaire</a>
-          <a class="btn-secondary" href="/en/clinicians/">Back to Clinicians</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="card" id="form" style="margin-top:16px;">
-      <h2 style="margin:0 0 10px;">Purpose and boundaries</h2>
-
-      <p style="margin:0; color:var(--muted); line-height:1.65;">
-        SimHealth is being developed as a two-sided programme: a clinician portal designed for governance and supervised pathways,
-        and a patient-facing experience designed for structured, time-appropriate support within agreed clinical boundaries.
-        This questionnaire gathers professional input to improve feasibility planning, safety, and clinical usability.
-      </p>
-
-      <p style="margin:10px 0 0; color:var(--muted); line-height:1.65;">
-        SimHealth is in development and is not presented as emergency care, a medical device, or a substitute for clinical judgement.
-        Planned hosting is intended to align with GDPR principles and French health data requirements; final hosting and governance will follow DPIA and partner review.
-      </p>
-
-      <div class="callout">
-        <strong style="color:var(--text);">Important:</strong>
-        Please do not enter patient-identifying information or clinical case details. This form is for professional feedback only.
-        If you need to discuss anything sensitive, use the <a href="/en/contact/" style="color:var(--text); text-decoration:underline;">Contact</a> page instead.
-      </div>
-
-      <form id="qForm" novalidate>
-
-        <hr class="divider">
-
-        <h3 style="margin:0 0 6px;">Professional context</h3>
-        <p class="small" style="margin:0 0 6px;">These questions help interpret responses responsibly.</p>
-
-        <div class="two-col">
-          <div class="col-6">
-            <div class="field">
-              <label for="role">Your primary role</label>
-              <select class="select" id="role" name="role" required>
-                <option value="">Select…</option>
-                <option>Clinician (psychologist / therapist)</option>
-                <option>Psychiatrist</option>
-                <option>GP / primary care</option>
-                <option>Addiction specialist service</option>
-                <option>Researcher / academic</option>
-                <option>Service manager / institution</option>
-                <option>Other</option>
-              </select>
-              <p class="hint">If “Other”, specify below.</p>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="field">
-              <label for="roleOther">If other, please specify (optional)</label>
-              <input class="input" id="roleOther" name="roleOther" type="text" placeholder="e.g., clinical psychologist; commissioner; clinical lead">
-            </div>
-          </div>
-        </div>
-
-        <div class="two-col">
-          <div class="col-6">
-            <div class="field country-wrap">
-              <label for="country">Country / jurisdiction</label>
-
-              <input class="input country-search" id="countrySearch" type="text"
-                     placeholder="Type to filter countries (e.g., f, fra, france)">
-
-              <select class="select" id="country" name="country" required aria-describedby="countryHint">
-                <option value="">Select…</option>
-                <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Andorra</option><option>Angola</option>
-                <option>Antigua and Barbuda</option><option>Argentina</option><option>Armenia</option><option>Australia</option><option>Austria</option>
-                <option>Azerbaijan</option><option>Bahamas</option><option>Bahrain</option><option>Bangladesh</option><option>Barbados</option>
-                <option>Belarus</option><option>Belgium</option><option>Belize</option><option>Benin</option><option>Bhutan</option>
-                <option>Bolivia</option><option>Bosnia and Herzegovina</option><option>Botswana</option><option>Brazil</option><option>Brunei</option>
-                <option>Bulgaria</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Cambodia</option>
-                <option>Cameroon</option><option>Canada</option><option>Central African Republic</option><option>Chad</option><option>Chile</option>
-                <option>China</option><option>Colombia</option><option>Comoros</option><option>Congo</option><option>Costa Rica</option>
-                <option>Cote d’Ivoire</option><option>Croatia</option><option>Cuba</option><option>Cyprus</option><option>Czechia</option>
-                <option>Denmark</option><option>Djibouti</option><option>Dominica</option><option>Dominican Republic</option><option>Ecuador</option>
-                <option>Egypt</option><option>El Salvador</option><option>Equatorial Guinea</option><option>Eritrea</option><option>Estonia</option>
-                <option>Eswatini</option><option>Ethiopia</option><option>Fiji</option><option>Finland</option><option>France</option>
-                <option>Gabon</option><option>Gambia</option><option>Georgia</option><option>Germany</option><option>Ghana</option>
-                <option>Greece</option><option>Grenada</option><option>Guatemala</option><option>Guinea</option><option>Guinea-Bissau</option>
-                <option>Guyana</option><option>Haiti</option><option>Honduras</option><option>Hungary</option><option>Iceland</option>
-                <option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Ireland</option>
-                <option>Israel</option><option>Italy</option><option>Jamaica</option><option>Japan</option><option>Jordan</option>
-                <option>Kazakhstan</option><option>Kenya</option><option>Kiribati</option><option>Kuwait</option><option>Kyrgyzstan</option>
-                <option>Laos</option><option>Latvia</option><option>Lebanon</option><option>Lesotho</option><option>Liberia</option>
-                <option>Libya</option><option>Liechtenstein</option><option>Lithuania</option><option>Luxembourg</option><option>Madagascar</option>
-                <option>Malawi</option><option>Malaysia</option><option>Maldives</option><option>Mali</option><option>Malta</option>
-                <option>Marshall Islands</option><option>Mauritania</option><option>Mauritius</option><option>Mexico</option><option>Micronesia</option>
-                <option>Moldova</option><option>Monaco</option><option>Mongolia</option><option>Montenegro</option><option>Morocco</option>
-                <option>Mozambique</option><option>Myanmar</option><option>Namibia</option><option>Nauru</option><option>Nepal</option>
-                <option>Netherlands</option><option>New Zealand</option><option>Nicaragua</option><option>Niger</option><option>Nigeria</option>
-                <option>North Korea</option><option>North Macedonia</option><option>Norway</option><option>Oman</option><option>Pakistan</option>
-                <option>Palau</option><option>Panama</option><option>Papua New Guinea</option><option>Paraguay</option><option>Peru</option>
-                <option>Philippines</option><option>Poland</option><option>Portugal</option><option>Qatar</option><option>Romania</option>
-                <option>Russia</option><option>Rwanda</option><option>Saint Kitts and Nevis</option><option>Saint Lucia</option>
-                <option>Saint Vincent and the Grenadines</option><option>Samoa</option><option>San Marino</option><option>Sao Tome and Principe</option>
-                <option>Saudi Arabia</option><option>Senegal</option><option>Serbia</option><option>Seychelles</option><option>Sierra Leone</option>
-                <option>Singapore</option><option>Slovakia</option><option>Slovenia</option><option>Solomon Islands</option><option>Somalia</option>
-                <option>South Africa</option><option>South Korea</option><option>South Sudan</option><option>Spain</option><option>Sri Lanka</option>
-                <option>Sudan</option><option>Suriname</option><option>Sweden</option><option>Switzerland</option><option>Syria</option>
-                <option>Taiwan</option><option>Tajikistan</option><option>Tanzania</option><option>Thailand</option><option>Timor-Leste</option>
-                <option>Togo</option><option>Tonga</option><option>Trinidad and Tobago</option><option>Tunisia</option><option>Turkey</option>
-                <option>Turkmenistan</option><option>Tuvalu</option><option>Uganda</option><option>Ukraine</option><option>United Arab Emirates</option>
-                <option>United Kingdom</option><option>United States</option><option>Uruguay</option><option>Uzbekistan</option><option>Vanuatu</option>
-                <option>Venezuela</option><option>Vietnam</option><option>Yemen</option><option>Zambia</option><option>Zimbabwe</option>
-              </select>
-
-              <p class="hint" id="countryHint">Type in the box to filter; then select from the list.</p>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="field">
-              <label for="setting">Primary practice setting (optional)</label>
-              <input class="input" id="setting" name="setting" type="text" placeholder="e.g., hospital; outpatient clinic; NGO; university">
-            </div>
-          </div>
-        </div>
-
-        <hr class="divider">
-
-        <h3 style="margin:0 0 6px;">Current tools and workflow</h3>
-        <p class="small" style="margin:0 0 6px;">These questions help us understand what is already working and where gaps remain.</p>
-
-        <div class="field">
-          <label for="currentTools">Which tools or approaches do you currently use to support patients between sessions?</label>
-          <select class="select" id="currentTools" name="currentTools" required>
-            <option value="">Select the closest option…</option>
-            <option>No structured between-session support</option>
-            <option>Paper-based materials (worksheets; manuals)</option>
-            <option>Email-based resources or PDFs</option>
-            <option>Patient portals linked to electronic health records</option>
-            <option>Telehealth platforms with asynchronous messaging</option>
-            <option>Dedicated digital therapeutics or clinical apps</option>
-            <option>Custom or locally developed digital tools</option>
-            <option>Other (please specify)</option>
-          </select>
-          <p class="hint">If “Other”, use the next field to specify.</p>
-        </div>
-
-        <div class="field">
-          <label for="currentToolsOther">If other, please specify (optional)</label>
-          <input class="input" id="currentToolsOther" name="currentToolsOther" type="text" placeholder="e.g., local portal; structured workbook system; service-specific tooling">
-        </div>
-
-        <div class="field">
-          <label for="worksWell">What aspects of your current approach work well?</label>
-          <textarea class="textarea" id="worksWell" name="worksWell" placeholder="e.g., engagement; oversight; safety; documentation; simplicity" required></textarea>
-        </div>
-
-        <div class="field">
-          <label for="fallsShort">Where do current tools or approaches fall short in practice?</label>
-          <textarea class="textarea" id="fallsShort" name="fallsShort" placeholder="e.g., low adherence; limited visibility; high burden; poor timing; accessibility barriers" required></textarea>
-        </div>
-
-        <hr class="divider">
-
-        <h3 style="margin:0 0 6px;">Engagement, accessibility, continuity</h3>
-        <p class="small" style="margin:0 0 6px;">Focused on practical adoption and patient fit.</p>
-
-        <div class="field">
-          <label for="engagementFactors">Which factor matters most for maintaining engagement between sessions?</label>
-          <select class="select" id="engagementFactors" name="engagementFactors" required>
-            <option value="">Select…</option>
-            <option>Simplicity and ease of use</option>
-            <option>Timing aligned with risk or need</option>
-            <option>Personalisation to patient context</option>
-            <option>Clinician visibility or oversight</option>
-            <option>Accessibility and cognitive load</option>
-            <option>Trust and data protection</option>
-            <option>Integration with existing care</option>
-            <option>Other (please specify)</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="engagementFactorsOther">If other, please specify (optional)</label>
-          <input class="input" id="engagementFactorsOther" name="engagementFactorsOther" type="text" placeholder="Your answer">
-        </div>
-
-        <div class="field">
-          <label for="accessibilityCoverage">Do the tools you currently use account for accessibility or cognitive differences (e.g. ADHD; visual impairment; cognitive load)?</label>
-          <select class="select" id="accessibilityCoverage" name="accessibilityCoverage" required>
-            <option value="">Select…</option>
-            <option>Yes, consistently</option>
-            <option>Partially</option>
-            <option>Rarely</option>
-            <option>Not at all</option>
-            <option>Not applicable / unsure</option>
-          </select>
-          <p class="hint">Accessibility includes visual contrast; pacing; clarity; attention load; and reading effort.</p>
-        </div>
-
-        <div class="field">
-          <label for="adaptiveValue">How valuable would an interface that adapts to individual patient needs (e.g. pacing; visual contrast; attention load) be in your practice?</label>
-          <select class="select" id="adaptiveValue" name="adaptiveValue" required>
-            <option value="">Select…</option>
-            <option>Extremely valuable</option>
-            <option>Moderately valuable</option>
-            <option>Slightly valuable</option>
-            <option>Not valuable</option>
-            <option>Unsure</option>
-          </select>
-        </div>
-
-        <hr class="divider">
-
-        <h3 style="margin:0 0 6px;">Supervised digital support and pilot readiness</h3>
-        <p class="small" style="margin:0 0 6px;">No outcome claims; focused on feasibility and safety-first pilots.</p>
-
-        <div class="field">
-          <label for="helpfulSituations">In which situations could supervised digital support add the most value?</label>
-          <textarea class="textarea" id="helpfulSituations" name="helpfulSituations" placeholder="e.g., between sessions; high-risk moments; structured reflection; skills reinforcement" required></textarea>
-        </div>
-
-        <div class="field">
-          <label for="minimumIndicators">What minimum indicators would you expect from a well-run, supervised pilot?</label>
-          <textarea class="textarea" id="minimumIndicators" name="minimumIndicators" placeholder="e.g., feasibility; safety signals; clinician burden; engagement consistency" required></textarea>
-        </div>
-
-        <div class="field">
-          <label for="risksToMitigate">What risks would need to be carefully mitigated before wider use?</label>
-          <textarea class="textarea" id="risksToMitigate" name="risksToMitigate" placeholder="e.g., unintended harm; over-reliance; workflow disruption; data risk" required></textarea>
-        </div>
-
-        <div class="field">
-          <label for="unacceptable">Are there any features, claims, or uses you would consider unacceptable?</label>
-          <textarea class="textarea" id="unacceptable" name="unacceptable" placeholder="e.g., diagnostic claims; unsupervised deployment; opaque decision-making; lack of clinician oversight" required></textarea>
-        </div>
-
-        <hr class="divider">
-
-        <h3 style="margin:0 0 6px;">Data and governance (high level)</h3>
-        <p class="small" style="margin:0 0 6px;">We keep this brief here; governance details are handled through formal pilot documentation.</p>
-
-        <div class="field">
-          <label for="acceptableData">What types of data collection would be acceptable in a supervised pilot?</label>
-          <textarea class="textarea" id="acceptableData" name="acceptableData" placeholder="e.g., non-identifying usage; opt-in questionnaires; clinician-defined measures" required></textarea>
-        </div>
-
-        <div class="field">
-          <label for="orgExpectations">What governance or oversight would your organisation expect before participation?</label>
-          <textarea class="textarea" id="orgExpectations" name="orgExpectations" placeholder="e.g., ethics review; DPIA; data agreements; oversight; incident reporting process" required></textarea>
-        </div>
-
-        <hr class="divider">
-
-        <h3 style="margin:0 0 6px;">Optional contact and follow-up</h3>
-        <p class="small" style="margin:0 0 6px;">
-          The following fields are optional. They help us clarify responses, understand institutional perspectives, and explore whether a supervised pilot discussion is appropriate.
-          You may submit anonymously.
-        </p>
-
-        <div class="two-col">
-          <div class="col-6">
-            <div class="field">
-              <label for="name">Name (optional)</label>
-              <input class="input" id="name" name="name" type="text" autocomplete="name" placeholder="Your name">
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="field">
-              <label for="org">Organisation (optional)</label>
-              <input class="input" id="org" name="org" type="text" placeholder="Hospital; university; service">
-            </div>
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="email">Email (optional)</label>
-          <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@organisation.org">
-          <p class="hint">Only required if you consent to follow-up or email updates.</p>
-        </div>
-
-        <div class="consent">
-          <input id="consentResearch" name="consentResearch" type="checkbox" required>
-          <label for="consentResearch" style="margin:0;">
-            <strong style="color:var(--text);">Consent (required):</strong>
-            I consent to SimHealth processing my questionnaire responses for the purpose of research planning and project improvement.
-            I understand I should not include patient-identifying information.
-            <div style="margin-top:6px;">
-              Data will be handled in line with the SimHealth <a href="/en/legal/privacy/" style="color:var(--text); text-decoration:underline;">Privacy</a> notice.
-              You can request deletion by emailing <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
-            </div>
-          </label>
-        </div>
-
-        <div class="consent">
-          <input id="consentContact" name="consentContact" type="checkbox">
-          <label for="consentContact" style="margin:0;">
-            <strong style="color:var(--text);">Optional:</strong>
-            You may contact me about my submission (e.g., clarification; governance discussion; pilot planning).
-            <div style="margin-top:6px;">If checked, please provide an email address above.</div>
-          </label>
-        </div>
-
-        <div class="consent">
-          <input id="consentUpdates" name="consentUpdates" type="checkbox">
-          <label for="consentUpdates" style="margin:0;">
-            <strong style="color:var(--text);">Optional:</strong>
-            Send me SimHealth project updates by email. I understand I can unsubscribe at any time.
-            <div style="margin-top:6px;">If checked, please provide an email address above.</div>
-          </label>
-        </div>
-
-        <div class="actions">
-          <button class="btn-primary" type="submit">Submit questionnaire</button>
-          <a class="btn-secondary" href="/en/clinicians/">Back</a>
-        </div>
-
-        <!-- Success/error appears UNDER submit button (as requested) -->
-        <div id="statusBox" class="status" role="status" aria-live="polite"></div>
-
-      </form>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="row">
-      <div>
-        © 2026 SimHealth. All rights reserved. •
-        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
-      </div>
-      <nav aria-label="Footer links">
-        <a href="/sitemap.html">Sitemap</a>
-        <a href="/en/legal/privacy/">Privacy</a>
-        <a href="/en/legal/terms/">Terms</a>
-        <a href="/en/legal/cookies/">Cookies</a>
-        <a href="/en/legal/accessibility/">Accessibility</a>
-        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
-      </nav>
-    </div>
-  </footer>
-
-  <div class="mobile-crisis" aria-label="Crisis quick access">
-    <span class="label">Need help now?</span>
-    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
-  </div>
-
-  <script>
-    // Questionnaire Apps Script Web App URL (your new URL)
-    const ENDPOINT = "https://script.google.com/macros/s/AKfycbxJ1xiM2CKY_H4KQRpcJFqjXXUjWKecK_K8Uyqv4AIgeV2uhj3iNjmNk7iJK9CxRTDQ/exec";
-
-    const form = document.getElementById("qForm");
-    const statusBox = document.getElementById("statusBox");
-
-    function setStatus(type, msg){
-      statusBox.className = "status " + type;
-      statusBox.textContent = msg;
-      statusBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-
-    function isValidEmail(v){
-      const s = (v || "").trim();
-      return s.includes("@") && s.includes(".");
-    }
-
-    // Country filter: type-to-filter the dropdown
-    (function initCountryFilter(){
-      const search = document.getElementById("countrySearch");
-      const select = document.getElementById("country");
-      if(!search || !select) return;
-
-      const allOptions = Array.from(select.options).map(o => ({ value:o.value, text:o.text, disabled:o.disabled }));
-
-      function applyFilter(){
-        const q = (search.value || "").trim().toLowerCase();
-        select.innerHTML = "";
-        allOptions.forEach(opt => {
-          if(opt.disabled){
-            const o = document.createElement("option");
-            o.value = opt.value;
-            o.textContent = opt.text;
-            o.disabled = true;
-            if(opt.value === "") o.selected = true;
-            select.appendChild(o);
-            return;
-          }
-
-          if(!q || opt.text.toLowerCase().includes(q)){
-            const o = document.createElement("option");
-            o.value = opt.text;
-            o.textContent = opt.text;
-            select.appendChild(o);
-          }
-        });
-
-        // If user has typed and there's exactly one match, auto-select it
-        const opts = Array.from(select.options).filter(o => !o.disabled && o.value);
-        if(q && opts.length === 1){
-          select.value = opts[0].value;
+<script>
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbyh4B80uphw60w9GarZSsxfg3zdS0H8dp-QM9MolZhF6wjLsxGR25eHLuyj40JlV42pLw/exec";
+
+  const form = document.getElementById("qForm");
+  const statusBox = document.getElementById("statusBox");
+
+  function setStatus(type, msg){
+    statusBox.className = "status " + type;
+    statusBox.textContent = msg;
+    statusBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function isValidEmail(v){
+    const s = (v || "").trim();
+    return s.includes("@") && s.includes(".");
+  }
+
+  // Country filter: type-to-filter the dropdown
+  (function initCountryFilter(){
+    const search = document.getElementById("countrySearch");
+    const select = document.getElementById("country");
+    if(!search || !select) return;
+
+    const allOptions = Array.from(select.options).map(o => ({ value:o.value, text:o.text, disabled:o.disabled }));
+
+    function applyFilter(){
+      const q = (search.value || "").trim().toLowerCase();
+      select.innerHTML = "";
+      allOptions.forEach(opt => {
+        if(opt.disabled){
+          const o = document.createElement("option");
+          o.value = opt.value;
+          o.textContent = opt.text;
+          o.disabled = true;
+          if(opt.value === "") o.selected = true;
+          select.appendChild(o);
+          return;
         }
+
+        if(!q || opt.text.toLowerCase().includes(q)){
+          const o = document.createElement("option");
+          o.value = opt.text;
+          o.textContent = opt.text;
+          select.appendChild(o);
+        }
+      });
+
+      const opts = Array.from(select.options).filter(o => !o.disabled && o.value);
+      if(q && opts.length === 1){
+        select.value = opts[0].value;
       }
+    }
 
-      search.addEventListener("input", applyFilter);
-    })();
+    search.addEventListener("input", applyFilter);
+  })();
 
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-      if(!ENDPOINT || !ENDPOINT.startsWith("https://script.google.com/macros/s/")){
-        return setStatus("error", "Setup incomplete: endpoint not set.");
-      }
+    if(!ENDPOINT || !ENDPOINT.startsWith("https://script.google.com/macros/s/")){
+      return setStatus("error", "Setup incomplete: endpoint not set.");
+    }
 
-      const data = Object.fromEntries(new FormData(form).entries());
+    const data = Object.fromEntries(new FormData(form).entries());
 
-      // Required consent
-      const consentResearch = !!document.getElementById("consentResearch").checked;
-      if(!consentResearch){
-        return setStatus("error", "Please confirm the required consent checkbox to submit.");
-      }
+    const consentResearch = !!document.getElementById("consentResearch").checked;
+    if(!consentResearch){
+      return setStatus("error", "Please confirm the required consent checkbox to submit.");
+    }
 
-      // If contact/updates checked, email becomes required
-      const wantsContact = !!document.getElementById("consentContact").checked;
-      const wantsUpdates = !!document.getElementById("consentUpdates").checked;
+    const wantsContact = !!document.getElementById("consentContact").checked;
+    const wantsUpdates = !!document.getElementById("consentUpdates").checked;
 
-      const email = (data.email || "").trim().toLowerCase();
-      if((wantsContact || wantsUpdates) && !isValidEmail(email)){
-        return setStatus("error", "Please enter a valid email address if you consent to follow-up or updates.");
-      }
+    const email = (data.email || "").trim().toLowerCase();
+    if((wantsContact || wantsUpdates) && !isValidEmail(email)){
+      return setStatus("error", "Please enter a valid email address if you consent to follow-up or updates.");
+    }
 
-      // Require a real country selection
-      const country = (data.country || "").trim();
-      if(!country){
-        return setStatus("error", "Please select a country / jurisdiction.");
-      }
+    const country = (data.country || "").trim();
+    if(!country){
+      return setStatus("error", "Please select a country / jurisdiction.");
+    }
 
-      const payload = {
-        ...data,
-        email,
-        country,
-        lang: "en",
-        page: "clinicians-questionnaire",
-        consentResearch,
-        consentContact: wantsContact,
-        consentUpdates: wantsUpdates,
-        timestampISO: new Date().toISOString(),
-        referrer: document.referrer || "",
-        userAgent: navigator.userAgent || ""
-      };
+    const payload = {
+      ...data,
+      email,
+      country,
+      lang: "en",
+      page: "clinicians-questionnaire",
+      source: "web-questionnaire",
+      consentResearch,
+      consentContact: wantsContact,
+      consentUpdates: wantsUpdates,
+      timestampISO: new Date().toISOString(),
+      referrer: document.referrer || "",
+      userAgent: navigator.userAgent || ""
+    };
 
-      try {
-        await fetch(ENDPOINT, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        });
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
 
+      const json = await res.json().catch(() => null);
+
+      if(json && json.ok){
         setStatus("success",
           "Thank you. Your response has been submitted. If you requested updates, you will receive emails and can unsubscribe any time."
         );
         form.reset();
-
-      } catch (err) {
-        console.error(err);
-        setStatus("error", "Something went wrong. Please try again, or email contact@simhealth.pro.");
+      } else {
+        setStatus("error", (json && json.message) ? json.message : "Something went wrong. Please try again, or email contact@simhealth.pro.");
       }
-    });
-  </script>
 
-</body>
-</html>
+    } catch (err) {
+      console.error(err);
+      setStatus("error", "Something went wrong. Please try again, or email contact@simhealth.pro.");
+    }
+  });
+</script>
