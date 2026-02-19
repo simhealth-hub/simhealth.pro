@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth — Questionnaire cliniciens & recherche</title>
+  <title>SimHealth | Questionnaire cliniciens et recherche</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
   <style>
     .status{
       display:none;
-      margin-top:14px;
+      margin-top:12px;
       border-radius:var(--radius-lg);
       border:1px solid var(--border);
       padding:12px 14px;
@@ -37,6 +37,7 @@
 
     .field label{ display:block; font-weight:800; margin:14px 0 8px; }
     .hint{ margin:6px 0 0; color:var(--muted); font-size:13px; line-height:1.5; }
+
     .input, .select, .textarea{
       width:100%;
       padding:12px 14px;
@@ -84,13 +85,29 @@
 
     .divider{ border:none; border-top:1px solid var(--border); margin:18px 0; }
     .small{ font-size:13px; color:var(--muted); line-height:1.55; }
+
+    .callout{
+      margin-top:12px;
+      padding:12px 14px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      background:color-mix(in srgb, var(--accent) 10%, var(--surface));
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    /* Filtre pays */
+    .country-wrap{ position:relative; }
+    .country-search{
+      margin-bottom:10px;
+    }
   </style>
 </head>
 
 <body>
 
   <div class="banner">
-    <strong>Priorité à la santé.</strong> Ce site est une vitrine professionnelle. En cas de danger immédiat, appelez votre numéro d’urgence local.
+    <strong>Priorité santé.</strong> Ce site est une vitrine professionnelle. En cas de danger immédiat, appelez votre numéro d’urgence local.
   </div>
 
   <header class="nav">
@@ -139,138 +156,274 @@
   <main class="wrap">
 
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/research.jpg'); background-position: 60% center;"></div>
+      <div class="hero-bg" style="background-image:url('/assets/research.jpg'); background-position:60% center;"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <h1 class="rise-1">Questionnaire cliniciens &amp; recherche</h1>
+        <h1 class="rise-1">Questionnaire cliniciens et recherche</h1>
         <p class="rise-2">
-          Un court questionnaire pour orienter SimHealth (pré-pilote) : design, gouvernance et plan d’évaluation.
+          Un court questionnaire pour orienter la phase pré-pilote de SimHealth, la gouvernance et le plan d’évaluation.
           <br><span style="color:var(--muted); font-size:13px;">Réservé aux clinicien·ne·s, chercheur·euse·s, services et institutions.</span>
         </p>
 
         <div class="hero-actions rise-3">
-          <a class="btn-primary" href="#form">Commencer</a>
+          <a class="btn-primary" href="#form">Commencer le questionnaire</a>
           <a class="btn-secondary" href="/fr/cliniciens/">Retour à Cliniciens</a>
         </div>
       </div>
     </section>
 
     <section class="card" id="form" style="margin-top:16px;">
-      <h2 style="margin:0 0 10px;">Objectif & limites</h2>
+      <h2 style="margin:0 0 10px;">Objectif et limites</h2>
 
       <p style="margin:0; color:var(--muted); line-height:1.65;">
-        Ce questionnaire sert à recueillir des retours professionnels pour améliorer le projet (design, gouvernance, préparation à la recherche).
-        SimHealth est en développement et n’est pas présenté comme une prise en charge d’urgence, un dispositif médical, ni un substitut au jugement clinique.
+        SimHealth est développé comme un programme à deux volets : un portail clinicien orienté gouvernance et parcours supervisés,
+        et une expérience côté patient conçue pour un soutien structuré, au bon moment, dans des limites cliniques convenues.
+        Ce questionnaire recueille des retours professionnels afin d’améliorer la faisabilité, la sécurité et l’utilisabilité clinique.
       </p>
 
-      <div style="margin-top:12px; padding:12px 14px; border:1px solid var(--border); border-radius:var(--radius-lg); background:color-mix(in srgb, var(--accent) 10%, var(--surface));">
-        <p style="margin:0; color:var(--muted); line-height:1.55;">
-          <strong style="color:var(--text);">Important :</strong>
-          Merci de ne pas saisir d’informations permettant d’identifier un patient, ni de détails de cas clinique.
-          Pour tout sujet sensible, utilisez plutôt la page <a href="/fr/contact/" style="color:var(--text); text-decoration:underline;">Contact</a>.
-        </p>
-      </div>
+      <p style="margin:10px 0 0; color:var(--muted); line-height:1.65;">
+        SimHealth est en développement et n’est pas présenté comme un service d’urgence, un dispositif médical,
+        ni un substitut au jugement clinique. L’hébergement envisagé vise l’alignement avec les principes du RGPD
+        et les exigences françaises relatives aux données de santé ; l’hébergement et la gouvernance finaux seront définis
+        via une DPIA et la revue des partenaires.
+      </p>
 
-      <div id="statusBox" class="status" role="status" aria-live="polite"></div>
+      <div class="callout">
+        <strong style="color:var(--text);">Important :</strong>
+        Merci de ne pas saisir d’informations permettant d’identifier un patient, ni de détails de cas clinique.
+        Ce formulaire est réservé à des retours professionnels. Pour tout sujet sensible, utilisez la page
+        <a href="/fr/contact/" style="color:var(--text); text-decoration:underline;">Contact</a>.
+      </div>
 
       <form id="qForm" novalidate>
 
-        <h3 style="margin:18px 0 6px;">Contexte professionnel</h3>
-        <p class="small" style="margin:0 0 6px;">Ces questions permettent d’interpréter les réponses de façon responsable.</p>
+        <hr class="divider">
+
+        <h3 style="margin:0 0 6px;">Contexte professionnel</h3>
+        <p class="small" style="margin:0 0 6px;">Ces questions permettent d’interpréter les réponses de manière responsable.</p>
 
         <div class="two-col">
           <div class="col-6">
             <div class="field">
-              <label for="role">1a) Votre rôle principal</label>
+              <label for="role">Votre rôle principal</label>
               <select class="select" id="role" name="role" required>
                 <option value="">Sélectionner…</option>
-                <option>Clinicien·ne (psychologue/therapeute)</option>
+                <option>Clinicien·ne (psychologue / thérapeute)</option>
                 <option>Psychiatre</option>
                 <option>Médecin généraliste / soins primaires</option>
-                <option>Service spécialisé addictions</option>
-                <option>Chercheur·euse / académique</option>
+                <option>Service spécialisé addictologie</option>
+                <option>Chercheur·euse / universitaire</option>
                 <option>Responsable de service / institution</option>
                 <option>Autre</option>
               </select>
-              <p class="hint">Si “Autre”, préciser ci-dessous.</p>
+              <p class="hint">Si “Autre”, précisez ci-dessous.</p>
             </div>
           </div>
 
           <div class="col-6">
             <div class="field">
-              <label for="roleOther">1b) Si autre, précisez (optionnel)</label>
-              <input class="input" id="roleOther" name="roleOther" type="text" placeholder="Ex : psychologue clinicien / direction">
+              <label for="roleOther">Si autre, précisez (optionnel)</label>
+              <input class="input" id="roleOther" name="roleOther" type="text" placeholder="ex : psychologue clinicien·ne ; responsable ; direction médicale">
             </div>
           </div>
         </div>
 
         <div class="two-col">
           <div class="col-6">
-            <div class="field">
-              <label for="country">1c) Pays / juridiction</label>
-              <input class="input" id="country" name="country" type="text" placeholder="Ex : France / UK / USA" required>
+            <div class="field country-wrap">
+              <label for="country">Pays / juridiction</label>
+
+              <input class="input country-search" id="countrySearch" type="text"
+                     placeholder="Tapez pour filtrer les pays (ex : f, fra, france)">
+
+              <select class="select" id="country" name="country" required aria-describedby="countryHint">
+                <option value="">Sélectionner…</option>
+                <option>Afghanistan</option><option>Albanie</option><option>Algérie</option><option>Andorre</option><option>Angola</option>
+                <option>Antigua-et-Barbuda</option><option>Argentine</option><option>Arménie</option><option>Australie</option><option>Autriche</option>
+                <option>Azerbaïdjan</option><option>Bahamas</option><option>Bahreïn</option><option>Bangladesh</option><option>Barbade</option>
+                <option>Bélarus</option><option>Belgique</option><option>Belize</option><option>Bénin</option><option>Bhoutan</option>
+                <option>Bolivie</option><option>Bosnie-Herzégovine</option><option>Botswana</option><option>Brésil</option><option>Brunei</option>
+                <option>Bulgarie</option><option>Burkina Faso</option><option>Burundi</option><option>Cap-Vert</option><option>Cambodge</option>
+                <option>Cameroun</option><option>Canada</option><option>République centrafricaine</option><option>Tchad</option><option>Chili</option>
+                <option>Chine</option><option>Colombie</option><option>Comores</option><option>Congo</option><option>Costa Rica</option>
+                <option>Côte d’Ivoire</option><option>Croatie</option><option>Cuba</option><option>Chypre</option><option>Tchéquie</option>
+                <option>Danemark</option><option>Djibouti</option><option>Dominique</option><option>République dominicaine</option><option>Équateur</option>
+                <option>Égypte</option><option>Salvador</option><option>Guinée équatoriale</option><option>Érythrée</option><option>Estonie</option>
+                <option>Eswatini</option><option>Éthiopie</option><option>Fidji</option><option>Finlande</option><option>France</option>
+                <option>Gabon</option><option>Gambie</option><option>Géorgie</option><option>Allemagne</option><option>Ghana</option>
+                <option>Grèce</option><option>Grenade</option><option>Guatemala</option><option>Guinée</option><option>Guinée-Bissau</option>
+                <option>Guyana</option><option>Haïti</option><option>Honduras</option><option>Hongrie</option><option>Islande</option>
+                <option>Inde</option><option>Indonésie</option><option>Iran</option><option>Irak</option><option>Irlande</option>
+                <option>Israël</option><option>Italie</option><option>Jamaïque</option><option>Japon</option><option>Jordanie</option>
+                <option>Kazakhstan</option><option>Kenya</option><option>Kiribati</option><option>Koweït</option><option>Kirghizistan</option>
+                <option>Laos</option><option>Lettonie</option><option>Liban</option><option>Lesotho</option><option>Libéria</option>
+                <option>Libye</option><option>Liechtenstein</option><option>Lituanie</option><option>Luxembourg</option><option>Madagascar</option>
+                <option>Malawi</option><option>Malaisie</option><option>Maldives</option><option>Mali</option><option>Malte</option>
+                <option>Îles Marshall</option><option>Mauritanie</option><option>Maurice</option><option>Mexique</option><option>Micronésie</option>
+                <option>Moldavie</option><option>Monaco</option><option>Mongolie</option><option>Monténégro</option><option>Maroc</option>
+                <option>Mozambique</option><option>Myanmar</option><option>Namibie</option><option>Nauru</option><option>Népal</option>
+                <option>Pays-Bas</option><option>Nouvelle-Zélande</option><option>Nicaragua</option><option>Niger</option><option>Nigeria</option>
+                <option>Corée du Nord</option><option>Macédoine du Nord</option><option>Norvège</option><option>Oman</option><option>Pakistan</option>
+                <option>Palaos</option><option>Panama</option><option>Papouasie-Nouvelle-Guinée</option><option>Paraguay</option><option>Pérou</option>
+                <option>Philippines</option><option>Pologne</option><option>Portugal</option><option>Qatar</option><option>Roumanie</option>
+                <option>Russie</option><option>Rwanda</option><option>Saint-Kitts-et-Nevis</option><option>Sainte-Lucie</option>
+                <option>Saint-Vincent-et-les-Grenadines</option><option>Samoa</option><option>Saint-Marin</option><option>Sao Tomé-et-Principe</option>
+                <option>Arabie saoudite</option><option>Sénégal</option><option>Serbie</option><option>Seychelles</option><option>Sierra Leone</option>
+                <option>Singapour</option><option>Slovaquie</option><option>Slovénie</option><option>Îles Salomon</option><option>Somalie</option>
+                <option>Afrique du Sud</option><option>Corée du Sud</option><option>Soudan du Sud</option><option>Espagne</option><option>Sri Lanka</option>
+                <option>Soudan</option><option>Suriname</option><option>Suède</option><option>Suisse</option><option>Syrie</option>
+                <option>Taïwan</option><option>Tadjikistan</option><option>Tanzanie</option><option>Thaïlande</option><option>Timor oriental</option>
+                <option>Togo</option><option>Tonga</option><option>Trinité-et-Tobago</option><option>Tunisie</option><option>Turquie</option>
+                <option>Turkménistan</option><option>Tuvalu</option><option>Ouganda</option><option>Ukraine</option><option>Émirats arabes unis</option>
+                <option>Royaume-Uni</option><option>États-Unis</option><option>Uruguay</option><option>Ouzbékistan</option><option>Vanuatu</option>
+                <option>Venezuela</option><option>Vietnam</option><option>Yémen</option><option>Zambie</option><option>Zimbabwe</option>
+              </select>
+
+              <p class="hint" id="countryHint">Tapez dans le champ pour filtrer, puis sélectionnez dans la liste.</p>
             </div>
           </div>
 
           <div class="col-6">
             <div class="field">
-              <label for="setting">1d) Cadre principal (optionnel)</label>
-              <input class="input" id="setting" name="setting" type="text" placeholder="Ex : hôpital, consultation, association, université">
+              <label for="setting">Cadre principal d’exercice (optionnel)</label>
+              <input class="input" id="setting" name="setting" type="text" placeholder="ex : hôpital ; consultation externe ; association ; université">
             </div>
           </div>
         </div>
 
         <hr class="divider">
 
-        <h3 style="margin:0 0 6px;">Cas d’usage & limites</h3>
-        <p class="small" style="margin:0 0 6px;">Centré sur des pilotes supervisés, “sécurité d’abord”.</p>
+        <h3 style="margin:0 0 6px;">Outils actuels et organisation</h3>
+        <p class="small" style="margin:0 0 6px;">Ces questions visent à comprendre ce qui fonctionne déjà et les limites rencontrées.</p>
 
         <div class="field">
-          <label for="useCase">2a) Selon vous, où un soutien numérique supervisé serait-il le plus utile ?</label>
-          <textarea class="textarea" id="useCase" name="useCase" placeholder="Ex : entre les séances, moments à risque, réflexion structurée…" required></textarea>
+          <label for="currentTools">Quels outils ou approches utilisez-vous actuellement pour soutenir les patient·e·s entre les séances ?</label>
+          <select class="select" id="currentTools" name="currentTools" required>
+            <option value="">Sélectionner l’option la plus proche…</option>
+            <option>Aucun support structuré entre les séances</option>
+            <option>Supports papier (fiches ; exercices ; manuels)</option>
+            <option>Ressources par email ou PDF</option>
+            <option>Portail patient lié au dossier médical</option>
+            <option>Plateforme de téléconsultation avec messagerie asynchrone</option>
+            <option>Application clinique ou thérapie numérique dédiée</option>
+            <option>Outil numérique développé localement / sur mesure</option>
+            <option>Autre (à préciser)</option>
+          </select>
+          <p class="hint">Si “Autre”, précisez dans le champ suivant.</p>
         </div>
 
         <div class="field">
-          <label for="redLines">2b) Quelles sont vos “lignes rouges” (fonctionnalités/communications inacceptables) ?</label>
-          <textarea class="textarea" id="redLines" name="redLines" placeholder="Ex : promesses de diagnostic, déploiement non supervisé, nudges risqués…" required></textarea>
-        </div>
-
-        <hr class="divider">
-
-        <h3 style="margin:0 0 6px;">Pilote & évaluation</h3>
-        <p class="small" style="margin:0 0 6px;">Aucune promesse d’efficacité : préparation à l’évaluation uniquement.</p>
-
-        <div class="field">
-          <label for="pilotSignals">3a) Quels “signaux minimum” attendez-vous d’un pilote supervisé ?</label>
-          <textarea class="textarea" id="pilotSignals" name="pilotSignals" placeholder="Ex : faisabilité, signaux de sécurité, charge clinicien, engagement…" required></textarea>
+          <label for="currentToolsOther">Si autre, précisez (optionnel)</label>
+          <input class="input" id="currentToolsOther" name="currentToolsOther" type="text" placeholder="ex : portail local ; protocole de fiches ; outil interne au service">
         </div>
 
         <div class="field">
-          <label for="risks">3b) Quels risques principaux faut-il réduire en priorité ?</label>
-          <textarea class="textarea" id="risks" name="risks" placeholder="Ex : risques d’effets indésirables, dépendance au numérique, risques data…" required></textarea>
-        </div>
-
-        <hr class="divider">
-
-        <h3 style="margin:0 0 6px;">Données, confidentialité & gouvernance</h3>
-        <p class="small" style="margin:0 0 6px;">Conçu pour être optionnel, fondé sur le consentement, et minimisé.</p>
-
-        <div class="field">
-          <label for="dataComfort">4a) Quelles données (si besoin) seraient acceptables dans un pilote ?</label>
-          <textarea class="textarea" id="dataComfort" name="dataComfort" placeholder="Ex : événements d’usage, questionnaires opt-in, métriques non identifiantes…" required></textarea>
+          <label for="worksWell">Quels éléments de votre approche actuelle fonctionnent bien ?</label>
+          <textarea class="textarea" id="worksWell" name="worksWell" placeholder="ex : engagement ; supervision ; sécurité ; documentation ; simplicité" required></textarea>
         </div>
 
         <div class="field">
-          <label for="governance">4b) Quelles exigences de gouvernance votre institution attendrait-elle ?</label>
-          <textarea class="textarea" id="governance" name="governance" placeholder="Ex : DPIA/AIPD, comité d’éthique, accords de traitement, supervision…" required></textarea>
+          <label for="fallsShort">Quelles limites rencontrez-vous avec les outils ou approches actuels en pratique ?</label>
+          <textarea class="textarea" id="fallsShort" name="fallsShort" placeholder="ex : faible adhésion ; visibilité limitée ; charge élevée ; mauvais timing ; barrières d’accessibilité" required></textarea>
         </div>
 
         <hr class="divider">
 
-        <h3 style="margin:0 0 6px;">Contact optionnel</h3>
+        <h3 style="margin:0 0 6px;">Engagement, accessibilité, continuité</h3>
+        <p class="small" style="margin:0 0 6px;">Centré sur l’adoption concrète et l’adéquation aux besoins.</p>
+
+        <div class="field">
+          <label for="engagementFactors">Quel facteur compte le plus pour maintenir l’engagement entre les séances ?</label>
+          <select class="select" id="engagementFactors" name="engagementFactors" required>
+            <option value="">Sélectionner…</option>
+            <option>Simplicité et facilité d’usage</option>
+            <option>Timing aligné avec le risque ou le besoin</option>
+            <option>Personnalisation au contexte du patient</option>
+            <option>Visibilité ou supervision clinicienne</option>
+            <option>Accessibilité et charge cognitive</option>
+            <option>Confiance et protection des données</option>
+            <option>Intégration au parcours existant</option>
+            <option>Autre (à préciser)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="engagementFactorsOther">Si autre, précisez (optionnel)</label>
+          <input class="input" id="engagementFactorsOther" name="engagementFactorsOther" type="text" placeholder="Votre réponse">
+        </div>
+
+        <div class="field">
+          <label for="accessibilityCoverage">Vos outils actuels prennent-ils en compte des besoins d’accessibilité ou des différences cognitives (ex : TDAH ; déficience visuelle ; charge cognitive) ?</label>
+          <select class="select" id="accessibilityCoverage" name="accessibilityCoverage" required>
+            <option value="">Sélectionner…</option>
+            <option>Oui, de façon systématique</option>
+            <option>Partiellement</option>
+            <option>Rarement</option>
+            <option>Pas du tout</option>
+            <option>Non applicable / je ne sais pas</option>
+          </select>
+          <p class="hint">L’accessibilité inclut le contraste visuel, le rythme, la clarté, l’attention requise et l’effort de lecture.</p>
+        </div>
+
+        <div class="field">
+          <label for="adaptiveValue">Quelle serait, dans votre pratique, la valeur d’une interface capable de s’adapter aux besoins individuels (ex : rythme ; contraste ; charge attentionnelle) ?</label>
+          <select class="select" id="adaptiveValue" name="adaptiveValue" required>
+            <option value="">Sélectionner…</option>
+            <option>Très forte valeur</option>
+            <option>Valeur modérée</option>
+            <option>Faible valeur</option>
+            <option>Aucune valeur</option>
+            <option>Je ne sais pas</option>
+          </select>
+        </div>
+
+        <hr class="divider">
+
+        <h3 style="margin:0 0 6px;">Soutien numérique supervisé et préparation pilote</h3>
+        <p class="small" style="margin:0 0 6px;">Sans allégations d’efficacité ; focalisé sur faisabilité et sécurité.</p>
+
+        <div class="field">
+          <label for="helpfulSituations">Dans quelles situations un soutien numérique supervisé pourrait-il apporter le plus de valeur ?</label>
+          <textarea class="textarea" id="helpfulSituations" name="helpfulSituations" placeholder="ex : entre séances ; moments à risque ; réflexion structurée ; renforcement des compétences" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="minimumIndicators">Quels indicateurs minimum attendez-vous d’un pilote supervisé bien mené ?</label>
+          <textarea class="textarea" id="minimumIndicators" name="minimumIndicators" placeholder="ex : faisabilité ; signaux de sécurité ; charge clinicienne ; engagement" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="risksToMitigate">Quels risques doivent être gérés avec une grande prudence avant un usage plus large ?</label>
+          <textarea class="textarea" id="risksToMitigate" name="risksToMitigate" placeholder="ex : dommages involontaires ; sur-dépendance ; perturbation du flux clinique ; risques data" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="unacceptable">Y a-t-il des fonctionnalités, allégations ou usages que vous jugeriez inacceptables ?</label>
+          <textarea class="textarea" id="unacceptable" name="unacceptable" placeholder="ex : allégations diagnostiques ; diffusion sans supervision ; décision opaque ; absence d’encadrement" required></textarea>
+        </div>
+
+        <hr class="divider">
+
+        <h3 style="margin:0 0 6px;">Données et gouvernance (haut niveau)</h3>
+        <p class="small" style="margin:0 0 6px;">Ici, nous restons volontairement synthétiques ; les détails sont traités via la documentation pilote.</p>
+
+        <div class="field">
+          <label for="acceptableData">Quels types de collecte de données seraient acceptables dans un pilote supervisé ?</label>
+          <textarea class="textarea" id="acceptableData" name="acceptableData" placeholder="ex : usage non identifiant ; questionnaires opt-in ; mesures définies par le clinicien" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="orgExpectations">Quelles exigences de gouvernance ou de supervision votre organisation attendrait-elle avant de participer ?</label>
+          <textarea class="textarea" id="orgExpectations" name="orgExpectations" placeholder="ex : comité d’éthique ; DPIA ; accords de traitement ; supervision ; signalement d’incidents" required></textarea>
+        </div>
+
+        <hr class="divider">
+
+        <h3 style="margin:0 0 6px;">Contact optionnel et suivi</h3>
         <p class="small" style="margin:0 0 6px;">
-          Vous pouvez répondre de façon anonyme. Si vous fournissez des coordonnées, elles ne seront utilisées que selon votre consentement ci-dessous.
+          Les champs suivants sont optionnels. Ils nous aident à clarifier certaines réponses, comprendre les contextes institutionnels,
+          et évaluer si une discussion pilote supervisée est pertinente. Vous pouvez répondre de manière anonyme.
         </p>
 
         <div class="two-col">
@@ -284,7 +437,7 @@
           <div class="col-6">
             <div class="field">
               <label for="org">Organisation (optionnel)</label>
-              <input class="input" id="org" name="org" type="text" placeholder="Hôpital / université / service">
+              <input class="input" id="org" name="org" type="text" placeholder="Hôpital ; université ; service">
             </div>
           </div>
         </div>
@@ -292,18 +445,20 @@
         <div class="field">
           <label for="email">Email (optionnel)</label>
           <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="vous@organisation.org">
-          <p class="hint">Nécessaire uniquement si vous acceptez d’être recontacté·e ou de recevoir des actualités.</p>
+          <p class="hint">Requis uniquement si vous acceptez un suivi ou des emails d’actualités.</p>
         </div>
 
         <div class="consent">
           <input id="consentResearch" name="consentResearch" type="checkbox" required>
           <label for="consentResearch" style="margin:0;">
             <strong style="color:var(--text);">Consentement (obligatoire) :</strong>
-            J’accepte que SimHealth traite mes réponses à des fins de préparation de recherche et d’amélioration du projet.
-            Je comprends que je ne dois pas inclure d’informations identifiantes.
+            J’accepte que SimHealth traite mes réponses pour la planification de la recherche et l’amélioration du projet.
+            Je comprends que je ne dois pas inclure d’informations permettant d’identifier un patient.
             <div style="margin-top:6px;">
-              Traitement conforme à la page <a href="/fr/legal/confidentialite/" style="color:var(--text); text-decoration:underline;">Confidentialité</a>.
-              Vous pouvez demander la suppression en écrivant à <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
+              Les données seront traitées conformément à la page
+              <a href="/fr/legal/confidentialite/" style="color:var(--text); text-decoration:underline;">Confidentialité</a>.
+              Vous pouvez demander la suppression en écrivant à
+              <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
             </div>
           </label>
         </div>
@@ -312,8 +467,8 @@
           <input id="consentContact" name="consentContact" type="checkbox">
           <label for="consentContact" style="margin:0;">
             <strong style="color:var(--text);">Optionnel :</strong>
-            Vous pouvez me recontacter au sujet de ma réponse (ex : précisions, discussion pilote/gouvernance).
-            <div style="margin-top:6px;">Si coché, merci d’indiquer un email ci-dessus.</div>
+            Vous pouvez me contacter au sujet de ma réponse (ex : clarification, discussion gouvernance, préparation pilote).
+            <div style="margin-top:6px;">Si coché, merci d’indiquer une adresse email ci-dessus.</div>
           </label>
         </div>
 
@@ -321,8 +476,8 @@
           <input id="consentUpdates" name="consentUpdates" type="checkbox">
           <label for="consentUpdates" style="margin:0;">
             <strong style="color:var(--text);">Optionnel :</strong>
-            Je souhaite recevoir les actualités SimHealth par email. Je comprends que je peux me désinscrire à tout moment.
-            <div style="margin-top:6px;">Si coché, merci d’indiquer un email ci-dessus.</div>
+            M’envoyer des actualités du projet SimHealth par email. Je comprends que je peux me désinscrire à tout moment.
+            <div style="margin-top:6px;">Si coché, merci d’indiquer une adresse email ci-dessus.</div>
           </label>
         </div>
 
@@ -331,10 +486,8 @@
           <a class="btn-secondary" href="/fr/cliniciens/">Retour</a>
         </div>
 
-        <p class="small" style="margin:14px 0 0;">
-          Si vous avez besoin d’aide immédiate, utilisez <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">Ressources d’aide</a>.
-          Ce questionnaire n’est pas un service d’urgence et n’est pas surveillé en continu.
-        </p>
+        <!-- Statut sous le bouton -->
+        <div id="statusBox" class="status" role="status" aria-live="polite"></div>
 
       </form>
     </section>
@@ -364,8 +517,8 @@
   </div>
 
   <script>
-    // ✅ Remplacer avec l’URL Web App Apps Script (nouveau questionnaire)
-    const ENDPOINT = "PASTE_YOUR_NEW_QUESTIONNAIRE_WEB_APP_URL_HERE";
+    // URL du Web App Apps Script (le même endpoint que l’EN)
+    const ENDPOINT = "https://script.google.com/macros/s/AKfycbxJ1xiM2CKY_H4KQRpcJFqjXXUjWKecK_K8Uyqv4AIgeV2uhj3iNjmNk7iJK9CxRTDQ/exec";
 
     const form = document.getElementById("qForm");
     const statusBox = document.getElementById("statusBox");
@@ -381,10 +534,49 @@
       return s.includes("@") && s.includes(".");
     }
 
+    // Filtre pays : saisie pour filtrer la liste
+    (function initCountryFilter(){
+      const search = document.getElementById("countrySearch");
+      const select = document.getElementById("country");
+      if(!search || !select) return;
+
+      const allOptions = Array.from(select.options).map(o => ({ value:o.value, text:o.text, disabled:o.disabled }));
+
+      function applyFilter(){
+        const q = (search.value || "").trim().toLowerCase();
+        select.innerHTML = "";
+        allOptions.forEach(opt => {
+          if(opt.disabled){
+            const o = document.createElement("option");
+            o.value = opt.value;
+            o.textContent = opt.text;
+            o.disabled = true;
+            if(opt.value === "") o.selected = true;
+            select.appendChild(o);
+            return;
+          }
+
+          if(!q || opt.text.toLowerCase().includes(q)){
+            const o = document.createElement("option");
+            o.value = opt.text;
+            o.textContent = opt.text;
+            select.appendChild(o);
+          }
+        });
+
+        const opts = Array.from(select.options).filter(o => !o.disabled && o.value);
+        if(q && opts.length === 1){
+          select.value = opts[0].value;
+        }
+      }
+
+      search.addEventListener("input", applyFilter);
+    })();
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      if(!ENDPOINT || ENDPOINT.includes("https://script.google.com/macros/s/AKfycbwd5M0sYeVCDTFqEDsG_egjZZazDDQr8bx06cqTuqm8XmA3WvjHv5-tTi0iYbCxHDCnmg/exec")){
+      if(!ENDPOINT || !ENDPOINT.startsWith("https://script.google.com/macros/s/")){
         return setStatus("error", "Configuration incomplète : endpoint non défini.");
       }
 
@@ -392,20 +584,26 @@
 
       const consentResearch = !!document.getElementById("consentResearch").checked;
       if(!consentResearch){
-        return setStatus("error", "Veuillez confirmer le consentement obligatoire pour envoyer.");
+        return setStatus("error", "Veuillez cocher le consentement obligatoire pour envoyer le questionnaire.");
       }
 
       const wantsContact = !!document.getElementById("consentContact").checked;
       const wantsUpdates = !!document.getElementById("consentUpdates").checked;
-      const email = (data.email || "").trim().toLowerCase();
 
+      const email = (data.email || "").trim().toLowerCase();
       if((wantsContact || wantsUpdates) && !isValidEmail(email)){
-        return setStatus("error", "Veuillez saisir une adresse email valide si vous acceptez le contact ou les actualités.");
+        return setStatus("error", "Veuillez saisir une adresse email valide si vous acceptez un suivi ou des actualités.");
+      }
+
+      const country = (data.country || "").trim();
+      if(!country){
+        return setStatus("error", "Veuillez sélectionner un pays / une juridiction.");
       }
 
       const payload = {
         ...data,
         email,
+        country,
         lang: "fr",
         page: "cliniciens-questionnaire",
         consentResearch,
@@ -425,16 +623,16 @@
         });
 
         setStatus("success",
-          "Merci — votre réponse a bien été envoyée. Si vous avez demandé les actualités, vous recevrez des emails et pourrez vous désinscrire à tout moment."
+          "Merci. Votre réponse a bien été envoyée. Si vous avez demandé des actualités, vous recevrez des emails et pourrez vous désinscrire à tout moment."
         );
         form.reset();
 
       } catch (err) {
         console.error(err);
-        setStatus("error", "Une erreur est survenue. Réessayez, ou écrivez à contact@simhealth.pro.");
+        setStatus("error", "Une erreur est survenue. Réessayez ou écrivez à contact@simhealth.pro.");
       }
     });
   </script>
 
 </body>
-  </html>
+</html>
