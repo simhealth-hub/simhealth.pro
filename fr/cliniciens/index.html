@@ -35,26 +35,90 @@
     .card-tile p{ margin:0 0 12px; color:var(--muted); line-height:1.55; }
     .actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
 
-    .notice{
+    .trustbar{
       margin-top:14px;
-      background: color-mix(in srgb, var(--warn) 12%, transparent);
-      border: 1px solid color-mix(in srgb, var(--warn) 28%, transparent);
-      border-radius: var(--radius-lg);
-      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 12px 14px;
+      background: color-mix(in srgb, var(--text) 4%, transparent);
       color: var(--muted);
       line-height: 1.55;
     }
-    .notice strong{ color: var(--text); }
+    .trustbar strong{ color: var(--text); }
 
-    .list{
-      margin:10px 0 0;
-      padding-left:18px;
+    .mini-links{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size:14px;
+    }
+    .mini-links a{
       color:var(--muted);
-      line-height:1.7;
+      text-decoration:none;
+    }
+    .mini-links a:hover{
+      color:var(--text);
+      text-decoration:underline;
     }
 
+    .steps{
+      margin-top:16px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      background:color-mix(in srgb, var(--surface) 92%, transparent);
+      padding:14px;
+    }
+    .steps-row{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:12px;
+      margin-top:10px;
+    }
+    .step{
+      grid-column:span 4;
+      border:1px solid var(--border);
+      border-radius:var(--radius-lg);
+      padding:12px;
+      background:var(--surface);
+    }
+    .step .k{
+      font-size:13px;
+      font-weight:800;
+      color:var(--muted);
+      margin-bottom:6px;
+    }
+    .step h3{
+      margin:0 0 6px;
+      font-size:16px;
+    }
+    .step p{
+      margin:0;
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.55;
+    }
+
+    .underhood{
+      margin-top:16px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      padding:16px;
+      background:color-mix(in srgb, var(--accent) 10%, var(--surface));
+    }
+    .underhood h2{ margin:0 0 10px; font-size:18px; }
+    .underhood p{ margin:0; color:var(--muted); line-height:1.65; }
+    .underhood ul{
+      margin:10px 0 0 18px;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
+    @media (max-width: 900px){
+      .step{ grid-column:span 12; }
+    }
     @media (max-width: 800px){
-      .card-tile{ grid-column: span 12; }
+      .card-tile{ grid-column:span 12; }
     }
   </style>
 </head>
@@ -62,13 +126,13 @@
 <body>
 
   <div class="banner">
-    <strong>Priorité à la santé.</strong> SimHealth est une vitrine professionnelle du projet. En cas de danger immédiat, appelez votre numéro d’urgence local.
+    <strong>Priorité à la santé.</strong>
+    SimHealth est une vitrine professionnelle du projet. En cas de danger immédiat, appelez votre numéro d’urgence local.
   </div>
 
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
 
-    <!-- Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
       aria-label="Ouvrir le menu"
@@ -83,7 +147,7 @@
       <a class="link active" href="/fr/cliniciens/">Cliniciens</a>
       <a class="link" href="/fr/recherche/">Recherche</a>
       <a class="link" href="/fr/a-propos/">À propos</a>
-     <a class="link" href="/fr/faq/">FAQ</a>
+      <a class="link" href="/fr/faq/">FAQ</a>
       <a class="link" href="/fr/contact/">Contact</a>
 
       <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
@@ -91,20 +155,20 @@
       <div class="lang-toggle" aria-label="Langue">
         <a href="/en/clinicians/">
           <span class="lang-full">English</span>
-          <span class="lang-short" aria-hidden="true">EN</span>
+          <span class="lang-short">EN</span>
         </a>
         <a class="active" href="/fr/cliniciens/">
           <span class="lang-full">Français</span>
-          <span class="lang-short" aria-hidden="true">FR</span>
+          <span class="lang-short">FR</span>
         </a>
       </div>
 
       <div class="theme-toggle" role="button" tabindex="0"
-           onclick="SimHealthTheme.toggleTheme()"
-           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
-           aria-label="Changer le thème">
+        onclick="SimHealthTheme.toggleTheme()"
+        onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+        aria-label="Changer le thème">
         <span class="label label-dark">Sombre</span>
-        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="track"><span class="thumb"></span></span>
         <span class="label label-light">Clair</span>
       </div>
     </nav>
@@ -120,107 +184,135 @@
       <div class="hero-content">
         <h1 class="rise-1">Cliniciens</h1>
         <p class="rise-2">
-          Informations pour les cliniciens, services et institutions souhaitant discuter d’un pilote supervisé,
-          de la gouvernance / éthique, ou d’une collaboration de recherche.
+          Un projet pré-pilote conçu avec des clinicien·ne·s pour explorer un soutien numérique supervisé,
+          ciblant la gestion des envies de jeu d’argent entre les séances.
+          <br><span style="color:var(--muted); font-size:13px;">Aucune revendication clinique. Phase exploratoire uniquement.</span>
         </p>
 
         <div class="hero-actions rise-3">
-          <a class="btn-primary" href="/fr/cliniciens/pilote/">Demander des informations pilote</a>
-          <a class="btn-secondary" href="/fr/recherche/#methodologie">Approche de recherche</a>
+          <a class="btn-primary" href="/fr/cliniciennes/questionnaire/">Questionnaire cliniciens</a>
+          <a class="btn-secondary" href="/fr/cliniciens/pilote/">Informations pilote</a>
           <a class="btn-secondary" href="/fr/contact/">Contact</a>
         </div>
 
-        <div class="notice" style="margin-top:14px;">
-          <strong>Note :</strong> SimHealth est en développement. Il n’est pas présenté comme un dispositif médical ni comme un traitement,
-          et ne fournit pas de service d’urgence ou de crise.
+        <div class="trustbar">
+          <strong>Cadre :</strong> SimHealth n’est pas un service d’urgence et n’est pas surveillé en temps réel.
+          Merci de ne jamais transmettre de données identifiantes de patient.
+          <div class="mini-links">
+            <a href="/fr/legal/confidentialite/">Confidentialité</a>
+            <a href="/fr/legal/avis-medical/">Avis médical</a>
+            <a href="/fr/faq/">FAQ</a>
+            <a href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- QUICK PATHS -->
-    <section class="section-title">
-      <h2>Voies de collaboration</h2>
-      <p>Choisissez la voie la plus pertinente — nous répondrons depuis la boîte mail appropriée.</p>
+    <!-- STEPS -->
+    <section class="steps">
+      <h2 style="margin:0;">Comment contribuer</h2>
+      <p style="margin:8px 0 0; color:var(--muted); line-height:1.6;">
+        Si vous découvrez le projet, le questionnaire est le point d’entrée recommandé.
+      </p>
+
+      <div class="steps-row">
+        <div class="step">
+          <div class="k">Étape 1</div>
+          <h3>Questionnaire cliniciens</h3>
+          <p>Retour structuré sur la faisabilité, les contraintes de terrain, l’accessibilité et la gouvernance.</p>
+          <div class="actions" style="margin-top:10px;">
+            <a class="btn-primary" href="/fr/cliniciennes/questionnaire/">Ouvrir le questionnaire</a>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="k">Étape 2</div>
+          <h3>Échange pilote</h3>
+          <p>Discussion encadrée pour services ou institutions envisageant un pré-pilote supervisé.</p>
+          <div class="actions" style="margin-top:10px;">
+            <a class="btn-secondary" href="/fr/cliniciens/pilote/">Informations pilote</a>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="k">Étape 3</div>
+          <h3>Recherche</h3>
+          <p>Approches méthodologiques, évaluation et cadre de publication responsable.</p>
+          <div class="actions" style="margin-top:10px;">
+            <a class="btn-secondary" href="/fr/recherche/">Recherche</a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="grid" aria-label="Options pour cliniciens">
+    <!-- GRID -->
+    <section class="section-title">
+      <h2>Voies de collaboration</h2>
+      <p>Choisissez la voie la plus adaptée à votre contexte professionnel.</p>
+    </section>
+
+    <section class="grid">
 
       <div class="card-tile">
-        <h3>Demandes de pilote</h3>
+        <h3>Questionnaire cliniciens &amp; recherche</h3>
         <p>
-          Accès précoce structuré et supervisé pour services et institutions, centré sur la faisabilité, la sécurité,
-          et la gouvernance clinique.
+          Contribution professionnelle uniquement. Aucun cas clinique, aucune donnée patient.
+          L’email est optionnel sauf demande de suivi.
         </p>
         <div class="actions">
-          <a class="btn-primary" href="/fr/cliniciens/pilote/">Ouvrir le formulaire pilote</a>
-          <a class="btn-secondary" href="/fr/recherche/#methodologie">Cadre d’évaluation</a>
+          <a class="btn-primary" href="/fr/cliniciennes/questionnaire/">Commencer</a>
+          <a class="btn-secondary" href="/fr/legal/confidentialite/">Confidentialité</a>
+        </div>
+      </div>
+
+      <div class="card-tile">
+        <h3>Pré-pilote supervisé</h3>
+        <p>
+          Accès exploratoire pour structures intéressées par la faisabilité, la sécurité et la gouvernance.
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="/fr/cliniciens/pilote/">Demande pilote</a>
         </div>
       </div>
 
       <div class="card-tile">
         <h3>Collaboration de recherche</h3>
         <p>
-          Orientation, principes méthodologiques et engagement de communication des résultats
-          (pas d’affirmations sans évaluation).
+          Échanges sur les indicateurs, le design d’étude et les principes d’évaluation.
         </p>
         <div class="actions">
-          <a class="btn-primary" href="/fr/recherche/">Explorer la recherche</a>
-          <a class="btn-secondary" href="/fr/contact/">Discuter d’une collaboration</a>
+          <a class="btn-primary" href="/fr/recherche/">Recherche</a>
+          <a class="btn-secondary" href="/fr/contact/">Contact</a>
         </div>
       </div>
 
       <div class="card-tile">
-        <h3>Contact professionnel</h3>
+        <h3>Questions institutionnelles</h3>
         <p>
-          Questions institutionnelles, gouvernance/éthique et demandes professionnelles générales.
-          Non surveillé comme un service d’urgence.
+          Gouvernance, éthique, intégration aux parcours existants.
         </p>
         <div class="actions">
-          <a class="btn-primary" href="/fr/contact/">Ouvrir la page Contact</a>
-          <a class="btn-secondary" href="/fr/a-propos/">À propos de SimHealth</a>
-        </div>
-      </div>
-
-      <div class="card-tile">
-        <h3>Actualités du projet</h3>
-        <p>
-          Emails occasionnels sur les mises à jour, l’avancement de la recherche et l’accès pilote. Pas de spam. Désinscription à tout moment.
-        </p>
-        <div class="actions">
-          <a class="btn-primary" href="/fr/patients/mises-a-jour/">S’abonner aux actualités</a>
-          <a class="btn-secondary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+          <a class="btn-primary" href="/fr/contact/">Contact</a>
+          <a class="btn-secondary" href="/fr/a-propos/">À propos</a>
         </div>
       </div>
 
     </section>
 
-    <!-- GOVERNANCE / ETHICS -->
-    <section class="card" style="margin-top:16px;">
-      <h2 style="margin:0 0 10px;">Priorités de gouvernance clinique</h2>
-
-      <p style="margin:0; color:var(--muted); line-height:1.65;">
-        SimHealth est conçu avec une approche “sécurité d’abord”, adaptée à des contextes cliniques.
-        L’accès pilote est destiné à être supervisé et documenté, avec des limites explicites et une communication responsable.
+    <!-- UNDER THE HOOD -->
+    <section class="underhood">
+      <h2>Sous le capot (aperçu)</h2>
+      <p>
+        SimHealth est pensé comme un dispositif à deux niveaux, destiné à un usage supervisé.
       </p>
-
-      <ul class="list">
-        <li><strong style="color:var(--text);">Pas d’affirmation d’urgence :</strong> orientation claire vers des services réels de crise.</li>
-        <li><strong style="color:var(--text);">Rigueur scientifique :</strong> pas de résultats publics sans évaluation appropriée.</li>
-        <li><strong style="color:var(--text);">Confidentialité :</strong> données minimisées et fondées sur le consentement ; gouvernance définie avec les partenaires.</li>
-        <li><strong style="color:var(--text);">Préparation éthique :</strong> clarté des protocoles, documentation et supervision lorsque nécessaire.</li>
+      <ul>
+        <li><strong style="color:var(--text);">Côté patient :</strong> sessions structurées, limites temporelles, sorties sécurisées et orientation vers l’aide réelle.</li>
+        <li><strong style="color:var(--text);">Côté clinicien :</strong> vision de gouvernance et indicateurs de faisabilité (pas de suivi thérapeutique direct).</li>
+        <li><strong style="color:var(--text);">Cadre :</strong> minimisation des données, consentement explicite, préparation DPIA avec partenaires.</li>
       </ul>
-
-      <div style="margin-top:14px; padding:12px 12px; border:1px solid var(--border); border-radius:var(--radius-lg); background:color-mix(in srgb, var(--accent) 10%, var(--surface));">
-        <p style="margin:0; color:var(--muted); line-height:1.55;">
-          <strong style="color:var(--text);">Pour les institutions :</strong> pour recevoir des informations sur un pilote, la voie la plus rapide est
-          <a href="/fr/cliniciens/pilote/" style="color:var(--text); text-decoration:underline;">Demander des informations pilote</a>.
-        </p>
-      </div>
-
-      <div class="actions" style="margin-top:14px;">
-        <a class="btn-primary" href="/fr/cliniciens/pilote/">Informations pilote</a>
-        <a class="btn-secondary" href="/fr/contact/">Contact</a>
-        <a class="btn-secondary" href="/fr/recherche/">Recherche</a>
+      <div class="actions" style="margin-top:12px;">
+        <a class="btn-primary" href="/fr/cliniciennes/questionnaire/">Partager vos exigences</a>
+        <a class="btn-secondary" href="/fr/a-propos/">En savoir plus</a>
       </div>
     </section>
 
@@ -234,7 +326,7 @@
       </div>
       <nav aria-label="Liens du pied de page">
         <a href="/sitemap.html">Plan du site</a>
-      <a href="/fr/faq/">FAQ</a>
+        <a href="/fr/faq/">FAQ</a>
         <a href="/fr/legal/confidentialite/">Confidentialité</a>
         <a href="/fr/legal/conditions/">Conditions</a>
         <a href="/fr/legal/cookies/">Cookies</a>
@@ -244,7 +336,6 @@
     </div>
   </footer>
 
-  <!-- Mobile always-visible crisis access (French pages) -->
   <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
     <span class="label">Besoin d’aide maintenant&nbsp;?</span>
     <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
