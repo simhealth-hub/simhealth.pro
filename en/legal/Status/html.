@@ -1,1 +1,224 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Status and intended use</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+
+  <style>
+    .section { margin-top:18px; }
+    .lead { color:var(--muted); line-height:1.7; margin:10px 0 0; }
+
+    .note{
+      margin-top:14px;
+      padding:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--accent) 10%, transparent);
+      color:var(--muted);
+      line-height:1.6;
+    }
+    .note strong{ color:var(--text); }
+
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+    .list strong{ color:var(--text); }
+
+    .status-pill{
+      display:inline-flex;
+      align-items:center;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--primary) 12%, transparent);
+      font-weight:800;
+      color:var(--text);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Healthcare first.</strong>
+    This page explains SimHealth’s status and boundaries. If you are in immediate danger, contact local emergency services.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
+
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()"
+      aria-label="Toggle navigation">
+      ☰
+    </button>
+
+    <nav class="menu" aria-label="Main navigation">
+      <a class="link" href="/en/home/">Home</a>
+      <a class="link" href="/en/patients/">Patients</a>
+      <a class="link" href="/en/clinicians/">Clinicians</a>
+      <a class="link" href="/en/research/">Research</a>
+      <a class="link" href="/en/about/">About</a>
+      <a class="link" href="/en/contact/">Contact</a>
+
+      <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+
+      <div class="lang-toggle" aria-label="Language">
+        <a class="active" href="/en/legal/status/">
+          <span class="lang-full">English</span>
+          <span class="lang-short">EN</span>
+        </a>
+        <a href="/fr/legal/statut/">
+          <span class="lang-full">Français</span>
+          <span class="lang-short">FR</span>
+        </a>
+      </div>
+
+      <div class="theme-toggle" role="button" tabindex="0"
+        onclick="SimHealthTheme.toggleTheme()"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();SimHealthTheme.toggleTheme();}"
+        aria-label="Toggle theme">
+        <span class="label label-dark">Dark</span>
+        <span class="track"><span class="thumb"></span></span>
+        <span class="label label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="card section">
+      <span class="status-pill">Stage: Pre-pilot</span>
+
+      <h1 style="margin-top:12px;">Status and intended use</h1>
+
+      <p class="lead">
+        This page explains what SimHealth is, what it is not, and how the project is currently positioned and governed.
+      </p>
+    </section>
+
+    <section class="card section">
+      <h2>Current project status</h2>
+
+      <p class="lead">
+        SimHealth is a digital project in a pre-pilot stage.
+        It is presented as exploratory work intended to evaluate feasibility, safety, and usability
+        of supervised digital support concepts.
+      </p>
+
+      <ul class="list">
+        <li><strong>Stage:</strong> research and pilot preparation</li>
+        <li><strong>Access:</strong> public website and professional questionnaires</li>
+        <li><strong>Clinical deployment:</strong> not active</li>
+      </ul>
+
+      <div class="note">
+        <strong>Important:</strong>
+        SimHealth is not currently used as a clinical care tool and should not be interpreted as one.
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Medical device and healthcare claims</h2>
+
+      <p class="lead">
+        SimHealth is not presented as a medical device and does not make diagnostic, predictive, or treatment claims.
+        It is designed to complement care discussions and evaluation planning, not replace professional judgment.
+      </p>
+
+      <ul class="list">
+        <li>No automated diagnosis</li>
+        <li>No treatment recommendations</li>
+        <li>No clinical decision-making</li>
+        <li>No substitute for professional care</li>
+      </ul>
+
+      <div class="note">
+        Any future changes to regulatory positioning would be assessed separately and communicated explicitly.
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Emergency and crisis situations</h2>
+
+      <p class="lead">
+        SimHealth does not provide emergency services, is not monitored in real time,
+        and must never be used as crisis support.
+      </p>
+
+      <div class="note">
+        If you are in immediate danger, contact emergency services or use
+        <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Data, privacy, and governance</h2>
+
+      <p class="lead">
+        The project is built around GDPR-aligned principles, including consent-led collection and data minimisation.
+        Professional questionnaires are designed to avoid patient-identifying information.
+      </p>
+
+      <ul class="list">
+        <li>Collect only what is necessary for the stated purpose</li>
+        <li>No patient-identifying information</li>
+        <li>Use limited to research planning and project improvement</li>
+      </ul>
+
+      <div class="note">
+        Data practices are described in the
+        <a href="/en/legal/privacy/" style="color:var(--text); text-decoration:underline;">Privacy</a> notice.
+      </div>
+    </section>
+
+    <section class="card section">
+      <h2>Accountability and transparency</h2>
+
+      <p class="lead">
+        Public communication about SimHealth is intentionally conservative.
+        We do not publish outcomes, effectiveness claims, or impact statements without appropriate evaluation.
+      </p>
+
+      <div class="note">
+        This page is provided for transparency for clinicians, researchers, partners, and institutions.
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+      <nav aria-label="Footer links">
+        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/terms/">Terms</a>
+        <a href="/en/legal/cookies/">Cookies</a>
+        <a href="/en/legal/accessibility/">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="mobile-crisis" aria-label="Crisis quick access">
+    <span class="label">Need help now?</span>
+    <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
+  </div>
+
+</body>
+</html>
