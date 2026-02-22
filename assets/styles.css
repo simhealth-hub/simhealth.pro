@@ -17,9 +17,8 @@
   /* Tap sizing baseline */
   --tap: 44px;
 
-  /* Mobile crisis bar positioning */
+  /* Mobile crisis bar spacing */
   --crisis-gap: 12px;
-  --crisis-lift: 0px; /* JS updates this when footer is visible */
 }
 
 /* Default theme is dark */
@@ -51,6 +50,18 @@ body {
   font-family: "Instrument Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
+}
+
+/* ✅ ACCESSIBILITY: Focus visibility for keyboard users */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--primary) 75%, white);
+  outline-offset: 3px;
+  border-radius: 14px;
 }
 
 /* Banner */
@@ -387,8 +398,6 @@ footer nav a + a::before{
   position: absolute;
   inset: 0;
   background-repeat: no-repeat;
-
-  /* Key: always cover to avoid letterboxing */
   background-size: cover;
   background-position: center 45%;
 }
@@ -487,12 +496,10 @@ footer nav a + a::before{
 
 /* Prevent layout jumps */
 @media (max-width: 900px) {
-  /* Leave space for the sticky crisis bar (plus iOS safe area) */
   .wrap{ padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
 
   .nav { padding: 12px 14px; }
 
-  /* Collapse menu into a semi-transparent drawer */
   .nav .menu { display:none; width:100%; }
   .nav .menu.open{
     display:flex;
@@ -509,7 +516,6 @@ footer nav a + a::before{
 
   .nav-toggle{ display:inline-flex; }
 
-  /* Less chunky but still good tap targets */
   .link, .btn-primary, .btn-secondary{
     width: 100%;
     min-height: var(--tap);
@@ -517,7 +523,6 @@ footer nav a + a::before{
     border-radius: 14px;
   }
 
-  /* Theme toggle smaller */
   .theme-toggle{
     padding: 6px 8px;
     gap: 8px;
@@ -532,9 +537,8 @@ footer nav a + a::before{
 
   .lang-toggle{ width: 100%; justify-content: center; }
 
-  /* HERO: make it feel like “full image” without black bars */
   .hero{
-    min-height: 78vh;       /* key mobile feel */
+    min-height: 78vh;
   }
   .hero-bg{
     background-position: center center;
@@ -546,7 +550,6 @@ footer nav a + a::before{
 
   .tile{ grid-column: span 12; }
 
-  /* Mobile tiles: give a phone-friendly ratio (avoids letterbox feel) */
   .tile .img{
     height: clamp(280px, 66vw, 560px);
     background-position: center center;
@@ -559,6 +562,11 @@ footer nav a + a::before{
 
 .mobile-crisis { display:none; }
 
+/* ✅ Auto-hide on legal + sitemap pages (works with JS setting body[data-hide-crisis]) */
+body[data-hide-crisis="true"] .mobile-crisis{
+  display:none !important;
+}
+
 @media (max-width: 900px){
   .mobile-crisis{
     display: flex;
@@ -566,8 +574,8 @@ footer nav a + a::before{
     left: 12px;
     right: 12px;
 
-    /* ✅ Always sits at the bottom */
-    bottom: 12px;
+    /* ✅ flush to bottom, then JS lifts via transform */
+    bottom: calc(var(--crisis-gap) + env(safe-area-inset-bottom));
 
     z-index: 60;
     border-radius: 999px;
@@ -580,9 +588,8 @@ footer nav a + a::before{
     justify-content: space-between;
     box-shadow: 0 10px 35px rgba(0,0,0,0.25);
 
-    /* ✅ We’ll move it up with transform */
     transform: translateY(0);
-    transition: transform 140ms var(--ease);
+    transition: transform 180ms var(--ease);
     will-change: transform;
   }
 
@@ -605,4 +612,4 @@ footer nav a + a::before{
     border-radius: 999px;
     white-space: nowrap;
   }
-}
+  }
