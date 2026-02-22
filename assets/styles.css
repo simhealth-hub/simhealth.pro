@@ -476,6 +476,25 @@ footer nav a + a::before{
 }
 .acc[open] summary { background: color-mix(in srgb, var(--text) 5%, transparent); }
 
+/* Mobile: zoom OUT the hero image ~20% so the face is more visible */
+@media (max-width: 900px){
+  .help-hero-bg{
+    background-size: 80% auto;     /* zoom out */
+    background-position: 70% 40%;  /* shift to keep face in view */
+  }
+
+  /* Optional: soften overlay a bit so the face reads better */
+  .hero-overlay{
+    background: linear-gradient(
+      90deg,
+      rgba(11,18,32,0.86) 0%,
+      rgba(11,18,32,0.55) 42%,
+      rgba(11,18,32,0.16) 72%,
+      rgba(11,18,32,0.00) 100%
+    );
+  }
+}
+
 /* =========================
    MOBILE: NAV + BUTTONS + HERO + TILES
    ========================= */
