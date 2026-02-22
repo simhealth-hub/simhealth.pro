@@ -110,6 +110,14 @@
     /* Wider hero copy for this page */
     .hero .hero-content { width: min(720px, 92%); }
 
+    /* ✅ ONLY this page's hero image: zoom out slightly on mobile */
+    @media (max-width: 900px) {
+      .hero .hero-bg.help-hero-bg {
+        background-size: 115% auto;   /* zoom OUT a bit (try 110% if you want subtler) */
+        background-position: 60% 22%; /* nudge so the face stays visible */
+      }
+    }
+
     @media (max-width: 800px) {
       .support-card { grid-column: span 12; }
       .page-head h2 { font-size: 22px; }
@@ -141,7 +149,7 @@
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
       <a class="link" href="/en/about/">About</a>
-  <a class="link" href="/en/faq/">FAQ</a>
+      <a class="link" href="/en/faq/">FAQ</a>
       <a class="link" href="/en/contact/">Contact</a>
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
@@ -171,7 +179,8 @@
   <main class="wrap">
 
     <section class="hero">
-      <div class="hero-bg help-hero-bg" style="background-image:url('/assets/help-hero.jpg');"></div>
+      <!-- ✅ small default position improvement (desktop/tablet), mobile handled by CSS above -->
+      <div class="hero-bg help-hero-bg" style="background-image:url('/assets/help-hero.jpg'); background-position: 60% 28%;"></div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
@@ -396,8 +405,8 @@
 
       <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
-    <a href="/en/faq/">FAQ</a>
-       <a href="/en/legal/status/">Status</a>
+        <a href="/en/faq/">FAQ</a>
+        <a href="/en/legal/status/">Status</a>
         <a href="/en/legal/privacy/">Privacy</a>
         <a href="/en/legal/terms/">Terms</a>
         <a href="/en/legal/cookies/">Cookies</a>
@@ -415,4 +424,3 @@
 
 </body>
 </html>
-```0
