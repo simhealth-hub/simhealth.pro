@@ -26,7 +26,7 @@
       line-height:1.55;
     }
 
-    /* Keep title at top, spacing handled below */
+    /* Keep title width consistent */
     .hero .hero-content{
       width:min(720px, 92%);
     }
@@ -39,23 +39,20 @@
       margin-top:10px;
       margin-bottom:0;
     }
-/* Desktop only: show lower part of the hero image */
-@media (min-width: 901px){
-  .help-hero-bg{
-    background-size: 110% auto;
-    background-position: 60% 90%;
-  }
-}
-  }
-}
-    /* MOBILE ADJUSTMENTS */
-    @media (max-width: 700px){
-      /* Move hero image further right so the man is visible */
+
+    /* ✅ DESKTOP ONLY — show more of the bottom of the image */
+    @media (min-width: 901px){
       .hero .hero-bg{
-        background-position: 52% center; /* was 30%, now +20% */
+        background-position: 50% 85%;
+      }
+    }
+
+    /* MOBILE ADJUSTMENTS (unchanged) */
+    @media (max-width: 700px){
+      .hero .hero-bg{
+        background-position: 52% center;
       }
 
-      /* Push language buttons further down so they don’t cover faces */
       .lang-actions{
         margin-top:110px;
       }
