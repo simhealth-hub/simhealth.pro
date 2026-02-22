@@ -13,36 +13,36 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    .section { margin-top: 18px; }
-    .lead { color: var(--muted); line-height: 1.7; margin: 10px 0 0; }
+    .section { margin-top:18px; }
+    .lead { color:var(--muted); line-height:1.7; margin:10px 0 0; }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-      margin-top: 14px;
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
+      margin-top:14px;
     }
-    .col-7 { grid-column: span 7; }
-    .col-5 { grid-column: span 5; }
+    .col-7{ grid-column: span 7; }
+    .col-5{ grid-column: span 5; }
 
-    .note {
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--accent) 10%, transparent);
-      color: var(--muted);
-      line-height: 1.6;
+    .note{
+      margin-top:14px;
+      padding:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--accent) 10%, transparent);
+      color:var(--muted);
+      line-height:1.6;
     }
-    .note strong { color: var(--text); }
+    .note strong{ color:var(--text); }
 
-    .list {
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.7;
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.7;
     }
-    .list strong { color: var(--text); }
+    .list strong{ color:var(--text); }
 
     .status-bar{
       margin-top:14px;
@@ -71,13 +71,20 @@
     }
 
     .cta-row{
-      margin-top: 16px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+      margin-top:16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
-    @media (max-width: 900px) {
+    .mini{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    @media (max-width: 900px){
       .col-7, .col-5 { grid-column: span 12; }
     }
   </style>
@@ -87,8 +94,7 @@
 
   <div class="banner">
     <strong>Priorité santé.</strong>
-    SimHealth est une vitrine professionnelle du projet.
-    En cas de danger immédiat, contactez les services d’urgence.
+    SimHealth est une vitrine professionnelle du projet. En cas de danger immédiat, contactez les services d’urgence.
   </div>
 
   <header class="nav">
@@ -96,7 +102,7 @@
 
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
-      aria-label="Ouvrir ou fermer la navigation">
+      aria-label="Ouvrir/fermer la navigation">
       ☰
     </button>
 
@@ -142,19 +148,68 @@
       <div class="hero-content">
         <h1 class="rise-1">À propos de SimHealth</h1>
         <p class="rise-2">
-          Un projet numérique conçu avec des clinicien·ne·s,
-          explorant comment des outils structurés et orientés sécurité
-          peuvent soutenir les personnes confrontées à des envies de jeu d’argent.
+          SimHealth est un projet conçu avec une approche clinique, qui explore si un soutien numérique structuré et orienté sécurité
+          peut aider à réduire les risques lors des pics d’envies de jeu d’argent, dans des parcours supervisés et avec des limites de gouvernance explicites.
         </p>
 
-        <div class="status-bar rise-3">
-          <span class="status-pill">Étape&nbsp;: pré-pilote</span>
-          <span>Aucune allégation médicale • Pas un dispositif médical • Pas un service de crise</span>
+        <div class="status-bar rise-3" role="note" aria-label="Statut du projet">
+          <span class="status-pill">Statut : pré-pilote</span>
+          <span>Aucune allégation médicale ; pas un service d’urgence ; ne remplace pas le jugement professionnel</span>
         </div>
 
         <div class="cta-row rise-3">
           <a class="btn-primary" href="/fr/cliniciens/pilote/">Demander des informations pilote</a>
           <a class="btn-secondary" href="/fr/patients/mises-a-jour/">Recevoir les actualités</a>
+          <a class="btn-secondary" href="/fr/recherche/">Approche de recherche</a>
+        </div>
+
+        <p class="mini rise-3">
+          Pour des précisions sur le statut, les limites d’usage et ce qui est prévu vs disponible,
+          consultez <a href="/fr/legal/avis-medical/" style="color:var(--text); text-decoration:underline;">Avis médical</a>
+          et <a href="/fr/legal/confidentialite/" style="color:var(--text); text-decoration:underline;">Confidentialité</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- CE QUE C’EST -->
+    <section class="card section">
+      <h2>Ce qu’est SimHealth</h2>
+      <p class="lead">
+        SimHealth est pensé comme un concept à deux volets :
+        un programme côté clinicien pour un usage pilote supervisé, et un compagnon côté patient pour un soutien structuré,
+        à accès limité dans le temps, aligné avec un plan de soins défini par le clinicien.
+      </p>
+
+      <div class="grid">
+        <div class="col-7">
+          <h3>Côté clinicien (concept)</h3>
+          <ul class="list">
+            <li><strong>Accès pilote gouverné :</strong> conçu pour une utilisation supervisée avec des limites définies.</li>
+            <li><strong>Logique de prescription (prévue) :</strong> le clinicien décide de ce qui est activé et quand.</li>
+            <li><strong>Charge réduite :</strong> pensé pour s’intégrer aux flux de travail réels.</li>
+            <li><strong>Communication prudente :</strong> aucun résultat annoncé sans évaluation.</li>
+          </ul>
+
+          <div class="note">
+            <strong>Important :</strong>
+            Ce site est une vitrine d’un projet en pré-pilote. Il ne fournit pas d’assistance d’urgence.
+            En cas de besoin immédiat, utilisez
+            <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">Ressources d’aide</a>.
+          </div>
+        </div>
+
+        <div class="col-5">
+          <h3>Côté patient (concept)</h3>
+          <ul class="list">
+            <li><strong>Soutien structuré :</strong> outils et invites destinés aux moments à risque.</li>
+            <li><strong>Accès limité :</strong> conçu pour fonctionner dans un cadre supervisé.</li>
+            <li><strong>Accessibilité :</strong> concepts d’interface informés par la charge cognitive et les besoins d’accessibilité.</li>
+          </ul>
+
+          <div class="note">
+            <strong>Limite de sécurité :</strong>
+            SimHealth ne remplace pas un suivi professionnel, un diagnostic ou des services d’urgence.
+          </div>
         </div>
       </div>
     </section>
@@ -163,106 +218,110 @@
     <section class="card section">
       <h2>Mission</h2>
       <p class="lead">
-        Le projet se concentre sur les moments à haut risque, lorsque les envies de jeu d’argent augmentent rapidement
-        et que l’aide traditionnelle est souvent indisponible.
-        SimHealth explore si des outils numériques rigoureusement encadrés peuvent soutenir des décisions plus sûres
-        au sein de parcours cliniques réels.
-      </p>
-
-      <!-- Pourquoi maintenant (sans chiffres ni promesses) -->
-      <p class="lead" style="margin-top:10px;">
-        Les comportements à risque liés au jeu surviennent fréquemment en dehors des lieux de soins,
-        à des moments où le soutien n’est pas accessible.
+        SimHealth se concentre sur les moments où les envies augmentent rapidement et où l’aide n’est pas toujours accessible.
+        Le projet explore si un soutien numérique gouverné peut renforcer la continuité entre les séances et réduire le décrochage,
+        sans encourager ni normaliser le jeu d’argent.
       </p>
 
       <div class="grid">
         <div class="col-7">
-          <h3>Objectifs du projet</h3>
+          <h3>Ce que le projet vise à améliorer</h3>
           <ul class="list">
-            <li><strong>Réduction des risques :</strong> soutenir des choix plus sûrs lors des pics de craving.</li>
-            <li><strong>Continuité :</strong> limiter les ruptures entre les séances cliniques.</li>
-            <li><strong>Complémentarité :</strong> agir en appui des professionnel·le·s, sans s’y substituer.</li>
-            <li><strong>Confiance :</strong> conception centrée sur la confidentialité et une communication prudente.</li>
+            <li><strong>Continuité :</strong> soutien entre les rendez-vous, pas uniquement en consultation.</li>
+            <li><strong>Aide à la décision :</strong> aider à faire une pause et choisir des actions plus sûres lors des pics.</li>
+            <li><strong>Engagement :</strong> réduire les abandons précoces.</li>
+            <li><strong>Gouvernance :</strong> limites explicites ; pas de diffusion non contrôlée.</li>
           </ul>
-
-          <div class="note">
-            <strong>Important&nbsp;:</strong>
-            SimHealth ne fournit pas d’assistance d’urgence.
-            En cas de danger, consultez
-            <a href="/fr/patients/aide-soutien/" style="color:var(--text); text-decoration:underline;">
-              Ressources d’aide
-            </a>.
-          </div>
         </div>
 
         <div class="col-5">
-          <h3>À qui s’adresse SimHealth</h3>
+          <h3>À qui cela s’adresse</h3>
           <ul class="list">
-            <li><strong>Patients :</strong> recherchant un soutien structuré et non jugeant.</li>
-            <li><strong>Clinicien·ne·s :</strong> explorant des compléments numériques supervisés.</li>
-            <li><strong>Chercheur·euse·s :</strong> intéressé·e·s par l’évaluation de la faisabilité et de la sécurité.</li>
+            <li><strong>Clinicien·ne·s et services :</strong> exploration de compléments numériques supervisés.</li>
+            <li><strong>Chercheur·euse·s :</strong> faisabilité, signaux de sécurité, utilisabilité.</li>
+            <li><strong>Institutions :</strong> discussion gouvernance et préparation pilote.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- PRINCIPES -->
+    <!-- STATUT + POSITIONNEMENT -->
     <section class="card section">
-      <h2>Principes de conception</h2>
+      <h2>Statut et positionnement</h2>
       <p class="lead">
-        SimHealth est conçu autour de limites explicites.
-        La communication publique reste volontairement prudente
-        tant qu’aucune évaluation formelle n’a été menée.
+        SimHealth est en développement. Ce site est une présentation publique du projet et ne fournit pas de soins.
+        Toute utilisation future en pilote est envisagée sous supervision et documentation, avec des limites explicites et les approbations nécessaires.
       </p>
 
       <div class="grid">
         <div class="col-7">
-          <h3>Cadres conceptuels</h3>
+          <h3>Ce que SimHealth n’est pas</h3>
           <ul class="list">
-            <li><strong>CET+ :</strong> approche inspirée de l’exposition aux indices, orientée réflexion et sécurité.</li>
-            <li><strong>ACUI :</strong> interface clinique adaptative, pensée pour l’accessibilité et la charge cognitive réduite — UX (expérience utilisateur).</li>
+            <li><strong>Pas un service d’urgence :</strong> pas de surveillance de crise, pas de réponse d’urgence.</li>
+            <li><strong>Pas un outil de diagnostic :</strong ne diagnostique aucune condition.</li>
+            <li><strong>Pas un substitut de traitement :</strong ne remplace pas un suivi professionnel.</li>
+            <li><strong>Pas un lancement grand public :</strong objectif : pilotes supervisés d’abord.</li>
           </ul>
 
-          <!-- ✅ Added: plain-FR definition for UX -->
-          <div class="note" style="margin-top:12px;">
-            <strong>Que signifie « UX » ?</strong> UX = « expérience utilisateur » — la facilité, la clarté et le ressenti lors de l’utilisation
-            (notamment en situation de stress).
-          </div>
-
           <div class="note">
-            <strong>Positionnement :</strong>
-            Toute utilisation future est envisagée sous supervision professionnelle
-            et dans un cadre de gouvernance adapté.
+            <strong>Discipline sur les résultats :</strong>
+            SimHealth ne communiquera pas de résultats publics sans évaluation appropriée.
           </div>
         </div>
 
         <div class="col-5">
-          <h3>Bornes de gouvernance</h3>
+          <h3>Données et hébergement (prévu)</h3>
           <ul class="list">
-            <li>Aucune promesse d’urgence</li>
-            <li>Aucun résultat sans évaluation</li>
-            <li>Données uniquement avec consentement</li>
-            <li>Supervision clinique requise pour les pilotes</li>
+            <li><strong>Confidentialité :</strong minimisation des données ; collecte sur consentement.</li>
+            <li><strong>Approche RGPD :</strong principes appliqués aux flux et à la conservation.</li>
+            <li><strong>Hébergement en France (intention) :</strong planification orientée vers un hébergement adapté à des usages santé, lorsque applicable.</li>
           </ul>
 
           <div class="note">
-            <strong>Confidentialité :</strong>
-            Toute collecte de données respecte les principes du RGPD.
-            Voir <a href="/fr/legal/confidentialite/" style="color:var(--text); text-decoration:underline;">Confidentialité</a>.
+            <strong>Note :</strong>
+            Cette page décrit une intention de conception. Consultez la notice officielle
+            <a href="/fr/legal/confidentialite/" style="color:var(--text); text-decoration:underline;">Confidentialité</a>
+            pour ce qui est effectivement collecté aujourd’hui.
           </div>
         </div>
       </div>
 
-      <!-- CTAs + LinkedIn -->
       <div class="cta-row">
-        <a class="btn-primary" href="/fr/recherche/">Approche de recherche</a>
+        <a class="btn-primary" href="/fr/cliniciens/pilote/">Demandes pilote</a>
         <a class="btn-secondary" href="/fr/contact/">Contact</a>
-        <a class="btn-secondary"
-           href="https://www.linkedin.com/in/andrew-goodwin-simhealth"
-           target="_blank" rel="noopener"
-           aria-label="Profil LinkedIn du fondateur (nouvel onglet)">
-          Fondateur — LinkedIn ↗
+        <a class="btn-secondary" href="https://www.linkedin.com/in/andrew-goodwin-simhealth" target="_blank" rel="noopener">
+          LinkedIn fondateur ↗
         </a>
+      </div>
+    </section>
+
+    <!-- CADRES -->
+    <section class="card section">
+      <h2>Cadres (aperçu public)</h2>
+      <p class="lead">
+        Ce sont des concepts du projet utilisés pour guider la conception et la préparation à l’évaluation.
+        Ils n’impliquent pas de résultats cliniques prouvés.
+      </p>
+
+      <div class="grid">
+        <div class="col-7">
+          <h3>CET+</h3>
+          <p class="lead" style="margin-top:8px;">
+            Approche inspirée de l’exposition aux indices, centrée sur la réflexion, le rythme et des choix plus sûrs pendant les périodes à risque.
+          </p>
+        </div>
+
+        <div class="col-5">
+          <h3>ACUI</h3>
+          <p class="lead" style="margin-top:8px;">
+            Interface Clinique Adaptative : concepts d’interface pensés pour l’accessibilité et la réduction de la charge cognitive.
+          </p>
+
+          <div class="note">
+            <strong>Que signifie “interface” ici :</strong>
+            l’interface correspond aux écrans, boutons et éléments visuels utilisés par la personne.
+          </div>
+        </div>
       </div>
     </section>
 
@@ -292,7 +351,7 @@
   </footer>
 
   <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
-    <span class="label">Besoin d’aide maintenant&nbsp;?</span>
+    <span class="label">Besoin d’aide maintenant ?</span>
     <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
   </div>
 
