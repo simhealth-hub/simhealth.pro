@@ -123,7 +123,7 @@
 
   window.SimHealthNav = { toggleMenu, openMenu, closeMenu };
 
-  // --- MOBILE CRISIS BAR: LIFT ABOVE FOOTER ------------------
+// --- MOBILE CRISIS BAR: LIFT ABOVE FOOTER ------------------
 
   function initCrisisFooterAvoidance() {
     const bar = document.querySelector(".mobile-crisis");
@@ -131,7 +131,7 @@
     if (!bar || !footer) return;
 
     function update() {
-      // Desktop/tablet: no lift needed
+      // Reset on desktop
       if (window.innerWidth > 900) {
         root.style.setProperty("--crisis-lift", "0px");
         return;
@@ -140,15 +140,17 @@
       const barRect = bar.getBoundingClientRect();
       const footerRect = footer.getBoundingClientRect();
 
-      // Footer not on screen yet
+      // If footer isn't on-screen yet, no lift
       if (footerRect.top >= window.innerHeight) {
         root.style.setProperty("--crisis-lift", "0px");
         return;
       }
 
-      // If bar overlaps footer, lift it up
+      // If bar overlaps footer, lift it
       const overlap = barRect.bottom - footerRect.top;
-      const lift = Math.max(0, overlap + 12); // +12px breathing room
+
+      // +12px breathing room so it clears footer links nicely
+      const lift = Math.max(0, overlap + 12);
       root.style.setProperty("--crisis-lift", lift + "px");
     }
 
@@ -162,4 +164,3 @@
   } else {
     initCrisisFooterAvoidance();
   }
-}
