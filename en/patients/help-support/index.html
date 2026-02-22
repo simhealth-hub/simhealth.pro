@@ -110,13 +110,14 @@
     /* Wider hero copy for this page */
     .hero .hero-content { width: min(720px, 92%); }
 
-    /* ✅ ONLY this page's hero image: zoom out slightly on mobile */
-    @media (max-width: 900px) {
-      .hero .hero-bg.help-hero-bg {
-        background-size: 110% auto;   /* zoom OUT a bit (try 110% if you want subtler) */
-        background-position: 60% 22%; /* nudge so the face stays visible */
-      }
-    }
+    /* Mobile: show full image without vertical cropping */
+@media (max-width: 900px) {
+  .hero .hero-bg.help-hero-bg {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
 
     @media (max-width: 800px) {
       .support-card { grid-column: span 12; }
