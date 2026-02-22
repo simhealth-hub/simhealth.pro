@@ -46,12 +46,33 @@
     }
     .notice strong{ color: var(--text); }
 
+    .callout{
+      margin-top:16px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
     .list{
       margin:10px 0 0;
       padding-left:18px;
       color:var(--muted);
       line-height:1.7;
     }
+
+    .mini-links{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .mini-links a{ color: var(--muted); text-decoration:none; }
+    .mini-links a:hover{ color: var(--text); text-decoration: underline; }
 
     @media (max-width: 800px){
       .card-tile{ grid-column: span 12; }
@@ -83,7 +104,7 @@
       <a class="link active" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
       <a class="link" href="/en/about/">About</a>
-     <a class="link" href="/en/faq/">FAQ</a>
+      <a class="link" href="/en/faq/">FAQ</a>
       <a class="link" href="/en/contact/">Contact</a>
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
@@ -122,18 +143,46 @@
         <p class="rise-2">
           Information for clinicians, services, and institutions exploring supervised pilots, governance alignment,
           or research collaboration around safer support for gambling-related urges.
+          <br><span style="color:var(--muted); font-size:13px;">No outcome claims. Pre-pilot planning only.</span>
         </p>
 
+        <!-- ✅ Funnel-first hero CTAs -->
         <div class="hero-actions rise-3">
-          <a class="btn-primary" href="/en/clinicians/pilot/">Request pilot information</a>
-          <a class="btn-secondary" href="/en/research/">Research</a>
+          <a class="btn-primary" href="/en/clinicians/questionnaire/">Start clinician questionnaire</a>
+          <a class="btn-secondary" href="/en/clinicians/pilot/">Request pilot information</a>
           <a class="btn-secondary" href="/en/contact/">Contact</a>
         </div>
 
         <div class="notice" style="margin-top:14px;">
-          <strong>Note:</strong> SimHealth is in development. It is not presented as a medical device or treatment,
-          and it does not provide emergency or crisis care.
+          <strong>Important boundaries:</strong> SimHealth is in development and is not an emergency service, not presented here as a medical device,
+          and not a substitute for clinical judgement. Please do not submit patient-identifying information anywhere on this site.
         </div>
+
+        <div class="mini-links" aria-label="Governance and privacy links">
+          <a href="/en/legal/privacy/">Privacy</a>
+          <a href="/en/legal/medical-disclaimer/">Medical disclaimer</a>
+          <a href="/en/legal/terms/">Terms</a>
+          <a href="/en/faq/">FAQ</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PURPOSE + TRUST (high-cred, high-conversion block) -->
+    <section class="callout" aria-label="Questionnaire purpose and data minimisation">
+      <p style="margin:0;">
+        <strong style="color:var(--text);">Primary route for clinician input:</strong>
+        the <a href="/en/clinicians/questionnaire/" style="color:var(--text); text-decoration:underline;">Clinician &amp; Research Questionnaire</a>.
+        It’s designed to capture what matters for real-world feasibility: workflow fit, oversight expectations, accessibility needs,
+        safeguarding considerations, and evaluation priorities—before any supervised pre-pilot work.
+      </p>
+      <ul class="list">
+        <li><strong style="color:var(--text);">Professional feedback only:</strong> no patient data, no case details.</li>
+        <li><strong style="color:var(--text);">Data minimisation:</strong> email is optional unless you request follow-up or updates.</li>
+        <li><strong style="color:var(--text);">No enrolment by default:</strong> completing the questionnaire does not enrol you in a pilot or study.</li>
+      </ul>
+      <div class="actions" style="margin-top:12px;">
+        <a class="btn-primary" href="/en/clinicians/questionnaire/">Open questionnaire</a>
+        <a class="btn-secondary" href="/en/legal/privacy/">Read privacy</a>
       </div>
     </section>
 
@@ -144,6 +193,22 @@
     </section>
 
     <section class="grid" aria-label="Clinician options">
+
+      <!-- ✅ NEW: Questionnaire tile (top of grid) -->
+      <div class="card-tile">
+        <h3>Clinician &amp; research questionnaire <span style="font-size:12px; color:var(--muted); font-weight:800;">(recommended)</span></h3>
+        <p>
+          Help shape SimHealth’s pre-pilot direction: governance expectations, workflow fit, accessibility,
+          safeguarding, and evaluation priorities.
+        </p>
+        <p style="margin:0; color:var(--muted); line-height:1.55;">
+          <strong style="color:var(--text);">No patient-identifying information.</strong> Email optional unless you request follow-up.
+        </p>
+        <div class="actions">
+          <a class="btn-primary" href="/en/clinicians/questionnaire/">Start questionnaire</a>
+          <a class="btn-secondary" href="/en/legal/privacy/">Privacy</a>
+        </div>
+      </div>
 
       <div class="card-tile">
         <h3>Pilot enquiries</h3>
@@ -192,7 +257,7 @@
 
     </section>
 
-    <!-- WHAT YOU'LL GET (replaces repetitive methodology/outcomes copy) -->
+    <!-- WHAT YOU'LL GET -->
     <section class="card" style="margin-top:16px;">
       <h2 style="margin:0 0 10px;">What pilot partners can expect</h2>
 
@@ -210,15 +275,25 @@
 
       <div style="margin-top:14px; padding:12px; border:1px solid var(--border); border-radius:var(--radius-lg); background:color-mix(in srgb, var(--accent) 10%, var(--surface));">
         <p style="margin:0; color:var(--muted); line-height:1.55;">
-          <strong style="color:var(--text);">Fastest route:</strong> for pilot information, use
-          <a href="/en/clinicians/pilot/" style="color:var(--text); text-decoration:underline;">Request pilot information</a>.
+          <strong style="color:var(--text);">Two good entry points:</strong>
+          (1) share structured input via the
+          <a href="/en/clinicians/questionnaire/" style="color:var(--text); text-decoration:underline;">questionnaire</a>,
+          and/or (2) request
+          <a href="/en/clinicians/pilot/" style="color:var(--text); text-decoration:underline;">pilot information</a>.
         </p>
       </div>
 
       <div class="actions" style="margin-top:14px;">
-        <a class="btn-primary" href="/en/clinicians/pilot/">Request pilot info</a>
+        <a class="btn-primary" href="/en/clinicians/questionnaire/">Questionnaire</a>
+        <a class="btn-secondary" href="/en/clinicians/pilot/">Pilot info</a>
         <a class="btn-secondary" href="/en/contact/">Contact</a>
-        <a class="btn-secondary" href="/en/research/">Research</a>
+      </div>
+
+      <div class="mini-links" style="margin-top:12px;">
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/status/">Status</a>
+        <a href="/en/legal/medical-disclaimer/">Medical disclaimer</a>
+        <a href="/en/faq/">FAQ</a>
       </div>
     </section>
 
@@ -232,8 +307,8 @@
       </div>
       <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
-       <a href="/en/faq/">FAQ</a>
-       <a href="/en/legal/status/">Status</a>
+        <a href="/en/faq/">FAQ</a>
+        <a href="/en/legal/status/">Status</a>
         <a href="/en/legal/privacy/">Privacy</a>
         <a href="/en/legal/terms/">Terms</a>
         <a href="/en/legal/cookies/">Cookies</a>
