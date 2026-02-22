@@ -13,36 +13,36 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    .section { margin-top: 18px; }
-    .lead { color: var(--muted); line-height: 1.7; margin: 10px 0 0; }
+    .section { margin-top:18px; }
+    .lead { color:var(--muted); line-height:1.7; margin:10px 0 0; }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
-      margin-top: 14px;
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
+      margin-top:14px;
     }
-    .col-7 { grid-column: span 7; }
-    .col-5 { grid-column: span 5; }
+    .col-7{ grid-column: span 7; }
+    .col-5{ grid-column: span 5; }
 
-    .note {
-      margin-top: 14px;
-      padding: 14px;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: color-mix(in srgb, var(--accent) 10%, transparent);
-      color: var(--muted);
-      line-height: 1.6;
+    .note{
+      margin-top:14px;
+      padding:14px;
+      border-radius:var(--radius-lg);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--accent) 10%, transparent);
+      color:var(--muted);
+      line-height:1.6;
     }
-    .note strong { color: var(--text); }
+    .note strong{ color:var(--text); }
 
-    .list {
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.7;
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.7;
     }
-    .list strong { color: var(--text); }
+    .list strong{ color:var(--text); }
 
     .status-bar{
       margin-top:14px;
@@ -71,13 +71,20 @@
     }
 
     .cta-row{
-      margin-top: 16px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+      margin-top:16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
-    @media (max-width: 900px) {
+    .mini{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    @media (max-width: 900px){
       .col-7, .col-5 { grid-column: span 12; }
     }
   </style>
@@ -133,7 +140,7 @@
 
   <main class="wrap">
 
-    <!-- HERO WITH IMAGE -->
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-bg" style="background-image:url('/assets/about.jpg');"></div>
       <div class="hero-overlay"></div>
@@ -141,124 +148,178 @@
       <div class="hero-content">
         <h1 class="rise-1">About SimHealth</h1>
         <p class="rise-2">
-          A clinician-informed digital project exploring how structured, safety-first tools may support people experiencing
-          gambling-related urges — designed with explicit safety and governance boundaries.
+          SimHealth is a clinician-informed project exploring whether structured, safety-first digital support can help reduce harm during
+          gambling-related urge spikes, within supervised pathways and clear governance boundaries.
         </p>
 
-        <div class="status-bar rise-3">
-          <span class="status-pill">Stage: Pre-pilot</span>
-          <span>No medical claims • Not a medical device • Not crisis care</span>
+        <div class="status-bar rise-3" role="note" aria-label="Project status">
+          <span class="status-pill">Status: Pre-pilot</span>
+          <span>No medical claims; not emergency care; not a substitute for professional judgment</span>
         </div>
 
         <div class="cta-row rise-3">
           <a class="btn-primary" href="/en/clinicians/pilot/">Request pilot information</a>
           <a class="btn-secondary" href="/en/patients/updates/">Get updates</a>
+          <a class="btn-secondary" href="/en/research/">Research approach</a>
         </div>
+
+        <p class="mini rise-3">
+          Looking for details on status, intended use boundaries, and what is planned vs available?
+          See <a href="/en/legal/medical-disclaimer/" style="color:var(--text); text-decoration:underline;">Medical Disclaimer</a>
+          and <a href="/en/legal/privacy/" style="color:var(--text); text-decoration:underline;">Privacy</a>.
+        </p>
       </div>
     </section>
 
-    <!-- MISSION -->
+    <!-- WHAT IT IS -->
     <section class="card section">
-      <h2>Mission</h2>
+      <h2>What SimHealth is</h2>
       <p class="lead">
-        SimHealth focuses on high-risk moments where gambling urges escalate rapidly
-        and traditional support is often unavailable.
-        The project explores whether carefully governed digital tools can support
-        safer decision-making within real clinical pathways.
-      </p>
-
-      <!-- Added: single “why now” line (no stats, no claims) -->
-      <p class="lead" style="margin-top:10px;">
-        Gambling-related harm often occurs outside clinical settings, during moments when support is unavailable.
+        SimHealth is being designed as a two-sided concept:
+        a clinician-facing programme for supervised pilot use, and a patient-facing companion for structured, time-limited support
+        aligned with a clinician’s care plan.
       </p>
 
       <div class="grid">
         <div class="col-7">
-          <h3>What SimHealth is designed to do</h3>
+          <h3>Clinician-facing (concept)</h3>
           <ul class="list">
-            <li><strong>Reduce harm:</strong> support safer choices during acute craving windows.</li>
-            <li><strong>Support continuity:</strong> reduce disengagement between clinical sessions.</li>
-            <li><strong>Complement care:</strong> function alongside clinicians, not replace them.</li>
-            <li><strong>Maintain trust:</strong> privacy-first design and conservative public claims.</li>
+            <li><strong>Governed pilot access:</strong> designed for supervised use with defined boundaries.</li>
+            <li><strong>Prescribing logic (planned):</strong> clinicians can decide what is enabled and when.</li>
+            <li><strong>Low burden:</strong> designed to fit real workflows without heavy admin load.</li>
+            <li><strong>Conservative communication:</strong> no outcome claims without evaluation.</li>
           </ul>
 
           <div class="note">
             <strong>Important:</strong>
-            SimHealth does not provide emergency support.
-            If you are at risk, use
-            <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">
-              Crisis Resources
-            </a>.
+            This is a pre-pilot project showcase. It does not provide emergency support.
+            If you need help now, use
+            <a href="/en/patients/help-support/" style="color:var(--text); text-decoration:underline;">Crisis Resources</a>.
           </div>
         </div>
 
         <div class="col-5">
-          <h3>Who this project is for</h3>
+          <h3>Patient-facing (concept)</h3>
           <ul class="list">
-            <li><strong>Patients:</strong> seeking structured, non-judgemental support.</li>
-            <li><strong>Clinicians:</strong> exploring supervised digital adjuncts.</li>
-            <li><strong>Researchers:</strong> interested in feasibility and safety evaluation.</li>
+            <li><strong>Structured support:</strong> prompts and tools intended for high-risk moments.</li>
+            <li><strong>Time-limited access:</strong> designed to work within a supervised pathway.</li>
+            <li><strong>Accessibility-aware:</strong> interface concepts informed by cognitive load and accessibility needs.</li>
+          </ul>
+
+          <div class="note">
+            <strong>Safety boundary:</strong>
+            SimHealth is not a replacement for therapy, diagnosis, or emergency services.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY / MISSION -->
+    <section class="card section">
+      <h2>Mission</h2>
+      <p class="lead">
+        SimHealth focuses on moments where urges escalate quickly and support is often unavailable.
+        The project explores whether well-governed digital support can improve continuity between sessions and reduce disengagement,
+        without encouraging or normalising gambling.
+      </p>
+
+      <div class="grid">
+        <div class="col-7">
+          <h3>What the project aims to improve</h3>
+          <ul class="list">
+            <li><strong>Continuity:</strong> support between appointments, not only inside clinics.</li>
+            <li><strong>Decision support:</strong> help users pause and choose safer actions during urge spikes.</li>
+            <li><strong>Engagement:</strong> reduce drop-off in early treatment phases.</li>
+            <li><strong>Governance:</strong> explicit boundaries; no uncontrolled release.</li>
+          </ul>
+        </div>
+
+        <div class="col-5">
+          <h3>Who it is for</h3>
+          <ul class="list">
+            <li><strong>Clinicians and services:</strong> exploring supervised digital adjuncts.</li>
+            <li><strong>Researchers:</strong> feasibility, safety signals, and usability evaluation.</li>
+            <li><strong>Institutions:</strong> governance discussion and pilot readiness planning.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- PRINCIPLES -->
+    <!-- STATUS + REGULATORY SAFE -->
     <section class="card section">
-      <h2>Design principles</h2>
+      <h2>Status and regulatory posture</h2>
       <p class="lead">
-        SimHealth is built around explicit boundaries.
-        Public communication is intentionally conservative
-        until appropriate evaluation is completed.
+        SimHealth is in development. This website is a public project overview and does not provide clinical care.
+        Any future pilot use is intended to be supervised and documented, with clear boundaries and appropriate approvals where required.
       </p>
 
       <div class="grid">
         <div class="col-7">
-          <h3>Frameworks (public overview)</h3>
+          <h3>What SimHealth is not</h3>
           <ul class="list">
-            <li><strong>CET+:</strong> cue-exposure-informed, reflection-first approach.</li>
-            <li><strong>ACUI:</strong> Adaptive Clinical User Interface — accessibility-aware UX (User Experience).</li>
+            <li><strong>Not emergency care:</strong> no crisis monitoring, no emergency response.</li>
+            <li><strong>Not a diagnostic tool:</strong> it does not diagnose conditions.</li>
+            <li><strong>Not a treatment replacement:</strong> it does not replace professional care.</li>
+            <li><strong>Not a public consumer release:</strong> the goal is supervised pilots first.</li>
           </ul>
 
-          <!-- ✅ Added: plain-English definition for "UX" -->
-          <div class="note" style="margin-top:12px;">
-            <strong>What “UX” means:</strong> UX = “User Experience” — how easy, clear, and supportive a product feels to use
-            (especially under stress).
-          </div>
-
           <div class="note">
-            <strong>Positioning:</strong>
-            Any future use is intended to occur under professional oversight
-            and appropriate governance.
+            <strong>Claims discipline:</strong>
+            SimHealth will not present outcomes publicly unless supported by appropriate evaluation.
           </div>
         </div>
 
         <div class="col-5">
-          <h3>Governance boundaries</h3>
+          <h3>Data and hosting (planned)</h3>
           <ul class="list">
-            <li>No emergency claims</li>
-            <li>No outcome statements without evaluation</li>
-            <li>Consent-led data use only</li>
-            <li>Clinical oversight required for pilots</li>
+            <li><strong>Privacy-first:</strong> minimise data; use consent-led collection only.</li>
+            <li><strong>GDPR-aligned design:</strong> principles applied across flows and retention.</li>
+            <li><strong>France-based hosting (intended):</strong> future infrastructure planning is oriented toward suitable health-grade hosting where applicable.</li>
           </ul>
 
           <div class="note">
-            <strong>Privacy:</strong>
-            All pilot data design aligns with GDPR principles.
-            See <a href="/en/legal/privacy/" style="color:var(--text); text-decoration:underline;">Privacy</a>.
+            <strong>Note:</strong>
+            This page describes intentions and design direction. See the official
+            <a href="/en/legal/privacy/" style="color:var(--text); text-decoration:underline;">Privacy</a>
+            notice for what is actually collected today.
           </div>
         </div>
       </div>
 
-      <!-- LinkedIn + CTAs -->
       <div class="cta-row">
-        <a class="btn-primary" href="/en/research/">Research approach</a>
+        <a class="btn-primary" href="/en/clinicians/pilot/">Pilot enquiries</a>
         <a class="btn-secondary" href="/en/contact/">Contact</a>
-        <a class="btn-secondary" href="https://www.linkedin.com/in/andrew-goodwin-simhealth"
-           target="_blank" rel="noopener"
-           aria-label="Founder LinkedIn profile (opens in new tab)">
-          Founder — LinkedIn ↗
+        <a class="btn-secondary" href="https://www.linkedin.com/in/andrew-goodwin-simhealth" target="_blank" rel="noopener">
+          Founder LinkedIn ↗
         </a>
+      </div>
+    </section>
+
+    <!-- FRAMEWORKS -->
+    <section class="card section">
+      <h2>Frameworks (public overview)</h2>
+      <p class="lead">
+        These are project concepts used to guide design and evaluation planning. They do not imply proven clinical outcomes.
+      </p>
+
+      <div class="grid">
+        <div class="col-7">
+          <h3>CET+</h3>
+          <p class="lead" style="margin-top:8px;">
+            A cue-exposure-informed approach focused on reflection, pacing, and safer choices during high-risk windows.
+          </p>
+        </div>
+
+        <div class="col-5">
+          <h3>ACUI</h3>
+          <p class="lead" style="margin-top:8px;">
+            Adaptive Clinical User Interface: accessibility-aware UI concepts, designed to reduce cognitive load and support diverse needs.
+          </p>
+
+          <div class="note">
+            <strong>What “UI” means:</strong> UI = “User Interface”; the screens, buttons, and layout people interact with.
+          </div>
+        </div>
       </div>
     </section>
 
