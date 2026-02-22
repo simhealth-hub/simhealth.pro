@@ -123,40 +123,56 @@
 
   window.SimHealthNav = { toggleMenu, openMenu, closeMenu };
 
-// --- MOBILE CRISIS BAR: LIFT ABOVE FOOTER ------------------
+// --- MOBILE CRISIS BAR: MOVE UP WHEN FOOTER APPEARS --------
 
   function initCrisisFooterAvoidance() {
     const bar = document.querySelector(".mobile-crisis");
     const footer = document.querySelector("footer");
     if (!bar || !footer) return;
 
+    const MQ = window.matchMedia("(max-width: 900px)");
+    let ticking = false;
+
     function update() {
-      // Reset on desktop
-      if (window.innerWidth > 900) {
-        root.style.setProperty("--crisis-lift", "0px");
+      ticking = false;
+
+      // Only apply on mobile widths
+      if (!MQ.matches) {
+        bar.style.transform = "translateY(0)";
         return;
       }
 
       const barRect = bar.getBoundingClientRect();
       const footerRect = footer.getBoundingClientRect();
 
-      // If footer isn't on-screen yet, no lift
+      // Footer not visible yet
       if (footerRect.top >= window.innerHeight) {
-        root.style.setProperty("--crisis-lift", "0px");
+        bar.style.transform = "translateY(0)";
         return;
       }
 
-      // If bar overlaps footer, lift it
+      // How much the bar overlaps the footer (positive = overlap)
       const overlap = barRect.bottom - footerRect.top;
 
-      // +12px breathing room so it clears footer links nicely
+      // Lift amount (+12px breathing room)
       const lift = Math.max(0, overlap + 12);
-      root.style.setProperty("--crisis-lift", lift + "px");
+
+      // Move up by lift
+      bar.style.transform = `translateY(-${lift}px)`;
     }
 
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    function requestUpdate() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+
+    // Run once after layout is settled
+    setTimeout(update, 0);
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+    MQ.addEventListener?.("change", requestUpdate);
   }
 
   if (document.readyState === "loading") {
