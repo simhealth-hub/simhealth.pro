@@ -13,10 +13,22 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* ↓ Hero un peu plus bas pour laisser apparaître le haut des tuiles */
-    .hero { min-height: 72vh; }
-    @media (max-width: 768px) {
-      .hero { min-height: 64vh; }
+    /* =========================
+       HERO HEIGHT ADJUSTMENT
+       ========================= */
+
+    /* Desktop: hero ~30% shorter */
+    @media (min-width: 901px){
+      .hero{
+        min-height: 50vh;
+      }
+    }
+
+    /* Mobile: keep readable and balanced */
+    @media (max-width: 900px){
+      .hero{
+        min-height: 60vh;
+      }
     }
   </style>
 </head>
@@ -44,7 +56,7 @@
       <a class="link" href="/fr/cliniciens/">Cliniciens</a>
       <a class="link" href="/fr/recherche/">Recherche</a>
       <a class="link" href="/fr/a-propos/">À propos</a>
-     <a class="link" href="/fr/faq/">FAQ</a>
+      <a class="link" href="/fr/faq/">FAQ</a>
       <a class="link" href="/fr/contact/">Contact</a>
 
       <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
@@ -73,6 +85,7 @@
 
   <main class="wrap">
 
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-bg" style="background-image:url('/assets/hero-clinic.jpg');"></div>
       <div class="hero-overlay"></div>
@@ -82,12 +95,13 @@
 
         <p class="rise-2">
           Un projet numérique <strong style="color:var(--text);">conçu avec des clinicien·ne·s</strong>,
-          explorant un soutien structuré pour aider à gérer les <strong style="color:var(--text);">envies de jeu d’argent</strong>.
+          explorant un soutien structuré pour aider à gérer les
+          <strong style="color:var(--text);">envies de jeu d’argent</strong>.
         </p>
 
         <p class="rise-3" style="max-width:680px; color:var(--muted); line-height:1.6;">
-          Conçu avec des limites explicites de sécurité, une supervision clinique
-          et une approche centrée recherche.
+          Conçu avec des limites explicites de sécurité,
+          une supervision clinique et une approche centrée recherche.
           <br>
           <strong style="color:var(--text);">
             Pas un service d’urgence. Pas un dispositif médical.
@@ -96,6 +110,7 @@
       </div>
     </section>
 
+    <!-- TILES -->
     <div class="grid" aria-label="Accès principaux">
 
       <a class="tile" href="/fr/patients/">
@@ -142,7 +157,7 @@
 
       <nav aria-label="Liens de pied de page">
         <a href="/sitemap.html">Plan du site</a>
-       <a href="/fr/faq/">FAQ</a>
+        <a href="/fr/faq/">FAQ</a>
         <a href="/fr/legal/confidentialite/">Confidentialité</a>
         <a href="/fr/legal/conditions/">Conditions</a>
         <a href="/fr/legal/cookies/">Cookies</a>
