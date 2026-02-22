@@ -1,24 +1,47 @@
+/***************************************
+ * SimHealth — theme.js
+ * - Theme (dark/light) with OS sync
+ * - Mobile nav open/close + a11y
+ * - Mobile crisis bar: lifts when footer is visible
+ *
+ * REQUIREMENTS IN HTML:
+ * - Crisis bar element: <div class="mobile-crisis">...</div>
+ * - Footer element: <footer id="site-footer">...</footer>
+ ***************************************/
+
 (function () {
+  "use strict";
+
   const root = document.documentElement;
   const STORAGE_KEY = "simhealth-theme";
   const MENU_OPEN_CLASS = "open";
 
-  // --- THEME -------------------------------------------------
+  // =========================
+  // THEME
+  // =========================
 
   function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
   }
 
   function getSavedTheme() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    return saved === "light" || saved === "dark" ? saved : null;
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved === "light" || saved === "dark" ? saved : null;
+    } catch (_) {
+      return null;
+    }
   }
 
   function getSystemTheme() {
-    return window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: light)").matches
-      ? "light"
-      : "dark";
+    try {
+      return window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: light)").matches
+        ? "light"
+        : "dark";
+    } catch (_) {
+      return "dark";
+    }
   }
 
   function getPreferredTheme() {
@@ -29,7 +52,7 @@
     const current = root.getAttribute("data-theme") || "dark";
     const next = current === "dark" ? "light" : "dark";
     applyTheme(next);
-    localStorage.setItem(STORAGE_KEY, next);
+    try { localStorage.setItem(STORAGE_KEY, next); } catch (_) {}
   }
 
   // Apply immediately to reduce theme flash
@@ -38,20 +61,19 @@
   // If user hasn't explicitly set a theme, follow OS changes
   try {
     const mq = window.matchMedia("(prefers-color-scheme: light)");
-    if (mq && typeof mq.addEventListener === "function") {
-      mq.addEventListener("change", () => {
-        if (!getSavedTheme()) applyTheme(getSystemTheme());
-      });
-    } else if (mq && typeof mq.addListener === "function") {
-      mq.addListener(() => {
-        if (!getSavedTheme()) applyTheme(getSystemTheme());
-      });
-    }
+    const handler = () => {
+      if (!getSavedTheme()) applyTheme(getSystemTheme());
+    };
+
+    if (mq && typeof mq.addEventListener === "function") mq.addEventListener("change", handler);
+    else if (mq && typeof mq.addListener === "function") mq.addListener(handler);
   } catch (_) {}
 
   window.SimHealthTheme = { toggleTheme };
 
-  // --- NAV / MOBILE MENU -------------------------------------
+  // =========================
+  // NAV / MOBILE MENU
+  // =========================
 
   function getMenu() {
     return document.querySelector(".nav .menu");
@@ -84,7 +106,6 @@
   function toggleMenu() {
     const menu = getMenu();
     if (!menu) return;
-
     const willOpen = !menu.classList.contains(MENU_OPEN_CLASS);
     if (willOpen) openMenu();
     else closeMenu();
@@ -95,12 +116,10 @@
     const menu = getMenu();
     const btn = getToggleButton();
     if (!menu || !btn) return;
-
     if (!menu.classList.contains(MENU_OPEN_CLASS)) return;
 
     const clickedInsideMenu = menu.contains(e.target);
     const clickedButton = btn.contains(e.target);
-
     if (!clickedInsideMenu && !clickedButton) closeMenu();
   });
 
@@ -111,7 +130,7 @@
     if (menu && menu.classList.contains(MENU_OPEN_CLASS)) closeMenu();
   });
 
-  // Close when a link inside the menu is clicked (navigating away)
+  // Close when a link inside the menu is clicked
   document.addEventListener("click", (e) => {
     const a = e.target && e.target.closest ? e.target.closest(".nav .menu a") : null;
     if (!a) return;
@@ -123,42 +142,80 @@
 
   window.SimHealthNav = { toggleMenu, openMenu, closeMenu };
 
-// --- MOBILE CRISIS BAR: MOVE UP WHEN FOOTER APPEARS --------
+  // =========================
+  // MOBILE CRISIS BAR — MOVE UP WHEN FOOTER APPEARS
+  // Uses IntersectionObserver; falls back to scroll math.
+  // =========================
 
   function initCrisisFooterAvoidance() {
     const bar = document.querySelector(".mobile-crisis");
-    const footer = document.querySelector("footer");
+    const footer = document.getElementById("site-footer") || document.querySelector("footer");
     if (!bar || !footer) return;
 
     const MQ = window.matchMedia("(max-width: 900px)");
+
+    function setBottom(px) {
+      // Your CSS sets bottom: 64px; we override only when needed
+      bar.style.bottom = px;
+      // Ensure any old transform-based code doesn't interfere
+      bar.style.transform = "translateY(0)";
+    }
+
+    function resetDesktop() {
+      bar.style.bottom = "";
+      bar.style.transform = "translateY(0)";
+    }
+
+    // Prefer IntersectionObserver (more reliable and cheaper)
+    if ("IntersectionObserver" in window) {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          // If footer intersects viewport, lift the bar
+          const visible = entries && entries[0] ? entries[0].isIntersecting : false;
+
+          if (!MQ.matches) {
+            resetDesktop();
+            return;
+          }
+
+          if (visible) setBottom("140px"); // lift amount (adjust if you want)
+          else setBottom("64px");          // default mobile bottom
+        },
+        { threshold: 0.01 }
+      );
+
+      obs.observe(footer);
+
+      // Also respond to breakpoint changes
+      const onMq = () => {
+        if (!MQ.matches) resetDesktop();
+        else setBottom("64px");
+      };
+      if (typeof MQ.addEventListener === "function") MQ.addEventListener("change", onMq);
+      else if (typeof MQ.addListener === "function") MQ.addListener(onMq);
+
+      // Initial
+      onMq();
+      return;
+    }
+
+    // Fallback (no IntersectionObserver): scroll math
     let ticking = false;
 
     function update() {
       ticking = false;
 
-      // Only apply on mobile widths
       if (!MQ.matches) {
-        bar.style.transform = "translateY(0)";
+        resetDesktop();
         return;
       }
 
-      const barRect = bar.getBoundingClientRect();
-      const footerRect = footer.getBoundingClientRect();
+      // If footer enters viewport, lift
+      const footerTop = footer.getBoundingClientRect().top;
+      const viewportH = window.innerHeight;
 
-      // Footer not visible yet
-      if (footerRect.top >= window.innerHeight) {
-        bar.style.transform = "translateY(0)";
-        return;
-      }
-
-      // How much the bar overlaps the footer (positive = overlap)
-      const overlap = barRect.bottom - footerRect.top;
-
-      // Lift amount (+12px breathing room)
-      const lift = Math.max(0, overlap + 12);
-
-      // Move up by lift
-      bar.style.transform = `translateY(-${lift}px)`;
+      if (footerTop < viewportH) setBottom("140px");
+      else setBottom("64px");
     }
 
     function requestUpdate() {
@@ -167,12 +224,12 @@
       requestAnimationFrame(update);
     }
 
-    // Run once after layout is settled
     setTimeout(update, 0);
-
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
-    MQ.addEventListener?.("change", requestUpdate);
+
+    if (typeof MQ.addEventListener === "function") MQ.addEventListener("change", requestUpdate);
+    else if (typeof MQ.addListener === "function") MQ.addListener(requestUpdate);
   }
 
   if (document.readyState === "loading") {
@@ -180,24 +237,5 @@
   } else {
     initCrisisFooterAvoidance();
   }
-(function () {
-  const crisis = document.querySelector(".mobile-crisis");
-  const footer = document.getElementById("site-footer");
 
-  if (!crisis || !footer) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          crisis.style.bottom = "140px";
-        } else {
-          crisis.style.bottom = "64px";
-        }
-      });
-    },
-    { threshold: 0.01 }
-  );
-
-  observer.observe(footer);
 })();
