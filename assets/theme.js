@@ -122,4 +122,44 @@
   setExpanded(false);
 
   window.SimHealthNav = { toggleMenu, openMenu, closeMenu };
-})();
+
+  // --- MOBILE CRISIS BAR: LIFT ABOVE FOOTER ------------------
+
+  function initCrisisFooterAvoidance() {
+    const bar = document.querySelector(".mobile-crisis");
+    const footer = document.querySelector("footer");
+    if (!bar || !footer) return;
+
+    function update() {
+      // Desktop/tablet: no lift needed
+      if (window.innerWidth > 900) {
+        root.style.setProperty("--crisis-lift", "0px");
+        return;
+      }
+
+      const barRect = bar.getBoundingClientRect();
+      const footerRect = footer.getBoundingClientRect();
+
+      // Footer not on screen yet
+      if (footerRect.top >= window.innerHeight) {
+        root.style.setProperty("--crisis-lift", "0px");
+        return;
+      }
+
+      // If bar overlaps footer, lift it up
+      const overlap = barRect.bottom - footerRect.top;
+      const lift = Math.max(0, overlap + 12); // +12px breathing room
+      root.style.setProperty("--crisis-lift", lift + "px");
+    }
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCrisisFooterAvoidance);
+  } else {
+    initCrisisFooterAvoidance();
+  }
+}
