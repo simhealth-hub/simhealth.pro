@@ -16,6 +16,10 @@
 
   /* Tap sizing baseline */
   --tap: 44px;
+
+  /* Mobile crisis bar positioning */
+  --crisis-gap: 12px;
+  --crisis-lift: 0px; /* JS updates this when footer is visible */
 }
 
 /* Default theme is dark */
@@ -483,8 +487,8 @@ footer nav a + a::before{
 
 /* Prevent layout jumps */
 @media (max-width: 900px) {
-  /* Leave space for sticky crisis bar */
-  .wrap{ padding-bottom: 92px; }
+  /* Leave space for the sticky crisis bar (plus iOS safe area) */
+  .wrap{ padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
 
   .nav { padding: 12px 14px; }
 
@@ -561,7 +565,7 @@ footer nav a + a::before{
     position: fixed;
     left: 12px;
     right: 12px;
-    bottom: 64px;
+    bottom: calc(var(--crisis-gap) + env(safe-area-inset-bottom) + var(--crisis-lift));
     z-index: 60;
     border-radius: 999px;
     border: 1px solid var(--border);
