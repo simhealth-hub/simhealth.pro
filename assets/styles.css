@@ -476,22 +476,11 @@ footer nav a + a::before{
 }
 .acc[open] summary { background: color-mix(in srgb, var(--text) 5%, transparent); }
 
-/* Mobile: zoom OUT the hero image ~20% so the face is more visible */
+/* ✅ Mobile: zoom OUT hero image slightly (less crop) */
 @media (max-width: 900px){
-  .help-hero-bg{
-    background-size: 80% auto;     /* zoom out */
-    background-position: 70% 40%;  /* shift to keep face in view */
-  }
-
-  /* Optional: soften overlay a bit so the face reads better */
-  .hero-overlay{
-    background: linear-gradient(
-      90deg,
-      rgba(11,18,32,0.86) 0%,
-      rgba(11,18,32,0.55) 42%,
-      rgba(11,18,32,0.16) 72%,
-      rgba(11,18,32,0.00) 100%
-    );
+  .hero-bg{
+    background-size: 110% auto; /* slightly zoomed out vs cover */
+    background-position: center 40%;
   }
 }
 
@@ -559,9 +548,6 @@ footer nav a + a::before{
   .hero{
     min-height: 78vh;
   }
-  .hero-bg{
-    background-position: center center;
-  }
   .hero-content{
     padding: 34px 18px;
   }
@@ -592,10 +578,7 @@ body[data-hide-crisis="true"] .mobile-crisis{
     position: fixed;
     left: 12px;
     right: 12px;
-
-    /* ✅ flush to bottom, then JS lifts via transform */
     bottom: calc(var(--crisis-gap) + env(safe-area-inset-bottom));
-
     z-index: 60;
     border-radius: 999px;
     border: 1px solid var(--border);
@@ -606,7 +589,6 @@ body[data-hide-crisis="true"] .mobile-crisis{
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 10px 35px rgba(0,0,0,0.25);
-
     transform: translateY(0);
     transition: transform 180ms var(--ease);
     will-change: transform;
@@ -631,4 +613,4 @@ body[data-hide-crisis="true"] .mobile-crisis{
     border-radius: 999px;
     white-space: nowrap;
   }
-  }
+}
