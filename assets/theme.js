@@ -180,3 +180,24 @@
   } else {
     initCrisisFooterAvoidance();
   }
+(function () {
+  const crisis = document.querySelector(".mobile-crisis");
+  const footer = document.getElementById("site-footer");
+
+  if (!crisis || !footer) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          crisis.style.bottom = "140px";
+        } else {
+          crisis.style.bottom = "64px";
+        }
+      });
+    },
+    { threshold: 0.01 }
+  );
+
+  observer.observe(footer);
+})();
