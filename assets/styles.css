@@ -557,6 +557,10 @@ footer nav a + a::before{
    STICKY MOBILE CRISIS BAR
    ========================= */
 
+:root{
+  --crisis-lift: 0px; /* JS updates this */
+}
+
 .mobile-crisis { display:none; }
 
 @media (max-width: 900px){
@@ -565,7 +569,11 @@ footer nav a + a::before{
     position: fixed;
     left: 12px;
     right: 12px;
-    bottom: calc(var(--crisis-gap) + env(safe-area-inset-bottom) + var(--crisis-lift));
+
+    /* ✅ Default sits at the very bottom.
+       ✅ When footer appears, JS increases --crisis-lift and it moves up. */
+    bottom: calc(12px + var(--crisis-lift));
+
     z-index: 60;
     border-radius: 999px;
     border: 1px solid var(--border);
@@ -577,6 +585,7 @@ footer nav a + a::before{
     justify-content: space-between;
     box-shadow: 0 10px 35px rgba(0,0,0,0.25);
   }
+
   .mobile-crisis .label{
     font-weight: 900;
     letter-spacing: .2px;
@@ -587,6 +596,7 @@ footer nav a + a::before{
     text-overflow: ellipsis;
     max-width: 46%;
   }
+
   .mobile-crisis a{
     flex: 1;
     text-align: center;
