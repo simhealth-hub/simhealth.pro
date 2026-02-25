@@ -62,19 +62,17 @@
       ☰
     </button>
 
-    <!-- IMPORTANT: id must match aria-controls -->
     <nav class="menu" id="main-menu" aria-label="Main navigation">
       <a class="link" href="/en/home/">Home</a>
       <a class="link" href="/en/patients/">Patients</a>
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
       <a class="link" href="/en/about/">About</a>
-     <a class="link" href="/en/faq/">FAQ</a>
+      <a class="link" href="/en/faq/">FAQ</a>
       <a class="link" href="/en/contact/">Contact</a>
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
 
-      <!-- FIXED: point to real FR medical disclaimer route -->
       <div class="lang-toggle" aria-label="Language">
         <a class="active" href="/en/legal/medical-disclaimer/">
           <span class="lang-full">English</span>
@@ -99,8 +97,13 @@
 
   <main class="wrap">
 
+    <!-- ✅ HERO uses the Medical Disclaimer tile image as background -->
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/legal-hero.jpg');"></div>
+      <div class="hero-bg"
+           style="background-image:url('/assets/medical_disclaimer.png');
+                  background-position:center;
+                  background-size:cover;">
+      </div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
@@ -168,11 +171,10 @@
         <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
       </div>
 
-      <!-- ✅ EN footer includes correct FR equivalents to stop “English → French” dead-links -->
       <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
-      <a href="/en/faq/">FAQ</a>
-      <a href="/en/legal/status/">Status</a>
+        <a href="/en/faq/">FAQ</a>
+        <a href="/en/legal/status/">Status</a>
         <a href="/en/legal/privacy/">Privacy</a>
         <a href="/en/legal/terms/">Terms</a>
         <a href="/en/legal/cookies/">Cookies</a>
@@ -190,7 +192,6 @@
     </div>
   </footer>
 
-  <!-- Mobile always-visible crisis access (English pages only) -->
   <div class="mobile-crisis" aria-label="Crisis quick access">
     <span class="label">Need help now?</span>
     <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
