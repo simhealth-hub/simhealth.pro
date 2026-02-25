@@ -54,7 +54,6 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <!-- ✅ Mobile menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
       aria-label="Toggle navigation"
@@ -69,7 +68,7 @@
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
       <a class="link" href="/en/about/">About</a>
- <a class="link" href="/en/faq/">FAQ</a>
+      <a class="link" href="/en/faq/">FAQ</a>
       <a class="link" href="/en/contact/">Contact</a>
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
@@ -98,8 +97,13 @@
 
   <main class="wrap">
 
+    <!-- ✅ HERO uses the Terms tile image as background (text overlays on tile) -->
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/legal-hero.jpg');"></div>
+      <div class="hero-bg"
+           style="background-image:url('/assets/terms.png');
+                  background-position:center;
+                  background-size:cover;">
+      </div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
@@ -191,8 +195,8 @@
       </div>
       <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
-  <a href="/en/faq/">FAQ</a>
-      <a href="/en/legal/status/">Status</a>
+        <a href="/en/faq/">FAQ</a>
+        <a href="/en/legal/status/">Status</a>
         <a href="/en/legal/privacy/">Privacy</a>
         <a href="/en/legal/terms/">Terms</a>
         <a href="/en/legal/cookies/">Cookies</a>
