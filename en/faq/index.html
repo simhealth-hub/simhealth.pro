@@ -147,6 +147,13 @@
       color: var(--muted);
       line-height: 1.6;
     }
+
+    /* ✅ ONLY ADDITION: keep lady face visible on small screens too */
+    @media (max-width: 720px){
+      .hero .hero-bg{
+        background-position: 92% 28% !important;
+      }
+    }
   </style>
 </head>
 
@@ -205,7 +212,7 @@
     <section class="hero">
       <div class="hero-bg"
            style="background-image:url('/assets/faq.png');
-                  background-position:center;
+                  background-position: 92% 18%;
                   background-size:cover;">
       </div>
       <div class="hero-overlay"></div>
@@ -328,7 +335,9 @@
 
         <details class="faq">
           <summary>What kinds of questions are included—and what do they influence? <span class="chev">▾</span></summary>
-          <p>The questionnaire is grouped into themes:</p>
+          <p>
+            The questionnaire is grouped into themes:
+          </p>
           <ul>
             <li><strong>Professional context</strong> — helps interpret responses responsibly.</li>
             <li><strong>Current tools & workflow</strong> — identifies what already works and where gaps exist (timing, visibility, burden).</li>
@@ -383,7 +392,9 @@
             <li>basic metadata like language, timestamp, and page name; and</li>
             <li>technical metadata (e.g., browser user-agent, referrer) for reliability and debugging.</li>
           </ul>
-          <p>Please do not include patient-identifying information or sensitive case details.</p>
+          <p>
+            Please do not include patient-identifying information or sensitive case details.
+          </p>
         </details>
 
         <details class="faq">
@@ -420,7 +431,9 @@
             You can request deletion at any time by emailing
             <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
           </p>
-          <p>To help locate your submission, include:</p>
+          <p>
+            To help locate your submission, include:
+          </p>
           <ul>
             <li>the email address used (if you provided one),</li>
             <li>the approximate date/time you submitted, and</li>
@@ -453,16 +466,25 @@
 
         <details class="faq">
           <summary>What’s the difference between “project updates” and “pilot interest”? <span class="chev">▾</span></summary>
-          <p>They are not the same:</p>
+          <p>
+            They are not the same:
+          </p>
           <ul>
-            <li><strong>Project updates</strong> means you may receive occasional news (milestones, governance progress, publications). This does not enrol you in any pilot or study.</li>
-            <li><strong>Pilot interest</strong> means you are open to a conversation about potential participation in supervised pre-pilot work. It still does not enrol you automatically. Any pilot participation requires explicit agreement and appropriate governance documentation.</li>
+            <li>
+              <strong>Project updates</strong> means you may receive occasional news (milestones, governance progress, publications). This does not enrol you in any pilot or study.
+            </li>
+            <li>
+              <strong>Pilot interest</strong> means you are open to a conversation about potential participation in supervised pre-pilot work.
+              It still does not enrol you automatically. Any pilot participation requires explicit agreement and appropriate governance documentation.
+            </li>
           </ul>
         </details>
 
         <details class="faq">
           <summary>Does completing the questionnaire enrol me in anything? <span class="chev">▾</span></summary>
-          <p>No. Completing the questionnaire does not enrol you in a pilot or study. It is for professional feedback and feasibility planning.</p>
+          <p>
+            No. Completing the questionnaire does not enrol you in a pilot or study. It is for professional feedback and feasibility planning.
+          </p>
         </details>
 
         <details class="faq">
@@ -489,7 +511,9 @@
             CET+ refers to a structured framework being developed for supervised digital support pathways. It is informed by established clinical concepts
             (including cue-exposure approaches) and focuses on conservative, safety-first deployment with clinician oversight.
           </p>
-          <p>This FAQ intentionally stays high-level and does not publish protocol details.</p>
+          <p>
+            This FAQ intentionally stays high-level and does not publish protocol details.
+          </p>
         </details>
 
         <details class="faq">
@@ -498,19 +522,25 @@
             ACUI stands for <strong>Adaptive Clinical User Interface</strong>. It is a design approach aimed at reducing barriers across different needs and contexts.
             The focus is usability and accessibility—such as reducing cognitive load, improving readability, and supporting different pacing/clarity requirements.
           </p>
-          <p>ACUI is not a diagnostic tool. It is a product design approach.</p>
+          <p>
+            ACUI is not a diagnostic tool. It is a product design approach.
+          </p>
         </details>
 
         <details class="faq">
           <summary>What does “adaptive” mean in practice? <span class="chev">▾</span></summary>
-          <p>“Adaptive” can mean conservative adjustments such as:</p>
+          <p>
+            “Adaptive” can mean conservative adjustments such as:
+          </p>
           <ul>
             <li>simplifying layouts and reducing visual density,</li>
             <li>adjusting pacing and content chunking,</li>
             <li>supporting contrast or readability needs,</li>
             <li>and respecting clinician-configured boundaries.</li>
           </ul>
-          <p>Any adaptive behaviour should be transparent, bounded, and aligned with governance controls.</p>
+          <p>
+            Any adaptive behaviour should be transparent, bounded, and aligned with governance controls.
+          </p>
         </details>
       </section>
 
@@ -551,7 +581,9 @@
 
         <details class="faq">
           <summary>Does SimHealth claim to treat or cure any condition? <span class="chev">▾</span></summary>
-          <p>No. This site makes no outcome claims. The focus is feasibility planning, governance, and safety-first design.</p>
+          <p>
+            No. This site makes no outcome claims. The focus is feasibility planning, governance, and safety-first design.
+          </p>
         </details>
 
         <details class="faq">
@@ -564,7 +596,9 @@
 
         <details class="faq">
           <summary>Does SimHealth provide clinical advice? <span class="chev">▾</span></summary>
-          <p>No. The site provides informational content about the project and its planning approach. It does not provide personalised clinical advice.</p>
+          <p>
+            No. The site provides informational content about the project and its planning approach. It does not provide personalised clinical advice.
+          </p>
         </details>
       </section>
 
