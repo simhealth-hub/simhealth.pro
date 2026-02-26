@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth | Pré-pilote</title>
+
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
+</head>
+
+<body>
+
+  <div class="banner">
+    <strong>Priorité santé.</strong> Ce site présente un projet en phase de pré-pilote. En cas d’urgence, contactez les services compétents.
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="/index.html">SimHealth</a>
+
+    <button class="nav-toggle" type="button"
+      onclick="SimHealthNav.toggleMenu()">☰</button>
+
+    <nav class="menu">
+      <a class="link" href="/fr/accueil/">Accueil</a>
+      <a class="link" href="/fr/patients/">Patients</a>
+      <a class="link" href="/fr/cliniciens/">Cliniciens</a>
+      <a class="link" href="/fr/recherche/">Recherche</a>
+      <a class="link" href="/fr/contact/">Contact</a>
+      <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
+
+      <div class="lang-toggle">
+        <a href="/en/pilot/">English</a>
+        <a class="active" href="/fr/pre-pilote/">Français</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg"
+        style="background-image:url('/assets/pilot.png');
+               background-position:right center;
+               background-size:cover;">
+      </div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1>Soutien numérique supervisé</h1>
+        <p>Présentation du pré-pilote</p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="#explainer">Lire</a>
+          <a class="btn-secondary" href="/fr/contact/">Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="explainer" style="margin-top:16px;">
+
+      <h2>Ce que c’est</h2>
+      <p>
+        SimHealth est un projet en phase de pré-pilote explorant l’intégration d’un soutien numérique supervisé dans les parcours existants liés au jeu excessif.
+      </p>
+
+      <h2>Objectif</h2>
+      <p>
+        Examiner la faisabilité, les exigences de gouvernance et l’intégration clinique. Aucun déploiement auprès des patients sans validation éthique et institutionnelle.
+      </p>
+
+      <h2>Ce que ce n’est pas</h2>
+      <ul>
+        <li>Pas un service d’urgence</li>
+        <li>Pas un remplacement de la prise en charge clinique</li>
+        <li>Pas un dispositif médical présenté comme tel</li>
+      </ul>
+
+      <p><strong>Contact :</strong> contact@simhealth.pro</p>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
