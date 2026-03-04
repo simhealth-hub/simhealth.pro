@@ -47,7 +47,9 @@ a{
 
 <p id="msg"></p>
 
-<a class="button" href="https://simhealth.pro/en/home/" id="backBtn">
+<p id="redirectMsg" style="opacity:.7;font-size:14px"></p>
+
+<a class="button" id="backBtn" href="https://simhealth.pro/en/home/">
 Back to SimHealth
 </a>
 
@@ -62,6 +64,7 @@ const token = params.get("token");
 const lang = params.get("lang") || "en";
 
 const msg = document.getElementById("msg");
+const redirectMsg = document.getElementById("redirectMsg");
 const backBtn = document.getElementById("backBtn");
 
 const TEXT = {
@@ -71,7 +74,9 @@ const TEXT = {
     done: "You have been unsubscribed. You will not receive further SimHealth update emails.",
     invalid: "Invalid unsubscribe link.",
     fallback: "Unsubscribe request sent. If you still receive emails please open the link in a private window.",
-    back: "Back to SimHealth"
+    redirect: "Returning to SimHealth…",
+    back: "Back to SimHealth",
+    backUrl: "https://simhealth.pro/en/home/"
   },
 
   fr: {
@@ -79,16 +84,22 @@ const TEXT = {
     done: "Vous avez été désinscrit. Vous ne recevrez plus les emails d’actualités SimHealth.",
     invalid: "Lien de désinscription invalide.",
     fallback: "Demande de désinscription envoyée. Si vous recevez encore des emails, ouvrez ce lien dans une fenêtre privée.",
-    back: "Retour à SimHealth"
+    redirect: "Retour vers SimHealth…",
+    back: "Retour à SimHealth",
+    backUrl: "https://simhealth.pro/fr/accueil/"
   }
 
 };
 
 msg.textContent = TEXT[lang].processing;
 backBtn.textContent = TEXT[lang].back;
+backBtn.href = TEXT[lang].backUrl;
 
-if(lang === "fr"){
-  backBtn.href = "https://simhealth.pro/fr/accueil/";
+function redirectHome(){
+  redirectMsg.textContent = TEXT[lang].redirect;
+  setTimeout(()=>{
+    window.location.href = TEXT[lang].backUrl;
+  },3000);
 }
 
 if(!token){
@@ -107,9 +118,11 @@ else{
   fetch(url,{mode:"no-cors"})
   .then(()=>{
       msg.textContent = TEXT[lang].done;
+      redirectHome();
   })
   .catch(()=>{
       msg.textContent = TEXT[lang].fallback;
+      redirectHome();
   });
 
 }
