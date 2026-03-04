@@ -1,75 +1,95 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Unsubscribe — SimHealth</title>
-  <style>
-    body{font-family:Arial,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0b1220;color:#fff;margin:0;padding:24px}
-    .card{max-width:720px;margin:0 auto;background:#111b2e;border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:18px}
-    a{color:#2dd4bf;text-decoration:none}
-    .muted{color:rgba(255,255,255,.75);line-height:1.6}
-    .btn{display:inline-block;margin-top:14px;padding:10px 14px;border-radius:12px;background:#2dd4bf;color:#071018;font-weight:800}
-    .small{font-size:12px;color:rgba(255,255,255,.6);margin-top:12px;word-break:break-all}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SimHealth — Unsubscribe</title>
+
+<style>
+body{
+  font-family:system-ui,Arial,sans-serif;
+  background:#0b1220;
+  color:white;
+  padding:40px;
+  margin:0;
+}
+
+.card{
+  max-width:720px;
+  margin:auto;
+  background:#111b2e;
+  border-radius:16px;
+  padding:24px;
+}
+
+a{
+  color:#2dd4bf;
+}
+
+.button{
+  display:inline-block;
+  margin-top:16px;
+  padding:12px 18px;
+  background:#2dd4bf;
+  color:#071018;
+  border-radius:12px;
+  font-weight:700;
+  text-decoration:none;
+}
+</style>
 </head>
+
 <body>
-  <div class="card">
-    <h2 style="margin:0 0 10px;">SimHealth</h2>
-    <p id="msg" class="muted">Processing your unsubscribe request…</p>
 
-    <a id="back" class="btn" href="https://simhealth.pro/en/home/">Back to SimHealth</a>
+<div class="card">
 
-    <p class="small" id="fallback"></p>
-  </div>
+<h2>SimHealth</h2>
 
-  <script>
-    // ✅ Your Apps Script Web App (the real endpoint)
-    const EXEC =
-      "https://script.google.com/macros/s/AKfycbxJ1xiM2CKY_H4KQRpcJFqjXXUjWKecK_K8Uyqv4AIgeV2uhj3iNjmNk7iJK9CxRTDQ/exec";
+<p id="msg">Processing your unsubscribe request…</p>
 
-    const params = new URLSearchParams(location.search);
-    const token = (params.get("token") || "").trim();
-    const lang = (params.get("lang") || "en").toLowerCase() === "fr" ? "fr" : "en";
+<a class="button" href="https://simhealth.pro/en/home/">Back to SimHealth</a>
 
-    // Localize the page (simple)
-    const msgEl = document.getElementById("msg");
-    const backEl = document.getElementById("back");
-    const fallbackEl = document.getElementById("fallback");
+</div>
 
-    if (lang === "fr") {
-      backEl.textContent = "Retour au site SimHealth";
-      backEl.href = "https://simhealth.pro/fr/accueil/";
-    } else {
-      backEl.textContent = "Back to SimHealth";
-      backEl.href = "https://simhealth.pro/en/home/";
-    }
+<script>
 
-    if (!token) {
-      msgEl.textContent = (lang === "fr")
-        ? "Lien incomplet : jeton manquant."
-        : "Incomplete link: missing token.";
-      fallbackEl.textContent = "";
-    } else {
-      // IMPORTANT:
-      // We DO NOT redirect the browser to script.google.com (avoids the Google Drive error).
-      // We send a GET request in the background to trigger the unsubscribe in Sheets.
-      const url = EXEC + "?action=unsubscribe&token=" + encodeURIComponent(token) + "&lang=" + encodeURIComponent(lang);
+const EXEC =
+"https://script.google.com/macros/s/AKfycbxJ1xiM2CKY_H4KQRpcJFqjXXUjWKecK_K8Uyqv4AIgeV2uhj3iNjmNk7iJK9CxRTDQ/exec";
 
-      // Make the request "fire and forget" (no-cors) — request still reaches Apps Script.
-      fetch(url, { method: "GET", mode: "no-cors", cache: "no-store" })
-        .catch(() => { /* ignore */ })
-        .finally(() => {
-          msgEl.textContent = (lang === "fr")
-            ? "Vous avez bien été désinscrit·e. Vous ne recevrez plus d’emails de mise à jour SimHealth."
-            : "You’ve been unsubscribed. You will not receive further SimHealth update emails.";
+const params = new URLSearchParams(location.search);
+const token = params.get("token");
+const lang = params.get("lang") || "en";
 
-          // Optional: show a fallback direct link (in case user wants to manually open it)
-          fallbackEl.innerHTML = (lang === "fr")
-            ? `Si vous ne recevez toujours des emails, ouvrez ce lien dans une fenêtre privée :<br><a href="${url}" target="_blank" rel="noreferrer">${url}</a>`
-            : `If you still receive emails, open this link in a private window:<br><a href="${url}" target="_blank" rel="noreferrer">${url}</a>`;
-        });
-    }
-  </script>
+const msg = document.getElementById("msg");
+
+if(!token){
+  msg.textContent = "Invalid unsubscribe link.";
+}
+else{
+
+  const url =
+    EXEC +
+    "?action=unsubscribe" +
+    "&token=" + encodeURIComponent(token) +
+    "&lang=" + encodeURIComponent(lang);
+
+  fetch(url,{mode:"no-cors"})
+  .then(()=>{
+
+      msg.textContent =
+      "You have been unsubscribed. You will not receive further SimHealth update emails.";
+
+  })
+  .catch(()=>{
+
+      msg.textContent =
+      "Unsubscribe request sent. If you still receive emails please open the link in a private window.";
+
+  });
+
+}
+
+</script>
+
 </body>
 </html>
