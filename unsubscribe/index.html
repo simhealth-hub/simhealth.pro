@@ -13,7 +13,6 @@ body{
   padding:40px;
   margin:0;
 }
-
 .card{
   max-width:720px;
   margin:auto;
@@ -21,11 +20,7 @@ body{
   border-radius:16px;
   padding:24px;
 }
-
-a{
-  color:#2dd4bf;
-}
-
+a{ color:#2dd4bf; }
 .button{
   display:inline-block;
   margin-top:16px;
@@ -36,97 +31,88 @@ a{
   font-weight:700;
   text-decoration:none;
 }
+.small{ opacity:.75; font-size:14px; line-height:1.5; }
 </style>
 </head>
 
 <body>
-
 <div class="card">
+  <h2>SimHealth</h2>
 
-<h2>SimHealth</h2>
+  <p id="msg"></p>
+  <p id="redirectMsg" class="small"></p>
 
-<p id="msg"></p>
-
-<p id="redirectMsg" style="opacity:.7;font-size:14px"></p>
-
-<a class="button" id="backBtn" href="https://simhealth.pro/en/home/">
-Back to SimHealth
-</a>
-
+  <a class="button" id="backBtn" href="https://simhealth.pro/en/home/">Back to SimHealth</a>
 </div>
 
+<!-- ✅ Load the single source of truth -->
+<script src="/assets/app-config.js"></script>
+
 <script>
+(function(){
+  const params = new URLSearchParams(location.search);
+  const token = params.get("token");
+  const langRaw = (params.get("lang") || "en").toLowerCase();
+  const lang = (langRaw === "fr") ? "fr" : "en";
 
-const EXEC = "https://script.google.com/macros/s/AKfycbxJ1xiM2CKY_H4KQRpcJFqjXXUjWKecK_K8Uyqv4AIgeV2uhj3iNjmNk7iJK9CxRTDQ/exec";
+  const msg = document.getElementById("msg");
+  const redirectMsg = document.getElementById("redirectMsg");
+  const backBtn = document.getElementById("backBtn");
 
-const params = new URLSearchParams(location.search);
-const token = params.get("token");
-const lang = params.get("lang") || "en";
+  const TEXT = {
+    en: {
+      processing: "Processing your unsubscribe request…",
+      invalid: "Invalid unsubscribe link.",
+      redirect: "Redirecting…",
+      back: "Back to SimHealth",
+      backUrl: "https://simhealth.pro/en/home/"
+    },
+    fr: {
+      processing: "Traitement de votre demande de désinscription…",
+      invalid: "Lien de désinscription invalide.",
+      redirect: "Redirection…",
+      back: "Retour à SimHealth",
+      backUrl: "https://simhealth.pro/fr/accueil/"
+    }
+  };
 
-const msg = document.getElementById("msg");
-const redirectMsg = document.getElementById("redirectMsg");
-const backBtn = document.getElementById("backBtn");
+  // UI
+  msg.textContent = TEXT[lang].processing;
+  backBtn.textContent = TEXT[lang].back;
+  backBtn.href = TEXT[lang].backUrl;
 
-const TEXT = {
+  // Get exec endpoint from config
+  const exec =
+    (window.SIMHEALTH &&
+     window.SIMHEALTH.ENDPOINTS &&
+     window.SIMHEALTH.ENDPOINTS.SIGNUPS_EXEC) ? String(window.SIMHEALTH.ENDPOINTS.SIGNUPS_EXEC).trim() : "";
 
-  en: {
-    processing: "Processing your unsubscribe request…",
-    done: "You have been unsubscribed. You will not receive further SimHealth update emails.",
-    invalid: "Invalid unsubscribe link.",
-    fallback: "Unsubscribe request sent. If you still receive emails please open the link in a private window.",
-    redirect: "Returning to SimHealth…",
-    back: "Back to SimHealth",
-    backUrl: "https://simhealth.pro/en/home/"
-  },
-
-  fr: {
-    processing: "Traitement de votre demande de désinscription…",
-    done: "Vous avez été désinscrit. Vous ne recevrez plus les emails d’actualités SimHealth.",
-    invalid: "Lien de désinscription invalide.",
-    fallback: "Demande de désinscription envoyée. Si vous recevez encore des emails, ouvrez ce lien dans une fenêtre privée.",
-    redirect: "Retour vers SimHealth…",
-    back: "Retour à SimHealth",
-    backUrl: "https://simhealth.pro/fr/accueil/"
+  if(!token){
+    msg.textContent = TEXT[lang].invalid;
+    return;
   }
 
-};
+  if(!exec){
+    msg.textContent = (lang === "fr")
+      ? "Configuration manquante. Impossible de traiter la désinscription."
+      : "Missing configuration. Unable to process unsubscribe.";
+    return;
+  }
 
-msg.textContent = TEXT[lang].processing;
-backBtn.textContent = TEXT[lang].back;
-backBtn.href = TEXT[lang].backUrl;
-
-function redirectHome(){
-  redirectMsg.textContent = TEXT[lang].redirect;
-  setTimeout(()=>{
-    window.location.href = TEXT[lang].backUrl;
-  },3000);
-}
-
-if(!token){
-
-  msg.textContent = TEXT[lang].invalid;
-
-}
-else{
-
+  // ✅ Best practice: redirect to the Apps Script page (no CORS issues, no weird browser blocking)
   const url =
-    EXEC +
+    exec +
     "?action=unsubscribe" +
     "&token=" + encodeURIComponent(token) +
     "&lang=" + encodeURIComponent(lang);
 
-  fetch(url,{mode:"no-cors"})
-  .then(()=>{
-      msg.textContent = TEXT[lang].done;
-      redirectHome();
-  })
-  .catch(()=>{
-      msg.textContent = TEXT[lang].fallback;
-      redirectHome();
-  });
+  redirectMsg.textContent = TEXT[lang].redirect;
 
-}
-
+  // small delay so user sees the message
+  setTimeout(function(){
+    window.location.replace(url);
+  }, 250);
+})();
 </script>
 
 </body>
