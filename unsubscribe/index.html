@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Unsubscribe — SimHealth</title>
+</head>
+<body style="font-family:Arial,sans-serif;padding:24px;">
+  <p>Redirecting…</p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token") || "";
+    const lang  = params.get("lang") || "en";
+
+    // Redirect to Apps Script (your real endpoint)
+    const target =
+      "https://script.google.com/macros/s/AKfycbxJ1xiM2CKY_H4KQRpcJFqjXXUjWKecK_K8Uyqv4AIgeV2uhj3iNjmNk7iJK9CxRTDQ/exec" +
+      "?action=unsubscribe" +
+      "&token=" + encodeURIComponent(token) +
+      "&lang=" + encodeURIComponent(lang);
+
+    window.location.replace(target);
+  </script>
+</body>
+</html>
