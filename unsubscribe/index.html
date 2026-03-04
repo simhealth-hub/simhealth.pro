@@ -45,9 +45,11 @@ a{
 
 <h2>SimHealth</h2>
 
-<p id="msg">Processing your unsubscribe request…</p>
+<p id="msg"></p>
 
-<a class="button" href="https://simhealth.pro/en/home/">Back to SimHealth</a>
+<a class="button" href="https://simhealth.pro/en/home/" id="backBtn">
+Back to SimHealth
+</a>
 
 </div>
 
@@ -60,9 +62,39 @@ const token = params.get("token");
 const lang = params.get("lang") || "en";
 
 const msg = document.getElementById("msg");
+const backBtn = document.getElementById("backBtn");
+
+const TEXT = {
+
+  en: {
+    processing: "Processing your unsubscribe request…",
+    done: "You have been unsubscribed. You will not receive further SimHealth update emails.",
+    invalid: "Invalid unsubscribe link.",
+    fallback: "Unsubscribe request sent. If you still receive emails please open the link in a private window.",
+    back: "Back to SimHealth"
+  },
+
+  fr: {
+    processing: "Traitement de votre demande de désinscription…",
+    done: "Vous avez été désinscrit. Vous ne recevrez plus les emails d’actualités SimHealth.",
+    invalid: "Lien de désinscription invalide.",
+    fallback: "Demande de désinscription envoyée. Si vous recevez encore des emails, ouvrez ce lien dans une fenêtre privée.",
+    back: "Retour à SimHealth"
+  }
+
+};
+
+msg.textContent = TEXT[lang].processing;
+backBtn.textContent = TEXT[lang].back;
+
+if(lang === "fr"){
+  backBtn.href = "https://simhealth.pro/fr/accueil/";
+}
 
 if(!token){
-  msg.textContent = "Invalid unsubscribe link.";
+
+  msg.textContent = TEXT[lang].invalid;
+
 }
 else{
 
@@ -74,12 +106,10 @@ else{
 
   fetch(url,{mode:"no-cors"})
   .then(()=>{
-      msg.textContent =
-      "You have been unsubscribed. You will not receive further SimHealth update emails.";
+      msg.textContent = TEXT[lang].done;
   })
   .catch(()=>{
-      msg.textContent =
-      "Unsubscribe request sent. If you still receive emails please open the link in a private window.";
+      msg.textContent = TEXT[lang].fallback;
   });
 
 }
