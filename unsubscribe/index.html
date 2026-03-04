@@ -1,119 +1,150 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SimHealth — Unsubscribe</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SimHealth — Unsubscribe</title>
+  <meta name="robots" content="noindex,nofollow">
 
-<style>
-body{
-  font-family:system-ui,Arial,sans-serif;
-  background:#0b1220;
-  color:white;
-  padding:40px;
-  margin:0;
-}
-.card{
-  max-width:720px;
-  margin:auto;
-  background:#111b2e;
-  border-radius:16px;
-  padding:24px;
-}
-a{ color:#2dd4bf; }
-.button{
-  display:inline-block;
-  margin-top:16px;
-  padding:12px 18px;
-  background:#2dd4bf;
-  color:#071018;
-  border-radius:12px;
-  font-weight:700;
-  text-decoration:none;
-}
-.small{ opacity:.75; font-size:14px; line-height:1.5; }
-</style>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111b2e;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.72);
+      --brand:#2dd4bf;
+      --brandText:#071018;
+      --border:rgba(255,255,255,.10);
+      --radius:16px;
+    }
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      margin:0;
+      padding:40px 16px;
+    }
+    .card{
+      max-width:720px;
+      margin:0 auto;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:22px;
+    }
+    h2{ margin:0 0 10px; }
+    p{ margin:0 0 10px; line-height:1.6; color:var(--muted); }
+    .button{
+      display:inline-block;
+      margin-top:14px;
+      padding:12px 18px;
+      background:var(--brand);
+      color:var(--brandText);
+      border-radius:12px;
+      font-weight:800;
+      text-decoration:none;
+    }
+    .tiny{
+      margin-top:10px;
+      font-size:13px;
+      opacity:.75;
+    }
+    a.link{ color:var(--brand); text-decoration:none; }
+    a.link:hover{ text-decoration:underline; }
+  </style>
 </head>
 
 <body>
-<div class="card">
-  <h2>SimHealth</h2>
 
-  <p id="msg"></p>
-  <p id="redirectMsg" class="small"></p>
+  <div class="card">
+    <h2>SimHealth</h2>
 
-  <a class="button" id="backBtn" href="https://simhealth.pro/en/home/">Back to SimHealth</a>
-</div>
+    <p id="msg">Processing your unsubscribe request…</p>
+    <p id="hint" class="tiny"></p>
 
-<!-- ✅ Load the single source of truth -->
-<script src="/assets/app-config.js"></script>
+    <a class="button" id="backBtn" href="https://simhealth.pro/en/home/">Back to SimHealth</a>
 
-<script>
-(function(){
-  const params = new URLSearchParams(location.search);
-  const token = params.get("token");
-  const langRaw = (params.get("lang") || "en").toLowerCase();
-  const lang = (langRaw === "fr") ? "fr" : "en";
+    <p class="tiny" style="margin-top:14px;">
+      If you still receive emails, contact
+      <a class="link" href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>.
+    </p>
+  </div>
 
-  const msg = document.getElementById("msg");
-  const redirectMsg = document.getElementById("redirectMsg");
-  const backBtn = document.getElementById("backBtn");
+  <script>
+    // ✅ IMPORTANT: this page must NOT redirect to Google.
+    // It stays on simhealth.pro and pings the Apps Script in the background.
 
-  const TEXT = {
-    en: {
-      processing: "Processing your unsubscribe request…",
-      invalid: "Invalid unsubscribe link.",
-      redirect: "Redirecting…",
-      back: "Back to SimHealth",
-      backUrl: "https://simhealth.pro/en/home/"
-    },
-    fr: {
-      processing: "Traitement de votre demande de désinscription…",
-      invalid: "Lien de désinscription invalide.",
-      redirect: "Redirection…",
-      back: "Retour à SimHealth",
-      backUrl: "https://simhealth.pro/fr/accueil/"
+    // Prefer the central config if present:
+    const EXEC =
+      (window.SIMHEALTH && window.SIMHEALTH.ENDPOINTS && window.SIMHEALTH.ENDPOINTS.SIGNUPS_EXEC)
+      ? window.SIMHEALTH.ENDPOINTS.SIGNUPS_EXEC
+      : "https://script.google.com/macros/s/AKfycbxJ1xiM2CKY_H4KQRpcJFqjXXUjWKecK_K8Uyqv4AIgeV2uhj3iNjmNk7iJK9CxRTDQ/exec";
+
+    const params = new URLSearchParams(location.search);
+    const token = params.get("token");
+    const langParam = (params.get("lang") || "").toLowerCase();
+    const lang = (langParam === "fr") ? "fr" : "en";
+
+    const msg = document.getElementById("msg");
+    const hint = document.getElementById("hint");
+    const backBtn = document.getElementById("backBtn");
+
+    const TEXT = {
+      en: {
+        processing: "Processing your unsubscribe request…",
+        done: "You’ve been unsubscribed. You will not receive further SimHealth update emails.",
+        invalid: "Invalid unsubscribe link.",
+        fallback: "Request sent. If you still receive emails, open the unsubscribe link in a private window or contact contact@simhealth.pro.",
+        back: "Back to SimHealth",
+        backUrl: "https://simhealth.pro/en/home/",
+        redirect: "Returning to SimHealth…"
+      },
+      fr: {
+        processing: "Traitement de votre demande de désinscription…",
+        done: "Vous avez été désinscrit·e. Vous ne recevrez plus d’emails de mise à jour SimHealth.",
+        invalid: "Lien de désinscription invalide.",
+        fallback: "Demande envoyée. Si vous recevez encore des emails, ouvrez le lien dans une fenêtre privée ou contactez contact@simhealth.pro.",
+        back: "Retour à SimHealth",
+        backUrl: "https://simhealth.pro/fr/accueil/",
+        redirect: "Retour vers SimHealth…"
+      }
+    };
+
+    backBtn.textContent = TEXT[lang].back;
+    backBtn.href = TEXT[lang].backUrl;
+
+    function redirectHome(){
+      hint.textContent = TEXT[lang].redirect;
+      setTimeout(()=>{ window.location.href = TEXT[lang].backUrl; }, 3000);
     }
-  };
 
-  // UI
-  msg.textContent = TEXT[lang].processing;
-  backBtn.textContent = TEXT[lang].back;
-  backBtn.href = TEXT[lang].backUrl;
+    if(!token){
+      msg.textContent = TEXT[lang].invalid;
+    } else {
+      msg.textContent = TEXT[lang].processing;
 
-  // Get exec endpoint from config
-  const exec =
-    (window.SIMHEALTH &&
-     window.SIMHEALTH.ENDPOINTS &&
-     window.SIMHEALTH.ENDPOINTS.SIGNUPS_EXEC) ? String(window.SIMHEALTH.ENDPOINTS.SIGNUPS_EXEC).trim() : "";
+      const url =
+        EXEC +
+        "?action=unsubscribe" +
+        "&token=" + encodeURIComponent(token) +
+        "&lang=" + encodeURIComponent(lang) +
+        "&_=" + Date.now(); // cache-buster
 
-  if(!token){
-    msg.textContent = TEXT[lang].invalid;
-    return;
-  }
+      // no-cors => we can't read response, but request still hits Apps Script
+      fetch(url, { mode: "no-cors" })
+        .then(() => {
+          msg.textContent = TEXT[lang].done;
+          redirectHome();
+        })
+        .catch(() => {
+          msg.textContent = TEXT[lang].fallback;
+          redirectHome();
+        });
+    }
+  </script>
 
-  if(!exec){
-    msg.textContent = (lang === "fr")
-      ? "Configuration manquante. Impossible de traiter la désinscription."
-      : "Missing configuration. Unable to process unsubscribe.";
-    return;
-  }
-
-  // ✅ Best practice: redirect to the Apps Script page (no CORS issues, no weird browser blocking)
-  const url =
-    exec +
-    "?action=unsubscribe" +
-    "&token=" + encodeURIComponent(token) +
-    "&lang=" + encodeURIComponent(lang);
-
-  redirectMsg.textContent = TEXT[lang].redirect;
-
-  // small delay so user sees the message
-  setTimeout(function(){
-    window.location.replace(url);
-  }, 250);
-})();
-</script>
+  <!-- Load shared config if you use it site-wide -->
+  <script src="/assets/app-config.js"></script>
 
 </body>
 </html>
