@@ -1,25 +1,75 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Unsubscribe — SimHealth</title>
+  <style>
+    body{font-family:Arial,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#0b1220;color:#fff;margin:0;padding:24px}
+    .card{max-width:720px;margin:0 auto;background:#111b2e;border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:18px}
+    a{color:#2dd4bf;text-decoration:none}
+    .muted{color:rgba(255,255,255,.75);line-height:1.6}
+    .btn{display:inline-block;margin-top:14px;padding:10px 14px;border-radius:12px;background:#2dd4bf;color:#071018;font-weight:800}
+    .small{font-size:12px;color:rgba(255,255,255,.6);margin-top:12px;word-break:break-all}
+  </style>
 </head>
-<body style="font-family:Arial,sans-serif;padding:24px;">
-  <p>Redirecting…</p>
+<body>
+  <div class="card">
+    <h2 style="margin:0 0 10px;">SimHealth</h2>
+    <p id="msg" class="muted">Processing your unsubscribe request…</p>
+
+    <a id="back" class="btn" href="https://simhealth.pro/en/home/">Back to SimHealth</a>
+
+    <p class="small" id="fallback"></p>
+  </div>
+
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token") || "";
-    const lang  = params.get("lang") || "en";
+    // ✅ Your Apps Script Web App (the real endpoint)
+    const EXEC =
+      "https://script.google.com/macros/s/AKfycbxJ1xiM2CKY_H4KQRpcJFqjXXUjWKecK_K8Uyqv4AIgeV2uhj3iNjmNk7iJK9CxRTDQ/exec";
 
-    // Redirect to Apps Script (your real endpoint)
-    const target =
-      "https://script.google.com/macros/s/AKfycbxJ1xiM2CKY_H4KQRpcJFqjXXUjWKecK_K8Uyqv4AIgeV2uhj3iNjmNk7iJK9CxRTDQ/exec" +
-      "?action=unsubscribe" +
-      "&token=" + encodeURIComponent(token) +
-      "&lang=" + encodeURIComponent(lang);
+    const params = new URLSearchParams(location.search);
+    const token = (params.get("token") || "").trim();
+    const lang = (params.get("lang") || "en").toLowerCase() === "fr" ? "fr" : "en";
 
-    window.location.replace(target);
+    // Localize the page (simple)
+    const msgEl = document.getElementById("msg");
+    const backEl = document.getElementById("back");
+    const fallbackEl = document.getElementById("fallback");
+
+    if (lang === "fr") {
+      backEl.textContent = "Retour au site SimHealth";
+      backEl.href = "https://simhealth.pro/fr/accueil/";
+    } else {
+      backEl.textContent = "Back to SimHealth";
+      backEl.href = "https://simhealth.pro/en/home/";
+    }
+
+    if (!token) {
+      msgEl.textContent = (lang === "fr")
+        ? "Lien incomplet : jeton manquant."
+        : "Incomplete link: missing token.";
+      fallbackEl.textContent = "";
+    } else {
+      // IMPORTANT:
+      // We DO NOT redirect the browser to script.google.com (avoids the Google Drive error).
+      // We send a GET request in the background to trigger the unsubscribe in Sheets.
+      const url = EXEC + "?action=unsubscribe&token=" + encodeURIComponent(token) + "&lang=" + encodeURIComponent(lang);
+
+      // Make the request "fire and forget" (no-cors) — request still reaches Apps Script.
+      fetch(url, { method: "GET", mode: "no-cors", cache: "no-store" })
+        .catch(() => { /* ignore */ })
+        .finally(() => {
+          msgEl.textContent = (lang === "fr")
+            ? "Vous avez bien été désinscrit·e. Vous ne recevrez plus d’emails de mise à jour SimHealth."
+            : "You’ve been unsubscribed. You will not receive further SimHealth update emails.";
+
+          // Optional: show a fallback direct link (in case user wants to manually open it)
+          fallbackEl.innerHTML = (lang === "fr")
+            ? `Si vous ne recevez toujours des emails, ouvrez ce lien dans une fenêtre privée :<br><a href="${url}" target="_blank" rel="noreferrer">${url}</a>`
+            : `If you still receive emails, open this link in a private window:<br><a href="${url}" target="_blank" rel="noreferrer">${url}</a>`;
+        });
+    }
   </script>
 </body>
 </html>
