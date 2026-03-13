@@ -1,123 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://simhealth.pro/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<!-- Root -->
+<url>
+<loc>https://simhealth.pro/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <!-- English -->
+<!-- ======================= -->
+<!-- English -->
+<!-- ======================= -->
 
-  <url>
-    <loc>https://simhealth.pro/en/home/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/home/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/en/patients/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/patients/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/en/patients/help-support/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/patients/help-support/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/en/patients/updates/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/patients/updates/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/en/patients/pgsi/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/patients/pgsi/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/en/clinicians/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/clinicians/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/en/clinicians/questionnaire/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/clinicians/questionnaire/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/en/clinicians/pilot/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/clinicians/pilot/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/en/research/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/research/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/en/about/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/about/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/en/contact/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/contact/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <!-- French -->
+<url>
+<loc>https://simhealth.pro/en/faq/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/fr/accueil/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<!-- Legal EN -->
 
-  <url>
-    <loc>https://simhealth.pro/fr/patients/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/legal/status/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/fr/patients/aide-soutien/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/legal/privacy/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/fr/patients/mises-a-jour/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/legal/terms/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/fr/patients/pgsi/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/legal/cookies/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/fr/cliniciens/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/legal/accessibility/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/fr/cliniciens/questionnaire/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/en/legal/medical-disclaimer/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/fr/cliniciens/pilote/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<!-- ======================= -->
+<!-- French -->
+<!-- ======================= -->
 
-  <url>
-    <loc>https://simhealth.pro/fr/recherche/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/fr/accueil/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/fr/a-propos/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/fr/patients/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
-  <url>
-    <loc>https://simhealth.pro/fr/contact/</loc>
-    <lastmod>2026-03-13</lastmod>
-  </url>
+<url>
+<loc>https://simhealth.pro/fr/patients/aide-soutien/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/patients/mises-a-jour/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/patients/pgsi/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/cliniciens/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/cliniciens/questionnaire/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/cliniciens/pilote/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/recherche/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/a-propos/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/contact/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/faq/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<!-- Legal FR -->
+
+<url>
+<loc>https://simhealth.pro/fr/legal/statut/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/legal/confidentialite/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/legal/conditions/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/legal/cookies/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/legal/accessibilite/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
+
+<url>
+<loc>https://simhealth.pro/fr/legal/avertissement-medical/</loc>
+<lastmod>2026-03-13</lastmod>
+</url>
 
 </urlset>
