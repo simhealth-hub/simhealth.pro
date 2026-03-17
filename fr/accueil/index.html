@@ -13,25 +13,38 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* =========================
-       HERO HEIGHT ADJUSTMENT
-       ========================= */
-
-    /* Desktop: hero ~30% shorter */
     @media (min-width: 901px){
-  .hero{
-    min-height: 50vh;
-  }
-  .hero .hero-bg{
-    background-position: 50% 75%;
-  }
+      .hero{
+        min-height: 50vh;
+      }
+      .hero .hero-bg{
+        background-position: 50% 75%;
+      }
     }
 
-    /* Mobile: keep readable and balanced */
     @media (max-width: 900px){
       .hero{
         min-height: 60vh;
       }
+    }
+
+    .collab{
+      max-width: 820px;
+      margin: 28px auto 10px;
+      padding: 18px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+    }
+
+    .collab p{
+      margin: 6px 0;
+      color: var(--muted);
+    }
+
+    .collab strong{
+      color: var(--text);
     }
   </style>
 </head>
@@ -39,7 +52,7 @@
 <body>
 
   <div class="banner">
-    <strong>En construction.</strong> SimHealth est développé avec soin et responsabilité.
+    <strong>Phase pré-pilote.</strong> SimHealth est développé avec soin et responsabilité.
   </div>
 
   <header class="nav">
@@ -97,14 +110,12 @@
         <h1 class="rise-1">SimHealth</h1>
 
         <p class="rise-2">
-          Un projet numérique <strong style="color:var(--text);">conçu avec des clinicien·ne·s</strong>,
-          explorant un soutien structuré pour aider à gérer les
-          <strong style="color:var(--text);">envies de jeu d’argent</strong>.
+          Un projet numérique pré-pilote, conçu avec un apport clinique, qui explore un accompagnement structuré et supervisé
+          pour aider à gérer les envies liées au jeu d’argent.
         </p>
 
         <p class="rise-3" style="max-width:680px; color:var(--muted); line-height:1.6;">
-          Conçu avec des limites explicites de sécurité,
-          une supervision clinique et une approche centrée recherche.
+          Développé avec des limites explicites de sécurité, une supervision clinique, et une approche centrée sur la recherche.
           <br>
           <strong style="color:var(--text);">
             Pas un service d’urgence. Pas un dispositif médical.
@@ -120,7 +131,7 @@
         <div class="img" style="background-image:url('/assets/patients.jpg');"></div>
         <div class="meta">
           <h3>Patients</h3>
-          <p>Repères, outils structurés et parcours de soutien.</p>
+          <p>Repères structurés, informations de soutien, et ressources d’aide.</p>
         </div>
       </a>
 
@@ -128,7 +139,7 @@
         <div class="img" style="background-image:url('/assets/clinician.jpg');"></div>
         <div class="meta">
           <h3>Cliniciens</h3>
-          <p>Rationnel clinique, information pilote et gouvernance.</p>
+          <p>Rationnel clinique, gouvernance, et contexte pré-pilote.</p>
         </div>
       </a>
 
@@ -136,7 +147,7 @@
         <div class="img" style="background-image:url('/assets/research.jpg');"></div>
         <div class="meta">
           <h3>Recherche</h3>
-          <p>Méthodologie, évaluation progressive et éthique.</p>
+          <p>Approche d’évaluation, méthodologie, et éthique.</p>
         </div>
       </a>
 
@@ -144,14 +155,23 @@
         <div class="img" style="background-image:url('/assets/about.jpg');"></div>
         <div class="meta">
           <h3>À propos</h3>
-          <p>Mission, principes et contexte de développement.</p>
+          <p>Contexte du projet, principes, et développement en cours.</p>
         </div>
       </a>
 
     </div>
+
+    <!-- COLLABORATION BLOCK -->
+    <section class="collab">
+      <h3>Collaboration clinique</h3>
+      <p>Pour un retour clinique, une discussion pré-pilote, ou un intérêt de recherche :</p>
+      <p><strong>contact@simhealth.pro</strong></p>
+      <p><a href="/fr/faq/">Voir les détails dans la FAQ</a></p>
+    </section>
+
   </main>
 
-  <footer>
+  <footer id="site-footer">
     <div class="row">
       <div>
         © 2026 SimHealth. Tous droits réservés. •
@@ -161,6 +181,7 @@
       <nav aria-label="Liens de pied de page">
         <a href="/sitemap.html">Plan du site</a>
         <a href="/fr/faq/">FAQ</a>
+        <a href="/fr/legal/status/">Statut</a>
         <a href="/fr/legal/confidentialite/">Confidentialité</a>
         <a href="/fr/legal/conditions/">Conditions</a>
         <a href="/fr/legal/cookies/">Cookies</a>
