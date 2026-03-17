@@ -13,10 +13,10 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* Page-specific helpers (keeps your global styles intact) */
     .faq-wrap{ max-width: 980px; margin: 0 auto; padding: 22px 16px 40px; }
     .card-pad{ padding: 18px 18px; }
     .kicker{ color: var(--muted); line-height: 1.65; margin: 8px 0 0; }
+
     .toc{
       margin-top: 14px;
       display:flex;
@@ -45,6 +45,7 @@
       margin: 10px 0;
     }
     details.faq[open]{ background: var(--surface); }
+
     details.faq summary{
       cursor: pointer;
       list-style: none;
@@ -57,6 +58,7 @@
       outline: none;
     }
     details.faq summary::-webkit-details-marker{ display:none; }
+
     .chev{
       flex: 0 0 auto;
       opacity: .8;
@@ -69,17 +71,7 @@
     .faq p{ margin: 10px 0 0; color: var(--muted); line-height: 1.75; }
     .faq ul{ margin: 10px 0 0 18px; color: var(--muted); line-height: 1.75; }
     .faq li{ margin: 6px 0; }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding: 2px 10px;
-      border-radius: 999px;
-      border:1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
-      margin-left: 8px;
-      font-weight: 700;
-    }
+
     .divider{ border:none; border-top:1px solid var(--border); margin: 18px 0; }
 
     .callout{
@@ -109,7 +101,11 @@
       outline:none;
       font-size: 15px;
     }
-    .searchbar input:focus{ background: var(--surface); border-color: color-mix(in srgb, var(--primary) 55%, var(--border)); }
+    .searchbar input:focus{
+      background: var(--surface);
+      border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
+    }
+
     .btn-mini{
       padding: 10px 12px;
       border-radius: var(--radius-lg);
@@ -148,7 +144,6 @@
       line-height: 1.6;
     }
 
-    /* ✅ ONLY ADDITION: keep lady face visible on small screens too */
     @media (max-width: 720px){
       .hero .hero-bg{
         background-position: 92% 28% !important;
@@ -208,7 +203,6 @@
 
   <main class="wrap">
 
-    <!-- ✅ HERO uses FAQ tile image so text sits ON the tile (like your legal pages) -->
     <section class="hero">
       <div class="hero-bg"
            style="background-image:url('/assets/faq.png');
@@ -236,18 +230,18 @@
       <section class="card card-pad">
         <h2 style="margin:0;">Start here</h2>
         <p class="kicker">
-          SimHealth is a clinician-informed <strong>pre-pilot</strong> project exploring how supervised digital support can be designed responsibly:
-          governance-first, safety-first, and realistically integrated into clinical workflows.
+          SimHealth is a clinician-informed <strong>pre-pilot</strong> project exploring how supervised digital support could be designed responsibly in the context of gambling-related harm:
+          governance-first, safety-first, and realistically aligned with clinical workflows.
         </p>
 
         <div class="callout">
           <strong style="color:var(--text);">Important:</strong>
-          SimHealth is in development and is not emergency care, not presented here as a medical device, and not a substitute for clinical judgement.
+          SimHealth is in development. It is not emergency care, is not presented on this website as a medical device, and is not a substitute for clinical judgement or ongoing treatment.
           If you need urgent help, use local emergency services or crisis resources.
         </div>
 
         <div class="searchbar" aria-label="FAQ search">
-          <input id="faqSearch" type="text" placeholder="Search the FAQ (e.g., data, delete, pilot, consent, ACUI, CET+)">
+          <input id="faqSearch" type="text" placeholder="Search the FAQ (e.g., data, deletion, pilot, consent, ACUI, CET+)">
           <button class="btn-mini" type="button" onclick="openAll(false)">Collapse all</button>
           <button class="btn-mini" type="button" onclick="openAll(true)">Expand all</button>
         </div>
@@ -264,7 +258,8 @@
         </div>
 
         <p class="muted-small">
-          If you can’t find what you need, email <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
+          For clinical feedback, research interest, or collaboration enquiries, email
+          <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
         </p>
       </section>
 
@@ -280,14 +275,16 @@
         <details class="faq">
           <summary>What is SimHealth? <span class="chev">▾</span></summary>
           <p>
-            SimHealth is a clinician-informed digital health <strong>pre-pilot</strong> project. It explores how structured, supervised digital support
-            could complement care pathways—especially around the “between-session gap”—while keeping governance and safety as first-order requirements.
+            SimHealth is a clinician-informed digital health <strong>pre-pilot</strong> project exploring how structured, supervised digital support could complement care pathways for gambling-related harm.
           </p>
           <p>
-            SimHealth is being developed as a two-sided programme:
+            The project is being developed with governance, safety, and realistic clinical integration as first-order requirements.
+          </p>
+          <p>
+            SimHealth is currently structured as a two-sided concept:
           </p>
           <ul>
-            <li><strong>a clinician portal</strong> designed for governance, oversight, and supervised pathways; and</li>
+            <li><strong>a clinician portal</strong> designed for oversight, governance, and supervised pathway configuration; and</li>
             <li><strong>a patient-facing experience</strong> designed for structured, time-appropriate support within agreed clinical boundaries.</li>
           </ul>
         </details>
@@ -295,23 +292,40 @@
         <details class="faq">
           <summary>Who is SimHealth for? <span class="chev">▾</span></summary>
           <p>
-            SimHealth is currently oriented toward clinicians, clinical services, researchers, and institutions who want to shape responsible design:
-            feasibility, oversight, accessibility, and governance before anything scales.
+            SimHealth is currently intended for clinicians, clinical services, researchers, and institutions with an interest in behavioural addiction, supervised digital support, and early-stage pilot design.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Who should contact us? <span class="chev">▾</span></summary>
+          <p>
+            We welcome contact from:
+          </p>
+          <ul>
+            <li>addiction clinicians and multidisciplinary teams,</li>
+            <li>researchers and trial coordinators,</li>
+            <li>clinical services exploring supervised pilot work, and</li>
+            <li>institutions interested in governance, safety, and feasibility discussion.</li>
+          </ul>
+          <p>
+            If you are a patient seeking support, please use the crisis and help resources provided elsewhere on this site.
           </p>
         </details>
 
         <details class="faq">
           <summary>Is SimHealth a medical device? <span class="chev">▾</span></summary>
           <p>
-            This website does not present SimHealth as a medical device. Whether any component could later fall under medical device frameworks depends on
-            intended use, claims, and regulatory pathways—which are not asserted here. Current work focuses on pre-pilot planning and governance-first design.
+            This website does not present SimHealth as a medical device. Whether any component could later fall within medical device frameworks would depend on intended use, claims, evidence, and regulatory pathway decisions, none of which are asserted here.
+          </p>
+          <p>
+            The current stage is pre-pilot planning, governance-first design, and clinical dialogue.
           </p>
         </details>
 
         <details class="faq">
           <summary>Is SimHealth for emergencies or crisis situations? <span class="chev">▾</span></summary>
           <p>
-            No. SimHealth is not an emergency service. If you are in immediate danger or need urgent help, contact your local emergency number or use crisis resources.
+            No. SimHealth is not an emergency service. If you are in immediate danger or need urgent support, contact your local emergency number or use the crisis resources listed on this site.
           </p>
         </details>
       </section>
@@ -366,8 +380,8 @@
         <details class="faq">
           <summary>What happens after I submit? <span class="chev">▾</span></summary>
           <p>
-            Submissions are used to inform feasibility planning, governance, safety requirements, accessibility considerations, and evaluation priorities for supervised pre-pilot work.
-            If you consented to contact or updates and provided an email, you may receive a short confirmation and (optionally) occasional updates.
+            Submissions are used to inform feasibility planning, governance requirements, safety considerations, accessibility decisions, and evaluation priorities for supervised pre-pilot work.
+            If you consented to follow-up or updates and provided an email address, you may receive a confirmation message and occasional project-related communication.
           </p>
         </details>
       </section>
@@ -420,8 +434,8 @@
         <details class="faq">
           <summary>How long is questionnaire data kept? <span class="chev">▾</span></summary>
           <p>
-            Data retention is limited to what is necessary for planning and governance, and may evolve as the project matures.
-            If you want your submission removed, you can request deletion.
+            Data is retained only for as long as reasonably necessary for project planning, governance, and related administrative purposes, and retention practices may evolve as the project develops.
+            If you would like your submission removed, you can request deletion at any time.
           </p>
         </details>
 
@@ -436,12 +450,12 @@
           </p>
           <ul>
             <li>the email address used (if you provided one),</li>
-            <li>the approximate date/time you submitted, and</li>
+            <li>the approximate date and time of submission, and</li>
             <li>whether you used the English or French questionnaire page.</li>
           </ul>
           <p>
             If you submitted anonymously with no identifiers, deletion may be difficult because there may be no reliable way to locate your submission.
-            In that case, contact us and we will explain what is possible.
+            In that case, contact us and we will explain what may be possible.
           </p>
         </details>
 
@@ -471,11 +485,11 @@
           </p>
           <ul>
             <li>
-              <strong>Project updates</strong> means you may receive occasional news (milestones, governance progress, publications). This does not enrol you in any pilot or study.
+              <strong>Project updates</strong> means you may receive occasional news, such as milestones, governance progress, or publications. This does not enrol you in any pilot or study.
             </li>
             <li>
               <strong>Pilot interest</strong> means you are open to a conversation about potential participation in supervised pre-pilot work.
-              It still does not enrol you automatically. Any pilot participation requires explicit agreement and appropriate governance documentation.
+              It still does not enrol you automatically. Any pilot participation would require explicit agreement and appropriate governance documentation.
             </li>
           </ul>
         </details>
@@ -508,11 +522,10 @@
         <details class="faq">
           <summary>What is CET+? <span class="chev">▾</span></summary>
           <p>
-            CET+ refers to a structured framework being developed for supervised digital support pathways. It is informed by established clinical concepts
-            (including cue-exposure approaches) and focuses on conservative, safety-first deployment with clinician oversight.
+            CET+ refers to a structured conceptual framework being developed for supervised digital support pathways. It is informed by established clinical ideas, including cue-exposure approaches, and is being shaped around conservative, safety-first use with clinician oversight.
           </p>
           <p>
-            This FAQ intentionally stays high-level and does not publish protocol details.
+            This FAQ intentionally remains high-level and does not publish protocol-level detail.
           </p>
         </details>
 
@@ -520,7 +533,7 @@
           <summary>What is ACUI? <span class="chev">▾</span></summary>
           <p>
             ACUI stands for <strong>Adaptive Clinical User Interface</strong>. It is a design approach aimed at reducing barriers across different needs and contexts.
-            The focus is usability and accessibility—such as reducing cognitive load, improving readability, and supporting different pacing/clarity requirements.
+            The focus is usability and accessibility, such as reducing cognitive load, improving readability, and supporting different pacing and clarity requirements.
           </p>
           <p>
             ACUI is not a diagnostic tool. It is a product design approach.
@@ -564,7 +577,7 @@
         <details class="faq">
           <summary>What is the clinician portal for? <span class="chev">▾</span></summary>
           <p>
-            The clinician portal is designed for governance and oversight—such as configuring pathways, setting boundaries, reviewing engagement at an appropriate level,
+            The clinician portal is designed for governance and oversight, such as configuring pathways, setting boundaries, reviewing engagement at an appropriate level,
             and supporting pilot documentation. Specific features are shaped through pre-pilot planning and partner feedback.
           </p>
         </details>
@@ -582,14 +595,14 @@
         <details class="faq">
           <summary>Does SimHealth claim to treat or cure any condition? <span class="chev">▾</span></summary>
           <p>
-            No. This site makes no outcome claims. The focus is feasibility planning, governance, and safety-first design.
+            No. This site makes no outcome claims. The current focus is feasibility planning, governance, and safety-first design.
           </p>
         </details>
 
         <details class="faq">
           <summary>Can SimHealth replace therapy or clinical care? <span class="chev">▾</span></summary>
           <p>
-            No. SimHealth is not a replacement for clinical care. The aim is to explore supervised digital support that can complement care pathways,
+            No. SimHealth is not a replacement for clinical care. The aim is to explore supervised digital support that could complement care pathways,
             within agreed boundaries and clinical judgement.
           </p>
         </details>
@@ -597,7 +610,7 @@
         <details class="faq">
           <summary>Does SimHealth provide clinical advice? <span class="chev">▾</span></summary>
           <p>
-            No. The site provides informational content about the project and its planning approach. It does not provide personalised clinical advice.
+            No. This site provides informational content about the project and its planning approach. It does not provide personalised clinical advice.
           </p>
         </details>
       </section>
@@ -612,15 +625,15 @@
         </div>
 
         <details class="faq">
-          <summary>I’m a clinician or researcher—how can I collaborate? <span class="chev">▾</span></summary>
+          <summary>I’m a clinician or researcher — how can I collaborate? <span class="chev">▾</span></summary>
           <p>
-            If you’re interested in governance input, feasibility discussions, or supervised pilot exploration, you can complete the questionnaire and opt into follow-up,
+            If you’re interested in governance input, feasibility discussion, or supervised pilot exploration, you can complete the questionnaire and opt into follow-up,
             or contact us via the <a href="/en/contact/" style="color:var(--text); text-decoration:underline;">Contact</a> page.
           </p>
         </details>
 
         <details class="faq">
-          <summary>I represent an institution—what would participation typically require? <span class="chev">▾</span></summary>
+          <summary>I represent an institution — what would participation typically require? <span class="chev">▾</span></summary>
           <p>
             Institutional participation commonly requires governance review and agreement on oversight, data processing arrangements where relevant,
             DPIA expectations, and clear incident pathways. The questionnaire helps surface what your organisation expects.
@@ -661,11 +674,12 @@
   </div>
 
   <script>
-    // Simple client-side FAQ search: filters <details> blocks by text match
     const searchInput = document.getElementById("faqSearch");
     const items = Array.from(document.querySelectorAll("details.faq"));
 
-    function normalize(s){ return (s || "").toLowerCase(); }
+    function normalize(s){
+      return (s || "").toLowerCase();
+    }
 
     function applySearch(){
       const q = normalize(searchInput.value).trim();
@@ -687,7 +701,6 @@
       searchInput.addEventListener("input", applySearch);
     }
 
-    // Expose openAll for the buttons
     window.openAll = openAll;
   </script>
 
