@@ -13,7 +13,6 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* ↓ Make hero slightly shorter so tiles peek */
     .hero {
       min-height: 50vh;
     }
@@ -24,11 +23,30 @@
       }
     }
 
-    /* ✅ DESKTOP ONLY: show more of the bottom of the hero image */
     @media (min-width: 901px){
       .hero .hero-bg{
         background-position: 50% 85%;
       }
+    }
+
+    /* NEW: collaboration block spacing */
+    .collab{
+      max-width: 820px;
+      margin: 28px auto 10px;
+      padding: 18px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: color-mix(in srgb, var(--surface) 92%, transparent);
+    }
+
+    .collab p{
+      margin: 6px 0;
+      color: var(--muted);
+    }
+
+    .collab strong{
+      color: var(--text);
     }
   </style>
 </head>
@@ -36,7 +54,7 @@
 <body>
 
   <div class="banner">
-    <strong>Under construction.</strong>
+    <strong>Pre-pilot development.</strong>
     SimHealth is being developed carefully and responsibly.
   </div>
 
@@ -95,13 +113,12 @@
         <h1 class="rise-1">SimHealth</h1>
 
         <p class="rise-2">
-          A clinician-informed digital project exploring structured support
+          A clinician-informed, pre-pilot digital project exploring structured, supervised support
           for managing gambling-related urges.
         </p>
 
         <p class="rise-3" style="max-width:680px; color:var(--muted); line-height:1.6;">
-          Designed with explicit safety boundaries, clinical oversight,
-          and a research-first approach.
+          Designed with explicit safety boundaries, clinical oversight, and a research-first approach.
           <br>
           <strong style="color:var(--text);">
             Not an emergency service. Not a medical device.
@@ -117,7 +134,7 @@
         <div class="img" style="background-image:url('/assets/patients.jpg');"></div>
         <div class="meta">
           <h3>Patients</h3>
-          <p>Guidance, structured tools, and support pathways.</p>
+          <p>Structured guidance, support information, and help pathways.</p>
         </div>
       </a>
 
@@ -125,7 +142,7 @@
         <div class="img" style="background-image:url('/assets/clinician.jpg');"></div>
         <div class="meta">
           <h3>Clinicians</h3>
-          <p>Clinical rationale, pilot information, and governance.</p>
+          <p>Clinical rationale, governance, and pilot context.</p>
         </div>
       </a>
 
@@ -133,7 +150,7 @@
         <div class="img" style="background-image:url('/assets/research.jpg');"></div>
         <div class="meta">
           <h3>Research</h3>
-          <p>Methodology, evaluation approach, and ethics.</p>
+          <p>Evaluation approach, methodology, and ethics.</p>
         </div>
       </a>
 
@@ -141,11 +158,20 @@
         <div class="img" style="background-image:url('/assets/about.jpg');"></div>
         <div class="meta">
           <h3>About</h3>
-          <p>Mission, principles, and development context.</p>
+          <p>Project background, principles, and development context.</p>
         </div>
       </a>
 
     </div>
+
+    <!-- NEW: COLLABORATION BLOCK -->
+    <section class="collab">
+      <h3>Clinical Collaboration</h3>
+      <p>For clinical feedback, pilot discussion, or research interest:</p>
+      <p><strong>contact@simhealth.pro</strong></p>
+      <p><a href="/en/faq/">Full details in FAQ</a></p>
+    </section>
+
   </main>
 
   <footer id="site-footer">
@@ -176,4 +202,4 @@
   </div>
 
 </body>
-  </html>
+</html>
