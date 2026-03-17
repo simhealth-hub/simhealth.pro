@@ -13,7 +13,6 @@
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* Helpers spécifiques à la page (sans casser votre CSS global) */
     .faq-wrap{ max-width: 980px; margin: 0 auto; padding: 22px 16px 40px; }
     .card-pad{ padding: 18px 18px; }
     .kicker{ color: var(--muted); line-height: 1.65; margin: 8px 0 0; }
@@ -46,6 +45,7 @@
       margin: 10px 0;
     }
     details.faq[open]{ background: var(--surface); }
+
     details.faq summary{
       cursor: pointer;
       list-style: none;
@@ -58,6 +58,7 @@
       outline: none;
     }
     details.faq summary::-webkit-details-marker{ display:none; }
+
     .chev{
       flex: 0 0 auto;
       opacity: .8;
@@ -100,7 +101,11 @@
       outline:none;
       font-size: 15px;
     }
-    .searchbar input:focus{ background: var(--surface); border-color: color-mix(in srgb, var(--primary) 55%, var(--border)); }
+    .searchbar input:focus{
+      background: var(--surface);
+      border-color: color-mix(in srgb, var(--primary) 55%, var(--border));
+    }
+
     .btn-mini{
       padding: 10px 12px;
       border-radius: var(--radius-lg);
@@ -138,13 +143,19 @@
       color: var(--muted);
       line-height: 1.6;
     }
+
+    @media (max-width: 720px){
+      .hero .hero-bg{
+        background-position: 92% 28% !important;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <div class="banner">
-    <strong>Priorité santé.</strong> Ce site est une vitrine professionnelle. En cas de danger immédiat, appelez votre numéro d’urgence local.
+    <strong>Priorité santé.</strong> Ce site est une vitrine professionnelle du projet. En cas de danger immédiat, appelez votre numéro d’urgence local.
   </div>
 
   <header class="nav">
@@ -155,7 +166,7 @@
       aria-label="Ouvrir le menu"
       aria-expanded="false"
       aria-controls="main-menu">
-      Menu <span class="chev">▾</span>
+      ☰
     </button>
 
     <nav class="menu" id="main-menu" aria-label="Navigation principale">
@@ -171,11 +182,11 @@
       <div class="lang-toggle" aria-label="Langue">
         <a href="/en/faq/">
           <span class="lang-full">English</span>
-          <span class="lang-short" aria-hidden="true">English</span>
+          <span class="lang-short" aria-hidden="true">EN</span>
         </a>
         <a class="active" href="/fr/faq/">
           <span class="lang-full">Français</span>
-          <span class="lang-short" aria-hidden="true">Français</span>
+          <span class="lang-short" aria-hidden="true">FR</span>
         </a>
       </div>
 
@@ -193,14 +204,18 @@
   <main class="wrap">
 
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/research.jpg'); background-position:60% center;"></div>
+      <div class="hero-bg"
+           style="background-image:url('/assets/faq.png');
+                  background-position: 92% 18%;
+                  background-size:cover;">
+      </div>
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <h1 class="rise-1">Foire aux questions (FAQ)</h1>
+        <h1 class="rise-1">Foire aux questions</h1>
         <p class="rise-2">
-          Réponses claires sur SimHealth, le questionnaire cliniciens, la gestion des données, et la signification réelle de “pré-pilote”.
-          <br><span style="color:var(--muted); font-size:13px;">Cette page est informative et ne constitue pas un avis médical.</span>
+          Réponses claires sur SimHealth, le questionnaire clinicien, la gestion des données, et la signification réelle de « pré-pilote ».
+          <br><span style="color:var(--muted); font-size:13px;">Cette page est informative et ne constitue pas un avis clinique personnalisé.</span>
         </p>
 
         <div class="hero-actions rise-3">
@@ -215,42 +230,42 @@
       <section class="card card-pad">
         <h2 style="margin:0;">Commencer ici</h2>
         <p class="kicker">
-          SimHealth est un projet <strong>pré-pilote</strong> (clinicien-informé) qui explore un soutien numérique supervisé, conçu de manière responsable :
-          gouvernance d’abord, sécurité d’abord, et intégration réaliste au quotidien clinique.
+          SimHealth est un projet <strong>pré-pilote</strong>, conçu avec une approche informée par des cliniciens, qui explore comment un accompagnement numérique supervisé pourrait être conçu de manière responsable dans le contexte des dommages liés au jeu :
+          gouvernance d’abord, sécurité d’abord, et intégration réaliste aux parcours cliniques.
         </p>
 
         <div class="callout">
           <strong style="color:var(--text);">Important :</strong>
-          SimHealth est en développement et n’est ni un service d’urgence, ni présenté ici comme un dispositif médical, ni un substitut au jugement clinique.
-          En cas d’urgence, contactez les services d’urgence ou les ressources d’aide.
+          SimHealth est en cours de développement. Il ne s’agit pas d’un service d’urgence, ce site ne le présente pas comme un dispositif médical, et il ne remplace ni le jugement clinique ni une prise en charge en cours.
+          En cas d’urgence, veuillez contacter les services compétents ou consulter les ressources d’aide.
         </div>
 
-        <div class="searchbar" aria-label="Recherche FAQ">
-          <input id="faqSearch" type="text" placeholder="Rechercher dans la FAQ (ex : données, suppression, pilote, consentement, ACUI, CET+)">
-          <button class="btn-mini" type="button" onclick="openAll(false)">Tout réduire</button>
+        <div class="searchbar" aria-label="Recherche dans la FAQ">
+          <input id="faqSearch" type="text" placeholder="Rechercher dans la FAQ (ex. données, suppression, pilote, consentement, ACUI, CET+)">
+          <button class="btn-mini" type="button" onclick="openAll(false)">Tout refermer</button>
           <button class="btn-mini" type="button" onclick="openAll(true)">Tout ouvrir</button>
         </div>
 
-        <div class="toc" aria-label="Sections FAQ">
-          <a href="#about">À propos</a>
+        <div class="toc" aria-label="Sections de la FAQ">
+          <a href="#about">À propos de SimHealth</a>
           <a href="#questionnaire">Questionnaire</a>
-          <a href="#privacy">Données & suppression</a>
-          <a href="#pilot">Pré-pilote vs actualités</a>
-          <a href="#framework">Cadre : CET+ & ACUI</a>
-          <a href="#product">App patient & portail clinicien</a>
-          <a href="#safety">Sécurité & limites</a>
+          <a href="#privacy">Données, confidentialité et suppression</a>
+          <a href="#pilot">Pré-pilote et actualités</a>
+          <a href="#framework">Cadre : CET+ et ACUI</a>
+          <a href="#product">Expérience patient et portail clinicien</a>
+          <a href="#safety">Sécurité et limites</a>
           <a href="#collaboration">Collaboration</a>
         </div>
 
         <p class="muted-small">
-          Si vous ne trouvez pas la réponse, écrivez à
+          Pour un retour clinique, un intérêt de recherche ou une prise de contact institutionnelle, écrire à
           <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
         </p>
       </section>
 
       <hr class="divider">
 
-      <!-- À PROPOS -->
+      <!-- ABOUT -->
       <section id="about">
         <div class="section-title">
           <h2>À propos de SimHealth</h2>
@@ -260,38 +275,57 @@
         <details class="faq">
           <summary>Qu’est-ce que SimHealth ? <span class="chev">▾</span></summary>
           <p>
-            SimHealth est un projet numérique “clinicien-informé” en phase <strong>pré-pilote</strong>. Il explore comment un soutien numérique structuré et supervisé
-            pourrait compléter certains parcours de soins—en particulier entre les séances—tout en traitant la gouvernance et la sécurité comme des exigences centrales.
+            SimHealth est un projet de santé numérique <strong>pré-pilote</strong>, conçu avec une approche informée par des cliniciens, qui explore comment un accompagnement numérique structuré et supervisé pourrait compléter certains parcours de soins liés aux dommages associés au jeu.
           </p>
           <p>
-            Le concept est un programme à deux volets :
+            Le projet est développé avec la gouvernance, la sécurité et l’intégration clinique réaliste comme exigences de premier ordre.
+          </p>
+          <p>
+            SimHealth est actuellement structuré comme un concept à deux volets :
           </p>
           <ul>
-            <li><strong>un portail clinicien</strong> orienté gouvernance, supervision et parcours supervisés ;</li>
-            <li><strong>une expérience côté patient</strong> conçue pour un soutien structuré, au bon moment, dans des limites cliniques convenues.</li>
+            <li><strong>un portail clinicien</strong> conçu pour la supervision, la gouvernance et la configuration de parcours encadrés ; et</li>
+            <li><strong>une expérience côté patient</strong> conçue pour un accompagnement structuré, au bon moment, dans des limites cliniques définies.</li>
           </ul>
         </details>
 
         <details class="faq">
           <summary>À qui s’adresse SimHealth ? <span class="chev">▾</span></summary>
           <p>
-            SimHealth s’adresse d’abord aux clinicien·ne·s, services, chercheur·euse·s et institutions qui souhaitent contribuer à une conception responsable :
-            faisabilité, supervision, accessibilité, et gouvernance avant toute montée en charge.
+            SimHealth s’adresse actuellement aux cliniciens, services cliniques, chercheurs et institutions ayant un intérêt pour les addictions comportementales, les approches numériques supervisées et la conception de pilotes précoces.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Qui peut nous contacter ? <span class="chev">▾</span></summary>
+          <p>
+            Nous accueillons volontiers les prises de contact de :
+          </p>
+          <ul>
+            <li>cliniciens en addictologie et équipes pluridisciplinaires,</li>
+            <li>chercheurs et coordinateurs d’études,</li>
+            <li>services cliniques souhaitant explorer un pilote supervisé, et</li>
+            <li>institutions intéressées par les questions de gouvernance, de sécurité et de faisabilité.</li>
+          </ul>
+          <p>
+            Si vous êtes un patient à la recherche d’aide, veuillez utiliser les ressources d’urgence et d’accompagnement disponibles sur ce site.
           </p>
         </details>
 
         <details class="faq">
           <summary>SimHealth est-il un dispositif médical ? <span class="chev">▾</span></summary>
           <p>
-            Ce site ne présente pas SimHealth comme un dispositif médical. Une éventuelle qualification dépendrait d’un futur cadrage (usage revendiqué, allégations,
-            parcours réglementaire). À ce stade, l’effort principal porte sur la préparation pré-pilote et la gouvernance.
+            Ce site ne présente pas SimHealth comme un dispositif médical. La question de savoir si un composant pourrait, à terme, relever d’un cadre applicable aux dispositifs médicaux dépendrait de l’usage revendiqué, des allégations, du niveau de preuve et des choix réglementaires, ce qui n’est pas affirmé ici.
+          </p>
+          <p>
+            Le stade actuel est celui d’une réflexion pré-pilote, d’une conception gouvernance d’abord et d’un dialogue clinique.
           </p>
         </details>
 
         <details class="faq">
-          <summary>SimHealth est-il prévu pour les situations d’urgence ? <span class="chev">▾</span></summary>
+          <summary>SimHealth est-il destiné aux urgences ou aux situations de crise ? <span class="chev">▾</span></summary>
           <p>
-            Non. SimHealth n’est pas un service d’urgence. En cas de danger immédiat, appelez votre numéro d’urgence local ou consultez les ressources d’aide.
+            Non. SimHealth n’est pas un service d’urgence. En cas de danger immédiat ou de besoin urgent d’aide, contactez les services d’urgence compétents ou utilisez les ressources d’aide mentionnées sur ce site.
           </p>
         </details>
       </section>
@@ -301,7 +335,7 @@
       <!-- QUESTIONNAIRE -->
       <section id="questionnaire">
         <div class="section-title">
-          <h2>Le questionnaire cliniciens & recherche</h2>
+          <h2>Le questionnaire clinicien et recherche</h2>
           <span class="tag">Pourquoi</span>
         </div>
 
@@ -309,54 +343,54 @@
           <summary>Pourquoi poser ces questions ? <span class="chev">▾</span></summary>
           <p>
             Le questionnaire vise à réduire les hypothèses et à orienter le pré-pilote de façon responsable. Il explore ce qui compte en pratique :
-            intégration au flux clinique, exigences de supervision, adoption réelle, accessibilité, et risques à maîtriser avant tout usage élargi.
+            l’intégration au flux clinique, les exigences de supervision, l’adoption réelle, l’accessibilité, et les risques à maîtriser avant tout usage élargi.
           </p>
         </details>
 
         <details class="faq">
           <summary>Quels types de questions contient-il, et à quoi servent-elles ? <span class="chev">▾</span></summary>
-          <p>Le questionnaire est structuré en thèmes :</p>
+          <p>
+            Le questionnaire est structuré en thèmes :
+          </p>
           <ul>
             <li><strong>Contexte professionnel</strong> — aide à interpréter les retours avec prudence.</li>
-            <li><strong>Outils actuels & workflow</strong> — identifie ce qui fonctionne et les limites (timing, visibilité, charge).</li>
-            <li><strong>Engagement & accessibilité</strong> — fait remonter les freins (charge cognitive, lisibilité, rythmes).</li>
-            <li><strong>Préparation pilote & risques</strong> — précise les attentes minimales et les risques à atténuer.</li>
-            <li><strong>Données & gouvernance (haut niveau)</strong> — clarifie les exigences (DPIA, accords, incidents, oversight).</li>
+            <li><strong>Outils actuels et workflow</strong> — identifie ce qui fonctionne déjà et les limites éventuelles (timing, visibilité, charge).</li>
+            <li><strong>Engagement et accessibilité</strong> — fait remonter les freins pratiques à l’adoption (charge cognitive, lisibilité, rythme).</li>
+            <li><strong>Préparation pilote et risques</strong> — précise les attentes minimales et les risques à atténuer dans un cadre supervisé.</li>
+            <li><strong>Données et gouvernance (haut niveau)</strong> — clarifie les exigences en matière de supervision, de DPIA, d’accords et de gestion d’incidents.</li>
           </ul>
         </details>
 
         <details class="faq">
           <summary>Dois-je fournir une adresse email ? <span class="chev">▾</span></summary>
           <p>
-            Non. L’email est optionnel, sauf si vous acceptez explicitement un suivi ou des actualités. Si vous cochez ces options, l’email devient nécessaire
-            afin que nous puissions répondre à votre demande.
+            Non. L’email est optionnel, sauf si vous acceptez explicitement un suivi ou des actualités. Si vous cochez une option demandant à être recontacté ou informé, une adresse email devient nécessaire afin que nous puissions répondre à votre demande.
           </p>
         </details>
 
         <details class="faq">
           <summary>Puis-je inclure des informations patient ou des détails de cas clinique ? <span class="chev">▾</span></summary>
           <p>
-            Non. Merci de ne pas fournir d’informations permettant d’identifier un patient, ni de détails de cas clinique. Le questionnaire sert à des retours
-            professionnels et à la planification de faisabilité.
+            Non. Merci de ne pas fournir d’informations permettant d’identifier un patient, ni de détails cliniques sensibles. Le questionnaire sert à recueillir des retours professionnels de haut niveau et à soutenir la planification de faisabilité.
           </p>
         </details>
 
         <details class="faq">
           <summary>Que se passe-t-il après l’envoi ? <span class="chev">▾</span></summary>
           <p>
-            Les réponses servent à orienter la faisabilité, la gouvernance, la sécurité, l’accessibilité et le plan d’évaluation d’un pré-pilote supervisé.
-            Si vous avez accepté un suivi ou des actualités et fourni un email, vous pouvez recevoir un bref message de confirmation et, éventuellement, des mises à jour.
+            Les réponses servent à orienter la planification de faisabilité, les exigences de gouvernance, les considérations de sécurité, les choix d’accessibilité et les priorités d’évaluation d’un pré-pilote supervisé.
+            Si vous avez accepté un suivi ou des actualités et fourni une adresse email, vous pouvez recevoir un message de confirmation et, ponctuellement, des communications liées au projet.
           </p>
         </details>
       </section>
 
       <hr class="divider">
 
-      <!-- DONNÉES -->
+      <!-- PRIVACY -->
       <section id="privacy">
         <div class="section-title">
-          <h2>Données, confidentialité, suppression</h2>
-          <span class="tag">RGPD-minded</span>
+          <h2>Données, confidentialité et suppression</h2>
+          <span class="tag">Esprit RGPD</span>
         </div>
 
         <details class="faq">
@@ -366,90 +400,96 @@
           </p>
           <ul>
             <li>vos réponses au questionnaire ;</li>
-            <li>des coordonnées optionnelles (nom, organisation, email) si vous les fournissez ;</li>
-            <li>des métadonnées (langue, horodatage, page) ;</li>
-            <li>des informations techniques (ex : user-agent, referrer) pour la fiabilité et le diagnostic.</li>
+            <li>des coordonnées optionnelles (nom, organisation, email) si vous choisissez de les fournir ;</li>
+            <li>des métadonnées de base (langue, horodatage, nom de page) ;</li>
+            <li>des informations techniques (par exemple user-agent du navigateur, referrer) pour la fiabilité et le diagnostic technique.</li>
           </ul>
-          <p>Merci de ne pas inclure d’informations patient ou de données sensibles liées à un cas.</p>
+          <p>
+            Merci de ne pas inclure d’informations permettant d’identifier un patient ni de détails sensibles liés à un cas.
+          </p>
         </details>
 
         <details class="faq">
           <summary>À quoi servent mes données ? <span class="chev">▾</span></summary>
           <p>
-            Les réponses servent à la planification de la recherche et à l’amélioration du projet : faisabilité, gouvernance, sécurité, utilisabilité,
-            et priorités d’évaluation. Elles ne servent pas à fournir un avis clinique personnalisé, ni à poser un diagnostic.
+            Les réponses servent à la planification de la recherche et à l’amélioration du projet : conception de la faisabilité, gouvernance prudente, utilisabilité et priorités d’évaluation.
+            Elles ne servent pas à fournir un avis clinique, à poser un diagnostic, ni à prendre des décisions automatisées concernant des individus.
           </p>
         </details>
 
         <details class="faq">
           <summary>Ma réponse est-elle anonyme ? <span class="chev">▾</span></summary>
           <p>
-            Elle peut l’être. Si vous laissez les champs optionnels vides, votre réponse peut être anonyme. Si vous fournissez des coordonnées, la réponse devient identifiable.
+            Elle peut l’être. Si vous laissez les champs de contact optionnels vides, votre réponse peut rester anonyme. Si vous fournissez des coordonnées, la réponse devient identifiable.
           </p>
         </details>
 
         <details class="faq">
           <summary>Vendez-vous les données ou les partagez-vous avec des annonceurs ? <span class="chev">▾</span></summary>
-          <p>Non. SimHealth ne vend pas les données du questionnaire et ne les partage pas avec des annonceurs.</p>
+          <p>
+            Non. SimHealth ne vend pas les données du questionnaire et ne les partage pas avec des annonceurs.
+          </p>
         </details>
 
         <details class="faq">
           <summary>Combien de temps les données sont-elles conservées ? <span class="chev">▾</span></summary>
           <p>
-            La conservation est limitée à ce qui est nécessaire pour la planification et la gouvernance, et peut évoluer à mesure que le projet avance.
-            Vous pouvez demander la suppression à tout moment.
+            Les données sont conservées uniquement pendant la durée raisonnablement nécessaire à la planification du projet, à la gouvernance et aux besoins administratifs associés. Les pratiques de conservation peuvent évoluer à mesure que le projet se développe.
+            Si vous souhaitez que votre réponse soit supprimée, vous pouvez en faire la demande à tout moment.
           </p>
         </details>
 
         <details class="faq">
           <summary>Comment demander la suppression de mes données ? <span class="chev">▾</span></summary>
           <p>
-            Vous pouvez demander la suppression en écrivant à
+            Vous pouvez demander la suppression à tout moment en écrivant à
             <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
           </p>
-          <p>Pour faciliter la recherche de votre réponse, indiquez :</p>
+          <p>
+            Pour aider à retrouver votre enregistrement, merci d’indiquer :
+          </p>
           <ul>
-            <li>l’adresse email utilisée (si vous en avez fourni une),</li>
-            <li>la date/heure approximative d’envoi,</li>
-            <li>si vous avez utilisé la page FR ou EN.</li>
+            <li>l’adresse email utilisée, si vous en avez fourni une ;</li>
+            <li>la date et l’heure approximatives de soumission ;</li>
+            <li>si vous avez utilisé la page questionnaire en français ou en anglais.</li>
           </ul>
           <p>
-            Si vous avez répondu anonymement sans identifiant, la suppression peut être difficile faute de moyen fiable d’identifier votre enregistrement.
-            Contactez-nous : nous expliquerons ce qui est possible.
+            Si vous avez répondu anonymement sans identifiant, la suppression peut être difficile, car il peut ne pas exister de moyen fiable de retrouver votre réponse.
+            Dans ce cas, contactez-nous et nous vous indiquerons ce qu’il est possible de faire.
           </p>
         </details>
 
         <details class="faq">
           <summary>Puis-je retirer mon consentement au suivi ou aux actualités ? <span class="chev">▾</span></summary>
           <p>
-            Oui. Vous pouvez retirer votre consentement en écrivant à
+            Oui. Vous pouvez retirer votre consentement au suivi ou aux actualités en écrivant à
             <a href="mailto:contact@simhealth.pro" style="color:var(--text); text-decoration:underline;">contact@simhealth.pro</a>.
-            Si des liens de désinscription sont inclus dans les emails, vous pourrez également les utiliser.
+            Si des liens de désinscription sont fournis dans les emails, vous pouvez également les utiliser pour interrompre les envois futurs.
           </p>
         </details>
       </section>
 
       <hr class="divider">
 
-      <!-- PILOTE -->
+      <!-- PILOT -->
       <section id="pilot">
         <div class="section-title">
-          <h2>Pré-pilote vs actualités</h2>
+          <h2>Pré-pilote et actualités</h2>
           <span class="tag">Définitions</span>
         </div>
 
         <details class="faq">
-          <summary>Quelle différence entre “actualités du projet” et “intérêt pré-pilote” ? <span class="chev">▾</span></summary>
+          <summary>Quelle différence entre « actualités du projet » et « intérêt pré-pilote » ? <span class="chev">▾</span></summary>
           <p>
             Ce n’est pas la même chose :
           </p>
           <ul>
             <li>
-              <strong>Actualités du projet</strong> : recevoir ponctuellement des informations (jalons, gouvernance, publications). Cela ne vous inscrit à aucun pilote/étude.
+              <strong>Actualités du projet</strong> signifie que vous pouvez recevoir ponctuellement des informations, par exemple sur les jalons, l’avancement de la gouvernance ou d’éventuelles publications. Cela ne vous inscrit à aucun pilote ni à aucune étude.
             </li>
             <li>
-              <strong>Intérêt pré-pilote</strong> : être ouvert·e à une discussion sur une participation potentielle à un pré-pilote supervisé.
-              Cela ne vous enrôle pas automatiquement. Toute participation exige un accord explicite et une documentation de gouvernance adaptée.
+              <strong>Intérêt pré-pilote</strong> signifie que vous êtes ouvert à une discussion sur une participation potentielle à un travail pré-pilote supervisé.
+              Cela ne vous enrôle pas automatiquement. Toute participation exigerait un accord explicite et une documentation de gouvernance adaptée.
             </li>
           </ul>
         </details>
@@ -457,22 +497,22 @@
         <details class="faq">
           <summary>Remplir le questionnaire m’inscrit-il à quelque chose ? <span class="chev">▾</span></summary>
           <p>
-            Non. Le questionnaire ne vous inscrit à aucun pilote ni étude. Il sert à recueillir des retours professionnels et à planifier la faisabilité.
+            Non. Remplir le questionnaire ne vous inscrit à aucun pilote ni à aucune étude. Il sert à recueillir des retours professionnels et à planifier la faisabilité.
           </p>
         </details>
 
         <details class="faq">
-          <summary>Si je suis intéressé·e par un pré-pilote, quelle est la suite ? <span class="chev">▾</span></summary>
+          <summary>Si je suis intéressé par un pré-pilote, quelle est la suite ? <span class="chev">▾</span></summary>
           <p>
-            Si vous avez accepté d’être recontacté·e et fourni un email, un échange peut avoir lieu pour clarifier le contexte et les exigences de gouvernance.
-            Les étapes suivantes se font via une documentation formelle et la revue des partenaires.
+            Si vous avez accepté d’être recontacté et fourni une adresse email, nous pouvons revenir vers vous pour préciser le contexte et discuter des attentes en matière de gouvernance.
+            Les étapes suivantes seraient ensuite traitées via une documentation formelle et, le cas échéant, une revue par les partenaires concernés.
           </p>
         </details>
       </section>
 
       <hr class="divider">
 
-       <!-- CADRE -->
+      <!-- FRAMEWORK -->
       <section id="framework">
         <div class="section-title">
           <h2>Cadre : CET+ et ACUI</h2>
@@ -482,45 +522,44 @@
         <details class="faq">
           <summary>Qu’est-ce que CET+ ? <span class="chev">▾</span></summary>
           <p>
-            CET+ désigne un cadre structuré en cours de développement pour des parcours de soutien numérique supervisés. Il s’appuie sur des concepts cliniques établis
-            (dont des approches d’exposition/cue-exposure) et met l’accent sur un déploiement prudent, sécurisé, avec supervision clinicienne.
+            CET+ désigne un cadre conceptuel structuré en cours de développement pour des parcours de soutien numérique supervisés. Il s’appuie sur des idées cliniques établies, notamment des approches d’exposition aux indices, et est conçu autour d’un usage prudent, sécurisé, avec supervision clinicienne.
           </p>
           <p>
-            Cette FAQ reste volontairement à un niveau général et ne publie pas de détails de protocole.
+            Cette FAQ reste volontairement à un niveau général et ne publie pas de détails protocolaires.
           </p>
         </details>
 
         <details class="faq">
           <summary>Qu’est-ce que l’ACUI ? <span class="chev">▾</span></summary>
           <p>
-            ACUI signifie <strong>Adaptive Clinical User Interface</strong> (Interface Clinique Adaptative). C’est une approche de conception visant à réduire les barrières
-            selon les besoins et contextes : lisibilité, charge cognitive, rythme, clarté, accessibilité.
+            ACUI signifie <strong>Adaptive Clinical User Interface</strong>. Il s’agit d’une approche de conception visant à réduire les barrières selon les besoins et les contextes d’usage.
+            L’accent est mis sur l’utilisabilité et l’accessibilité, par exemple en réduisant la charge cognitive, en améliorant la lisibilité, et en soutenant différents besoins de rythme et de clarté.
           </p>
           <p>
-            L’ACUI n’est pas un outil de diagnostic. C’est une approche de design produit.
+            L’ACUI n’est pas un outil de diagnostic. Il s’agit d’une approche de conception produit.
           </p>
         </details>
 
         <details class="faq">
-          <summary>Que signifie “adaptatif” concrètement ? <span class="chev">▾</span></summary>
+          <summary>Que signifie « adaptatif » en pratique ? <span class="chev">▾</span></summary>
           <p>
-            “Adaptatif” peut désigner des ajustements prudents, par exemple :
+            « Adaptatif » peut désigner des ajustements prudents, par exemple :
           </p>
           <ul>
-            <li>réduire la densité visuelle et simplifier la mise en page,</li>
+            <li>simplifier les interfaces et réduire la densité visuelle,</li>
             <li>ajuster le rythme et le découpage des contenus,</li>
-            <li>améliorer le contraste ou la lisibilité,</li>
-            <li>respecter des limites configurées par le clinicien.</li>
+            <li>répondre à certains besoins de contraste ou de lisibilité,</li>
+            <li>et respecter des limites configurées par le clinicien.</li>
           </ul>
           <p>
-            Toute adaptation doit rester transparente, bornée, et cohérente avec une gouvernance claire.
+            Tout comportement adaptatif doit rester transparent, borné, et aligné avec les contrôles de gouvernance.
           </p>
         </details>
       </section>
 
       <hr class="divider">
 
-      <!-- PRODUIT -->
+      <!-- PRODUCT -->
       <section id="product">
         <div class="section-title">
           <h2>Expérience patient et portail clinicien</h2>
@@ -530,48 +569,47 @@
         <details class="faq">
           <summary>Existe-t-il une application côté patient ? <span class="chev">▾</span></summary>
           <p>
-            Le concept inclut une expérience côté patient conçue pour fournir un soutien structuré, au bon moment, dans des limites cliniques convenues.
-            L’intention est une utilisation supervisée, plutôt qu’un outil “grand public” non supervisé.
+            Le concept inclut une expérience côté patient conçue pour fournir un accompagnement structuré, au bon moment, dans des limites cliniques convenues.
+            L’intention est une utilisation supervisée, et non un produit grand public non encadré.
           </p>
         </details>
 
         <details class="faq">
           <summary>À quoi sert le portail clinicien ? <span class="chev">▾</span></summary>
           <p>
-            Le portail clinicien vise la gouvernance et la supervision : configuration des parcours, définition de limites, visibilité appropriée sur l’engagement,
-            et support à la documentation pré-pilote. Les fonctionnalités précises sont affinées via les retours et le cadrage de gouvernance.
+            Le portail clinicien est conçu pour la gouvernance et la supervision, par exemple pour configurer des parcours, définir des limites, disposer d’une visibilité adaptée sur l’engagement, et soutenir la documentation d’un pré-pilote.
+            Les fonctionnalités précises sont façonnées par la planification pré-pilote et les retours des partenaires.
           </p>
         </details>
       </section>
 
       <hr class="divider">
 
-      <!-- SÉCURITÉ -->
+      <!-- SAFETY -->
       <section id="safety">
         <div class="section-title">
-          <h2>Sécurité, allégations, limites</h2>
+          <h2>Sécurité, allégations et limites</h2>
           <span class="tag">Sécurité d’abord</span>
         </div>
 
         <details class="faq">
-          <summary>SimHealth prétend-il traiter ou “guérir” un trouble ? <span class="chev">▾</span></summary>
+          <summary>SimHealth prétend-il traiter ou guérir une condition ? <span class="chev">▾</span></summary>
           <p>
-            Non. Ce site ne formule pas d’allégation d’efficacité. L’objectif est la faisabilité, la gouvernance et la conception prudente.
+            Non. Ce site ne formule aucune allégation de résultat. Le travail actuel porte sur la faisabilité, la gouvernance et une conception prudente centrée sur la sécurité.
           </p>
         </details>
 
         <details class="faq">
-          <summary>SimHealth peut-il remplacer une thérapie ou un suivi ? <span class="chev">▾</span></summary>
+          <summary>SimHealth peut-il remplacer une thérapie ou un suivi clinique ? <span class="chev">▾</span></summary>
           <p>
-            Non. SimHealth n’est pas un remplacement. L’objectif est d’explorer un soutien numérique supervisé pouvant compléter un parcours de soins,
-            dans des limites convenues et selon le jugement clinique.
+            Non. SimHealth ne remplace pas une prise en charge clinique. L’objectif est d’explorer un accompagnement numérique supervisé qui pourrait compléter certains parcours de soins, dans des limites convenues et selon le jugement clinique.
           </p>
         </details>
 
         <details class="faq">
-          <summary>SimHealth fournit-il un avis médical ? <span class="chev">▾</span></summary>
+          <summary>SimHealth fournit-il un avis clinique ? <span class="chev">▾</span></summary>
           <p>
-            Non. Le site fournit des informations sur le projet et son cadrage. Il ne fournit pas de conseils cliniques personnalisés.
+            Non. Ce site fournit des informations sur le projet et sur son approche de planification. Il ne délivre pas de conseil clinique personnalisé.
           </p>
         </details>
       </section>
@@ -586,9 +624,9 @@
         </div>
 
         <details class="faq">
-          <summary>Je suis clinicien·ne ou chercheur·euse : comment collaborer ? <span class="chev">▾</span></summary>
+          <summary>Je suis clinicien ou chercheur : comment collaborer ? <span class="chev">▾</span></summary>
           <p>
-            Vous pouvez remplir le questionnaire (avec option de suivi si souhaité) ou passer par la page
+            Si vous souhaitez contribuer à la gouvernance, discuter de faisabilité, ou explorer un pré-pilote supervisé, vous pouvez remplir le questionnaire et accepter un suivi, ou nous contacter via la page
             <a href="/fr/contact/" style="color:var(--text); text-decoration:underline;">Contact</a>.
           </p>
         </details>
@@ -596,8 +634,8 @@
         <details class="faq">
           <summary>Je représente une institution : que faudrait-il généralement pour participer ? <span class="chev">▾</span></summary>
           <p>
-            Une participation institutionnelle implique souvent une revue de gouvernance, un accord sur la supervision, des attentes DPIA, et des processus d’incident.
-            Le questionnaire permet d’identifier ce que votre organisation exige.
+            Une participation institutionnelle implique généralement une revue de gouvernance, un accord sur les modalités de supervision, les attentes en matière de traitement des données lorsque cela est pertinent, les exigences de DPIA, et des chemins clairs de gestion des incidents.
+            Le questionnaire aide à faire émerger ce que votre organisation considère comme nécessaire.
           </p>
         </details>
 
@@ -611,7 +649,7 @@
     </div>
   </main>
 
-  <footer>
+  <footer id="site-footer">
     <div class="row">
       <div>
         © 2026 SimHealth. Tous droits réservés. •
@@ -619,6 +657,7 @@
       </div>
       <nav aria-label="Liens du pied de page">
         <a href="/sitemap.html">Plan du site</a>
+        <a href="/fr/legal/status/">Statut</a>
         <a href="/fr/legal/confidentialite/">Confidentialité</a>
         <a href="/fr/legal/conditions/">Conditions</a>
         <a href="/fr/legal/cookies/">Cookies</a>
@@ -634,11 +673,12 @@
   </div>
 
   <script>
-    // Recherche FAQ côté client : filtre les <details> selon le texte
     const searchInput = document.getElementById("faqSearch");
     const items = Array.from(document.querySelectorAll("details.faq"));
 
-    function normalize(s){ return (s || "").toLowerCase(); }
+    function normalize(s){
+      return (s || "").toLowerCase();
+    }
 
     function applySearch(){
       const q = normalize(searchInput.value).trim();
@@ -665,4 +705,3 @@
 
 </body>
 </html>
-     
