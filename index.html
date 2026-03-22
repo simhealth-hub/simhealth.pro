@@ -19,6 +19,7 @@
       gap:12px;
       flex-wrap:wrap;
       justify-content:center;
+      margin-top:18px;
     }
 
     .mini-note{
@@ -27,8 +28,15 @@
       line-height:1.55;
     }
 
+    .hero{
+      position:relative;
+      overflow:hidden;
+    }
+
     .hero .hero-content{
-      width:min(720px, 92%);
+      width:min(760px, 92%);
+      position:relative;
+      z-index:2;
     }
 
     .hero .hero-content h1{
@@ -40,19 +48,142 @@
       margin-bottom:0;
     }
 
+    .hero-intro{
+      margin-top:14px;
+      line-height:1.6;
+      font-weight:600;
+      color:rgba(255,255,255,.92);
+      max-width:680px;
+      text-wrap:balance;
+    }
+
+    .hero-intro .fr-line{
+      display:block;
+      margin-top:6px;
+      color:rgba(255,255,255,.78);
+      font-weight:600;
+    }
+
+    .hero-note{
+      margin-top:14px;
+      color:rgba(255,255,255,.68);
+      line-height:1.55;
+      font-size:.96rem;
+    }
+
+    .hero-overlay{
+      background:
+        linear-gradient(90deg, rgba(7,14,20,.54) 0%, rgba(7,14,20,.28) 42%, rgba(7,14,20,.10) 100%),
+        linear-gradient(180deg, rgba(7,14,20,.08) 0%, rgba(7,14,20,.36) 100%);
+      z-index:1;
+    }
+
+    .hero .btn-primary,
+    .hero .btn-secondary{
+      min-width:170px;
+      text-align:center;
+      box-shadow:0 10px 24px rgba(0,0,0,.14);
+      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+
+    .hero .btn-primary:hover,
+    .hero .btn-secondary:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 28px rgba(0,0,0,.18);
+      filter:saturate(1.03);
+    }
+
+    .hero .btn-secondary{
+      border:1px solid color-mix(in srgb, var(--brand) 26%, white 6%);
+      background:linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--panel) 78%, white 7%),
+        color-mix(in srgb, var(--panel) 88%, var(--brand) 8%)
+      );
+    }
+
+    .card{
+      box-shadow:0 10px 24px rgba(0,0,0,.06);
+    }
+
+    /* Desktop: more of lower image visible, slightly stronger presence */
     @media (min-width: 901px){
+      .hero{
+        min-height:72svh;
+      }
+
       .hero .hero-bg{
-        background-position: 50% 85%;
+        background-position:50% 82%;
+        transform:scale(1.03);
+        animation:heroDrift 18s ease-in-out infinite alternate;
+      }
+
+      .hero .hero-content{
+        padding-top:8px;
       }
     }
 
+    /* Light mode: stronger readability */
+    html[data-theme="light"] .hero-overlay{
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.76) 0%, rgba(255,255,255,.44) 40%, rgba(255,255,255,.12) 72%, transparent 100%),
+        linear-gradient(180deg, rgba(255,255,255,.04) 0%, rgba(15,23,42,.16) 100%);
+    }
+
+    html[data-theme="light"] .hero-intro{
+      color:#102030;
+    }
+
+    html[data-theme="light"] .hero-intro .fr-line{
+      color:rgba(16,32,48,.80);
+    }
+
+    html[data-theme="light"] .hero-note{
+      color:rgba(16,32,48,.68);
+    }
+
+    /* Mobile */
     @media (max-width: 700px){
       .hero .hero-bg{
-        background-position: 52% center;
+        background-position:52% center;
+      }
+
+      .hero .hero-content{
+        width:min(92%, 92%);
       }
 
       .lang-actions{
-        margin-top:110px;
+        margin-top:18px;
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .hero .btn-primary,
+      .hero .btn-secondary{
+        min-width:0;
+        width:100%;
+      }
+    }
+
+    /* Remove menu button entirely on this page */
+    .nav-toggle{
+      display:none !important;
+    }
+
+    header.nav .menu{
+      display:flex !important;
+      align-items:center;
+      margin-left:auto;
+    }
+
+    @media (prefers-reduced-motion:no-preference){
+      .rise-1,.rise-2,.rise-3,.rise-4{
+        animation-duration:.7s;
+      }
+
+      @keyframes heroDrift{
+        0%{ transform:scale(1.03) translate3d(0,0,0); }
+        100%{ transform:scale(1.07) translate3d(-10px,-8px,0); }
       }
     }
   </style>
@@ -68,12 +199,6 @@
 
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="SimHealth home">SimHealth</a>
-
-    <button class="nav-toggle" type="button"
-      onclick="document.querySelector('header.nav .menu')?.classList.toggle('open')"
-      aria-label="Open menu">
-      Menu <span class="chev">▾</span>
-    </button>
 
     <nav class="menu" aria-label="Top controls">
       <div class="theme-toggle" role="button" tabindex="0"
@@ -96,27 +221,28 @@
       <div class="hero-content">
         <h1 class="rise-1">SimHealth</h1>
 
-        <p class="rise-2">
-          Please choose your language to continue.
-          <br>
-          <span style="color:var(--muted);">
-            (Veuillez choisir votre langue pour continuer.)
-          </span>
-        </p>
+        <div class="hero-intro rise-2">
+          Clinician-informed digital support for gambling harm.
+          <span class="fr-line">Soutien numérique conçu avec un apport clinique face aux troubles liés au jeu d’argent.</span>
+        </div>
 
         <div class="hero-actions rise-3 lang-actions" aria-label="Language selection">
           <a class="btn-primary" href="/en/home/">English</a>
           <a class="btn-secondary" href="/fr/accueil/">Français</a>
+        </div>
+
+        <div class="hero-note rise-4">
+          Choose your language to continue. / Choisissez votre langue pour continuer.
         </div>
       </div>
     </section>
 
     <div class="card" style="margin-top:14px;">
       <p class="mini-note">
-        A clinician-informed digital project for gambling-harm support.
+        Developed carefully in a pre-pilot context, with attention to safety, clarity, and appropriate clinical framing.
         <br>
         <span style="color:var(--muted);">
-          (Un projet numérique conçu avec un apport clinique, dédié au soutien face aux troubles liés au jeu d’argent.)
+          Développé avec prudence dans un contexte pré-pilote, avec une attention portée à la sécurité, à la clarté et à un cadrage clinique approprié.
         </span>
       </p>
     </div>
