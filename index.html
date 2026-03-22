@@ -16,15 +16,18 @@
 
   <style>
     :root{
-      --glass-bg: color-mix(in srgb, var(--panel) 62%, transparent);
+      --glass-bg: color-mix(in srgb, var(--panel) 76%, transparent);
       --glass-stroke: color-mix(in srgb, white 12%, transparent);
-      --glass-stroke-strong: color-mix(in srgb, white 20%, transparent);
-      --hero-shadow: 0 24px 70px rgba(0,0,0,.28);
-      --soft-shadow: 0 14px 34px rgba(0,0,0,.16);
-      --deep-shadow: 0 24px 60px rgba(0,0,0,.24);
-      --blur: 18px;
-      --radius-xl: 28px;
+      --glass-stroke-strong: color-mix(in srgb, white 18%, transparent);
+      --hero-shadow: 0 24px 70px rgba(0,0,0,.26);
+      --soft-shadow: 0 14px 34px rgba(0,0,0,.14);
+      --deep-shadow: 0 24px 56px rgba(0,0,0,.22);
+      --radius-xl: 26px;
       --radius-2xl: 34px;
+      --accent-orange: #d97706;
+      --accent-orange-soft: #f59e0b;
+      --accent-green: #10b981;
+      --accent-green-2: #34d399;
     }
 
     html{
@@ -38,39 +41,53 @@
     .banner{
       position:sticky;
       top:0;
-      z-index:70;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: color-mix(in srgb, var(--bg) 72%, transparent);
-      border-bottom:1px solid color-mix(in srgb, var(--text) 8%, transparent);
-      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      z-index:80;
+      background:
+        linear-gradient(180deg, rgba(217,119,6,.96), rgba(180,83,9,.94));
+      color:#fff8ef;
+      border-bottom:1px solid rgba(255,255,255,.16);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.16),
+        0 10px 24px rgba(0,0,0,.16);
+      padding:10px 14px;
+      line-height:1.35;
+      font-size:.96rem;
+    }
+
+    .banner strong{
+      color:white;
+      font-weight:800;
+    }
+
+    .banner .sub{
+      display:block;
+      color:rgba(255,248,239,.92);
+      margin-top:2px;
     }
 
     .nav{
       position:sticky;
-      top:56px;
-      z-index:60;
-      margin:18px auto 0;
+      top:60px;
+      z-index:70;
+      margin:14px auto 0;
       width:min(1240px, calc(100% - 24px));
       padding:12px 16px;
       border-radius:24px;
       background:
-        linear-gradient(180deg, color-mix(in srgb, var(--panel) 76%, transparent), color-mix(in srgb, var(--panel) 62%, transparent));
-      border:1px solid var(--glass-stroke);
+        linear-gradient(180deg, color-mix(in srgb, var(--panel) 84%, transparent), color-mix(in srgb, var(--panel) 72%, transparent));
+      border:1px solid color-mix(in srgb, white 10%, transparent);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        inset 0 -1px 0 rgba(255,255,255,.02),
-        0 16px 42px rgba(0,0,0,.16);
-      backdrop-filter: blur(18px) saturate(140%);
-      -webkit-backdrop-filter: blur(18px) saturate(140%);
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 16px 36px rgba(0,0,0,.14);
+      backdrop-filter: blur(16px) saturate(135%);
+      -webkit-backdrop-filter: blur(16px) saturate(135%);
       display:grid;
       grid-template-columns:auto 1fr auto;
       align-items:center;
-      gap:18px;
+      gap:14px;
     }
 
     .brand{
-      position:relative;
       display:inline-flex;
       align-items:center;
       gap:10px;
@@ -78,14 +95,14 @@
       letter-spacing:-0.03em;
       text-decoration:none;
       color:var(--text);
-      font-size:1.06rem;
+      font-size:.98rem;
       white-space:nowrap;
     }
 
     .brand::before{
       content:"";
-      width:12px;
-      height:12px;
+      width:10px;
+      height:10px;
       border-radius:999px;
       background:
         radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(255,255,255,.15) 35%, transparent 55%),
@@ -99,24 +116,24 @@
     .nav-center{
       display:flex;
       justify-content:center;
-      pointer-events:none;
+      min-width:0;
     }
 
     .nav-descriptor{
       display:inline-flex;
       align-items:center;
       gap:10px;
+      max-width:650px;
       min-width:0;
-      max-width:720px;
-      padding:10px 16px;
+      padding:9px 15px;
       border-radius:999px;
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid color-mix(in srgb, white 10%, transparent);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 10px 26px rgba(0,0,0,.10);
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 8px 20px rgba(0,0,0,.08);
       color:var(--muted);
-      font-size:.92rem;
+      font-size:.9rem;
       line-height:1.2;
       white-space:nowrap;
       overflow:hidden;
@@ -128,51 +145,15 @@
       width:6px;
       height:6px;
       border-radius:999px;
-      background: color-mix(in srgb, var(--brand) 70%, white);
-      box-shadow: 0 0 14px color-mix(in srgb, var(--brand) 40%, transparent);
+      background: color-mix(in srgb, var(--brand) 68%, white);
+      box-shadow: 0 0 12px color-mix(in srgb, var(--brand) 40%, transparent);
       flex:none;
     }
 
-    .nav .menu{
+    .nav-right{
       display:flex;
       align-items:center;
-      gap:12px;
-    }
-
-    .nav-toggle{
-      appearance:none;
-      border:1px solid color-mix(in srgb, white 12%, transparent);
-      color:var(--text);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
-      padding:11px 14px;
-      border-radius:16px;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        0 10px 24px rgba(0,0,0,.12);
-      font:inherit;
-      font-weight:600;
-      cursor:pointer;
-      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-    }
-
-    .nav-toggle:hover{
-      transform:translateY(-1px);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        0 14px 28px rgba(0,0,0,.16);
-      border-color:color-mix(in srgb, white 18%, transparent);
-    }
-
-    .chev{
-      display:inline-block;
-      margin-left:4px;
-      transition:transform .22s ease;
-    }
-
-    .menu.open + .nav-toggle .chev,
-    .nav-toggle[aria-expanded="true"] .chev{
-      transform:rotate(180deg);
+      gap:10px;
     }
 
     .theme-toggle{
@@ -182,29 +163,29 @@
       background:
         linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        0 10px 24px rgba(0,0,0,.12);
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 10px 24px rgba(0,0,0,.10);
       transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
     }
 
     .theme-toggle:hover{
       transform:translateY(-1px);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        0 14px 28px rgba(0,0,0,.15);
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 14px 28px rgba(0,0,0,.14);
       border-color:color-mix(in srgb, white 18%, transparent);
     }
 
     .wrap{
       width:min(1280px, calc(100% - 24px));
-      margin:18px auto 0;
-      padding-bottom:28px;
+      margin:14px auto 0;
+      padding-bottom:26px;
     }
 
     .hero{
       position:relative;
-      min-height:calc(100svh - 160px);
-      border-radius:36px;
+      min-height:calc(100svh - 150px);
+      border-radius:34px;
       overflow:hidden;
       isolation:isolate;
       box-shadow: var(--hero-shadow);
@@ -217,7 +198,7 @@
       inset:-5%;
       background-size:cover;
       background-repeat:no-repeat;
-      background-position:50% 72%;
+      background-position:50% 68%;
       transform:scale(1.08);
       will-change:transform;
       filter:saturate(1.02) contrast(1.02);
@@ -228,9 +209,9 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,.14), transparent 28%),
-        radial-gradient(circle at 78% 26%, color-mix(in srgb, var(--brand) 22%, transparent), transparent 32%),
-        linear-gradient(180deg, rgba(5,12,18,.18) 0%, rgba(5,12,18,.34) 28%, rgba(5,12,18,.58) 62%, rgba(5,12,18,.74) 100%);
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,.10), transparent 28%),
+        radial-gradient(circle at 82% 22%, color-mix(in srgb, var(--brand) 18%, transparent), transparent 30%),
+        linear-gradient(180deg, rgba(5,12,18,.14) 0%, rgba(5,12,18,.26) 24%, rgba(5,12,18,.52) 58%, rgba(5,12,18,.74) 100%);
       z-index:0;
       pointer-events:none;
     }
@@ -241,23 +222,23 @@
       z-index:0;
       pointer-events:none;
       background:
-        linear-gradient(90deg, rgba(4,10,15,.58) 0%, rgba(4,10,15,.36) 34%, rgba(4,10,15,.16) 100%);
+        linear-gradient(90deg, rgba(4,10,15,.54) 0%, rgba(4,10,15,.28) 36%, rgba(4,10,15,.14) 100%);
     }
 
     .hero-grid{
       position:relative;
       z-index:2;
-      min-height:calc(100svh - 160px);
+      min-height:calc(100svh - 150px);
       display:grid;
-      grid-template-columns:minmax(0, 1.15fr) minmax(320px, .85fr);
+      grid-template-columns:minmax(0, 1.16fr) minmax(300px, .84fr);
       align-items:end;
       gap:24px;
-      padding:clamp(28px, 4vw, 44px);
+      padding:clamp(24px, 3vw, 38px);
     }
 
     .hero-content{
-      width:min(780px, 100%);
-      padding-top:54px;
+      width:min(760px, 100%);
+      padding-top:18px;
     }
 
     .eyebrow{
@@ -269,13 +250,13 @@
       background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
       border:1px solid color-mix(in srgb, white 12%, transparent);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        0 10px 24px rgba(0,0,0,.14);
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 10px 24px rgba(0,0,0,.12);
       color:rgba(255,255,255,.92);
-      font-size:.92rem;
+      font-size:.9rem;
       font-weight:600;
       letter-spacing:-0.01em;
-      margin-bottom:18px;
+      margin-bottom:16px;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
@@ -292,20 +273,20 @@
 
     .hero h1{
       margin:0;
-      font-size:clamp(3rem, 7vw, 6rem);
+      font-size:clamp(3rem, 6.4vw, 5.4rem);
       line-height:.94;
-      letter-spacing:-0.06em;
+      letter-spacing:-0.065em;
       color:white;
       text-wrap:balance;
-      text-shadow: 0 10px 30px rgba(0,0,0,.20);
+      text-shadow: 0 10px 30px rgba(0,0,0,.18);
     }
 
     .hero-lead{
-      margin:18px 0 0;
-      font-size:clamp(1.02rem, 1.4vw, 1.28rem);
+      margin:16px 0 0;
+      font-size:clamp(1rem, 1.3vw, 1.2rem);
       line-height:1.55;
       color:rgba(255,255,255,.88);
-      max-width:700px;
+      max-width:690px;
       text-wrap:pretty;
     }
 
@@ -316,14 +297,14 @@
 
     .hero-sub{
       margin:14px 0 0;
-      max-width:660px;
-      color:rgba(255,255,255,.70);
+      max-width:650px;
+      color:rgba(255,255,255,.74);
       font-size:1rem;
       line-height:1.6;
     }
 
     .hero-actions{
-      margin-top:28px;
+      margin-top:24px;
       display:flex;
       gap:14px;
       flex-wrap:wrap;
@@ -336,7 +317,7 @@
       align-items:center;
       justify-content:center;
       gap:10px;
-      min-width:190px;
+      min-width:196px;
       padding:15px 22px;
       border-radius:18px;
       text-decoration:none;
@@ -353,15 +334,15 @@
       backdrop-filter: blur(12px) saturate(130%);
       -webkit-backdrop-filter: blur(12px) saturate(130%);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.12),
-        0 14px 32px rgba(0,0,0,.18);
+        inset 0 1px 0 rgba(255,255,255,.10),
+        0 14px 30px rgba(0,0,0,.18);
     }
 
     .lang-btn::before{
       content:"";
       position:absolute;
       inset:0;
-      background:linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.02) 42%, transparent 70%);
+      background:linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.03) 42%, transparent 72%);
       z-index:0;
       pointer-events:none;
     }
@@ -373,24 +354,35 @@
 
     .lang-btn.primary{
       color:white;
-      border:1px solid color-mix(in srgb, white 16%, transparent);
+      border:1px solid rgba(52,211,153,.34);
       background:
-        linear-gradient(180deg, color-mix(in srgb, var(--brand) 54%, white 6%), color-mix(in srgb, var(--brand) 82%, black 6%));
+        linear-gradient(180deg, rgba(16,185,129,.96), rgba(5,150,105,.96));
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.16),
+        0 16px 34px rgba(16,185,129,.22),
+        0 16px 34px rgba(0,0,0,.16);
     }
 
     .lang-btn.secondary{
       color:white;
       border:1px solid color-mix(in srgb, white 16%, transparent);
       background:
-        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+        linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
     }
 
     .lang-btn:hover{
       transform:translateY(-2px) scale(1.01);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.15),
-        0 20px 42px rgba(0,0,0,.24);
+        inset 0 1px 0 rgba(255,255,255,.14),
+        0 20px 42px rgba(0,0,0,.22);
       filter:saturate(1.05);
+    }
+
+    .lang-btn.primary:hover{
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.16),
+        0 18px 40px rgba(16,185,129,.26),
+        0 18px 40px rgba(0,0,0,.20);
     }
 
     .lang-btn:active{
@@ -408,7 +400,7 @@
     }
 
     .hero-note{
-      margin-top:16px;
+      margin-top:14px;
       color:rgba(255,255,255,.66);
       font-size:.95rem;
       line-height:1.55;
@@ -422,9 +414,9 @@
     }
 
     .side-card{
-      width:min(420px, 100%);
-      border-radius:30px;
-      padding:24px 22px;
+      width:min(400px, 100%);
+      border-radius:28px;
+      padding:22px 20px;
       background:
         linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
       border:1px solid color-mix(in srgb, white 14%, transparent);
@@ -432,12 +424,12 @@
       -webkit-backdrop-filter: blur(18px) saturate(140%);
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.10),
-        0 20px 48px rgba(0,0,0,.22);
+        0 20px 48px rgba(0,0,0,.20);
     }
 
     .side-kicker{
       margin:0 0 10px;
-      font-size:.82rem;
+      font-size:.8rem;
       text-transform:uppercase;
       letter-spacing:.12em;
       color:rgba(255,255,255,.58);
@@ -446,16 +438,16 @@
     .side-title{
       margin:0;
       color:white;
-      font-size:1.28rem;
+      font-size:1.22rem;
       line-height:1.2;
       letter-spacing:-0.03em;
     }
 
     .side-text{
       margin:12px 0 0;
-      color:rgba(255,255,255,.76);
+      color:rgba(255,255,255,.78);
       line-height:1.6;
-      font-size:.98rem;
+      font-size:.97rem;
     }
 
     .side-pills{
@@ -474,7 +466,7 @@
       background:rgba(255,255,255,.06);
       border:1px solid color-mix(in srgb, white 10%, transparent);
       color:rgba(255,255,255,.84);
-      font-size:.9rem;
+      font-size:.88rem;
       line-height:1.2;
       box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
     }
@@ -490,18 +482,18 @@
     }
 
     .below{
-      margin-top:18px;
+      margin-top:16px;
       display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:18px;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
     }
 
-    .glass-card{
+    .lang-tile{
       position:relative;
       border-radius:28px;
       padding:22px 22px;
       background:
-        linear-gradient(180deg, color-mix(in srgb, var(--panel) 84%, transparent), color-mix(in srgb, var(--panel) 72%, transparent));
+        linear-gradient(180deg, color-mix(in srgb, var(--panel) 84%, transparent), color-mix(in srgb, var(--panel) 74%, transparent));
       border:1px solid color-mix(in srgb, var(--text) 8%, transparent);
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.06),
@@ -509,7 +501,7 @@
       overflow:hidden;
     }
 
-    .glass-card::before{
+    .lang-tile::before{
       content:"";
       position:absolute;
       inset:0 0 auto 0;
@@ -518,26 +510,38 @@
       pointer-events:none;
     }
 
-    .section-label{
-      margin:0 0 10px;
+    .lang-code{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:52px;
+      height:32px;
+      padding:0 12px;
+      border-radius:999px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+      border:1px solid color-mix(in srgb, white 10%, transparent);
       color:var(--muted);
-      font-size:.83rem;
+      font-size:.82rem;
+      font-weight:700;
+      letter-spacing:.08em;
       text-transform:uppercase;
-      letter-spacing:.12em;
     }
 
-    .glass-card p{
+    .lang-tile h3{
+      margin:14px 0 8px;
+      font-size:1.22rem;
+      letter-spacing:-0.03em;
+    }
+
+    .lang-tile p{
       margin:0;
-      line-height:1.7;
-    }
-
-    .dual-note{
-      display:grid;
-      gap:12px;
-    }
-
-    .dual-note .line-fr{
+      line-height:1.65;
       color:var(--muted);
+    }
+
+    .lang-tile strong{
+      color:var(--text);
     }
 
     footer{
@@ -591,7 +595,6 @@
 
       .hero-grid{
         grid-template-columns:1fr;
-        align-items:end;
       }
 
       .hero-side{
@@ -611,12 +614,14 @@
       .banner{
         position:relative;
         top:auto;
+        padding:10px 12px;
+        font-size:.92rem;
       }
 
       .nav{
         position:relative;
         top:auto;
-        width:min(100%, calc(100% - 20px));
+        width:min(100%, calc(100% - 18px));
         padding:12px 12px;
         border-radius:20px;
         grid-template-columns:auto auto;
@@ -624,33 +629,13 @@
         gap:10px;
       }
 
-      .nav .menu{
-        position:absolute;
-        top:calc(100% + 10px);
-        right:0;
+      .nav-center{
         display:none;
-        min-width:220px;
-        padding:12px;
-        border-radius:18px;
-        background:
-          linear-gradient(180deg, color-mix(in srgb, var(--panel) 88%, transparent), color-mix(in srgb, var(--panel) 78%, transparent));
-        border:1px solid color-mix(in srgb, white 10%, transparent);
-        box-shadow:
-          inset 0 1px 0 rgba(255,255,255,.08),
-          0 18px 38px rgba(0,0,0,.18);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
       }
 
-      .nav .menu.open{
-        display:flex;
-        flex-direction:column;
-        align-items:stretch;
-      }
-
-      .theme-toggle{
-        width:100%;
-        justify-content:center;
+      .wrap{
+        width:min(100%, calc(100% - 18px));
+        margin-top:10px;
       }
 
       .hero{
@@ -665,16 +650,16 @@
 
       .hero-grid{
         min-height:auto;
-        padding:22px 18px 18px;
-        gap:16px;
+        padding:18px 16px 16px;
+        gap:14px;
       }
 
       .hero-content{
-        padding-top:30px;
+        padding-top:8px;
       }
 
       .hero h1{
-        font-size:clamp(2.4rem, 15vw, 4rem);
+        font-size:clamp(2.5rem, 15vw, 4rem);
       }
 
       .hero-lead{
@@ -686,7 +671,7 @@
       }
 
       .hero-actions{
-        margin-top:22px;
+        margin-top:20px;
         flex-direction:column;
         align-items:stretch;
       }
@@ -703,26 +688,18 @@
     }
 
     @media (max-width: 560px){
-      .wrap{
-        width:min(100%, calc(100% - 14px));
-        margin-top:10px;
-      }
-
-      .banner{
-        font-size:.92rem;
+      .brand{
+        font-size:.96rem;
       }
 
       .nav{
         width:min(100%, calc(100% - 14px));
         margin-top:10px;
-      }
-
-      .brand{
-        font-size:1rem;
-      }
-
-      .nav-toggle{
         padding:10px 12px;
+      }
+
+      .theme-toggle{
+        padding:9px 10px;
         border-radius:14px;
       }
 
@@ -731,15 +708,16 @@
       }
 
       .eyebrow{
-        font-size:.85rem;
+        font-size:.84rem;
         padding:8px 12px;
+        margin-bottom:14px;
       }
 
       .hero-grid{
-        padding:18px 14px 14px;
+        padding:16px 14px 14px;
       }
 
-      .glass-card{
+      .lang-tile{
         border-radius:22px;
         padding:18px 16px;
       }
@@ -754,9 +732,8 @@
 <body>
 
   <div class="banner">
-    <strong>Pre-pilot stage.</strong> SimHealth is being developed with care, clinical awareness, and a research-first approach.
-    <br>
-    <span style="color:var(--muted);">(Phase pré-pilote.) SimHealth est développé avec soin, avec une attention clinique et une approche orientée recherche.</span>
+    <strong>Pre-pilot stage.</strong> SimHealth is being developed carefully and responsibly.
+    <span class="sub">(Phase pré-pilote.) SimHealth est développé avec prudence et responsabilité.</span>
   </div>
 
   <header class="nav">
@@ -768,18 +745,7 @@
       </div>
     </div>
 
-    <button class="nav-toggle" type="button"
-      onclick="
-        const menu = document.querySelector('header.nav .menu');
-        const expanded = menu?.classList.toggle('open');
-        this.setAttribute('aria-expanded', expanded ? 'true' : 'false');
-      "
-      aria-label="Open menu"
-      aria-expanded="false">
-      Menu <span class="chev">▾</span>
-    </button>
-
-    <nav class="menu" aria-label="Top controls">
+    <div class="nav-right">
       <div class="theme-toggle" role="button" tabindex="0"
            onclick="SimHealthTheme.toggleTheme()"
            onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
@@ -788,7 +754,7 @@
         <span class="track" aria-hidden="true"><span class="thumb"></span></span>
         <span class="label label-light">Light</span>
       </div>
-    </nav>
+    </div>
   </header>
 
   <main class="wrap">
@@ -810,7 +776,7 @@
           <p class="hero-sub rise-3">
             Please choose your language to continue.
             <br>
-            <span style="color:rgba(255,255,255,.62);">(Veuillez choisir votre langue pour continuer.)</span>
+            <span style="color:rgba(255,255,255,.64);">(Veuillez choisir votre langue pour continuer.)</span>
           </p>
 
           <div class="hero-actions rise-4" aria-label="Language selection">
@@ -826,7 +792,7 @@
           </div>
 
           <div class="hero-note rise-4">
-            A calm, research-aware entry point for patients, clinicians, and collaborators exploring the project.
+            A calm, clinically aware entry point for patients, clinicians, and collaborators exploring the project.
           </div>
         </div>
 
@@ -835,7 +801,7 @@
             <p class="side-kicker">Overview</p>
             <h2 class="side-title">A careful digital project in development</h2>
             <p class="side-text">
-              SimHealth is being shaped as a clinician-informed digital environment focused on gambling-harm support, staged evaluation, and responsible development.
+              SimHealth is being developed as a clinician-informed digital environment focused on gambling-harm support, staged evaluation, and responsible design.
             </p>
 
             <div class="side-pills">
@@ -849,23 +815,20 @@
     </section>
 
     <section class="below">
-      <div class="glass-card">
-        <p class="section-label">What this is</p>
+      <div class="lang-tile">
+        <div class="lang-code">EN</div>
+        <h3>English</h3>
         <p>
-          SimHealth is a clinician-informed digital project for gambling-harm support. It is being developed carefully, with attention to safety, staged evaluation, and appropriate clinical framing.
+          Enter the <strong>English version</strong> of SimHealth, including the project overview, patient-facing information, clinician pages, and legal content.
         </p>
       </div>
 
-      <div class="glass-card">
-        <p class="section-label">Français</p>
-        <div class="dual-note">
-          <p class="line-fr">
-            SimHealth est un projet numérique conçu avec un apport clinique, dédié au soutien face aux troubles liés au jeu d’argent.
-          </p>
-          <p class="line-fr">
-            Il est développé avec prudence, dans une logique progressive, avec une attention portée à la sécurité et à l’évaluation.
-          </p>
-        </div>
+      <div class="lang-tile">
+        <div class="lang-code">FR</div>
+        <h3>Français</h3>
+        <p>
+          Accédez à la <strong>version française</strong> de SimHealth, avec la présentation du projet, les contenus destinés aux patients, les pages cliniciens et les informations légales.
+        </p>
       </div>
     </section>
 
