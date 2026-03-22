@@ -1,771 +1,238 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta name="google-site-verification" content="google4a4a950cd03d86c0.html" />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>SimHealth — Language selection</title>
-  <meta name="description" content="SimHealth is a clinician-informed digital project for gambling-harm support. Choose English or Français to continue." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="/assets/styles.css">
-  <script src="/assets/theme.js"></script>
-
-  <style>
-    :root{
-      --hero-shadow: 0 28px 80px rgba(0,0,0,.22);
-      --soft-shadow: 0 16px 34px rgba(0,0,0,.12);
-      --nav-shadow: 0 16px 42px rgba(0,0,0,.12);
-
-      /* tuned to feel like the rest of SimHealth */
-      --sh-green-1: #2dd4bf;
-      --sh-green-2: #14b8a6;
-      --sh-green-3: #0f766e;
-
-      /* banner */
-      --banner-bg-dark: rgba(217, 119, 6, .16);
-      --banner-border-dark: rgba(245, 158, 11, .34);
-      --banner-text-dark: #f6c66f;
-
-      --banner-bg-light: rgba(245, 158, 11, .11);
-      --banner-border-light: rgba(217, 119, 6, .26);
-      --banner-text-light: #a16207;
-
-      /* hero overlay by theme */
-      --hero-left-dark: rgba(5,12,18,.56);
-      --hero-mid-dark: rgba(5,12,18,.26);
-      --hero-bottom-dark: rgba(5,12,18,.72);
-
-      --hero-left-light: rgba(255,255,255,.38);
-      --hero-mid-light: rgba(255,255,255,.10);
-      --hero-bottom-light: rgba(18,34,46,.18);
-
-      --hero-text-dark: rgba(255,255,255,.95);
-      --hero-sub-dark: rgba(255,255,255,.80);
-      --hero-note-dark: rgba(255,255,255,.66);
-
-      --hero-text-light: #0d1b2a;
-      --hero-sub-light: rgba(13,27,42,.86);
-      --hero-note-light: rgba(13,27,42,.66);
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      overflow-x:hidden;
-    }
-
-    .page-enter{
-      animation:pageFade .55s ease both;
-    }
-
-    @keyframes pageFade{
-      from{ opacity:0; }
-      to{ opacity:1; }
-    }
-
-    .banner{
-      position:sticky;
-      top:0;
-      z-index:90;
-      width:min(1240px, calc(100% - 24px));
-      margin:10px auto 0;
-      padding:10px 14px;
-      border-radius:16px;
-      line-height:1.35;
-      font-size:.95rem;
-      backdrop-filter: blur(14px) saturate(135%);
-      -webkit-backdrop-filter: blur(14px) saturate(135%);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06),
-        0 8px 24px rgba(0,0,0,.10);
-      animation:riseIn .68s cubic-bezier(.2,.7,.2,1) both;
-    }
-
-    .banner strong{ font-weight:800; }
-    .banner .line-fr{
-      display:block;
-      margin-top:2px;
-    }
-
-    html[data-theme="dark"] .banner{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)),
-        var(--banner-bg-dark);
-      border:1px solid var(--banner-border-dark);
-      color:var(--banner-text-dark);
-    }
-
-    html[data-theme="dark"] .banner strong{
-      color:#ffd88a;
-    }
-
-    html[data-theme="dark"] .banner .line-fr{
-      color:color-mix(in srgb, var(--banner-text-dark) 88%, white 8%);
-    }
-
-    html[data-theme="light"] .banner{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.58)),
-        var(--banner-bg-light);
-      border:1px solid var(--banner-border-light);
-      color:var(--banner-text-light);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.72),
-        0 8px 20px rgba(15,23,42,.06);
-    }
-
-    html[data-theme="light"] .banner strong{
-      color:#92400e;
-    }
-
-    html[data-theme="light"] .banner .line-fr{
-      color:#b45309;
-    }
-
-    .nav{
-      position:sticky;
-      top:64px;
-      z-index:80;
-      width:min(1240px, calc(100% - 24px));
-      margin:12px auto 0;
-      padding:12px 16px;
-      border-radius:24px;
-      display:grid;
-      grid-template-columns:auto 1fr auto;
-      align-items:center;
-      gap:14px;
-      backdrop-filter: blur(16px) saturate(140%);
-      -webkit-backdrop-filter: blur(16px) saturate(140%);
-      animation:riseIn .72s cubic-bezier(.2,.7,.2,1) both;
-      animation-delay:.05s;
-    }
-
-    html[data-theme="dark"] .nav{
-      background:
-        linear-gradient(180deg, color-mix(in srgb, var(--panel) 84%, transparent), color-mix(in srgb, var(--panel) 72%, transparent));
-      border:1px solid color-mix(in srgb, white 10%, transparent);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        var(--nav-shadow);
-    }
-
-    html[data-theme="light"] .nav{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.72));
-      border:1px solid rgba(15,23,42,.08);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.82),
-        0 14px 30px rgba(15,23,42,.06);
-    }
-
-    .brand{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      text-decoration:none;
-      color:var(--text);
-      font-weight:800;
-      font-size:.96rem;
-      letter-spacing:-0.03em;
-      white-space:nowrap;
-    }
-
-    .brand::before{
-      content:"";
-      width:10px;
-      height:10px;
-      border-radius:999px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(255,255,255,.16) 35%, transparent 55%),
-        linear-gradient(135deg, var(--sh-green-1), var(--sh-green-2));
-      box-shadow:
-        0 0 0 1px rgba(255,255,255,.18),
-        0 4px 14px rgba(45,212,191,.22);
-      flex:none;
-    }
-
-    .nav-center{
-      display:flex;
-      justify-content:center;
-      min-width:0;
-    }
-
-    .nav-descriptor{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      min-width:0;
-      max-width:680px;
-      padding:9px 15px;
-      border-radius:999px;
-      font-size:.9rem;
-      line-height:1.2;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
-    }
-
-    .nav-descriptor::before{
-      content:"";
-      width:6px;
-      height:6px;
-      border-radius:999px;
-      flex:none;
-      background:linear-gradient(180deg, var(--sh-green-1), var(--sh-green-2));
-      box-shadow: 0 0 12px rgba(45,212,191,.28);
-    }
-
-    html[data-theme="dark"] .nav-descriptor{
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid color-mix(in srgb, white 10%, transparent);
-      color:var(--muted);
-    }
-
-    html[data-theme="light"] .nav-descriptor{
-      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(248,250,252,.68));
-      border:1px solid rgba(15,23,42,.08);
-      color:rgba(15,23,42,.64);
-    }
-
-    .nav-right{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .theme-toggle{
-      padding:10px 12px;
-      border-radius:16px;
-      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
-    }
-
-    html[data-theme="dark"] .theme-toggle{
-      border:1px solid color-mix(in srgb, white 12%, transparent);
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 10px 24px rgba(0,0,0,.10);
-    }
-
-    html[data-theme="light"] .theme-toggle{
-      border:1px solid rgba(15,23,42,.08);
-      background:linear-gradient(180deg, rgba(255,255,255,.84), rgba(248,250,252,.74));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.84),
-        0 8px 18px rgba(15,23,42,.05);
-    }
-
-    .theme-toggle:hover{
-      transform:translateY(-1px);
-    }
-
-    .wrap{
-      width:min(1240px, calc(100% - 24px));
-      margin:12px auto 0;
-      padding-bottom:24px;
-    }
-
-    .hero{
-      position:relative;
-      min-height:calc(100svh - 190px);
-      border-radius:34px;
-      overflow:hidden;
-      isolation:isolate;
-      box-shadow:var(--hero-shadow);
-      animation:riseIn .82s cubic-bezier(.2,.7,.2,1) both;
-      animation-delay:.1s;
-    }
-
-    html[data-theme="dark"] .hero{
-      background:var(--panel);
-      border:1px solid color-mix(in srgb, white 10%, transparent);
-    }
-
-    html[data-theme="light"] .hero{
-      background:#eef3f6;
-      border:1px solid rgba(15,23,42,.08);
-      box-shadow:0 22px 60px rgba(15,23,42,.10);
-    }
-
-    .hero-bg{
-      position:absolute;
-      inset:-5%;
-      background-image:url('/assets/hero-clinic.jpg');
-      background-size:cover;
-      background-repeat:no-repeat;
-      background-position:50% 66%;
-      transform:scale(1.08);
-      will-change:transform;
-      filter:saturate(1.03) contrast(1.02);
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:0;
-      pointer-events:none;
-    }
-
-    html[data-theme="dark"] .hero::before{
-      background:
-        radial-gradient(circle at 16% 22%, rgba(255,255,255,.10), transparent 28%),
-        radial-gradient(circle at 82% 18%, rgba(45,212,191,.16), transparent 28%),
-        linear-gradient(90deg, var(--hero-left-dark) 0%, var(--hero-mid-dark) 38%, rgba(5,12,18,.12) 100%),
-        linear-gradient(180deg, rgba(5,12,18,.14) 0%, rgba(5,12,18,.26) 26%, rgba(5,12,18,.52) 62%, var(--hero-bottom-dark) 100%);
-    }
-
-    html[data-theme="light"] .hero::before{
-      background:
-        radial-gradient(circle at 16% 22%, rgba(255,255,255,.42), transparent 30%),
-        radial-gradient(circle at 82% 18%, rgba(45,212,191,.10), transparent 28%),
-        linear-gradient(90deg, var(--hero-left-light) 0%, var(--hero-mid-light) 42%, rgba(255,255,255,.02) 100%),
-        linear-gradient(180deg, rgba(255,255,255,.02) 0%, rgba(255,255,255,.02) 45%, var(--hero-bottom-light) 100%);
-    }
-
-    .hero::after{
-      content:"";
-      position:absolute;
-      inset:-20%;
-      pointer-events:none;
-      z-index:1;
-      background:linear-gradient(112deg, transparent 42%, rgba(255,255,255,.06) 50%, transparent 58%);
-      mix-blend-mode:screen;
-      opacity:.16;
-    }
-
-    .hero-grid{
-      position:relative;
-      z-index:2;
-      min-height:calc(100svh - 190px);
-      display:flex;
-      align-items:flex-end;
-      padding:clamp(24px, 3vw, 38px);
-    }
-
-    .hero-content{
-      width:min(780px, 100%);
-      padding-top:8px;
-    }
-
-    .hero h1{
-      margin:0;
-      font-size:clamp(3rem, 6vw, 5.15rem);
-      line-height:.94;
-      letter-spacing:-0.065em;
-      text-shadow:0 10px 30px rgba(0,0,0,.14);
-    }
-
-    html[data-theme="dark"] .hero h1{
-      color:var(--hero-text-dark);
-    }
-
-    html[data-theme="light"] .hero h1{
-      color:var(--hero-text-light);
-      text-shadow:none;
-    }
-
-    .hero-copy{
-      margin-top:18px;
-      display:grid;
-      gap:12px;
-      max-width:790px;
-    }
-
-    .copy-line{
-      max-width:720px;
-      font-size:clamp(1rem, 1.3vw, 1.16rem);
-      line-height:1.58;
-      text-wrap:pretty;
-      font-weight:700;
-      letter-spacing:-0.02em;
-    }
-
-    html[data-theme="dark"] .copy-line{
-      color:var(--hero-text-dark);
-    }
-
-    html[data-theme="dark"] .copy-line.fr{
-      color:var(--hero-sub-dark);
-    }
-
-    html[data-theme="light"] .copy-line{
-      color:var(--hero-text-light);
-    }
-
-    html[data-theme="light"] .copy-line.fr{
-      color:var(--hero-sub-light);
-    }
-
-    .hero-actions{
-      margin-top:24px;
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .lang-btn{
-      position:relative;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      min-width:196px;
-      padding:15px 22px;
-      border-radius:18px;
-      text-decoration:none;
-      font-weight:700;
-      letter-spacing:-0.02em;
-      transition:
-        transform .22s ease,
-        box-shadow .22s ease,
-        border-color .22s ease,
-        filter .22s ease,
-        background .22s ease;
-      overflow:hidden;
-      isolation:isolate;
-      backdrop-filter: blur(12px) saturate(130%);
-      -webkit-backdrop-filter: blur(12px) saturate(130%);
-    }
-
-    .lang-btn::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.04) 42%, transparent 72%);
-      z-index:0;
-      pointer-events:none;
-    }
-
-    .lang-btn span{
-      position:relative;
-      z-index:1;
-    }
-
-    /* Equal prominence, slightly different treatment */
-    .lang-btn.english{
-      color:#062b2b;
-      border:1px solid rgba(45,212,191,.36);
-      background:linear-gradient(180deg, var(--sh-green-1), var(--sh-green-2));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.26),
-        0 16px 34px rgba(45,212,191,.22),
-        0 16px 34px rgba(0,0,0,.14);
-    }
-
-    .lang-btn.francais{
-      color:white;
-    }
-
-    html[data-theme="dark"] .lang-btn.francais{
-      border:1px solid rgba(45,212,191,.24);
-      background:
-        linear-gradient(180deg, rgba(45,212,191,.18), rgba(20,184,166,.10));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        0 14px 30px rgba(0,0,0,.16);
-    }
-
-    html[data-theme="light"] .lang-btn.francais{
-      color:#0f172a;
-      border:1px solid rgba(20,184,166,.22);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,.54)),
-        linear-gradient(180deg, rgba(45,212,191,.10), rgba(20,184,166,.06));
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.70),
-        0 12px 24px rgba(15,23,42,.06);
-    }
-
-    .lang-btn:hover{
-      transform:translateY(-2px) scale(1.01);
-      filter:saturate(1.05);
-    }
-
-    .lang-btn.english:hover{
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.28),
-        0 18px 40px rgba(45,212,191,.28),
-        0 18px 40px rgba(0,0,0,.18);
-    }
-
-    .lang-btn.francais:hover{
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.14),
-        0 18px 40px rgba(0,0,0,.18);
-    }
-
-    .lang-btn:active{
-      transform:translateY(0) scale(.995);
-    }
-
-    .lang-btn .arrow{
-      opacity:.78;
-      transition:transform .22s ease, opacity .22s ease;
-    }
-
-    .lang-btn:hover .arrow{
-      opacity:1;
-      transform:translateX(2px);
-    }
-
-    .hero-note{
-      margin-top:16px;
-      font-size:.95rem;
-      line-height:1.55;
-      max-width:720px;
-      letter-spacing:-0.01em;
-    }
-
-    html[data-theme="dark"] .hero-note{
-      color:var(--hero-note-dark);
-    }
-
-    html[data-theme="light"] .hero-note{
-      color:var(--hero-note-light);
-      font-weight:600;
-    }
-
-    footer{
-      margin-top:18px;
-      border-top:1px solid color-mix(in srgb, var(--text) 8%, transparent);
-      background:transparent;
-    }
-
-    footer .row{
-      width:min(1240px, calc(100% - 24px));
-      margin:0 auto;
-      padding:18px 0 26px;
-    }
-
-    .rise-1,.rise-2,.rise-3,.rise-4{
-      opacity:0;
-      transform:translateY(16px);
-      animation:riseIn .72s cubic-bezier(.2,.7,.2,1) forwards;
-    }
-
-    .rise-2{ animation-delay:.10s; }
-    .rise-3{ animation-delay:.18s; }
-    .rise-4{ animation-delay:.26s; }
-
-    @keyframes riseIn{
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @media (prefers-reduced-motion:no-preference){
-      .hero-bg{
-        animation:heroDrift 24s ease-in-out infinite alternate;
-      }
-
-      .hero::after{
-        animation:glassSweep 8.5s ease-in-out infinite;
-      }
-
-      @keyframes heroDrift{
-        0%{ transform:scale(1.08) translate3d(0,0,0); }
-        100%{ transform:scale(1.145) translate3d(-18px,-20px,0); }
-      }
-
-      @keyframes glassSweep{
-        0%,100%{ transform:translateX(-18%) translateY(0); opacity:.10; }
-        50%{ transform:translateX(14%) translateY(-1%); opacity:.18; }
-      }
-    }
-
-    @media (max-width: 900px){
-      .banner{
-        position:relative;
-        top:auto;
-        width:min(100%, calc(100% - 18px));
-        margin-top:10px;
-        padding:10px 12px;
-        font-size:.92rem;
-      }
-
-      .nav{
-        position:relative;
-        top:auto;
-        width:min(100%, calc(100% - 18px));
-        margin-top:10px;
-        padding:12px 12px;
-        border-radius:20px;
-        grid-template-columns:auto auto;
-        justify-content:space-between;
-      }
-
-      .nav-center{
-        display:none;
-      }
-
-      .wrap{
-        width:min(100%, calc(100% - 18px));
-        margin-top:10px;
-      }
-
-      .hero{
-        min-height:auto;
-        border-radius:28px;
-      }
-
-      .hero-bg{
-        background-position:52% center;
-        transform:scale(1.06);
-      }
-
-      .hero-grid{
-        min-height:auto;
-        padding:18px 16px 16px;
-        align-items:end;
-      }
-
-      .hero-content{
-        padding-top:6px;
-      }
-
-      .hero h1{
-        font-size:clamp(2.6rem, 15vw, 3.9rem);
-      }
-
-      .copy-line{
-        font-size:1rem;
-      }
-
-      .hero-actions{
-        margin-top:20px;
-        flex-direction:column;
-        align-items:stretch;
-      }
-
-      .lang-btn{
-        width:100%;
-        min-width:0;
-      }
-    }
-
-    @media (max-width: 560px){
-      .brand{
-        font-size:.95rem;
-      }
-
-      .nav{
-        width:min(100%, calc(100% - 14px));
-        padding:10px 12px;
-      }
-
-      .theme-toggle{
-        padding:9px 10px;
-        border-radius:14px;
-      }
-
-      .banner{
-        width:min(100%, calc(100% - 14px));
-      }
-
-      .hero{
-        border-radius:24px;
-      }
-
-      .hero-grid{
-        padding:16px 14px 14px;
-      }
-
-      footer .row{
-        width:min(100%, calc(100% - 14px));
-      }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<title>SimHealth — Language selection</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/styles.css">
+<script src="/assets/theme.js"></script>
+
+<style>
+
+/* ---------------- BASE ---------------- */
+
+body{
+  margin:0;
+  font-family:'Instrument Sans',sans-serif;
+  background:#020617;
+}
+
+/* ---------------- BANNER ---------------- */
+
+.banner{
+  position:sticky;
+  top:0;
+  z-index:10;
+  margin:10px;
+  padding:8px 12px;
+  border-radius:14px;
+  font-size:.92rem;
+  line-height:1.35;
+  backdrop-filter: blur(12px);
+  border:1px solid rgba(255,170,0,.25);
+  background:rgba(255,140,0,.12);
+  color:#ffd28a;
+}
+
+/* ---------------- NAV ---------------- */
+
+.nav{
+  margin:10px;
+  padding:12px 14px;
+  border-radius:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter: blur(14px);
+  background:rgba(0,0,0,.4);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+}
+
+.brand::before{
+  content:"";
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#2dd4bf;
+  box-shadow:0 0 10px #2dd4bf;
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero{
+  margin:10px;
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background:url('/assets/hero-clinic.jpg') center/cover;
+}
+
+/* FIXED LIGHT/DARK OVERLAY */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,.6) 0%,
+      rgba(0,0,0,.35) 40%,
+      rgba(0,0,0,.1) 70%,
+      transparent
+    ),
+    linear-gradient(180deg,
+      transparent,
+      rgba(0,0,0,.4)
+    );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:28px 20px 20px;
+}
+
+/* ---------------- TEXT ---------------- */
+
+.hero h1{
+  font-size:42px;
+  margin:0;
+  font-weight:800;
+  color:white;
+}
+
+.copy{
+  margin-top:12px;
+  font-weight:600;
+  color:white;
+}
+
+.copy.fr{
+  opacity:.8;
+}
+
+/* ---------------- BUTTONS ---------------- */
+
+.actions{
+  margin-top:18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.btn{
+  padding:14px;
+  border-radius:16px;
+  text-align:center;
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* Balanced buttons */
+.btn.en{
+  background:linear-gradient(135deg,#2dd4bf,#14b8a6);
+  color:#042f2e;
+}
+
+.btn.fr{
+  background:rgba(255,255,255,.15);
+  color:white;
+  border:1px solid rgba(255,255,255,.3);
+}
+
+/* ---------------- FOOT ---------------- */
+
+.note{
+  margin-top:10px;
+  font-size:.85rem;
+  opacity:.7;
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media(min-width:768px){
+
+  .hero-content{
+    padding:60px;
+  }
+
+  .hero h1{
+    font-size:70px;
+  }
+
+  .actions{
+    flex-direction:row;
+  }
+
+  .btn{
+    min-width:180px;
+  }
+
+}
+
+</style>
 </head>
 
-<body class="page-enter">
+<body>
 
-  <div class="banner">
-    <strong>Pre-pilot stage.</strong> SimHealth is being developed carefully and responsibly.
-    <span class="line-fr">(Phase pré-pilote.) SimHealth est développé avec prudence et responsabilité.</span>
+<!-- BANNER -->
+<div class="banner">
+  <strong>Pre-pilot stage.</strong> SimHealth is being developed carefully and responsibly.<br>
+  (Phase pré-pilote.) SimHealth est développé avec prudence et responsabilité.
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="brand">SimHealth</div>
+  <div onclick="SimHealthTheme.toggleTheme()" style="cursor:pointer;">
+    Dark / Light
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+
+  <div class="hero-bg"></div>
+
+  <div class="hero-content">
+    <h1>SimHealth</h1>
+
+    <div class="copy">
+      Clinician-informed digital support for gambling harm.
+    </div>
+
+    <div class="copy fr">
+      Soutien numérique conçu avec un apport clinique face aux troubles liés au jeu d’argent.
+    </div>
+
+    <div class="actions">
+      <a class="btn en" href="/en/home/">English →</a>
+      <a class="btn fr" href="/fr/accueil/">Français →</a>
+    </div>
+
+    <div class="note">
+      Choose your language to continue / Choisissez votre langue pour continuer
+    </div>
+
   </div>
 
-  <header class="nav">
-    <a class="brand" href="/index.html" aria-label="SimHealth home">SimHealth</a>
-
-    <div class="nav-center" aria-hidden="true">
-      <div class="nav-descriptor">
-        Clinician-informed digital project for gambling-harm support
-      </div>
-    </div>
-
-    <div class="nav-right">
-      <div class="theme-toggle" role="button" tabindex="0"
-           onclick="SimHealthTheme.toggleTheme()"
-           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
-           aria-label="Toggle theme">
-        <span class="label label-dark">Dark</span>
-        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
-        <span class="label label-light">Light</span>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <section class="hero">
-      <div class="hero-bg"></div>
-
-      <div class="hero-grid">
-        <div class="hero-content">
-          <h1 class="rise-1">SimHealth</h1>
-
-          <div class="hero-copy rise-2">
-            <div class="copy-line">
-              Clinician-informed digital support for gambling harm.
-            </div>
-            <div class="copy-line fr">
-              Soutien numérique conçu avec un apport clinique face aux troubles liés au jeu d’argent.
-            </div>
-          </div>
-
-          <div class="hero-actions rise-3" aria-label="Language selection">
-            <a class="lang-btn english" href="/en/home/">
-              <span>English</span>
-              <span class="arrow" aria-hidden="true">→</span>
-            </a>
-
-            <a class="lang-btn francais" href="/fr/accueil/">
-              <span>Français</span>
-              <span class="arrow" aria-hidden="true">→</span>
-            </a>
-          </div>
-
-          <div class="hero-note rise-4">
-            Choose your language to continue. / Choisissez votre langue pour continuer.
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="row">
-      <div>
-        © 2026 SimHealth. All rights reserved. •
-        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
-      </div>
-
-      <nav aria-label="Footer links">
-        <a href="/sitemap.html">Sitemap</a>
-        <a href="/en/legal/privacy/">Privacy (EN)</a>
-        <a href="/fr/legal/confidentialite/">Confidentialité (FR)</a>
-      </nav>
-    </div>
-  </footer>
+</div>
 
 </body>
 </html>
