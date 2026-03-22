@@ -1,238 +1,142 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="google-site-verification" content="google4a4a950cd03d86c0.html" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SimHealth — Language selection</title>
 
-<title>SimHealth — Language selection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/theme.js"></script>
 
-<link rel="stylesheet" href="/assets/styles.css">
-<script src="/assets/theme.js"></script>
+  <style>
+    .lang-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
 
-<style>
+    .mini-note{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+    }
 
-/* ---------------- BASE ---------------- */
+    .hero .hero-content{
+      width:min(720px, 92%);
+    }
 
-body{
-  margin:0;
-  font-family:'Instrument Sans',sans-serif;
-  background:#020617;
-}
+    .hero .hero-content h1{
+      margin:0;
+    }
 
-/* ---------------- BANNER ---------------- */
+    .hero .hero-content p{
+      margin-top:10px;
+      margin-bottom:0;
+    }
 
-.banner{
-  position:sticky;
-  top:0;
-  z-index:10;
-  margin:10px;
-  padding:8px 12px;
-  border-radius:14px;
-  font-size:.92rem;
-  line-height:1.35;
-  backdrop-filter: blur(12px);
-  border:1px solid rgba(255,170,0,.25);
-  background:rgba(255,140,0,.12);
-  color:#ffd28a;
-}
+    @media (min-width: 901px){
+      .hero .hero-bg{
+        background-position: 50% 85%;
+      }
+    }
 
-/* ---------------- NAV ---------------- */
+    @media (max-width: 700px){
+      .hero .hero-bg{
+        background-position: 52% center;
+      }
 
-.nav{
-  margin:10px;
-  padding:12px 14px;
-  border-radius:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  backdrop-filter: blur(14px);
-  background:rgba(0,0,0,.4);
-  border:1px solid rgba(255,255,255,.08);
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:700;
-}
-
-.brand::before{
-  content:"";
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:#2dd4bf;
-  box-shadow:0 0 10px #2dd4bf;
-}
-
-/* ---------------- HERO ---------------- */
-
-.hero{
-  margin:10px;
-  border-radius:28px;
-  overflow:hidden;
-  position:relative;
-}
-
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background:url('/assets/hero-clinic.jpg') center/cover;
-}
-
-/* FIXED LIGHT/DARK OVERLAY */
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(90deg,
-      rgba(0,0,0,.6) 0%,
-      rgba(0,0,0,.35) 40%,
-      rgba(0,0,0,.1) 70%,
-      transparent
-    ),
-    linear-gradient(180deg,
-      transparent,
-      rgba(0,0,0,.4)
-    );
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  padding:28px 20px 20px;
-}
-
-/* ---------------- TEXT ---------------- */
-
-.hero h1{
-  font-size:42px;
-  margin:0;
-  font-weight:800;
-  color:white;
-}
-
-.copy{
-  margin-top:12px;
-  font-weight:600;
-  color:white;
-}
-
-.copy.fr{
-  opacity:.8;
-}
-
-/* ---------------- BUTTONS ---------------- */
-
-.actions{
-  margin-top:18px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-.btn{
-  padding:14px;
-  border-radius:16px;
-  text-align:center;
-  font-weight:700;
-  text-decoration:none;
-}
-
-/* Balanced buttons */
-.btn.en{
-  background:linear-gradient(135deg,#2dd4bf,#14b8a6);
-  color:#042f2e;
-}
-
-.btn.fr{
-  background:rgba(255,255,255,.15);
-  color:white;
-  border:1px solid rgba(255,255,255,.3);
-}
-
-/* ---------------- FOOT ---------------- */
-
-.note{
-  margin-top:10px;
-  font-size:.85rem;
-  opacity:.7;
-}
-
-/* ---------------- MOBILE ---------------- */
-
-@media(min-width:768px){
-
-  .hero-content{
-    padding:60px;
-  }
-
-  .hero h1{
-    font-size:70px;
-  }
-
-  .actions{
-    flex-direction:row;
-  }
-
-  .btn{
-    min-width:180px;
-  }
-
-}
-
-</style>
+      .lang-actions{
+        margin-top:110px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- BANNER -->
-<div class="banner">
-  <strong>Pre-pilot stage.</strong> SimHealth is being developed carefully and responsibly.<br>
-  (Phase pré-pilote.) SimHealth est développé avec prudence et responsabilité.
-</div>
-
-<!-- NAV -->
-<div class="nav">
-  <div class="brand">SimHealth</div>
-  <div onclick="SimHealthTheme.toggleTheme()" style="cursor:pointer;">
-    Dark / Light
-  </div>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-
-  <div class="hero-bg"></div>
-
-  <div class="hero-content">
-    <h1>SimHealth</h1>
-
-    <div class="copy">
-      Clinician-informed digital support for gambling harm.
-    </div>
-
-    <div class="copy fr">
-      Soutien numérique conçu avec un apport clinique face aux troubles liés au jeu d’argent.
-    </div>
-
-    <div class="actions">
-      <a class="btn en" href="/en/home/">English →</a>
-      <a class="btn fr" href="/fr/accueil/">Français →</a>
-    </div>
-
-    <div class="note">
-      Choose your language to continue / Choisissez votre langue pour continuer
-    </div>
-
+  <div class="banner">
+    <strong>Pre-pilot stage.</strong> SimHealth is being developed with care and clinical awareness.
+    <br>
+    <span style="color:var(--muted);">(Phase pré-pilote.) SimHealth est développé avec soin et une attention clinique.</span>
   </div>
 
-</div>
+  <header class="nav">
+    <a class="brand" href="/index.html" aria-label="SimHealth home">SimHealth</a>
+
+    <button class="nav-toggle" type="button"
+      onclick="document.querySelector('header.nav .menu')?.classList.toggle('open')"
+      aria-label="Open menu">
+      Menu <span class="chev">▾</span>
+    </button>
+
+    <nav class="menu" aria-label="Top controls">
+      <div class="theme-toggle" role="button" tabindex="0"
+           onclick="SimHealthTheme.toggleTheme()"
+           onkeydown="if(event.key==='Enter' || event.key===' ') { event.preventDefault(); SimHealthTheme.toggleTheme(); }"
+           aria-label="Toggle theme">
+        <span class="label label-dark">Dark</span>
+        <span class="track" aria-hidden="true"><span class="thumb"></span></span>
+        <span class="label label-light">Light</span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url('/assets/hero-clinic.jpg');"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <h1 class="rise-1">SimHealth</h1>
+
+        <p class="rise-2">
+          Please choose your language to continue.
+          <br>
+          <span style="color:var(--muted);">
+            (Veuillez choisir votre langue pour continuer.)
+          </span>
+        </p>
+
+        <div class="hero-actions rise-3 lang-actions" aria-label="Language selection">
+          <a class="btn-primary" href="/en/home/">English</a>
+          <a class="btn-secondary" href="/fr/accueil/">Français</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="card" style="margin-top:14px;">
+      <p class="mini-note">
+        A clinician-informed digital project for gambling-harm support.
+        <br>
+        <span style="color:var(--muted);">
+          (Un projet numérique conçu avec un apport clinique, dédié au soutien face aux troubles liés au jeu d’argent.)
+        </span>
+      </p>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="row">
+      <div>
+        © 2026 SimHealth. All rights reserved. •
+        <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+      </div>
+
+      <nav aria-label="Footer links">
+        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/legal/privacy/">Privacy (EN)</a>
+        <a href="/fr/legal/confidentialite/">Confidentialité (FR)</a>
+      </nav>
+    </div>
+  </footer>
 
 </body>
 </html>
