@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SimHealth — Language selection</title>
-  <meta name="description" content="SimHealth is a clinician-informed digital project for gambling-harm support. Choose your language to continue." />
+  <meta name="description" content="SimHealth is a clinician-informed digital project for gambling-harm support. Choose English or Français to continue." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,18 +16,16 @@
 
   <style>
     :root{
-      --glass-bg: color-mix(in srgb, var(--panel) 76%, transparent);
-      --glass-stroke: color-mix(in srgb, white 12%, transparent);
-      --glass-stroke-strong: color-mix(in srgb, white 18%, transparent);
-      --hero-shadow: 0 24px 70px rgba(0,0,0,.26);
+      --hero-shadow: 0 24px 72px rgba(0,0,0,.24);
       --soft-shadow: 0 14px 34px rgba(0,0,0,.14);
-      --deep-shadow: 0 24px 56px rgba(0,0,0,.22);
-      --radius-xl: 26px;
-      --radius-2xl: 34px;
-      --accent-orange: #d97706;
-      --accent-orange-soft: #f59e0b;
-      --accent-green: #10b981;
-      --accent-green-2: #34d399;
+      --glass-stroke: color-mix(in srgb, white 12%, transparent);
+      --glass-fill: color-mix(in srgb, var(--panel) 78%, transparent);
+      --orange-banner: rgba(245, 158, 11, .16);
+      --orange-banner-border: rgba(245, 158, 11, .28);
+      --orange-banner-text: #fbbf24;
+      --btn-green-top: color-mix(in srgb, var(--brand) 82%, white 10%);
+      --btn-green-bottom: color-mix(in srgb, var(--brand) 92%, black 6%);
+      --btn-green-border: color-mix(in srgb, var(--brand) 42%, white 12%);
     }
 
     html{
@@ -42,34 +40,41 @@
       position:sticky;
       top:0;
       z-index:80;
-      background:
-        linear-gradient(180deg, rgba(217,119,6,.96), rgba(180,83,9,.94));
-      color:#fff8ef;
-      border-bottom:1px solid rgba(255,255,255,.16);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.16),
-        0 10px 24px rgba(0,0,0,.16);
+      margin:10px auto 0;
+      width:min(1240px, calc(100% - 24px));
       padding:10px 14px;
+      border-radius:16px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)),
+        var(--orange-banner);
+      border:1px solid var(--orange-banner-border);
+      color:var(--orange-banner-text);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 8px 24px rgba(0,0,0,.10);
+      backdrop-filter: blur(12px) saturate(135%);
+      -webkit-backdrop-filter: blur(12px) saturate(135%);
       line-height:1.35;
-      font-size:.96rem;
+      font-size:.95rem;
+      animation:fadeSlide .55s cubic-bezier(.2,.7,.2,1) both;
     }
 
     .banner strong{
-      color:white;
+      color:#ffd67a;
       font-weight:800;
     }
 
-    .banner .sub{
+    .banner .line-fr{
       display:block;
-      color:rgba(255,248,239,.92);
+      color:color-mix(in srgb, #ffd67a 86%, white 10%);
       margin-top:2px;
     }
 
     .nav{
       position:sticky;
-      top:60px;
+      top:64px;
       z-index:70;
-      margin:14px auto 0;
+      margin:12px auto 0;
       width:min(1240px, calc(100% - 24px));
       padding:12px 16px;
       border-radius:24px;
@@ -78,24 +83,26 @@
       border:1px solid color-mix(in srgb, white 10%, transparent);
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.08),
-        0 16px 36px rgba(0,0,0,.14);
+        0 16px 38px rgba(0,0,0,.14);
       backdrop-filter: blur(16px) saturate(135%);
       -webkit-backdrop-filter: blur(16px) saturate(135%);
       display:grid;
       grid-template-columns:auto 1fr auto;
       align-items:center;
       gap:14px;
+      animation:fadeSlide .62s cubic-bezier(.2,.7,.2,1) both;
+      animation-delay:.04s;
     }
 
     .brand{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      font-weight:800;
-      letter-spacing:-0.03em;
       text-decoration:none;
       color:var(--text);
-      font-size:.98rem;
+      font-weight:800;
+      font-size:.96rem;
+      letter-spacing:-0.03em;
       white-space:nowrap;
     }
 
@@ -105,7 +112,7 @@
       height:10px;
       border-radius:999px;
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(255,255,255,.15) 35%, transparent 55%),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(255,255,255,.16) 35%, transparent 55%),
         linear-gradient(135deg, var(--brand), color-mix(in srgb, var(--brand) 62%, white));
       box-shadow:
         0 0 0 1px rgba(255,255,255,.18),
@@ -123,21 +130,21 @@
       display:inline-flex;
       align-items:center;
       gap:10px;
-      max-width:650px;
       min-width:0;
+      max-width:660px;
       padding:9px 15px;
       border-radius:999px;
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border:1px solid color-mix(in srgb, white 10%, transparent);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06),
-        0 8px 20px rgba(0,0,0,.08);
       color:var(--muted);
       font-size:.9rem;
       line-height:1.2;
       white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.06),
+        0 8px 20px rgba(0,0,0,.08);
     }
 
     .nav-descriptor::before{
@@ -145,8 +152,8 @@
       width:6px;
       height:6px;
       border-radius:999px;
-      background: color-mix(in srgb, var(--brand) 68%, white);
-      box-shadow: 0 0 12px color-mix(in srgb, var(--brand) 40%, transparent);
+      background:color-mix(in srgb, var(--brand) 72%, white);
+      box-shadow:0 0 12px color-mix(in srgb, var(--brand) 38%, transparent);
       flex:none;
     }
 
@@ -170,32 +177,33 @@
 
     .theme-toggle:hover{
       transform:translateY(-1px);
+      border-color:color-mix(in srgb, white 18%, transparent);
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.08),
         0 14px 28px rgba(0,0,0,.14);
-      border-color:color-mix(in srgb, white 18%, transparent);
     }
 
     .wrap{
-      width:min(1280px, calc(100% - 24px));
-      margin:14px auto 0;
-      padding-bottom:26px;
+      width:min(1240px, calc(100% - 24px));
+      margin:12px auto 0;
+      padding-bottom:24px;
     }
 
     .hero{
       position:relative;
-      min-height:calc(100svh - 150px);
+      min-height:calc(100svh - 180px);
       border-radius:34px;
       overflow:hidden;
       isolation:isolate;
-      box-shadow: var(--hero-shadow);
+      background:var(--panel);
       border:1px solid color-mix(in srgb, white 10%, transparent);
-      background: var(--panel);
+      box-shadow:var(--hero-shadow);
     }
 
     .hero-bg{
       position:absolute;
       inset:-5%;
+      background-image:url('/assets/hero-clinic.jpg');
       background-size:cover;
       background-repeat:no-repeat;
       background-position:50% 68%;
@@ -204,59 +212,48 @@
       filter:saturate(1.02) contrast(1.02);
     }
 
-    .hero::after{
+    .hero::before{
       content:"";
       position:absolute;
       inset:0;
+      z-index:0;
+      pointer-events:none;
       background:
-        radial-gradient(circle at 18% 18%, rgba(255,255,255,.10), transparent 28%),
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,.10), transparent 28%),
         radial-gradient(circle at 82% 22%, color-mix(in srgb, var(--brand) 18%, transparent), transparent 30%),
-        linear-gradient(180deg, rgba(5,12,18,.14) 0%, rgba(5,12,18,.26) 24%, rgba(5,12,18,.52) 58%, rgba(5,12,18,.74) 100%);
-      z-index:0;
-      pointer-events:none;
-    }
-
-    .hero-overlay{
-      position:absolute;
-      inset:0;
-      z-index:0;
-      pointer-events:none;
-      background:
-        linear-gradient(90deg, rgba(4,10,15,.54) 0%, rgba(4,10,15,.28) 36%, rgba(4,10,15,.14) 100%);
+        linear-gradient(90deg, rgba(5,12,18,.54) 0%, rgba(5,12,18,.28) 38%, rgba(5,12,18,.12) 100%),
+        linear-gradient(180deg, rgba(5,12,18,.16) 0%, rgba(5,12,18,.28) 24%, rgba(5,12,18,.54) 62%, rgba(5,12,18,.74) 100%);
     }
 
     .hero-grid{
       position:relative;
       z-index:2;
-      min-height:calc(100svh - 150px);
-      display:grid;
-      grid-template-columns:minmax(0, 1.16fr) minmax(300px, .84fr);
-      align-items:end;
-      gap:24px;
+      min-height:calc(100svh - 180px);
+      display:flex;
+      align-items:flex-end;
       padding:clamp(24px, 3vw, 38px);
     }
 
     .hero-content{
       width:min(760px, 100%);
-      padding-top:18px;
+      padding-top:12px;
     }
 
     .eyebrow{
       display:inline-flex;
       align-items:center;
       gap:10px;
-      padding:9px 14px;
+      padding:8px 14px;
       border-radius:999px;
       background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
       border:1px solid color-mix(in srgb, white 12%, transparent);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.08),
-        0 10px 24px rgba(0,0,0,.12);
       color:rgba(255,255,255,.92);
       font-size:.9rem;
       font-weight:600;
       letter-spacing:-0.01em;
-      margin-bottom:16px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        0 10px 24px rgba(0,0,0,.12);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
@@ -266,41 +263,42 @@
       width:8px;
       height:8px;
       border-radius:999px;
-      background: color-mix(in srgb, var(--brand) 72%, white);
-      box-shadow: 0 0 18px color-mix(in srgb, var(--brand) 38%, transparent);
+      background:color-mix(in srgb, var(--brand) 72%, white);
+      box-shadow:0 0 18px color-mix(in srgb, var(--brand) 36%, transparent);
       flex:none;
     }
 
     .hero h1{
-      margin:0;
-      font-size:clamp(3rem, 6.4vw, 5.4rem);
+      margin:18px 0 0;
+      font-size:clamp(3.1rem, 6.2vw, 5.4rem);
       line-height:.94;
       letter-spacing:-0.065em;
       color:white;
-      text-wrap:balance;
-      text-shadow: 0 10px 30px rgba(0,0,0,.18);
+      text-shadow:0 10px 30px rgba(0,0,0,.18);
     }
 
-    .hero-lead{
-      margin:16px 0 0;
-      font-size:clamp(1rem, 1.3vw, 1.2rem);
-      line-height:1.55;
-      color:rgba(255,255,255,.88);
-      max-width:690px;
+    .hero-copy{
+      margin-top:18px;
+      display:grid;
+      gap:12px;
+      max-width:780px;
+    }
+
+    .copy-line{
+      max-width:700px;
+      font-size:clamp(1rem, 1.3vw, 1.16rem);
+      line-height:1.58;
+      color:rgba(255,255,255,.90);
       text-wrap:pretty;
     }
 
-    .hero-lead strong{
-      color:white;
-      font-weight:700;
+    .copy-line.fr{
+      color:rgba(255,255,255,.78);
     }
 
-    .hero-sub{
-      margin:14px 0 0;
-      max-width:650px;
-      color:rgba(255,255,255,.74);
-      font-size:1rem;
-      line-height:1.6;
+    .copy-line strong{
+      color:white;
+      font-weight:700;
     }
 
     .hero-actions{
@@ -327,7 +325,6 @@
         transform .22s ease,
         box-shadow .22s ease,
         border-color .22s ease,
-        background .22s ease,
         filter .22s ease;
       overflow:hidden;
       isolation:isolate;
@@ -354,35 +351,38 @@
 
     .lang-btn.primary{
       color:white;
-      border:1px solid rgba(52,211,153,.34);
-      background:
-        linear-gradient(180deg, rgba(16,185,129,.96), rgba(5,150,105,.96));
+      border:1px solid var(--btn-green-border);
+      background:linear-gradient(180deg, var(--btn-green-top), var(--btn-green-bottom));
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.16),
-        0 16px 34px rgba(16,185,129,.22),
+        inset 0 1px 0 rgba(255,255,255,.14),
+        0 16px 34px color-mix(in srgb, var(--brand) 18%, transparent),
         0 16px 34px rgba(0,0,0,.16);
     }
 
     .lang-btn.secondary{
       color:white;
-      border:1px solid color-mix(in srgb, white 16%, transparent);
+      border:1px solid color-mix(in srgb, var(--brand) 28%, white 6%);
       background:
-        linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+        linear-gradient(180deg, color-mix(in srgb, var(--brand) 16%, rgba(255,255,255,.10)),
+                               color-mix(in srgb, var(--brand) 8%, rgba(255,255,255,.04)));
     }
 
     .lang-btn:hover{
       transform:translateY(-2px) scale(1.01);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.14),
-        0 20px 42px rgba(0,0,0,.22);
       filter:saturate(1.05);
     }
 
     .lang-btn.primary:hover{
       box-shadow:
         inset 0 1px 0 rgba(255,255,255,.16),
-        0 18px 40px rgba(16,185,129,.26),
+        0 18px 40px color-mix(in srgb, var(--brand) 24%, transparent),
         0 18px 40px rgba(0,0,0,.20);
+    }
+
+    .lang-btn.secondary:hover{
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.14),
+        0 18px 40px rgba(0,0,0,.18);
     }
 
     .lang-btn:active{
@@ -390,7 +390,7 @@
     }
 
     .lang-btn .arrow{
-      opacity:.72;
+      opacity:.74;
       transition:transform .22s ease, opacity .22s ease;
     }
 
@@ -400,148 +400,11 @@
     }
 
     .hero-note{
-      margin-top:14px;
+      margin-top:16px;
       color:rgba(255,255,255,.66);
       font-size:.95rem;
       line-height:1.55;
-      max-width:640px;
-    }
-
-    .hero-side{
-      display:flex;
-      justify-content:flex-end;
-      align-items:flex-end;
-    }
-
-    .side-card{
-      width:min(400px, 100%);
-      border-radius:28px;
-      padding:22px 20px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
-      border:1px solid color-mix(in srgb, white 14%, transparent);
-      backdrop-filter: blur(18px) saturate(140%);
-      -webkit-backdrop-filter: blur(18px) saturate(140%);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.10),
-        0 20px 48px rgba(0,0,0,.20);
-    }
-
-    .side-kicker{
-      margin:0 0 10px;
-      font-size:.8rem;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      color:rgba(255,255,255,.58);
-    }
-
-    .side-title{
-      margin:0;
-      color:white;
-      font-size:1.22rem;
-      line-height:1.2;
-      letter-spacing:-0.03em;
-    }
-
-    .side-text{
-      margin:12px 0 0;
-      color:rgba(255,255,255,.78);
-      line-height:1.6;
-      font-size:.97rem;
-    }
-
-    .side-pills{
-      margin-top:18px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.06);
-      border:1px solid color-mix(in srgb, white 10%, transparent);
-      color:rgba(255,255,255,.84);
-      font-size:.88rem;
-      line-height:1.2;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
-    }
-
-    .pill::before{
-      content:"";
-      width:6px;
-      height:6px;
-      border-radius:999px;
-      background: color-mix(in srgb, var(--brand) 70%, white);
-      box-shadow: 0 0 14px color-mix(in srgb, var(--brand) 34%, transparent);
-      flex:none;
-    }
-
-    .below{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
-    }
-
-    .lang-tile{
-      position:relative;
-      border-radius:28px;
-      padding:22px 22px;
-      background:
-        linear-gradient(180deg, color-mix(in srgb, var(--panel) 84%, transparent), color-mix(in srgb, var(--panel) 74%, transparent));
-      border:1px solid color-mix(in srgb, var(--text) 8%, transparent);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.06),
-        var(--soft-shadow);
-      overflow:hidden;
-    }
-
-    .lang-tile::before{
-      content:"";
-      position:absolute;
-      inset:0 0 auto 0;
-      height:1px;
-      background:linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
-      pointer-events:none;
-    }
-
-    .lang-code{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:52px;
-      height:32px;
-      padding:0 12px;
-      border-radius:999px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
-      border:1px solid color-mix(in srgb, white 10%, transparent);
-      color:var(--muted);
-      font-size:.82rem;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-
-    .lang-tile h3{
-      margin:14px 0 8px;
-      font-size:1.22rem;
-      letter-spacing:-0.03em;
-    }
-
-    .lang-tile p{
-      margin:0;
-      line-height:1.65;
-      color:var(--muted);
-    }
-
-    .lang-tile strong{
-      color:var(--text);
+      max-width:700px;
     }
 
     footer{
@@ -551,22 +414,23 @@
     }
 
     footer .row{
-      width:min(1280px, calc(100% - 24px));
+      width:min(1240px, calc(100% - 24px));
       margin:0 auto;
       padding:18px 0 26px;
     }
 
-    .rise-1,.rise-2,.rise-3,.rise-4{
+    .rise-1,.rise-2,.rise-3,.rise-4,.rise-5{
       opacity:0;
-      transform:translateY(18px);
-      animation:riseUp .75s cubic-bezier(.2,.7,.2,1) forwards;
+      transform:translateY(16px);
+      animation:fadeSlide .72s cubic-bezier(.2,.7,.2,1) forwards;
     }
 
     .rise-2{ animation-delay:.08s; }
     .rise-3{ animation-delay:.16s; }
     .rise-4{ animation-delay:.24s; }
+    .rise-5{ animation-delay:.32s; }
 
-    @keyframes riseUp{
+    @keyframes fadeSlide{
       to{
         opacity:1;
         transform:translateY(0);
@@ -575,38 +439,29 @@
 
     @media (prefers-reduced-motion:no-preference){
       .hero-bg{
-        animation:heroDrift 18s ease-in-out infinite alternate;
+        animation:heroDrift 22s ease-in-out infinite alternate;
+      }
+
+      .hero::after{
+        content:"";
+        position:absolute;
+        inset:-20%;
+        pointer-events:none;
+        z-index:1;
+        background:
+          linear-gradient(110deg, transparent 42%, rgba(255,255,255,.05) 50%, transparent 58%);
+        animation:glassSweep 8s ease-in-out infinite;
+        mix-blend-mode:screen;
       }
 
       @keyframes heroDrift{
         0%{ transform:scale(1.08) translate3d(0,0,0); }
-        100%{ transform:scale(1.12) translate3d(-8px,-10px,0); }
-      }
-    }
-
-    @media (max-width: 1100px){
-      .nav{
-        grid-template-columns:auto auto;
+        100%{ transform:scale(1.13) translate3d(-14px,-16px,0); }
       }
 
-      .nav-center{
-        display:none;
-      }
-
-      .hero-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero-side{
-        justify-content:flex-start;
-      }
-
-      .side-card{
-        width:min(520px, 100%);
-      }
-
-      .below{
-        grid-template-columns:1fr;
+      @keyframes glassSweep{
+        0%, 100%{ transform:translateX(-18%) translateY(0); opacity:.12; }
+        50%{ transform:translateX(12%) translateY(-1%); opacity:.20; }
       }
     }
 
@@ -614,6 +469,8 @@
       .banner{
         position:relative;
         top:auto;
+        width:min(100%, calc(100% - 18px));
+        margin-top:10px;
         padding:10px 12px;
         font-size:.92rem;
       }
@@ -622,11 +479,11 @@
         position:relative;
         top:auto;
         width:min(100%, calc(100% - 18px));
+        margin-top:10px;
         padding:12px 12px;
         border-radius:20px;
         grid-template-columns:auto auto;
         justify-content:space-between;
-        gap:10px;
       }
 
       .nav-center{
@@ -651,23 +508,18 @@
       .hero-grid{
         min-height:auto;
         padding:18px 16px 16px;
-        gap:14px;
       }
 
       .hero-content{
-        padding-top:8px;
+        padding-top:6px;
       }
 
       .hero h1{
-        font-size:clamp(2.5rem, 15vw, 4rem);
+        font-size:clamp(2.6rem, 15vw, 4rem);
       }
 
-      .hero-lead{
+      .copy-line{
         font-size:1rem;
-      }
-
-      .hero-sub{
-        font-size:.96rem;
       }
 
       .hero-actions{
@@ -680,21 +532,15 @@
         width:100%;
         min-width:0;
       }
-
-      .side-card{
-        border-radius:24px;
-        padding:18px 16px;
-      }
     }
 
     @media (max-width: 560px){
       .brand{
-        font-size:.96rem;
+        font-size:.95rem;
       }
 
       .nav{
         width:min(100%, calc(100% - 14px));
-        margin-top:10px;
         padding:10px 12px;
       }
 
@@ -703,23 +549,20 @@
         border-radius:14px;
       }
 
-      .hero{
-        border-radius:24px;
+      .banner{
+        width:min(100%, calc(100% - 14px));
       }
 
-      .eyebrow{
-        font-size:.84rem;
-        padding:8px 12px;
-        margin-bottom:14px;
+      .hero{
+        border-radius:24px;
       }
 
       .hero-grid{
         padding:16px 14px 14px;
       }
 
-      .lang-tile{
-        border-radius:22px;
-        padding:18px 16px;
+      .eyebrow{
+        font-size:.84rem;
       }
 
       footer .row{
@@ -733,7 +576,7 @@
 
   <div class="banner">
     <strong>Pre-pilot stage.</strong> SimHealth is being developed carefully and responsibly.
-    <span class="sub">(Phase pré-pilote.) SimHealth est développé avec prudence et responsabilité.</span>
+    <span class="line-fr">(Phase pré-pilote.) SimHealth est développé avec prudence et responsabilité.</span>
   </div>
 
   <header class="nav">
@@ -758,10 +601,8 @@
   </header>
 
   <main class="wrap">
-
     <section class="hero">
-      <div class="hero-bg" style="background-image:url('/assets/hero-clinic.jpg');"></div>
-      <div class="hero-overlay"></div>
+      <div class="hero-bg"></div>
 
       <div class="hero-grid">
         <div class="hero-content">
@@ -769,15 +610,14 @@
 
           <h1 class="rise-2">SimHealth</h1>
 
-          <p class="hero-lead rise-3">
-            <strong>Digital support for gambling harm</strong>, designed with clinical awareness and developed carefully in a pre-pilot context.
-          </p>
-
-          <p class="hero-sub rise-3">
-            Please choose your language to continue.
-            <br>
-            <span style="color:rgba(255,255,255,.64);">(Veuillez choisir votre langue pour continuer.)</span>
-          </p>
+          <div class="hero-copy rise-3">
+            <div class="copy-line">
+              <strong>Clinician-informed digital support for gambling harm.</strong>
+            </div>
+            <div class="copy-line fr">
+              <strong>Soutien numérique conçu avec un apport clinique face aux troubles liés au jeu d’argent.</strong>
+            </div>
+          </div>
 
           <div class="hero-actions rise-4" aria-label="Language selection">
             <a class="lang-btn primary" href="/en/home/">
@@ -791,47 +631,12 @@
             </a>
           </div>
 
-          <div class="hero-note rise-4">
-            A calm, clinically aware entry point for patients, clinicians, and collaborators exploring the project.
+          <div class="hero-note rise-5">
+            Choose your language to continue. / Choisissez votre langue pour continuer.
           </div>
         </div>
-
-        <div class="hero-side rise-4">
-          <aside class="side-card" aria-label="Project summary">
-            <p class="side-kicker">Overview</p>
-            <h2 class="side-title">A careful digital project in development</h2>
-            <p class="side-text">
-              SimHealth is being developed as a clinician-informed digital environment focused on gambling-harm support, staged evaluation, and responsible design.
-            </p>
-
-            <div class="side-pills">
-              <span class="pill">Pre-pilot</span>
-              <span class="pill">Clinician-informed</span>
-              <span class="pill">Research-aware</span>
-            </div>
-          </aside>
-        </div>
       </div>
     </section>
-
-    <section class="below">
-      <div class="lang-tile">
-        <div class="lang-code">EN</div>
-        <h3>English</h3>
-        <p>
-          Enter the <strong>English version</strong> of SimHealth, including the project overview, patient-facing information, clinician pages, and legal content.
-        </p>
-      </div>
-
-      <div class="lang-tile">
-        <div class="lang-code">FR</div>
-        <h3>Français</h3>
-        <p>
-          Accédez à la <strong>version française</strong> de SimHealth, avec la présentation du projet, les contenus destinés aux patients, les pages cliniciens et les informations légales.
-        </p>
-      </div>
-    </section>
-
   </main>
 
   <footer>
