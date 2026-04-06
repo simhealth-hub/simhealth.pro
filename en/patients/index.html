@@ -9,12 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Root-relative -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
   <style>
-    /* Minimal page-specific layout */
     .section-title{ margin:22px 0 10px; }
     .section-title h2{ margin:0 0 6px; font-size:20px; }
     .section-title p{ margin:0; color:var(--muted); line-height:1.6; }
@@ -56,6 +54,25 @@
       line-height:1.7;
     }
 
+    .human-intro{
+      max-width:760px;
+      margin-top:12px;
+      color:rgba(255,255,255,.92);
+      line-height:1.65;
+      font-weight:600;
+    }
+
+    .human-intro strong{
+      color:#fff;
+    }
+
+    .human-sub{
+      max-width:720px;
+      margin-top:12px;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
     @media (max-width: 800px){
       .card-tile{ grid-column: span 12; }
     }
@@ -71,7 +88,6 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Back to language selection">SimHealth</a>
 
-    <!-- Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
       aria-label="Open menu"
@@ -86,7 +102,7 @@
       <a class="link" href="/en/clinicians/">Clinicians</a>
       <a class="link" href="/en/research/">Research</a>
       <a class="link" href="/en/about/">About</a>
-  <a class="link" href="/en/faq/">FAQ</a>
+      <a class="link" href="/en/faq/">FAQ</a>
       <a class="link" href="/en/contact/">Contact</a>
 
       <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
@@ -122,9 +138,15 @@
 
       <div class="hero-content">
         <h1 class="rise-1">Patients</h1>
-        <p class="rise-2">
-          Information and signposting for people affected by gambling-related urges.
-          SimHealth is in development and does not provide emergency or crisis care.
+
+        <div class="human-intro rise-2">
+          You might recognise the moment: late at night, stressed, tired, or restless, thinking
+          <strong>“just one bet.”</strong> Knowing where it can lead, but still feeling the pull.
+        </div>
+
+        <p class="human-sub rise-2">
+          SimHealth is being developed to explore whether structured, clinician-informed digital support can help during those high-risk moments.
+          This website provides information and signposting only. SimHealth does not provide emergency or crisis care.
         </p>
 
         <div class="hero-actions rise-3">
@@ -200,8 +222,8 @@
       <h2 style="margin:0 0 10px;">How SimHealth is intended to help</h2>
 
       <p style="margin:0; color:var(--muted); line-height:1.65;">
-        SimHealth is being developed as a clinician-informed digital companion designed to support people during
-        high-risk moments (for example, urges, stress spikes, or late-night “just one bet” thoughts).
+        SimHealth is being developed as a clinician-informed digital companion designed to support people during high-risk moments —
+        for example, urge spikes, stress periods, or late-night thoughts that can quickly turn into harmful decisions.
       </p>
 
       <ul class="list">
@@ -236,8 +258,8 @@
       </div>
       <nav aria-label="Footer links">
         <a href="/sitemap.html">Sitemap</a>
-    <a href="/en/faq/">FAQ</a>
-      <a href="/en/legal/status/">Status</a>
+        <a href="/en/faq/">FAQ</a>
+        <a href="/en/legal/status/">Status</a>
         <a href="/en/legal/privacy/">Privacy</a>
         <a href="/en/legal/terms/">Terms</a>
         <a href="/en/legal/cookies/">Cookies</a>
@@ -247,7 +269,6 @@
     </div>
   </footer>
 
-  <!-- Mobile always-visible crisis access (English pages only) -->
   <div class="mobile-crisis" aria-label="Crisis quick access">
     <span class="label">Need help now?</span>
     <a class="btn-primary" href="/en/patients/help-support/">Crisis Resources</a>
