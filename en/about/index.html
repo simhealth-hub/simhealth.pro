@@ -84,6 +84,25 @@
       line-height:1.55;
     }
 
+    .origin-block{
+      padding:16px;
+      border-radius:var(--radius-xl);
+      border:1px solid var(--border);
+      background:color-mix(in srgb, var(--surface) 94%, transparent);
+      box-shadow:0 10px 24px rgba(0,0,0,.04);
+    }
+    .origin-block h3{
+      margin:0 0 10px;
+    }
+    .origin-block p{
+      margin:0 0 10px;
+      color:var(--muted);
+      line-height:1.7;
+    }
+    .origin-block p:last-child{
+      margin-bottom:0;
+    }
+
     @media (max-width: 900px){
       .col-7, .col-5 { grid-column: span 12; }
     }
@@ -149,8 +168,7 @@
       <div class="hero-content">
         <h1 class="rise-1">About SimHealth</h1>
         <p class="rise-2">
-          SimHealth is a clinician-informed project exploring whether structured, safety-first digital support can help reduce harm during
-          gambling-related urge spikes, within supervised pathways and clear governance boundaries.
+          SimHealth is a clinician-informed project exploring whether structured, safety-first digital support can help reduce harm during gambling-related urge spikes within supervised pathways and clear governance boundaries.
         </p>
 
         <div class="status-bar rise-3" role="note" aria-label="Project status">
@@ -165,9 +183,30 @@
         </div>
 
         <p class="mini rise-3">
-          Looking for details on status, intended use boundaries, and what is planned vs available?
+          Looking for details on status, intended use boundaries, and what is planned versus available?
           See <a href="/en/legal/medical-disclaimer/" style="color:var(--text); text-decoration:underline;">Medical Disclaimer</a>
           and <a href="/en/legal/privacy/" style="color:var(--text); text-decoration:underline;">Privacy</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- WHY THIS PROJECT EXISTS -->
+    <section class="card section">
+      <h2>Why this project exists</h2>
+
+      <div class="origin-block">
+        <h3>Origin</h3>
+        <p>
+          SimHealth emerged from lived experience alongside a long-standing interest in how people engage with gambling environments, especially during high-risk moments when support is often unavailable.
+        </p>
+        <p>
+          The project began with a simple observation: there is often a difficult gap between real-world urges and the support available between structured clinical sessions. SimHealth is being developed to explore whether that gap can be addressed more safely through a supervised, digitally supported approach.
+        </p>
+        <p>
+          It is not positioned as a replacement for existing care. Instead, it is being shaped as a possible supervised complement — one that is developed cautiously, evaluated properly, and framed with explicit limits from the outset.
+        </p>
+        <p>
+          The project is being developed independently, with a focus on clinical responsibility, governance, safety boundaries, and transparency at every stage.
         </p>
       </div>
     </section>
@@ -176,9 +215,7 @@
     <section class="card section">
       <h2>What SimHealth is</h2>
       <p class="lead">
-        SimHealth is being designed as a two-sided concept:
-        a clinician-facing programme for supervised pilot use, and a patient-facing companion for structured, time-limited support
-        aligned with a clinician’s care plan.
+        SimHealth is being designed as a two-sided concept: a clinician-facing programme for supervised pilot use, and a patient-facing companion for structured, time-limited support aligned with a clinician’s care plan.
       </p>
 
       <div class="grid">
@@ -215,13 +252,11 @@
       </div>
     </section>
 
-    <!-- WHY / MISSION -->
+    <!-- MISSION -->
     <section class="card section">
       <h2>Mission</h2>
       <p class="lead">
-        SimHealth focuses on moments where urges escalate quickly and support is often unavailable.
-        The project explores whether well-governed digital support can improve continuity between sessions and reduce disengagement,
-        without encouraging or normalising gambling.
+        SimHealth focuses on moments where urges can escalate quickly and support may be limited or unavailable. The project explores whether well-governed digital support can improve continuity between sessions, support safer decision-making, and reduce disengagement — without encouraging or normalising gambling.
       </p>
 
       <div class="grid">
@@ -231,7 +266,7 @@
             <li><strong>Continuity:</strong> support between appointments, not only inside clinics.</li>
             <li><strong>Decision support:</strong> help users pause and choose safer actions during urge spikes.</li>
             <li><strong>Engagement:</strong> reduce drop-off in early treatment phases.</li>
-            <li><strong>Governance:</strong> explicit boundaries; no uncontrolled release.</li>
+            <li><strong>Governance:</strong> explicit boundaries, supervised pathways, and no uncontrolled release.</li>
           </ul>
         </div>
 
@@ -250,15 +285,14 @@
     <section class="card section">
       <h2>Status and regulatory posture</h2>
       <p class="lead">
-        SimHealth is in development. This website is a public project overview and does not provide clinical care.
-        Any future pilot use is intended to be supervised and documented, with clear boundaries and appropriate approvals where required.
+        SimHealth is in development. This website is a public project overview and does not provide clinical care. Any future pilot use is intended to be supervised and documented, with clear boundaries and appropriate approvals where required.
       </p>
 
       <div class="grid">
         <div class="col-7">
           <h3>What SimHealth is not</h3>
           <ul class="list">
-            <li><strong>Not emergency care:</strong> no crisis monitoring, no emergency response.</li>
+            <li><strong>Not emergency care:</strong> no crisis monitoring and no emergency response.</li>
             <li><strong>Not a diagnostic tool:</strong> it does not diagnose conditions.</li>
             <li><strong>Not a treatment replacement:</strong> it does not replace professional care.</li>
             <li><strong>Not a public consumer release:</strong> the goal is supervised pilots first.</li>
@@ -273,7 +307,7 @@
         <div class="col-5">
           <h3>Data and hosting (planned)</h3>
           <ul class="list">
-            <li><strong>Privacy-first:</strong> minimise data; use consent-led collection only.</li>
+            <li><strong>Privacy-first:</strong> minimise data and use consent-led collection only.</li>
             <li><strong>GDPR-aligned design:</strong> principles applied across flows and retention.</li>
             <li><strong>France-based hosting (intended):</strong> future infrastructure planning is oriented toward suitable health-grade hosting where applicable.</li>
           </ul>
@@ -327,36 +361,35 @@
   </main>
 
   <footer id="site-footer">
-  <div class="row">
+    <div class="row">
 
-    <div>
-      <!-- Status line (credibility + protection) -->
-      <div style="margin-bottom:8px; color:var(--muted); font-size:13px;">
-        Pre-pilot research project; not a medical device; not emergency care
+      <div>
+        <div style="margin-bottom:8px; color:var(--muted); font-size:13px;">
+          Pre-pilot research project; not a medical device; not emergency care
+        </div>
+
+        © 2026 SimHealth. All rights reserved.
+        • <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
+        • <a href="https://www.linkedin.com/in/andrew-goodwin-simhealth"
+             target="_blank" rel="noopener"
+             style="color:var(--text); font-weight:700; text-decoration:none;">
+            LinkedIn
+          </a>
       </div>
 
-      © 2026 SimHealth. All rights reserved.
-      • <a href="mailto:contact@simhealth.pro">contact@simhealth.pro</a>
-      • <a href="https://www.linkedin.com/in/andrew-goodwin-simhealth"
-           target="_blank" rel="noopener"
-           style="color:var(--text); font-weight:700; text-decoration:none;">
-          LinkedIn
-        </a>
+      <nav aria-label="Footer links">
+        <a href="/sitemap.html">Sitemap</a>
+        <a href="/en/faq/">FAQ</a>
+        <a href="/en/legal/status/">Status</a>
+        <a href="/en/legal/privacy/">Privacy</a>
+        <a href="/en/legal/terms/">Terms</a>
+        <a href="/en/legal/cookies/">Cookies</a>
+        <a href="/en/legal/accessibility/">Accessibility</a>
+        <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
+      </nav>
+
     </div>
-
-    <nav aria-label="Footer links">
-      <a href="/sitemap.html">Sitemap</a>
-     <a href="/en/faq/">FAQ</a>
-      <a href="/en/legal/status/">Status</a>
-      <a href="/en/legal/privacy/">Privacy</a>
-      <a href="/en/legal/terms/">Terms</a>
-      <a href="/en/legal/cookies/">Cookies</a>
-      <a href="/en/legal/accessibility/">Accessibility</a>
-      <a href="/en/legal/medical-disclaimer/">Medical Disclaimer</a>
-    </nav>
-
-  </div>
-</footer>
+  </footer>
 
   <div class="mobile-crisis" aria-label="Crisis quick access">
     <span class="label">Need help now?</span>
