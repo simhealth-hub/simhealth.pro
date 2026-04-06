@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Root-relative paths -->
   <link rel="stylesheet" href="/assets/styles.css">
   <script src="/assets/theme.js"></script>
 
@@ -58,6 +57,25 @@
       align-items:center;
     }
     .muted{ color:var(--muted); }
+
+    .research-block{
+      margin-top:16px;
+      padding:16px;
+      border:1px solid var(--border);
+      border-radius:var(--radius-xl);
+      background:color-mix(in srgb, var(--surface) 94%, transparent);
+    }
+
+    .research-block h3{
+      margin:0 0 8px;
+    }
+
+    .research-block p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.65;
+    }
+
     @media (max-width: 800px){
       .status-bar{ gap:8px; }
     }
@@ -74,7 +92,6 @@
   <header class="nav">
     <a class="brand" href="/index.html" aria-label="Retour au choix de langue">SimHealth</a>
 
-    <!-- Mobile: Menu button -->
     <button class="nav-toggle" type="button"
       onclick="SimHealthNav.toggleMenu()"
       aria-label="Ouvrir/fermer la navigation"
@@ -89,7 +106,7 @@
       <a class="link" href="/fr/cliniciens/">Cliniciens</a>
       <a class="link active" href="/fr/recherche/">Recherche</a>
       <a class="link" href="/fr/a-propos/">À propos</a>
-     <a class="link" href="/fr/faq/">FAQ</a>
+      <a class="link" href="/fr/faq/">FAQ</a>
       <a class="link" href="/fr/contact/">Contact</a>
 
       <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
@@ -125,8 +142,7 @@
       <div class="hero-content">
         <h1 class="rise-1">Recherche</h1>
         <p class="rise-2">
-          SimHealth est développé pour une évaluation <strong style="color:var(--text);">supervisée</strong> :
-          faisabilité d’abord, puis élargissement uniquement si la sécurité, la gouvernance et l’encadrement sont en place.
+          SimHealth est développé pour une évaluation supervisée : faisabilité d’abord, puis élargissement uniquement si la sécurité, la gouvernance et un encadrement approprié sont en place.
         </p>
 
         <div class="status-bar rise-3" role="note" aria-label="État du programme de recherche">
@@ -144,22 +160,26 @@
 
     <section class="card" style="margin-top:16px;">
 
-      <!-- FONDEMENTS / RATIONNEL -->
+      <!-- RATIONNEL -->
       <h2 id="fondements">Rationnel</h2>
       <p class="muted" style="line-height:1.65;">
-        SimHealth est conçu comme un compagnon numérique structuré pour les moments à risque (par exemple : envies fortes,
-        pics de stress, pensées du type « juste un pari »), avec l’objectif de renforcer la continuité entre les séances cliniques.
+        SimHealth est conçu comme un compagnon numérique structuré pour les moments à risque — par exemple, les pics d’envies, les périodes de stress, ou les pensées du type « juste un pari » — avec l’objectif de renforcer la continuité entre les séances cliniques dans un cadre supervisé et soigneusement gouverné.
       </p>
 
       <p class="muted" style="line-height:1.65;">
-        Le programme de recherche est volontairement prudent : tester d’abord la faisabilité, la sécurité et l’acceptabilité,
-        plutôt que d’avancer des résultats cliniques avant une évaluation adaptée.
+        Le programme de recherche est volontairement prudent. Le premier objectif est d’évaluer la faisabilité, la sécurité, l’utilisabilité et l’acceptabilité, plutôt que d’avancer des allégations d’efficacité clinique avant une évaluation adaptée.
       </p>
 
       <div class="section-note">
         <strong style="color:var(--text);">Terminologie :</strong>
-        « UX » signifie <strong style="color:var(--text);">expérience utilisateur</strong> — la clarté, l’utilisabilité et la charge cognitive,
-        particulièrement lors de moments de vulnérabilité ou de stress.
+        « UX » signifie <strong style="color:var(--text);">expérience utilisateur</strong> — la clarté, l’utilisabilité et le ressenti pratique de l’interface, en particulier lors de moments de vulnérabilité ou de stress.
+      </div>
+
+      <div class="research-block">
+        <h3>Orientation de recherche</h3>
+        <p>
+          L’accent est mis sur un design pilote rigoureux, des limites explicites et une communication prudente des résultats. À ce stade, SimHealth n’est pas présenté comme une allégation d’efficacité, mais comme un projet nécessitant une évaluation structurée avant toute interprétation plus large.
+        </p>
       </div>
 
       <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
@@ -167,35 +187,31 @@
       <!-- METHODOLOGIE -->
       <h2 id="methodologie">Méthodologie</h2>
       <p class="muted" style="line-height:1.65;">
-        SimHealth est prévu pour une évaluation par étapes — en commençant par de petits pilotes supervisés et en progressant uniquement lorsque
-        la sécurité, la gouvernance et l’encadrement clinique sont établis. L’objectif est l’itération prudente, pas une diffusion non contrôlée.
+        SimHealth est prévu pour une évaluation par étapes — en commençant par de petits pilotes supervisés et en progressant uniquement lorsque la sécurité, la gouvernance et l’encadrement clinique sont clairement établis. La priorité est l’itération prudente plutôt qu’une diffusion non contrôlée.
       </p>
 
       <h3 style="margin:16px 0 8px;">Plan d’évaluation par étapes</h3>
       <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7;">
-        <li><strong style="color:var(--text);">Phase 0 — Conception &amp; faisabilité :</strong> UX orientée sécurité, orientation vers l’aide, parcours de consentement, documentation de gouvernance.</li>
-        <li><strong style="color:var(--text);">Phase 1 — Pilote supervisé :</strong> petite cohorte, supervision clinique, signaux de faisabilité + sécurité.</li>
-        <li><strong style="color:var(--text);">Phase 2 — Évaluation élargie (si justifiée) :</strong> design d’étude plus large et supervision formelle selon les exigences.</li>
+        <li><strong style="color:var(--text);">Phase 0 — Conception &amp; faisabilité :</strong> UX orientée sécurité, orientation vers l’aide, parcours de consentement, documentation de gouvernance, et revue pratique des usages.</li>
+        <li><strong style="color:var(--text);">Phase 1 — Pilote supervisé :</strong> petite cohorte, supervision clinique, et observation de la faisabilité, de l’utilisabilité et des signaux de sécurité.</li>
+        <li><strong style="color:var(--text);">Phase 2 — Évaluation élargie (si justifiée) :</strong> design d’étude plus large, supervision plus formelle, et évaluation plus structurée uniquement si les phases précédentes le permettent.</li>
       </ul>
 
       <h3 style="margin:16px 0 8px;">Données (priorité à la confidentialité)</h3>
       <p class="muted" style="line-height:1.65;">
-        Si une collecte de données est incluse dans un pilote, elle est conçue pour être optionnelle et réalisée uniquement
-        avec le consentement explicite des participant·e·s. La collecte doit être limitée au strict nécessaire,
-        conformément aux principes du RGPD.
+        Si une collecte de données fait partie d’un pilote, elle est conçue pour être optionnelle et réalisée uniquement avec le consentement explicite des participant·e·s. La collecte doit être limitée à ce qui est nécessaire pour l’évaluation et l’amélioration, dans le respect des principes du RGPD et d’une gouvernance adaptée.
       </p>
 
       <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7;">
-        <li><strong style="color:var(--text);">Consentement :</strong> participation sur opt-in et informations claires.</li>
-        <li><strong style="color:var(--text);">Minimisation :</strong> collecte du strict nécessaire ; éviter les identifiants inutiles.</li>
-        <li><strong style="color:var(--text);">Protection :</strong> anonymisation si possible ; sinon pseudonymisation et accès restreint.</li>
-        <li><strong style="color:var(--text);">Finalité :</strong> pas d’usage secondaire sans gouvernance appropriée.</li>
+        <li><strong style="color:var(--text);">Consentement :</strong> participation sur opt-in avec information claire sur la finalité.</li>
+        <li><strong style="color:var(--text);">Minimisation :</strong> collecte du strict nécessaire et évitement des identifiants inutiles.</li>
+        <li><strong style="color:var(--text);">Protection :</strong> anonymisation lorsque c’est possible ; sinon pseudonymisation et accès restreint de manière appropriée.</li>
+        <li><strong style="color:var(--text);">Limitation de finalité :</strong> pas d’usage secondaire sans gouvernance ni justification adaptées.</li>
       </ul>
 
       <div class="section-note">
         <strong style="color:var(--text);">Borne clinique :</strong>
-        SimHealth n’est pas un service d’urgence ni de crise. En présence d’un risque de crise, la réponse appropriée est l’accès
-        aux services d’urgence et de crise dans le monde réel.
+        SimHealth n’est pas un service d’urgence ni de crise. En présence d’un risque aigu, la réponse appropriée reste l’accès aux services d’urgence et de crise dans le monde réel.
       </div>
 
       <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;">
@@ -203,23 +219,21 @@
       <!-- RESULTATS -->
       <h2 id="resultats">Résultats</h2>
       <p class="muted" style="line-height:1.65;">
-        Aucun résultat n’est revendiqué à ce stade. La communication sera prudente et basée sur une évaluation adaptée.
-        Les premières étapes portent sur la faisabilité, la sécurité et l’engagement.
+        Aucun résultat n’est revendiqué à ce stade. La communication restera prudente et liée à un design d’évaluation approprié. Les premières étapes portent sur la faisabilité, la sécurité, l’acceptabilité, et l’engagement plutôt que sur des allégations d’efficacité.
       </p>
 
       <h3 style="margin:16px 0 8px;">Indicateurs précoces</h3>
       <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7;">
-        <li><strong style="color:var(--text);">Faisabilité :</strong> usage sûr et cohérent dans des parcours réels.</li>
-        <li><strong style="color:var(--text);">Acceptabilité :</strong> expérience utilisateur et adéquation clinique.</li>
-        <li><strong style="color:var(--text);">Engagement :</strong> continuité entre les séances (sans coercition).</li>
-        <li><strong style="color:var(--text);">Signaux de sécurité :</strong> identification des risques et orientation adaptée.</li>
-        <li><strong style="color:var(--text);">Utilisabilité clinique :</strong> charge minimale et limites de gouvernance explicites.</li>
+        <li><strong style="color:var(--text);">Faisabilité :</strong> possibilité d’un usage sûr et cohérent dans des parcours réels.</li>
+        <li><strong style="color:var(--text);">Acceptabilité :</strong> expérience utilisateur, adéquation clinique, et tolérance pratique.</li>
+        <li><strong style="color:var(--text);">Engagement :</strong> continuité entre les séances sans mécanismes coercitifs.</li>
+        <li><strong style="color:var(--text);">Signaux de sécurité :</strong> identification des points de risque et pertinence de l’orientation proposée.</li>
+        <li><strong style="color:var(--text);">Utilisabilité clinique :</strong> clarté, faible charge, et limites de gouvernance praticables.</li>
       </ul>
 
       <div class="section-note" style="margin-top:16px;">
-        <strong style="color:var(--text);">Engagement de transparence :</strong>
-        Toute discussion future distinguera clairement faisabilité/sécurité et efficacité clinique, et ne sera partagée publiquement
-        que si elle est étayée par un design d’étude approprié et une supervision adaptée.
+        <strong style="color:var(--text);">Engagement de communication :</strong>
+        Toute discussion future distinguera clairement les constats de faisabilité et de sécurité des questions d’efficacité clinique, et ne sera partagée publiquement que si elle est étayée par un design d’étude approprié et une supervision adaptée.
       </div>
 
       <div class="link-row">
@@ -239,7 +253,7 @@
       </div>
       <nav aria-label="Liens du pied de page">
         <a href="/sitemap.html">Plan du site</a>
-   <a href="/fr/faq/">FAQ</a>
+        <a href="/fr/faq/">FAQ</a>
         <a href="/fr/legal/confidentialite/">Confidentialité</a>
         <a href="/fr/legal/conditions/">Conditions</a>
         <a href="/fr/legal/cookies/">Cookies</a>
@@ -249,7 +263,6 @@
     </div>
   </footer>
 
-  <!-- Mobile always-visible crisis access (French pages) -->
   <div class="mobile-crisis" aria-label="Accès rapide aux ressources d’aide">
     <span class="label">Besoin d’aide maintenant&nbsp;?</span>
     <a class="btn-primary" href="/fr/patients/aide-soutien/">Ressources d’aide</a>
